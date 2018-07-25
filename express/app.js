@@ -8,8 +8,8 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/hey', (req, res) => {
-    res.send('<h1>Glad you could make it!</h1>');
+app.get('/cards', (req, res) => {
+    res.render('card', {prompt: "What was Buddha's original name?", hint: "It's indian..."});
 });
 
 app.listen(3000, () => {
