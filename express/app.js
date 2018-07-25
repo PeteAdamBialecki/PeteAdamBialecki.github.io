@@ -2,8 +2,8 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', (request, response) => {
-    response.send('Generating stuff...');
+app.get('/', (req, res) => {
+    res.send('<h1>Generating stuff...</h1>');
 });
 
 app.listen(3000);
