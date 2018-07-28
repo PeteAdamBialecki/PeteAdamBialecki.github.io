@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
-
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
 
@@ -11,7 +10,11 @@ app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
     const name = req.cookies.username;
-    res.render('index', { name });
+    if (name) {
+        res.render('index', { name});
+    } else {
+        res.redirect('/hello');
+    }
 });
 
 app.get('/cards', (req, res) => {
@@ -19,7 +22,12 @@ app.get('/cards', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-    res.render('hello');
+    const name = req.cookies.username;
+    if (name) {
+        res.redirect('/');
+    } else {
+        res.render('hello');
+    }
 });
 
 app.post('/hello', (req, res) => {
@@ -27,9 +35,42 @@ app.post('/hello', (req, res) => {
     res.redirect('/');
 });
 
+app.post('/goodbye', (req, res) => {
+    res.clearCookie('username');
+    res.redirect('/hello');
+})
+
+
+
+
+// Add a form with a goodbye button to the welcome page.
+// Create a new route called goodbye for the form to post to
+// Clear the cookie in the new route
+// Redirect the user to the hello form
+
+
+
+
 app.listen(3000, () => {
     console.log('Testing Express stuff...');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // JavaSscript Template Languages:
 //     - Handlebars.js
