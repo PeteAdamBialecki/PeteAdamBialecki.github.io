@@ -12,6 +12,7 @@ app.set('view engine', 'pug');
 app.use((req, res, next) => {
     console.log('Hello');
     const err = new Error('Whoops! You have made an error.  How dare you!');
+    err.status = 500;
     next(err);
 });
 
@@ -42,6 +43,9 @@ app.get('/hello', (req, res) => {
     }
 });
 
+
+
+
 app.post('/hello', (req, res) => {
     res.cookie('username', req.body.username);
     res.redirect('/');
@@ -50,6 +54,12 @@ app.post('/hello', (req, res) => {
 app.post('/goodbye', (req, res) => {
     res.clearCookie('username');
     res.redirect('/hello');
+});
+
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    res.render('error')
 });
 
 app.listen(3000, () => {
