@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(3000, () => {
-    console.log('Testing Express stuff...');
+    console.log('Express.js enviornment running...');
 });
 
 // JavaSscript Template Languages:
