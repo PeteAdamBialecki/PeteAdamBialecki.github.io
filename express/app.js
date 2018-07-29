@@ -36,3 +36,8 @@ app.listen(3000, () => {
 //     - Handlebars.js
 //     - EJS
 //     - Pug.js (Formerly Jade)
+
+// NEXT STEPS
+// - Create Flashcard Sets
+// - Connect to a Database
+// - Add User / Authentication
