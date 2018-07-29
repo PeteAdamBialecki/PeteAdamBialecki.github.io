@@ -3,10 +3,10 @@ const router = express.Router();
 const { data } = require('../data/flashcardData.json');
 const { cards } = data;
 
-router.get ('/', (req, res) => {
-    const numberOfCards = cards.length;
-    const flashcardId = Math.floor(Math.random() * numberOfCards);
-    res.redirect(`/cards/${flashcardId}`)
+router.get( '/', ( req, res ) => {
+  const numberOfCards = cards.length;
+  const flashcardId = Math.floor( Math.random() * numberOfCards );
+  res.redirect( `/cards/${flashcardId}` )
 });
 
 router.get('/:id', (req, res) => {
@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
     const { id } = req.params;
 
     if ( !side ) {
-        res.redirect(`/cards/${id}?side=question`);
+        return res.redirect(`/cards/${id}?side=question`);
     }
     const name = req.cookies.username;
     const text = cards[id][side];
@@ -22,13 +22,13 @@ router.get('/:id', (req, res) => {
 
     const templateData = { id, text, name };
 
-    if (side === 'question') {
+    if ( side === 'question' ) {
         templateData.hint = hint;
         templateData.sideToShow = 'answer';
-        tmplateData.sideToShowDisplay = 'Answer'
-    } else if ( side === 'answer') {
+        templateData.sideToShowDisplay = 'Answer';
+    } else if ( side === 'answer' ) {
         templateData.sideToShow = 'question';
-        templateData.sideToShowDisplay = 'Question'
+        templateData.sideToShowDisplay = 'Question';
     }
 
     res.render('card', templateData);
