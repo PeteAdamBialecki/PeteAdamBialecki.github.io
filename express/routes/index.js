@@ -1,18 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// router.use((req, res, next) => {
-//     console.log('Hello');
-//     const err = new Error('Whoops! You have made an error.  How dare you!');
-//     err.status = 500;
-//     next(err);
-// });
-
-// router.use((req, res, next) => {
-//     console.log('world!');
-//     next();
-// });
-
 router.get('/', (req, res) => {
     const name = req.cookies.username;
     if (name) {
@@ -42,3 +30,18 @@ router.post('/goodbye', (req, res) => {
 });
 
 module.exports = router;
+
+
+
+
+// router.use((req, res, next) => {
+//     console.log('Hello');
+//     const err = new Error('Whoops! You have made an error.  How dare you!');
+//     err.status = 500;
+//     next(err);
+// });
+
+// router.use((req, res, next) => {
+//     console.log('world!');
+//     next();
+// });
