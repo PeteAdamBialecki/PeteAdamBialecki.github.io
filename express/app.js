@@ -11,15 +11,14 @@ app.set('view engine', 'pug');
 
 app.use((req, res, next) => {
     console.log('Hello');
-    next();
+    const err = new Error('Whoops! You have made an error.  How dare you!');
+    next(err);
 });
 
 app.use((req, res, next) => {
     console.log('world!');
     next();
 });
-
-
 
 app.get('/', (req, res) => {
     const name = req.cookies.username;
@@ -51,18 +50,7 @@ app.post('/hello', (req, res) => {
 app.post('/goodbye', (req, res) => {
     res.clearCookie('username');
     res.redirect('/hello');
-})
-
-
-
-
-// Add a form with a goodbye button to the welcome page.
-// Create a new route called goodbye for the form to post to
-// Clear the cookie in the new route
-// Redirect the user to the hello form
-
-
-
+});
 
 app.listen(3000, () => {
     console.log('Testing Express stuff...');
