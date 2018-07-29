@@ -6,6 +6,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
+app.use(express.static('public'));
 
 app.set('view engine', 'pug');
 
@@ -35,3 +36,8 @@ app.listen(3000, () => {
 //     - Handlebars.js
 //     - EJS
 //     - Pug.js (Formerly Jade)
+
+// NEXT STEPS
+// - Create Flashcard Sets
+// - Connect to a Database
+// - Add User / Authentication
