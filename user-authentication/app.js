@@ -4,10 +4,10 @@ var mongoose = require('mongoose');
 var app = express();
 
 // Mongodb connecton
-mongoose.connect("mongodb://localhost:27017/bookworm");
+mongoose.connect("mongodb://localhost:27017/bookworm", { useNewUrlParser: true});
 var db = mongoose.connection;
-// Mongo errors
-db.on('error', console.error.bind(console, 'connection error'))
+// mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
 
 // parse incoming requests
 app.use(bodyParser.json());
