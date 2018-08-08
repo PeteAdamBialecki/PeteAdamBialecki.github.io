@@ -1,7 +1,18 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session = require('express-session');
 var app = express();
+
+//  Use sessins for tracking logins
+app.use (session({
+    secret: 'time for a secret',
+    resave: true,
+    saveUninitialized: false
+}));
+
+// Session stores
+// https://github.com/expressjs/session#compatible-session-stores
 
 // mongodb connection
 mongoose.connect("mongodb://localhost:27017/bookworm", { useNewUrlParser: true});
