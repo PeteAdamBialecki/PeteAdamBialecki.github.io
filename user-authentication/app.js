@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
 
-// Mongodb connecton
+// mongodb connection
 mongoose.connect("mongodb://localhost:27017/bookworm", { useNewUrlParser: true});
 var db = mongoose.connection;
 // mongo error
