@@ -7,6 +7,16 @@ router.get('/register', function(req, res, next) {
   return res.render('register', { title: 'Sign Up' });
 });
 
+// GET /login
+router.get('/login', function(req, res, next) {
+    return res.render('login', {title: 'Log In'});
+});
+
+// POST /login
+router.post('/login', function(req, res, next) {
+    return res.send('Logged In!');
+});
+
 // POST /register
 router.post('/register', function(req, res, next) {
   if (req.body.email &&
