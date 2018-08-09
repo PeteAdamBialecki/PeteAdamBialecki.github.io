@@ -4,15 +4,18 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var app = express();
 
-//  Use sessins for tracking logins
-app.use (session({
-    secret: 'time for a secret',
-    resave: true,
-    saveUninitialized: false
+// use sessions for tracking logins
+app.use(session({
+  secret: 'treehouse loves you',
+  resave: true,
+  saveUninitialized: false
 }));
 
-// Session stores
-// https://github.com/expressjs/session#compatible-session-stores
+// make user ID available in templates
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.session.userId;
+  next();
+});
 
 // mongodb connection
 mongoose.connect("mongodb://localhost:27017/bookworm", { useNewUrlParser: true});
