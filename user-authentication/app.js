@@ -1,3 +1,9 @@
+// 1. ../PeteAdamBialecki.github.io/user-authentication
+//          Terminal = mongod
+// 2. ../PeteAdamBialecki.github.io/user-authentication
+//          Terminal = nodemon
+// 3. ../PeteAdamBialecki.github.io/user-authentication
+//          Terminal = mongo
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
