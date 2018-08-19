@@ -17,6 +17,15 @@ router.param('qID', function(req, res, next, id){
     });
 });
 
+router.param('aID', function(req, res, next, id){
+    req.answer = req.question.answers.id(id);
+    if(!req.answer) {
+        err = new Error('Not Found');
+        err.status = 404;
+        return next(err);
+    }
+});
+
 // GET /questions
 // Route for question collections
 router.get('/', function(req, res, next){
@@ -42,37 +51,37 @@ router.post('/', function(req, res, next){
 // GET /questions
 // Route for specificquestion
 router.get('/:qID', function(req, res, next){
-        res.json(doc);
+        res.json(req.question);
 });
 
 // POST /questions/:id/answers
 // Route for creating an answer
-router.post('/:qID/answers', function(req, res){
-    res.json({
-        response: 'You sent me a POST request to /answers',
-        questionId: req.params.qID,
-        body: req.body
+router.post('/:qID/answers', function(req, res, next){
+    req.question.answer.push(req.body);
+    req.question.save(function(err, question){
+        if(err) return next(err);
+        res.status(201);
+        res.json(question);
     });
 });
 
 // PUT / questions/:qID/answers/:aID
 // Edit a specific answer
 router.put('/:qID/answers/:aID', function(req, res){
-    res.json({
-        response: 'You sent me a PUT request to /answers',
-        questionId: req.params.qID,
-        answerId: req.params.aID,
-        body: req.body
+    req.answer.update(req.body, function(err, result){
+        if(err) return next(err);
+        res.json(result);
     });
 });
 
 // DELETE / questions/:qID/answers/:aID
 // Delete a specific answer
 router.delete('/:qID/answers/:aID', function(req, res){
-    res.json({
-        response: 'You sent me a DELETE request to /answers',
-        questionId: req.params.qID,
-        answerId: req.params.aID,
+    req.answer.remove(function(){
+        req.question.save(function(err, question){
+            if(err) return next(err);
+            res.json(question);
+        });
     });
 });
 
@@ -85,15 +94,15 @@ router.post('/:qID/answers/:aID/vote-:dir', function(req, res, next) {
             err.status = 404;
             next(err);
         } else {
+            req.vote = req.params.dir;
             next();
         }
-    },function(req, res){
-    res.json({
-        response: 'You sent me a POST request to /vote-' + req.params.dir,
-        questionId: req.params.qID,
-        answerId: req.params.aID,
-        vote: req.params.dir
-    });
+    },
+    function(req, res, next){
+        req.answer.vote(req.vote, function(err, question){
+            if(err) return next(err);
+            res.json(question);
+        });
 });
 
 module.exports = router;
