@@ -6,6 +6,11 @@ var svg = d3.select("body").append("svg")
     .attr("width", w)
     .attr("height", h);
 
+function colorPicker(v) {
+    if (v<=20) {return "purple";}
+    else if (v>20) {return "green";}
+}
+
 svg.selectAll("rect")
     .data(dataset)
     .enter()
@@ -15,7 +20,7 @@ svg.selectAll("rect")
             y: function(d) {return h - (d*4);},
             width: w / dataset.length - padding,
             height: function(d) {return d*4;},
-            fill: function(d) {return "rgb(" + (d*5) + ", 0, 0)";}
+            fill: function(d) {return colorPicker(d);}
         });
 
 
