@@ -8,7 +8,7 @@ var svg = d3.select("body").append("svg")
 
 function colorPicker(v) {
     if (v<=20) {return "purple";}
-    else if (v>20) {return "green";}
+    else if (v>20) {return "greenflat";}
 }
 
 svg.selectAll("rect")
