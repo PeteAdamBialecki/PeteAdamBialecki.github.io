@@ -1,59 +1,50 @@
+// 4. SCATTER PLOT
+
 var h = 500;
 var w = 1000;
 
 monthlySales = [
-    {"month": 10, "sales": 20},
-    {"month": 20, "sales": 14},
-    {"month": 30, "sales": 20},
-    {"month": 40, "sales": 4},
-    {"month": 50, "sales": 8},
-    {"month": 60, "sales": 32},
-    {"month": 70, "sales": 16},
-    {"month": 80, "sales": 3},
-    {"month": 90, "sales": 35},
-    {"month": 100, "sales": 25},
-    {"month": 110, "sales": 13},
+    {"month": 10, "sales": 260},
+    {"month": 20, "sales": 140},
+    {"month": 30, "sales": 200},
+    {"month": 40, "sales": 40},
+    {"month": 50, "sales": 500},
+    {"month": 60, "sales": 320},
+    {"month": 70, "sales": 160},
+    {"month": 80, "sales": 300},
+    {"month": 90, "sales": 350},
+    {"month": 100, "sales": 240},
+    {"month": 110, "sales": 130},
     {"month": 120, "sales": 50},
-    {"month": 130, "sales": 1},
+    {"month": 130, "sales": 100},
 ];
 
-var lineFun = d3.svg.line()
-    .x(function(d) { return d.month*3; })
-    .y(function(d) { return h-d.sales*5; })
-    .interpolate("linear");
-    // .interpolate("basis");
+// KPI Color
+function salesKPI(d) {
+    if (d>=250) {
+        return "#ff0000";
+    } else if (d < 250) {
+        return "#666666";
+    }
+}
 
-var svg = d3.select("body").append("svg").attr({width: w, height: h});
-var viz = svg.append("path")
-    .attr({
-        d: lineFun(monthlySales),
-        "stroke": "hotpink",
-        "stroke-width": 4,
-        "fill": "none"
-    })
 
-// Add Labels
-var labels = svg.selectAll("text")
+// Create SVG
+var svg = d3.select("body").append("svg")
+    .attr({ width: w, height: h });
+
+// Add dots
+var dots = svg.selectAll("circle")
     .data(monthlySales)
     .enter()
-    .append("text")
-.text(function(d){ return d.sales; })
-.attr({
-    x: function(d){return d.month*3-25;},
-    y: function(d) { return h-d.sales*5;},
-    "font-family": "sans-serif",
-    "font-size": 14,
-    "fill": "#999",
-    "margin": "10px",
-    "text-anchor": "start",
-    "dy": ".35em",
-    "color": function(d, i) {
-        if (i === 0 || (monthlySales.length-1)) {
-            return "red";
-        } else {
-            return "blue";
+    .append("circle")
+    .attr({
+        cx: function(d){ return d.month*3+25;},
+        cy: function(d){ return h-d.sales-50;},
+        r: 5,
+        "fill": function(d) {
+            return salesKPI(d. sales);
         }
-    }
 });
 
 
@@ -96,7 +87,81 @@ var labels = svg.selectAll("text")
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+// // 3. LINE GRAPH
+
+// var h = 500;
+// var w = 1000;
+
+// monthlySales = [
+//     {"month": 10, "sales": 20},
+//     {"month": 20, "sales": 14},
+//     {"month": 30, "sales": 20},
+//     {"month": 40, "sales": 4},
+//     {"month": 50, "sales": 8},
+//     {"month": 60, "sales": 32},
+//     {"month": 70, "sales": 16},
+//     {"month": 80, "sales": 3},
+//     {"month": 90, "sales": 35},
+//     {"month": 100, "sales": 25},
+//     {"month": 110, "sales": 13},
+//     {"month": 120, "sales": 50},
+//     {"month": 130, "sales": 1},
+// ];
+
+// var lineFun = d3.svg.line()
+//     .x(function(d) { return d.month*3; })
+//     .y(function(d) { return h-d.sales*5; })
+//     .interpolate("linear");
+//     // .interpolate("basis");
+
+// var svg = d3.select("body").append("svg").attr({width: w, height: h});
+// var viz = svg.append("path")
+//     .attr({
+//         d: lineFun(monthlySales),
+//         "stroke": "hotpink",
+//         "stroke-width": 4,
+//         "fill": "none"
+//     })
+
+// // Add Labels
+// var labels = svg.selectAll("text")
+//     .data(monthlySales)
+//     .enter()
+//     .append("text")
+// .text(function(d){ return d.sales; })
+// .attr({
+//     x: function(d){return d.month*3-25;},
+//     y: function(d) { return h-d.sales*5;},
+//     "font-family": "sans-serif",
+//     "font-size": 14,
+//     "fill": "#999",
+//     "margin": "10px",
+//     "text-anchor": "start",
+//     "dy": ".35em",
+//     "color": function(d, i) {
+//         if (i === 0 || (monthlySales.length-1)) {
+//             return "red";
+//         } else {
+//             return "blue";
+//         }
+//     }
+// });
+
+// --------------------------------------------------------
+
 // // 2. BAR CHART
+
 // var w = 1000;
 // var h = 500;
 // var padding = 5;
@@ -141,6 +206,7 @@ var labels = svg.selectAll("text")
 // --------------------------------------------------------
 
 // // 1. SIMPLIFIED BAR CHART
+
 // var w = 100;
 // var h = 100;
 // var padding = 2;
