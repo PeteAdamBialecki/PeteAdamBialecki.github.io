@@ -1,6 +1,6 @@
 // 4. SCATTER PLOT
 
-var h = 500;
+var h = 650;
 var w = 1000;
 
 monthlySales = [
@@ -22,12 +22,24 @@ monthlySales = [
 // KPI Color
 function salesKPI(d) {
     if (d>=250) {
-        return "#ff0000";
+        return "lightgreen";
     } else if (d < 250) {
         return "#666666";
     }
 }
 
+// Calling for labels
+function showMinMax(ds, col, val, type) {
+    var max = d3.max(ds, function(d) { return d[col];});
+    var min = d3.max(ds, function(d) { return d[col];});
+    if (type == 'minmax' && (val == max || val == min)) {
+        return val;
+    } else {
+        if (type == 'all') {
+            return val;
+        }
+    }
+}
 
 // Create SVG
 var svg = d3.select("body").append("svg")
@@ -39,12 +51,35 @@ var dots = svg.selectAll("circle")
     .enter()
     .append("circle")
     .attr({
-        cx: function(d){ return d.month*3+25;},
-        cy: function(d){ return h-d.sales-50;},
+        cx: function(d){
+            return d.month*3+25;},
+        cy: function(d){
+            return h-d.sales-50;},
         r: 5,
         "fill": function(d) {
             return salesKPI(d. sales);
         }
+});
+
+// Add labels
+var labels = svg.selectAll("text")
+    .data(monthlySales)
+    .enter()
+    .append("text")
+    .text(function (d) {
+        return showMinMax(monthlySales, 'sales', d.sales, 'all');
+    })
+    .attr({
+        x: function(d){
+            return (d.month*3)-10;},
+        y: function(d){
+            return (h-d.sales)-50;},
+        "font-family": "sans-serif",
+        "font-size": 14,
+        "fill": "#999",
+        "margin": "10px",
+        "text-anchor": "start",
+        "dy": ".35em"
 });
 
 
