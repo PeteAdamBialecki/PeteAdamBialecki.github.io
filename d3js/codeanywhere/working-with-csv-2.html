@@ -2,7 +2,7 @@
 <html>
     <head>
         <script src="d3.min.js" charset="utf-8"></script>
-      <style>
+            <style>
         html {
           background: #777;
         }
@@ -13,6 +13,7 @@
       
       var h = 100;
       var w = 400;
+      var salesTotal = 0.0;
       
       function buildLine () {
                 var lineFun = d3.svg.line()
@@ -31,6 +32,23 @@
           })
       }
       
+      function showTotals() {
+        var t = d3.select("body").append("table");
+        
+//    Get total
+        for (var i=0; i < ds.length; i++) {
+          salesTotal += ds[i]['sales']*1;
+        }
+        
+//    Add total
+        var tr = t.selectAll("tr")
+          .data([1])
+          .enter()
+          .append("tr")
+          .append("td")
+          .text("Sales Total: " + salesTotal);
+      }
+      
 //    Global var for data:
       var ds; 
       
@@ -43,6 +61,7 @@
         }
         
         buildLine();
+        showTotals();
        
         
       });

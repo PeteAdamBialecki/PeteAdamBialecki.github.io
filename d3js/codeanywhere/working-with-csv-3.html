@@ -2,7 +2,7 @@
 <html>
     <head>
         <script src="d3.min.js" charset="utf-8"></script>
-      <style>
+            <style>
         html {
           background: #777;
         }
@@ -13,6 +13,9 @@
       
       var h = 100;
       var w = 400;
+      var salesTotal = 0.0;
+      var salesAvg = 0.0;
+      var metrics = [];
       
       function buildLine () {
                 var lineFun = d3.svg.line()
@@ -31,8 +34,32 @@
           })
       }
       
+      function showTotals() {
+        var t = d3.select("body").append("table");
+        
+//    Get total
+        for (var i=0; i < ds.length; i++) {
+          salesTotal += ds[i]['sales']*1;
+        }
+        
+        salesAvg = salesTotal / ds.length;
+        
+//    Add metrics to array
+        metrics.push("Sales Total: " + salesTotal);
+        metrics.push("Sales Avg: " + salesAvg.toFixed(2))
+        
+//    Add total
+        var tr = t.selectAll("tr")
+          .data(metrics)
+          .enter()
+          .append("tr")
+          .append("td")
+          .text(function(d) { return d; });
+        }
+      
+      
+      
 //    Global var for data:
-      var ds; 
       
       d3.csv("MonthlySales.csv", function(error, data) {
         if (error) {
@@ -43,6 +70,7 @@
         }
         
         buildLine();
+        showTotals();
        
         
       });
