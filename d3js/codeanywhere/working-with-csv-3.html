@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="d3.min.js" charset="utf-8"></script>
+            <style>
+        html {
+          background: #777;
+        }
+      </style>
+    </head>
+    <body>
+    <script>
+      
+      var h = 100;
+      var w = 400;
+      var salesTotal = 0.0;
+      var salesAvg = 0.0;
+      var metrics = [];
+      
+      function buildLine () {
+                var lineFun = d3.svg.line()
+          .x(function(d) { return ((d.month- 20130001)/3.25);})
+          .y(function(d) { return h-d.sales;})
+        .interpolate("linear");
+        
+        var svg = d3.select("body").append("svg").attr({ width:w, height:h});
+        
+        var vis = svg.append("path")
+          .attr({
+            d: lineFun(ds),
+            "stroke": "purple",
+            "stroke-width": 2,
+            "fill": "lightblue"
+          })
+      }
+      
+      function showTotals() {
+        var t = d3.select("body").append("table");
+        
+//    Get total
+        for (var i=0; i < ds.length; i++) {
+          salesTotal += ds[i]['sales']*1;
+        }
+        
+        salesAvg = salesTotal / ds.length;
+        
+//    Add metrics to array
+        metrics.push("Sales Total: " + salesTotal);
+        metrics.push("Sales Avg: " + salesAvg.toFixed(2))
+        
+//    Add total
+        var tr = t.selectAll("tr")
+          .data(metrics)
+          .enter()
+          .append("tr")
+          .append("td")
+          .text(function(d) { return d; });
+        }
+      
+      
+      
+//    Global var for data:
+      
+      d3.csv("MonthlySales.csv", function(error, data) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(data);
+          ds = data;
+        }
+        
+        buildLine();
+        showTotals();
+       
+        
+      });
+               
+    </script>
+    </body>
+</html>
