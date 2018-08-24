@@ -1,86 +1,146 @@
-// 4. SCATTER PLOT
+// 5. Scaling Data
 
-var h = 650;
-var w = 1000;
+var scale = d3.scale
+    .linear()
+    .domain([130,350])
+    .range([10,100]);
 
-monthlySales = [
-    {"month": 10, "sales": 260},
-    {"month": 20, "sales": 140},
-    {"month": 30, "sales": 200},
-    {"month": 40, "sales": 40},
-    {"month": 50, "sales": 500},
-    {"month": 60, "sales": 320},
-    {"month": 70, "sales": 160},
-    {"month": 80, "sales": 300},
-    {"month": 90, "sales": 350},
-    {"month": 100, "sales": 240},
-    {"month": 110, "sales": 130},
-    {"month": 120, "sales": 50},
-    {"month": 130, "sales": 100},
-];
+console.log(scale(300));
+console.log(scale(270));
 
-// KPI Color
-function salesKPI(d) {
-    if (d>=250) {
-        return "lightgreen";
-    } else if (d < 250) {
-        return "#666666";
-    }
-}
 
-// Calling for labels
-function showMinMax(ds, col, val, type) {
-    var max = d3.max(ds, function(d) { return d[col];});
-    var min = d3.max(ds, function(d) { return d[col];});
-    if (type == 'minmax' && (val == max || val == min)) {
-        return val;
-    } else {
-        if (type == 'all') {
-            return val;
-        }
-    }
-}
 
-// Create SVG
-var svg = d3.select("body").append("svg")
-    .attr({ width: w, height: h });
 
-// Add dots
-var dots = svg.selectAll("circle")
-    .data(monthlySales)
-    .enter()
-    .append("circle")
-    .attr({
-        cx: function(d){
-            return d.month*3+25;},
-        cy: function(d){
-            return h-d.sales-50;},
-        r: 5,
-        "fill": function(d) {
-            return salesKPI(d. sales);
-        }
-});
 
-// Add labels
-var labels = svg.selectAll("text")
-    .data(monthlySales)
-    .enter()
-    .append("text")
-    .text(function (d) {
-        return showMinMax(monthlySales, 'sales', d.sales, 'all');
-    })
-    .attr({
-        x: function(d){
-            return (d.month*3)-10;},
-        y: function(d){
-            return (h-d.sales)-50;},
-        "font-family": "sans-serif",
-        "font-size": 14,
-        "fill": "#999",
-        "margin": "10px",
-        "text-anchor": "start",
-        "dy": ".35em"
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // 4. SCATTER PLOT
+
+// var h = 650;
+// var w = 1000;
+
+// monthlySales = [
+//     {"month": 10, "sales": 260},
+//     {"month": 20, "sales": 140},
+//     {"month": 30, "sales": 200},
+//     {"month": 40, "sales": 40},
+//     {"month": 50, "sales": 500},
+//     {"month": 60, "sales": 320},
+//     {"month": 70, "sales": 160},
+//     {"month": 80, "sales": 300},
+//     {"month": 90, "sales": 350},
+//     {"month": 100, "sales": 240},
+//     {"month": 110, "sales": 130},
+//     {"month": 120, "sales": 50},
+//     {"month": 130, "sales": 100},
+// ];
+
+// // KPI Color
+// function salesKPI(d) {
+//     if (d>=250) {
+//         return "lightgreen";
+//     } else if (d < 250) {
+//         return "#666666";
+//     }
+// }
+
+// // Calling for labels
+// function showMinMax(ds, col, val, type) {
+//     var max = d3.max(ds, function(d) { return d[col];});
+//     var min = d3.max(ds, function(d) { return d[col];});
+//     if (type == 'minmax' && (val == max || val == min)) {
+//         return val;
+//     } else {
+//         if (type == 'all') {
+//             return val;
+//         }
+//     }
+// }
+
+// // Create SVG
+// var svg = d3.select("body").append("svg")
+//     .attr({ width: w, height: h });
+
+// // Add dots
+// var dots = svg.selectAll("circle")
+//     .data(monthlySales)
+//     .enter()
+//     .append("circle")
+//     .attr({
+//         cx: function(d){
+//             return d.month*3+25;},
+//         cy: function(d){
+//             return h-d.sales-50;},
+//         r: 5,
+//         "fill": function(d) {
+//             return salesKPI(d. sales);
+//         }
+// });
+
+// // Add labels
+// var labels = svg.selectAll("text")
+//     .data(monthlySales)
+//     .enter()
+//     .append("text")
+//     .text(function (d) {
+//         return showMinMax(monthlySales, 'sales', d.sales, 'all');
+//     })
+//     .attr({
+//         x: function(d){
+//             return (d.month*3)-10;},
+//         y: function(d){
+//             return (h-d.sales)-50;},
+//         "font-family": "sans-serif",
+//         "font-size": 14,
+//         "fill": "#999",
+//         "margin": "10px",
+//         "text-anchor": "start",
+//         "dy": ".35em"
+// });
 
 
 
