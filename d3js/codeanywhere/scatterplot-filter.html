@@ -2,8 +2,31 @@
 <html>
     <head>
         <script src="d3.min.js" charset="utf-8"></script>
+        <style>
+          html {
+            background: #666;
+          }
+          p {
+            font-size: 16px;
+            font-family: sans-serif;
+            color: #eee;
+            font-weight: lighter;
+          }
+        </style>
     </head>
     <body>
+      
+    <p>Show Labels
+      <select id="lebel-options">
+        <option value="all">All</option>
+        <option value="minmax">Min / Max</option>
+        <option value="none">None</option>
+      </select>
+    
+      
+      
+    </p>  
+    
     <script>
           
 var h = 350;
@@ -25,7 +48,7 @@ monthlySales = [
 //KPI color
 function salesKPI (d) {
   if (d>=250) { return "#33CC66"; } else
-  if (d<250) { return "#666666"; }
+  if (d<250) { return "#fff"; }
 }
 
 //create our SVG
@@ -76,7 +99,8 @@ var labels = svg.selectAll("text")
     y: function(d){ return h-d.sales; },
     "font-size": "12px",
     "font-family": "sans-serif",
-    "fill": "#666666",
+    "fill": "#fff",
+    "font-weight": "lighter",
     "text-anchor": "start"
   });
                
