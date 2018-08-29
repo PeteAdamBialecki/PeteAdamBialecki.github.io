@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="Drawing Shapes w/ D3 - " />
+  <meta charset="utf-8">
+  <title>Drawing SVG Shapes with D3</title>
+  <link rel="stylesheet" type="text/css" href="style.css"></link>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="script.js" charset="utf-8"></script>
+  <style>
+            html {
+            background: #333;
+          }
+          p {
+            font-size: 16px;
+            font-family: sans-serif;
+            color: #eee;
+            font-weight: lighter;
+          }
+  </style>
+</head>
+<body>
+  
+  <h1 id="dashTitle">2018 Sales Dashboard</h1>
+  
+  <div id="topChart" style="float: left; width: 800px;">
+    <h2 style="margin-left: 50px; float: left;">Sales by Month / Colored by Profit</h2> 
+    <svg id="barChartLegend"></svg>
+    <svg id="barChart"></svg>
+  </div>
+
+    <script src="template-scripts.js" charset="utf-8"></script>
+
+</body>
+</html>

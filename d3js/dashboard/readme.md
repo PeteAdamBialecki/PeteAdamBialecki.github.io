@@ -7,3 +7,9 @@
 ## Color ##
 
 - Hue, Lightness (Value), Intensity (Chroma)
+
+- Analogous, complementary, split complimentary
+
+- Annotation (less guides and more data)
+
+- Flow: Left-Right (West) or Right-Left (East)
