@@ -1,0 +1,123 @@
+<html>
+    <head>
+				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+				<script src="http://d3js.org/topojson.v1.min.js"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+				<h1>Illinois Filtered</h1>
+				<p>use ogr2ogr for filtering the data down to just California. Find the state fips code here (http://bit.ly/usa-fips) and use ogrinfo -al -so build/cb_2014_us_county_20m.shp to see all the attributes of the file</p>
+                
+                <p>This works:</p>
+                <code>$ ogr2ogr -f GeoJSON stuff.json build/cb_2014_us_county_20m.shp</code>
+
+                <p>The following code is for Illinois (THIS DOES NOT WORK):</p>
+                <code>$ ogr2ogr -f GeoJSON stuff.json build/cb_2014_us_county_20m.shp -where "STATEFP='17'"</code>
+        <script>
+
+            //Width and height
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+
+
+            //Define path generator
+            var path = d3.geo.path();
+
+            //Create SVG element
+            var svg = d3.select("body").append("svg").attr({width:w, height: h});
+
+            //Load in GeoJSON data
+            d3.json("illinois-filtered.json", function(json) {
+
+                //Bind data and create one path per GeoJSON feature
+                svg.selectAll("path")
+                   .data(json.features)
+                   .enter()
+                   .append("path")
+                   .attr("d", path)
+                   .attr("fill","#666666");
+
+            });
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+Peters-MBP:geospatial-map peteadambialecki$ ogr2ogr -f GeoJSON stuff.json build/cb_2014_us_county_20m.shp -where "STATEFP='17'"
+FAILURE:
+Unable to open datasource `build/cb_2014_us_county_20m.shp' with the following drivers.
+  -> `PCIDSK'
+  -> `PDF'
+  -> `MBTiles'
+  -> `ESRI Shapefile'
+  -> `MapInfo File'
+  -> `UK .NTF'
+  -> `OGR_SDTS'
+  -> `S57'
+  -> `DGN'
+  -> `OGR_VRT'
+  -> `REC'
+  -> `Memory'
+  -> `BNA'
+  -> `CSV'
+  -> `GML'
+  -> `GPX'
+  -> `KML'
+  -> `GeoJSON'
+  -> `ESRIJSON'
+  -> `TopoJSON'
+  -> `OGR_GMT'
+  -> `GPKG'
+  -> `SQLite'
+  -> `WAsP'
+  -> `PostgreSQL'
+  -> `OpenFileGDB'
+  -> `XPlane'
+  -> `DXF'
+  -> `CAD'
+  -> `Geoconcept'
+  -> `GeoRSS'
+  -> `GPSTrackMaker'
+  -> `VFK'
+  -> `PGDUMP'
+  -> `OSM'
+  -> `GPSBabel'
+  -> `SUA'
+  -> `OpenAir'
+  -> `OGR_PDS'
+  -> `WFS'
+  -> `WFS3'
+  -> `HTF'
+  -> `AeronavFAA'
+  -> `EDIGEO'
+  -> `GFT'
+  -> `SVG'
+  -> `CouchDB'
+  -> `Cloudant'
+  -> `Idrisi'
+  -> `ARCGEN'
+  -> `SEGUKOOA'
+  -> `SEGY'
+  -> `XLS'
+  -> `ODS'
+  -> `XLSX'
+  -> `ElasticSearch'
+  -> `Carto'
+  -> `AmigoCloud'
+  -> `SXF'
+  -> `Selafin'
+  -> `JML'
+  -> `PLSCENES'
+  -> `CSW'
+  -> `VDV'
+  -> `MVT'
+  -> `TIGER'
+  -> `AVCBin'
+  -> `AVCE00'
+  -> `HTTP'
