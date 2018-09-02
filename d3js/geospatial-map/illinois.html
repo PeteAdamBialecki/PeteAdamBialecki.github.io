@@ -10,10 +10,10 @@
 				<p>use ogr2ogr for filtering the data down to just California. Find the state fips code here (http://bit.ly/usa-fips) and use ogrinfo -al -so build/cb_2014_us_county_20m.shp to see all the attributes of the file</p>
                 
                 <p>This works:</p>
-                <code>$ ogr2ogr -f GeoJSON stuff.json build/cb_2014_us_county_20m.shp</code>
+                <code>$ ogr2ogr -f GeoJSON stuff.json build/cb_2017_us_county_20m.shp</code>
 
                 <p>The following code is for Illinois (THIS DOES NOT WORK):</p>
-                <code>$ ogr2ogr -f GeoJSON stuff.json build/cb_2014_us_county_20m.shp -where "STATEFP='17'"</code>
+                <code>$ ogr2ogr -f GeoJSON stuff.json build/cb_2017_us_county_20m.shp -where "STATEFP='17'"</code>
         <script>
 
             //Width and height
