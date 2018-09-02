@@ -9,3 +9,7 @@
         counties-filtered.json // Output file
         build/us-counties.shp // Input file
         -where "STATEFP='06'" // Filtering
+
+5. Converting GeoJSON to topojson
+    geo2topo -o <output file> <input file>
+        geo2topo -o topo-counties.json counties.json
