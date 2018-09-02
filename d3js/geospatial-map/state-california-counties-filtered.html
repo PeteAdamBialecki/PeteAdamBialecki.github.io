@@ -8,7 +8,7 @@
     <body>
 				<h1>Counties Filtered</h1>
 				<p>use ogr2ogr for filtering the data down to just California. Find the state fips code here (http://bit.ly/usa-fips) and use ogrinfo -al -so build/cb_2014_us_county_20m.shp to see all the attributes of the file</p>
-				<code>$ ogr2ogr -f GeoJSON counties-filtered.json build/cb_2017_us_county_20m.shp -where "STATEFP='06'"</code>
+				<code>$ ogr2ogr -f GeoJSON state-california-counties-filtered.json build/cb_2017_us_county_20m.shp -where "STATEFP='06'"</code>
         <script>
 
             //Width and height
@@ -23,7 +23,7 @@
             var svg = d3.select("body").append("svg").attr({width:w, height: h});
 
             //Load in GeoJSON data
-            d3.json("counties-filtered.json", function(json) {
+            d3.json("state-california-counties-filtered.json", function(json) {
 
                 //Bind data and create one path per GeoJSON feature
                 svg.selectAll("path")
