@@ -19,3 +19,5 @@
 
 7. Simplifying Data
     
+NOTES:
+- There is something wrong in the process of generating a JSON file with geo2topo.  What is the difference between "topojson" and "geo2topo"?  I am using the same files but getting a different result from the Pluralsight directions.  My JSON data only reveals a very small portion of the United States without any errors.  Reference "topo-counties-simplified.html" and "topo-counties-simplified.json".
