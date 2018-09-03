@@ -13,3 +13,9 @@
 5. Converting GeoJSON to topojson
     geo2topo -o <output file> <input file>
         geo2topo -o topo-counties.json counties.json
+
+6. Adding a D3 Projection
+    geo2topo -o topo-counties-projected.json --projection='width = 960, height - 600, d3.geo.albersUsa() .scale(1280) .translate([width / 2, height / 2])' counties.json
+
+7. Simplifying Data
+    
