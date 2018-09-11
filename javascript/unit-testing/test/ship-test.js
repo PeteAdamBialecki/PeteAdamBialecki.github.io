@@ -56,3 +56,25 @@ describe('checkForShip', function () {
         expect(checkForShip(player, [9, 9])).to.be.false;
     });
 });
+
+// Track Damage On Ships
+describe('damageShip', function () {
+    var damageShip = require('../game-logic/ship-methods').damageShip;
+    it('Should register damage on a given ship at a given location.', function () {
+        var ship = {
+            locations: [[0,0]],
+            damage: []
+        };
+        damageShip(ship, [0, 0]);
+        expect(ship.damage).to.not.be.empty;
+    });
+});
+
+
+
+
+
+
+
+
+
