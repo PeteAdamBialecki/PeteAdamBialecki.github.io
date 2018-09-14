@@ -96,12 +96,24 @@ describe('PLAYER METHODS', function () {
       expect(actual).to.have.length(1);
       expect(actual[0]).to.deep.equal([0, 1]);
     });
-    it('Should throw an error if no direction is specified.', function () {
-        var ship = player.ships[0];
-        var coordinates = [0, 1];
-        var handler = function () {playShip(player, ship, coordinates);};
-        expect(handler).to.throw(Error);
-        expect(handler).to.throw('You left out the directon. I need that for math.');
+    it('should update a ship with a valid starting location', function () {
+      var ship = player.ships[0];
+      var coordinates = [0, 1];
+
+      placeShip(player, ship, coordinates, 'horizontal');
+      var actual = ship.locations;
+
+      expect(actual).to.be.ok;
+      expect(actual).to.have.length(1);
+      expect(actual[0]).to.deep.equal([0, 1]);
     });
+		it('should throw an error if no direction is specified', function () {
+      var ship = player.ships[0];
+      var coordinates = [0, 1];
+			var handler = function () { placeShip(player, ship, coordinates); };
+			expect(handler).to.throw(Error);
+			expect(handler).to.throw('You left out the direction! I need that for math!');
+		});
   });
 });
+
