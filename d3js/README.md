@@ -1,6 +1,6 @@
 # **D3.js**
 
-## **Tutorials**
+## **Data Visualization Tutorials**
 
 - [An Introduction to D3.js](https://github.com/woojink/d3-map-tutorial)
 
