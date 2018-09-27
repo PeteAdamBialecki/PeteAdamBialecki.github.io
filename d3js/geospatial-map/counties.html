@@ -2,8 +2,11 @@
     <head>
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 				<script src="http://d3js.org/topojson.v1.min.js"></script>
-        <style>
-        </style>
+<style>
+    html {
+        background: #444;
+    }
+</style>
     </head>
     <body>
 			<h1>Counties USA</h1>
@@ -31,7 +34,8 @@
                    .enter()
                    .append("path")
                    .attr("d", path)
-                   .attr("fill","#666666");
+                   .attr("fill","#a6bddb")
+                   .attr("stroke", "#000");
 
             });
 
