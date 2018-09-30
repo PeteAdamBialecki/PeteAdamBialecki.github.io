@@ -1,3 +1,5 @@
+# To build this Makefile, in terminal, run "nano Makefile" and input lines 3 - 8 (make sure you use tabs and not spaces).
+
 all: us.json
 
 clean:
@@ -5,10 +7,12 @@ clean:
 
 .PHONY: all clean
 
+# Unzip the file
 build/gz_2010_us_050_00_20m.shp: build/gz_2010_us_050_00_20m.zip
 	unzip -od $(dir $@) $<
 	touch $@
 
+# Download the shapefile
 build/gz_2010_us_050_00_20m.zip:
 	mkdir -p $(dir $@)
 	curl -o $@ http://www2.census.gov/geo/tiger/GENZ2010/$(notdir $@)
