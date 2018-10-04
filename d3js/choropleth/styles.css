@@ -10,7 +10,7 @@
 }
 
 .bubble {
-	fill: #F15B2A; /*  PS Orange */
+	fill: rgb(42, 188, 241); /*  PS Orange */
 	fill-opacity: .5;
 	stroke: #fff;
 	stroke-width: .5px;
