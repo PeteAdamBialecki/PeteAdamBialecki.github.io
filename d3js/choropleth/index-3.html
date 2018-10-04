@@ -42,18 +42,20 @@
                 .datum(topojson.feature(us, us.objects.nation))
                 .attr("class", "land")
                 .attr("d", path);
-        svg.append("path")
-                .datum(topojson.mesh(us, us.objects.states, function(a,b) {return a!==b;}))
-                .attr("class border border--state")
-                .attr("d", path);
+                svg.append("path")
+                   .datum(topojson.mesh(us, us.objects.states, function(a,b) { return a !==b; }))
+                   .attr("class", "border border--state")
+                   .attr("d", path);
         svg.append("g")
-                .attr("class", "bubble")
-                .selectAll("circle")
-                .data(topojson.feature(us, us.objects.counties).features)
-                .enter()
-                .append("circle")
-                .attr("transform", function(d) {return "translate(" +path.centroid() + ")"; })
-                .attr("r", function(d) {return Math.sqrt(parseFloat(d.properties.profit)*0.00005)});
+                   .attr("class", "bubble")
+                   .selectAll("circle")
+                   .data(topojson.feature(us, us.objects.counties).features)
+                   .sort(function(a,b) {
+                       return b.properties.profit - a.properties.profit;
+                   } )
+                   .enter().append("circle")
+                   .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+                   .attr("r", function(d) { return Math.sqrt(parseFloat(d.properties.profit)* 0.00005) });
         });
     </script>
 </body>
