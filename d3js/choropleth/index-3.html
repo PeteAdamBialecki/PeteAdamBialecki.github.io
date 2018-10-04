@@ -50,6 +50,7 @@
                    .attr("class", "bubble")
                    .selectAll("circle")
                    .data(topojson.feature(us, us.objects.counties).features)
+// Check code anywhere and index files 1 - 3. The last video was "Sorting Bubbles".
                    .sort(function(a,b) {
                        return b.properties.profit - a.properties.profit;
                    } )
