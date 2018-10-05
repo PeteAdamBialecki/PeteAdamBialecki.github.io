@@ -4,7 +4,7 @@
 <body>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
-    <script src="colorbrewer.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
     <script>
         var width = 960;
             height = 600;
@@ -15,7 +15,7 @@
                    .attr("height", height);
         var radius = d3.scale.sqrt()
                    .domain([0, 1e6])
-                   .range([0, 15]);        
+                   .range([0, 15]);
         function formatSales(val) {
             var prefix = d3.formatPrefix(val),
                 format = d3.format(".1f");
@@ -35,31 +35,65 @@
                    .attr("y", function(d) { return -2 * radius(d);})
                    .attr("dy", "1.3em")
                    .text(d3.format(".1s"));
-        d3.json("us.json", function(error, us) {
-            if (error) return console.error(error);
+        var barTooltip = d3.select("body").append("div")
+                   .attr("class", "tooltip")
+                   .style("opacity", 0)
+                   .style("width", 600);
+
+        // d3.json("us.json", function(error, us) {
+        //     if (error) return console.error(error);
+
+        // Same as the two lines above except everything is read faster. -->
+        queue()
+            .defer(d3.json, "us.json")
+            .defer(d3.csv, "catagory-sales.csv")
+            .await(ready)
+
+        function ready(error, us, catSales) {
+            if (error) throw error;
         svg.append("path")
-                   .datum(topojson.feature(us, us.objects.nation))
-                   .attr("class", "land")
-                   .attr("d", path);
-                svg.append("path")
-                   .datum(topojson.mesh(us, us.objects.states, function(a,b) { return a !==b; }))
-                   .attr("class", "border border--state")
-                   .attr("d", path);
+                    .datum(topojson.feature(us, us.objects.nation))
+                    .attr("class", "land")
+                    .attr("d", path);
+        svg.append("path")
+                    .datum(topojson.mesh(us, us.objects.states, function(a,b) { return a !==b; }))
+                    .attr("class", "border border--state")
+                    .attr("d", path);
         svg.append("g")
                     .attr("class", "bubble")
                     .selectAll("circle")
                     .data(topojson.feature(us, us.objects.counties).features
 			        .sort(function(a, b) { 
                         return b.properties.profit - a.properties.profit; }))
-                    .enter().append("circle")
+                    .enter()
+                    .append("circle")
                     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; 
                     })
                     .attr("r", function(d) { return radius(d.properties.profit); })
-			        .append("title")
-				    .text(function(d) {
-					    return d.properties.name
-						+ "\nProfit " + formatSales(d.properties.profit);
-				    });
-        });
+// Removed for hover title card.
+			        // .append("title")
+				    // .text(function(d) {
+					//     return d.properties.name
+					// 	+ "\nProfit " + formatSales(d.properties.profit);
+				    // });
+                    .on("mouseover", function(d) {
+                        var circleId = d.id;
+                            barTooltip.transition()
+                                .duration(500)
+                                .style("opacty", .7);
+                        var tip = "<h3" + d.properties.name + "</h3>";
+                        var tip = tip + "<strong>Orders:</strong>" + formatNum(d.properties.orders) + "<br/>";
+                        var tip = tip + "<strong>Profit:</strong>" + formatSales(d.properties.profit) + "<br/>";
+                        var tip = tip + "<h4>Catagory Sales</h4>";
+                            barTooltip.html(tip)
+                                .style("left", (d3.event.pageX) + "px")
+                                .style("top", (d3.event.pageY) + "px");
+                    })
+                    .on("mouseout", function(d) {
+                        barTooltip.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+                    });
+        }
     </script>
 </body>
