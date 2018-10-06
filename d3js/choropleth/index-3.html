@@ -16,6 +16,8 @@
         var radius = d3.scale.sqrt()
                    .domain([0, 1e6])
                    .range([0, 15]);
+        var formatRatio = d3.format("%");
+        var formatNum = d3.format(".1");
         function formatSales(val) {
             var prefix = d3.formatPrefix(val),
                 format = d3.format(".1f");
@@ -46,7 +48,7 @@
         // Same as the two lines above except everything is read faster. -->
         queue()
             .defer(d3.json, "us.json")
-            .defer(d3.csv, "catagory-sales.csv")
+            .defer(d3.csv, "category-sales.csv")
             .await(ready)
 
         function ready(error, us, catSales) {
