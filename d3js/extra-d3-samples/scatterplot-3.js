@@ -1,34 +1,3 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="d3.min.js" charset="utf-8"></script>
-        <style>
-          html {
-            background: #666;
-          }
-          p {
-            font-size: 16px;
-            font-family: sans-serif;
-            color: #eee;
-            font-weight: lighter;
-          }
-        </style>
-    </head>
-    <body>
-      
-    <p>Show Labels
-      <select id="label-option">
-        <option value="all">All</option>
-        <option value="minmax">Min / Max</option>
-        <option value="none">None</option>
-      </select>
-    
-      
-      
-    </p>  
-    
-    <script>
-          
 var h = 350;
 var w = 400;
 
@@ -48,7 +17,7 @@ monthlySales = [
 //KPI color
 function salesKPI (d) {
   if (d>=250) { return "#33CC66"; } else
-  if (d<250) { return "#eee"; }
+  if (d<250) { return "#666666"; }
 }
 
 //create our SVG
@@ -95,26 +64,18 @@ var labels = svg.selectAll("text")
   .append("text")
   .text(function(d){ return showMinMax(monthlySales, 'sales', d.sales, 'minmax'); })
   .attr({   
-    x: function(d){ return (d.month*3)-30; },
-    y: function(d){ return (h-d.sales); },
+    x: function(d){ return (d.month*3)-25; },
+    y: function(d){ return h-d.sales; },
     "font-size": "12px",
     "font-family": "sans-serif",
-    "fill": "#eee",
-    "font-weight": "lighter",
+    "fill": "#666666",
     "text-anchor": "start"
   });
-      
- d3.select("select")
-      .on("change", function(d){
-   
-   var sel = d3.select("#label-option").node().value;
-   
-   svg.selectAll("text")
-    .data(monthlySales)
-    .text(function(d){
-     return showMinMax(monthlySales, 'sales', d.sales, sel);})
-   
- });
-    </script>
-    </body>
-</html>
+
+
+
+
+
+
+
+
