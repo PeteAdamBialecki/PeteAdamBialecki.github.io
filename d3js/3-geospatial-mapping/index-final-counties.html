@@ -3,19 +3,22 @@
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 				<script src="http://d3js.org/topojson.v1.min.js"></script>
         <style>
-
+          html {
+            background: #999;
+          }
+          h1 {
+            font-family: sans-serif;
+          }
 					path {
 						fill: none;
-						stroke: #333;
+						stroke: #000;
 						stroke-linejoin: round;
 						stroke-linecap: round;
 					}
-
-        </style>
-    </head>
+  </style>
+  </head>
     <body>
-				<h1>topojson Counties Simplified</h1>
-				<code>$ geo2topo -o topo-counties-simplified.json --projection='width = 960, height = 600, d3.geo.albersUsa() .scale(1280) .translate([width / 2, height / 2])' --simplify=.5 counties.json</code>
+				<h1>topojson Counties from Makefile</h1>
 				<br/>
 
 				<script>
@@ -32,7 +35,7 @@
 					    .attr("width", width)
 					    .attr("height", height);
 
-					d3.json("topo-counties-simplified.json", function(error, us) {
+					d3.json("build/counties.json", function(error, us) {
 					  if (error) return console.error(error);
 
 					  svg.append("path")
