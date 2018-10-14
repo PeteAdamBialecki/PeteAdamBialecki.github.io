@@ -17,6 +17,10 @@ var yScaleLine = d3.scale.linear()
 var line = d3.svg.line()
 .x(function(d,i) {return xScale(i)})
 .y(function(d,i) {return yScaleLine(d.data.score)})
+// Three different smoothing techniques for generating a line:
+//.interpolate("linear")
+//.interpolate("cardinal")
+.interpolate("basis")
 
 var g = svg.append("g")
 	.attr("transform", "translate(11, 100)")
