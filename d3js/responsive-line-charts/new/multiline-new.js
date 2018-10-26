@@ -1,6 +1,6 @@
 function makeLineChart(dataset, xName, yObjs, axisLables) {
     var chartObj = {};
-    var color = d3.schemeCategory10;
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
     chartObj.xAxisLable = axisLables.xAxis;
     chartObj.yAxisLable = axisLables.yAxis;
     /*
@@ -9,12 +9,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
      */
 
     chartObj.data = dataset;
-    chartObj.margin = {
-        top: 15,
-        right: 60,
-        bottom: 30,
-        left: 50
-    };
+    chartObj.margin = {top: 15, right: 60, bottom: 30, left: 50};
     chartObj.width = 650 - chartObj.margin.left - chartObj.margin.right;
     chartObj.height = 480 - chartObj.margin.top - chartObj.margin.bottom;
 
@@ -141,7 +136,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
 
         // Draw Lines
         for (var y in yObjs) {
-            yObjs[y].path = chartObj.svg.append("path").datum(chartObj.data).attr("class", "line").attr("d", yObjs[y].line).style("stroke", "color(y)").attr("data-series", y).on("mouseover", function () {
+            yObjs[y].path = chartObj.svg.append("path").datum(chartObj.data).attr("class", "line").attr("d", yObjs[y].line).style("stroke", color(y)).attr("data-series", y).on("mouseover", function () {
                 focus.style("display", null);
             }).on("mouseout", function () {
                 focus.transition().delay(700).style("display", "none");
@@ -173,7 +168,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
         var legend = chartObj.mainDiv.append('div').attr("class", "legend");
         for (var y in yObjs) {
             series = legend.append('div');
-            series.append('div').attr("class", "series-marker").style("background-color", "color(y)");
+            series.append('div').attr("class", "series-marker").style("background-color", color(y));
             series.append('p').text(y);
             yObjs[y].legend = series;
         }
