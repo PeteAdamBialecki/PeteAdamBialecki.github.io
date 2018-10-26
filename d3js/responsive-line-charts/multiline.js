@@ -132,7 +132,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
 
         // Draw Lines
         for (var y  in yObjs) {
-            yObjs[y].path = chartObj.svg.append("path").datum(chartObj.data).attr("class", "line").attr("d", yObjs[y].line).style("stroke", color(y)).attr("data-series", y).on("mouseover", function () {
+            yObjs[y].path = chartObj.svg.append("path").datum(chartObj.data).attr("class", "line").attr("d", yObjs[y].line).style("stroke", "color(y)").attr("data-series", y).on("mouseover", function () {
                 focus.style("display", null);
             }).on("mouseout", function () {
                 focus.transition().delay(700).style("display", "none");
