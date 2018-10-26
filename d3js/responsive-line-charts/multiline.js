@@ -63,7 +63,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
 //Create axis
     chartObj.xAxis = d3.axisBottom().scale(chartObj.xScale).tickFormat(chartObj.xFormatter); //< Can be overridden in definition
 
-    chartObj.yAxis = d3.axisLeft().scale(chartObj.yScale).orient("left").tickFormat(chartObj.yFormatter); //< Can be overridden in definition
+    chartObj.yAxis = d3.axisLeft().scale(chartObj.yScale).tickFormat(chartObj.yFormatter); //< Can be overridden in definition
 
 
 // Build line building functions
@@ -73,7 +73,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
         };
     }
     for (var yObj in yObjs) {
-        yObjs[yObj].line = d3.svg.line().interpolate("linear").x(function (d) {
+        yObjs[yObj].line = d3.line().curve(d3.curveBasis).x(function (d) {
             return chartObj.xScale(chartObj.xFunct(d));
         }).y(getYScaleFn(yObj));
     }
