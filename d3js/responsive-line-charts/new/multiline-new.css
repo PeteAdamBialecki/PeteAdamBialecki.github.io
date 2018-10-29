@@ -46,7 +46,7 @@
 
 .chart-wrapper .line {
   fill: none;
-  stroke: #000;
+  stroke: steelblue;
   stroke-width: 5px;
 }
 
