@@ -58,6 +58,10 @@
 
 - [Global Temperatures](http://halftone.co/projects/temperatures/)
 
+- [Is It Better To Rent Or To Buy?](https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html)
+
+- [Mapping US Droughts](https://www.nytimes.com/interactive/2014/upshot/mapping-the-spread-of-drought-across-the-us.html)
+
 ## **Data Visualization Tutorials**
 
 - [An Introduction to D3.js](https://github.com/woojink/d3-map-tutorial)
@@ -68,6 +72,8 @@
 
 - [Enjalot Front-End Masters](http://enjalot.github.io/intro-d3/frontendmasters/)
 
+- [Block Builder](http://blockbuilder.org)
+
 - http://bit.ly/topojson.ref
 
 - http://bit.ly/census-maps
@@ -77,3 +83,11 @@
 - http://bit.ly/flicker-geo-api
 
 - https://github.com/mbostock/us-atlas
+
+## **Alternatives to D3.js**
+
+- Google Charts
+
+- n3-Charts
+
+- Highcharts
