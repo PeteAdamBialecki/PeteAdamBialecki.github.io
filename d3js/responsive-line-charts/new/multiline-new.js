@@ -49,7 +49,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
     chartObj.xFormatter = chartObj.formatAsNumber;
     chartObj.yFormatter = chartObj.formatAsFloat;
 
-    chartObj.bisectYear = d3.bisector(chartObj.xFunct).left; //< Can be overridden in definition
+    chartObj.bisectDay = d3.bisector(chartObj.xFunct).left; //< Can be overridden in definition
 
     //Create scale functions
     chartObj.xScale = d3.scaleLinear().range([0, chartObj.width]).domain(d3.extent(chartObj.data, chartObj.xFunct)); //< Can be overridden in definition
@@ -60,10 +60,10 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
     };
     chartObj.yScale = d3.scaleLinear().range([chartObj.height, 0]).domain([0, d3.max(chartObj.yFuncts.map(chartObj.max))]);
 
-    chartObj.formatAsYear = d3.format("");
+    chartObj.formatAsDay = d3.format("");
 
     //Create axis
-    chartObj.xAxis = d3.axisBottom().scale(chartObj.xScale).tickFormat(chartObj.xFormatter); //< Can be overridden in definition
+    chartObj.xAxis = d3.axisBottom().scale(chartObj.xScale).tickFormat(chartObj.xFormatter).ticks(5); //< Can be overridden in definition
 
     chartObj.yAxis = d3.axisLeft().scale(chartObj.yScale).tickFormat(chartObj.yFormatter); //< Can be overridden in definition
 
@@ -159,8 +159,8 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
             yObjs[y].tooltip.append("text").attr("x", 9).attr("dy", ".35em");
         }
 
-        // Year label
-        focus.append("text").attr("class", "focus year").attr("x", 9).attr("y", 7);
+        // Day label
+        focus.append("text").attr("class", "focus day").attr("x", 9).attr("y", 7);
         // Focus line
         focus.append("line").attr("class", "focus line").attr("y1", 0).attr("y2", chartObj.height);
 
@@ -184,7 +184,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
 
         function mousemove() {
             var x0 = chartObj.xScale.invert(d3.mouse(this)[0]),
-                i = chartObj.bisectYear(dataset, x0, 1),
+                i = chartObj.bisectDay(dataset, x0, 1),
                 d0 = chartObj.data[i - 1],
                 d1 = chartObj.data[i];
             try {
@@ -200,7 +200,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
             }
 
             focus.select(".focus.line").attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(d)) + ")").attr("y1", minY);
-            focus.select(".focus.year").text("Year: " + chartObj.xFormatter(chartObj.xFunct(d)));
+            focus.select(".focus.day").text("Day: " + chartObj.xFormatter(chartObj.xFunct(d)));
         }
 
     };
