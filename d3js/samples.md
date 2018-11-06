@@ -87,3 +87,7 @@
 - [Multi-Line Graph](https://beta.observablehq.com/@mbostock/d3-multi-line-chart)
 
 - [Change Line Chart](https://beta.observablehq.com/@mbostock/d3-change-line-chart)
+
+- [Transform Transitions II](https://bl.ocks.org/mbostock/43aebffeacf96d8d881f)
+
+- [Focus+Context via Brushing](https://bl.ocks.org/emilyinamillion/fc1593aea93089bab61b2c71ef2e9544)
