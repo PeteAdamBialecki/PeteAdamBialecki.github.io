@@ -21,16 +21,20 @@
         d3.csv('multiline_data_days_small.csv', function(error, data) {
         data.forEach(function (d) {
             d.day = +d.day;
-            d.variableA = +d.variableA;
-            d.variableB = +d.variableB;
-            d.variableC = +d.variableC;
-            d.variableD = +d.variableD;
+            d.cardholdersEnrolled = +d.cardholdersEnrolled;
+            d.cardholdersRegistered = +d.cardholdersRegistered;
+            d.ordersPerDay = +d.ordersPerDay;
+            d.pointsPerDay = +d.pointsPerDay;
+            d.transactionsPerDay = +d.transactionsPerDay;
+            d.pointsEarnedPerDay = +d.pointsEarnedPerDay;
         });
         var chart = makeLineChart(data, 'day', {
-            'Enrolled': {column: 'variableA'},
-            'Registered': {column: 'variableB'},
-            'Points': { column: 'variableC' },
-            'Transactions': { column: 'variableD' }
+            'Enrolled': {column: 'cardholdersEnrolled'},
+            'Registered': {column: 'cardholdersRegistered'},
+            'Orders': { column: 'ordersPerDay' },
+            'Points': { column: 'pointsPerDay' },
+            'Transactions': { column: 'transactionsPerDay' },
+            'Points Earned': { column: 'pointsEarnedPerDay' }
         }, {xAxis: 'Days', yAxis: 'Amount'});
         chart.bind("#chart-line1");
         chart.render();
