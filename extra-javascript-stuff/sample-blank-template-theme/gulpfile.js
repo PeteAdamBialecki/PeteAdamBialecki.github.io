@@ -114,8 +114,9 @@ gulp.task('browserSync', function() {
   browserSync.init({
     server: {
       baseDir: "./"
-    }
-  });
+    },
+    browser: 'google chrome canary'
+    });
 });
 
 // Dev task
