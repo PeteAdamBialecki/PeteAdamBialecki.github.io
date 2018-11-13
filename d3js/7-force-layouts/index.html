@@ -6,6 +6,16 @@
     <script src="d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 </head>
+<style>
+    body {
+        background: #444;
+    }
+    .node {
+        fill: rgb(103, 58, 58);
+        stroke: #000;
+        stroke-width: 2px;
+    }
+</style>
 <body>
     <div class="chart-wrapper" id="chart-line1"></div>
     <script type="text/javascript">
@@ -23,6 +33,7 @@
                         .data(nodes)
                         .enter()
                         .append('circle')
+                        .attr('class', 'node')
                         .attr('cx', function(d,i) {return (i+1)*(width/4);})
                         .attr('cy', function(d,i) { return height/2;})
                         .attr('r', width * 0.05);
