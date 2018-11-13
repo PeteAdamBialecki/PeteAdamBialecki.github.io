@@ -4,6 +4,8 @@
 
 [Main Gallery](https://github.com/d3/d3/wiki/Gallery)
 
+- [Introduction to Network Analysis and Representation](http://dhs.stanford.edu/dh/networks/)
+
 - [Use the Force](http://mbostock.github.io/d3/talk/20110921/#1)
 
 - [Mobile Patent Suits](http://mbostock.github.io/d3/talk/20110921/#2)
