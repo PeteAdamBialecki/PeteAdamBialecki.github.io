@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- <script src="d3.v4.min.js" charset="utf-8"></script> -->
+    <script src="d3.v3.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+</head>
+<style>
+    body {
+        background: #444;
+    }
+    .node {
+        fill: rgb(103, 58, 58);
+        stroke: #000;
+        stroke-width: 2px;
+    }
+    .link {
+        stroke: #777;
+        stroke-width: 2px;
+    }
+</style>
+<body>
+    <div class="chart-wrapper" id="chart-line1"></div>
+    <script type="text/javascript">
+        var width = 640,
+            height = 480;
+        var nodes = [
+            {name: 'Alice'},
+            {name: 'Chris'},
+            {name: 'Phil'}
+        ];
+        var links = [
+            {source: 0, target: 1},
+            {source: 1, target: 2},
+            {source: 2, target: 0},
+        ]
+        var svg = d3.select('body').append('svg')
+                        .attr('width', width)
+                        .attr('height', height);
+                        var link = svg.selectAll('.link')
+                        .data(links)
+                        .enter()
+                        .append('line')
+                        .attr('class', 'link');
+        var node = svg.selectAll('.node')
+                        .data(nodes)
+                        .enter()
+                        .append('circle')
+                        .attr('class', 'node')
+                        .attr('cx', function(d,i) {return (i+1)*(width/4);})
+                        .attr('cy', function(d,i) { return height/2;})
+                        .attr('r', width * 0.05);
+        var force = d3.layout.force()
+                        .size([width, height])
+                        .nodes(nodes)
+                        .links(links)
+                        .on("tick", tick)
+                        .linkDistance(width/2)
+                        .start();
+        function tick() {
+            node.attr('cx', function(d) { return d.x;})
+                .attr('cy', function(d) { return d.y;})
+                .call(force.drag);
+
+            link.attr('x1', function(d) { return d.source.x;})
+                .attr('y1', function(d) { return d.source.y;})
+                .attr('x2', function(d) { return d.target.x;})
+                .attr('y2', function(d) { return d.target.y;})
+            }
+    </script>
+</body>
+</html>
