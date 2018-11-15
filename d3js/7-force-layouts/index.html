@@ -21,10 +21,18 @@
         stroke-width: 2px;
         fill: none;
     }
+    h1 {
+        padding: 10px;
+        font-family: sans-serif;
+    }
 </style>
 <body>
     <div class="chart-wrapper" id="chart-line1"></div>
     <script type="text/javascript">
+        var param = document.URL.split("#")[1] || 200;
+        var header = d3.select('body').append("h1")
+                        .html("linkDistance(" + param + ")")
+                        .style("text-align", "center");
         var width = 640,
             height = 480;
         var nodes = [
@@ -60,7 +68,7 @@
                         .nodes(nodes)
                         .links(links)
                         .on("tick", tick)
-                        .linkDistance(width/2)
+                        .linkDistance(param)
                         .start();
         svg.append("svg:defs").selectAll("marker")
                         .data(["end"])
