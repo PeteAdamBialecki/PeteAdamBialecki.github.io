@@ -10,33 +10,44 @@
 <body>
     <div class="chart-wrapper" id="chart-line1"></div>
 
-        <script type="text/javascript">
-            d3.csv('assets/multiline_data_days_small.csv', function(error, data) {
-            // d3.json('${dataUrl}', function (error, data) {
-                data.forEach(function (d) {
-                    d.day = +d.day;
-                    d['${dataNames[0]}'] = +d['${dataNames[0]}'];
-                    d['${dataNames[1]}'] = +d['${dataNames[1]}'];
-
-                });
-                var chart = makeLineChart(data, 'day', {
-                    //         	'${columnNames[0]}': {column: 'cardholdersEnrolled'},
-                    //         	'${columnNames[1]}': {column: 'cardholdersRegistered'}
-                    '${columnNames[0]}': {
-                        column: '${dataNames[0]}'
-                    },
-                    '${columnNames[1]}': {
-                        column: '${dataNames[1]}'
-                    }
-
-                }, {
-                    xAxis: 'Days',
-                    axisLeft: 'Amount'
-                });
-                chart.bind("#${id}-line-chart-container");
-                chart.render();
-            });
-        </script>
+<script type="text/javascript">
+    d3.csv('assets/multiline_data_days_small.csv', function (error, data) {
+        data.forEach(function (d) {
+            d.day = +d.day;
+            d.cardholdersEnrolled = +d.cardholdersEnrolled;
+            d.cardholdersRegistered = +d.cardholdersRegistered;
+            d.ordersPerDay = +d.ordersPerDay;
+            d.pointsPerDay = +d.pointsPerDay;
+            d.transactionsPerDay = +d.transactionsPerDay;
+            d.pointsEarnedPerDay = +d.pointsEarnedPerDay;
+        });
+        var chart = makeLineChart(data, 'day', {
+            'Enrolled': {
+                column: 'cardholdersEnrolled'
+            },
+            'Registered': {
+                column: 'cardholdersRegistered'
+            },
+            'Orders': {
+                column: 'ordersPerDay'
+            },
+            'Points': {
+                column: 'pointsPerDay'
+            },
+            'Transactions': {
+                column: 'transactionsPerDay'
+            },
+            'Points Earned': {
+                column: 'pointsEarnedPerDay'
+            }
+        }, {
+            xAxis: 'Days',
+            yAxis: 'Amount'
+        });
+        chart.bind("#chart-line1");
+        chart.render();
+    });
+</script>
 
         <script type="text/javascript">
             function makeLineChart(dataset, xName, yObjs, axisLabels) {
