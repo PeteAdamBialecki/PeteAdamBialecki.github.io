@@ -41,9 +41,9 @@
             {name: 'Phil'}
         ];
         var links = [
-            {source: 0, target: 1},
-            {source: 1, target: 2},
-            {source: 2, target: 0}
+            {source: 0, target: 1, distance: 100},
+            {source: 1, target: 2, distance: 200},
+            {source: 2, target: 0, distance: 300}
         ];
         var svg = d3.select('body').append('svg')
                         .attr('width', width)
@@ -63,6 +63,18 @@
         //                 .enter()
         //                 .append('line')
         //                 .attr('class', 'link');
+
+// For uneven distance between links
+        // var force = d3.layout.force()
+        //                 .size([width, height])
+        //                 .nodes(nodes)
+        //                 .links(links)
+        //                 .on("tick", tick)
+        //                 .linkDistance(function(d) { return d.distance;})
+        //                 .start();
+
+
+// For changing the distance between links with URL
         var force = d3.layout.force()
                         .size([width, height])
                         .nodes(nodes)
@@ -70,6 +82,7 @@
                         .on("tick", tick)
                         .linkDistance(param)
                         .start();
+
         svg.append("svg:defs").selectAll("marker")
                         .data(["end"])
                         .enter().append("svg:marker")
