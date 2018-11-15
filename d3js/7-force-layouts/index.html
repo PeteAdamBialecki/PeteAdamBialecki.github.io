@@ -29,9 +29,16 @@
 <body>
     <div class="chart-wrapper" id="chart-line1"></div>
     <script type="text/javascript">
-        var param = document.URL.split("#")[1] || 200;
+
+// For link distance with URL
+        // var param = document.URL.split("#")[1] || 200;
+        // var header = d3.select('body').append("h1")
+        //                 .html("linkDistance(" + param + ")")
+        //                 .style("text-align", "center");
+// For link rigidity
+        var strength = document.URL.split("#")[1] || 1;
         var header = d3.select('body').append("h1")
-                        .html("linkDistance(" + param + ")")
+                        .html("linkStrength(" + strength + ")")
                         .style("text-align", "center");
         var width = 640,
             height = 480;
@@ -80,7 +87,9 @@
                         .nodes(nodes)
                         .links(links)
                         .on("tick", tick)
-                        .linkDistance(param)
+// Switch with "param" for linkDistance to work with URL and link distance.
+                        .linkDistance(width/3)
+                        .linkStrength(strength)
                         .start();
 
         svg.append("svg:defs").selectAll("marker")
