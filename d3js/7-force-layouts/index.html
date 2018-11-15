@@ -29,7 +29,6 @@
 <body>
     <div class="chart-wrapper" id="chart-line1"></div>
     <script type="text/javascript">
-
 // For link distance with URL
         // var param = document.URL.split("#")[1] || 200;
         // var header = d3.select('body').append("h1")
@@ -70,7 +69,6 @@
         //                 .enter()
         //                 .append('line')
         //                 .attr('class', 'link');
-
 // For uneven distance between links
         // var force = d3.layout.force()
         //                 .size([width, height])
@@ -79,8 +77,6 @@
         //                 .on("tick", tick)
         //                 .linkDistance(function(d) { return d.distance;})
         //                 .start();
-
-
 // For changing the distance between links with URL
         var force = d3.layout.force()
                         .size([width, height])
@@ -91,7 +87,6 @@
                         .linkDistance(width/3)
                         .linkStrength(strength)
                         .start();
-
         svg.append("svg:defs").selectAll("marker")
                         .data(["end"])
                         .enter().append("svg:marker")
@@ -110,26 +105,18 @@
                         .enter().append("svg:path")
                         .attr("class", "link")
                         .attr("marker-end", "url(#end)");
-    
-    
         function tick(e) {
-            
             node.attr('r', width * 0.05)
                 .attr('cx', function(d) { return d.x; })
                 .attr('cy', function(d) { return d.y; })
                 .call(force.drag) //let them be dragged around
                 ;
-
             path.attr("d", function(d, i) {
                     
                     //setup the source and target points
         var dx = d.target.x - d.source.x, 
             dy = d.target.y - d.source.y,
-            
-            //calculate the curve with math!
             dr = Math.sqrt(dx * dx + dy * dy);
-        
-        //return the path using SVG Path Mini-Language
         return "M" +
             d.source.x + "," +
             d.source.y + "A" +
@@ -138,7 +125,6 @@
             d.target.y;
     });
 }
-
-    </script>
+</script>
 </body>
 </html>
