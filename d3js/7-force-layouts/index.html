@@ -21,12 +21,14 @@
         stroke-width: 2px;
         fill: none;
     }
-    h1 {
+    h1, h4 {
         padding: 10px;
         font-family: sans-serif;
     }
 </style>
 <body>
+    <h4>Gravity = <span id="sliderLabel">0.1</span><br><input type="range" value="0.1" min="0" max="1" onchange="forceUpdate(this.value)" step="0.1">
+    </h4>
     <div class="chart-wrapper" id="chart-line1"></div>
     <script type="text/javascript">
 // For link distance with URL
@@ -84,6 +86,7 @@
                         .links(links)
                         .on("tick", tick)
 // Switch with "param" for linkDistance to work with URL and link distance.
+                        .gravity(0.1)
                         .linkDistance(width/3)
                         .linkStrength(strength)
                         .start();
@@ -124,6 +127,11 @@
             d.target.x + "," +
             d.target.y;
     });
+}
+function forceUpdate(val) {
+    d3.select("#sliderLabel").text(val);
+    force.gravity(val);
+    force.start();
 }
 </script>
 </body>
