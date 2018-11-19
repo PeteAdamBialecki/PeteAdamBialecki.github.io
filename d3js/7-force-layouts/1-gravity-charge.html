@@ -43,8 +43,9 @@
         var header = d3.select('body').append("h1")
                         .html("linkStrength(" + strength + ")")
                         .style("text-align", "center");
-        var width = 640,
-            height = 480;
+        var margin = 0.8, 
+            width = window.innerWidth*margin,
+            height = window.innerWidth*margin;
         var nodes = [
             {name: 'Alice'},
             {name: 'Chris'},
