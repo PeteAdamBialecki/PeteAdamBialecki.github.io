@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- <script src="d3.v4.min.js" charset="utf-8"></script> -->
+    <script src="d3.v3.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+</head>
+<style>
+    body { 
+        background: #444;
+    }
+    .node {
+        fill: rgb(103, 58, 58);
+        stroke: #000;
+        stroke-width: 2px;
+    }
+    path.link {
+        stroke: #777;
+        stroke-width: 2px;
+        fill: none;
+    }
+    h1, h4 {
+        padding: 10px;
+        font-family: sans-serif;
+    }
+</style>
+<body>
+    <h4>Gravity = <span id="sliderLabelGravity">0.1</span><br><input type="range" value="0.1" min="0" max="1" onchange="forceUpdate(this.value)" step="0.1">
+    </h4>
+    <h4>Charge = <span id="sliderLabelCharge">1000</span><br><input type="range" value="1000" min="-500000" max="50000" onchange="forceUpdateCharge(this.value)" step="100">
+    </h4>
+    <div class="chart-wrapper" id="chart-line1"></div>
+    <script type="text/javascript">
+// For link distance with URL
+        // var param = document.URL.split("#")[1] || 200;
+        // var header = d3.select('body').append("h1")
+        //                 .html("linkDistance(" + param + ")")
+        //                 .style("text-align", "center");
+// For link rigidity
+            var strength = document.URL.split("#")[1] || 1;
+            var header = d3.select('body').append("h1")
+                            .html("linkStrength(" + strength + ")")
+                            .style("text-align", "center");
+            var margin = 0.8, 
+                width = window.innerWidth*margin,
+                height = window.innerWidth*margin;
+            d3.csv("battles.cv", function(error, links) {
+                var nodes = {};
+                    links.forEach(function(link) {
+                    link.source = nodes[links.source] || (nodes[link.source] = {name: link.source});
+                    link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+                    link.value = +link.value;
+                });
+                var svg = d3.select('body').append('svg')
+                    .attr('width', width)
+                    .attr('height', height);
+                var path = svg.append("svg:g").selectAll("path")
+                    .data(links)
+                    .enter().append("svg:path")
+                    .attr("class", "link");
+                var node = svg.selectAll('.node')
+                    .data(d3.values(nodes))
+                    .enter().append('circle')
+                    .attr('class', 'node')
+                    .attr("r", width * 0.03);
+                var force = d3.layout.force()
+                    .size([width,height])
+                    .node(d3.values(nodes))
+                    .links(links)
+                    .on("tick", tick)
+                    .linkDistance(100)
+                    .charge(-300)
+                    .start();
+                function tick(e) {
+                    node.attr('r', width * 0.05)
+                        .attr('cx', function(d) { return d.x; })
+                        .attr('cy', function(d) { return d.y; })
+                        .call(force.drag);
+                    path.attr("d", function(d, i) {
+                    var dx = d.target.x - d.source.x, 
+                        dy = d.target.y - d.source.y,
+                        dr = Math.sqrt(dx * dx + dy * dy);
+                    return "M" +
+                        d.source.x + "," +
+                        d.source.y + "A" +
+                        dr + "," + dr + " 0 0,1 " +
+                        d.target.x + "," +
+                        d.target.y;
+                    });
+                }
+    });
+
+// var node = svg.selectAll('.node')
+//     .data(d3.values(nodes))
+//     .enter().append('circle')
+//     .attr('class', 'node');
+
+// function forceUpdateGravity(val) {
+//     d3.select("#sliderLabelGravity").text(val);
+//     force.gravity(val);
+//     force.start();
+// }
+// function forceUpdateCharge(val) {
+//     d3.select("#sliderLabelCharge").text(val);
+//     force.charge(val);
+//     force.start();
+// }
+</script>
+</body>
+</html>
