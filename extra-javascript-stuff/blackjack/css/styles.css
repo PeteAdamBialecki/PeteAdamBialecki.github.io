@@ -16,10 +16,22 @@ h1 {
     .btn-container {
         padding: 20px;
     }
+    #hit-button {
+        float: right;
+    }
+    #stay-button {
+        float: left;
+    }
 }
 
 @media (min-width: 768px) {
     #stay-button {
         float: left;
+    }
+    #hit-button {
+        float: left;
+    }
+    #stay-button {
+        float: right;
     }
 }
