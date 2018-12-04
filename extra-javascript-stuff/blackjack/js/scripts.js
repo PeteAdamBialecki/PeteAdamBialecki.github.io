@@ -9,11 +9,12 @@ let suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'],
             'Ten', 'Nine', 'Eight', 'Seven', 'Six',
             'Five', 'Four', 'Three', 'Two'];
 
-            
+
 let textArea = document.getElementById('text-area'),
     newGameButton = document.getElementById('new-game-button'),
     hitButton = document.getElementById('hit-button'),
     stayButton = document.getElementById('stay-button');
+
 
 let gameStarted = false,
     gameOver = false,
@@ -79,6 +80,15 @@ function showStatus() {
     if (!gameStarted) {
       textArea.innerText = 'Welcome to Blackjack!';
       return;
+    }
+    let dealerCardString = '';
+    for (let i=0; i < dealerCards.length; i++) {
+      dealerCardString += getCardString(dealerCards[i]) + '\n';
+    }
+    
+    let playerCardString = '';
+    for (let i=0; i < playerCards.length; i++) {
+      playerCardString += getCardString(playerCards[i]) + '\n';
     }
     for (var i = 0; i,deck.length; i++) {
         textArea.innerText += '\n' + getCardString(deck[i]);
