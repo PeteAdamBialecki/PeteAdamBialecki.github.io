@@ -125,12 +125,12 @@ function getCardNumericValue(card) {
     return score;
   }
   
-  function updateScores() {
+function updateScores() {
     dealerScore = getScore(dealerCards);
     playerScore = getScore(playerCards);
-  }
+}
   
-  function checkForEndOfGame() {
+function checkForEndOfGame() {
     
     updateScores();
     
@@ -201,3 +201,6 @@ function showStatus() {
     }
 }
 
+// Function/condition for tie-ing?
+// Function/condition for winning if drawing 5 cards and not reaching 21?
+// Function/condition for Ace of Spades being 1 or 10?
