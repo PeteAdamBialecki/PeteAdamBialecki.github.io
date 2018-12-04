@@ -76,6 +76,11 @@ function getNextCard() {
     return deck.shift();
 }
 
+function updateScores() {
+    dealerScore = getScore(dealerCards);
+    playerScore = getScore(playerCards);
+  }
+
 function showStatus() {
     if (!gameStarted) {
       textArea.innerText = 'Welcome to Blackjack!';
@@ -85,13 +90,34 @@ function showStatus() {
     for (let i=0; i < dealerCards.length; i++) {
       dealerCardString += getCardString(dealerCards[i]) + '\n';
     }
-    
     let playerCardString = '';
     for (let i=0; i < playerCards.length; i++) {
       playerCardString += getCardString(playerCards[i]) + '\n';
     }
     for (var i = 0; i,deck.length; i++) {
         textArea.innerText += '\n' + getCardString(deck[i]);
+    }
+    updateScores();
+   
+    textArea.innerText = 
+      'Dealer has:\n' +
+      dealerCardString + 
+      '(score: '+ dealerScore  + ')\n\n' +
+      
+      'Player has:\n' +
+      playerCardString +
+      '(score: '+ playerScore  + ')\n\n';
+    
+    if (gameOver) {
+      if (playerWon) {
+        textArea.innerText += "YOU WIN!";
+      }
+      else {
+        textArea.innerText += "DEALER WINS";
+      }
+      newGameButton.style.display = 'inline';
+      hitButton.style.display = 'none';
+      stayButton.style.display = 'none';
     }
 }
 
