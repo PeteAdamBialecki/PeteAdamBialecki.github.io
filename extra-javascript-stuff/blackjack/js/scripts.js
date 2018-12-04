@@ -165,7 +165,7 @@ function checkForEndOfGame() {
 
 function showStatus() {
     if (!gameStarted) {
-      textArea.innerText = 'Welcome to Blackjack!';
+      textArea.innerText = 'Welcome to the game.  Are you ready to play?';
       return;
     }
     let dealerCardString = '';
