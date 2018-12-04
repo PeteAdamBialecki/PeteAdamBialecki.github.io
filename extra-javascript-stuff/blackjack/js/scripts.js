@@ -1,8 +1,15 @@
 
-let suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
-let values = ['Ace', 'King', 'Queen', 'Jack', 
+
+
+
+
+
+let suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'],
+    values = ['Ace', 'King', 'Queen', 'Jack', 
             'Ten', 'Nine', 'Eight', 'Seven', 'Six',
             'Five', 'Four', 'Three', 'Two'];
+
+            
 let textArea = document.getElementById('text-area'),
     newGameButton = document.getElementById('new-game-button'),
     hitButton = document.getElementById('hit-button'),
@@ -51,8 +58,21 @@ function createDeck() {
    return deck;
 }
 
+function shuffleDeck(deck) {
+    for (let i = 0; i < deck.length; i++) {
+      let swapIdx = Math.trunc(Math.random() * deck.length);
+      let tmp = deck[swapIdx];
+      deck[swapIdx] = deck[i];
+      deck[i] = tmp;
+    }
+  }
+
 function getCardString(card) {
     return card.value + ' of ' + card.suit;
+}
+
+function getNextCard() {
+    return deck.shift();
 }
 
 function showStatus() {
@@ -60,15 +80,14 @@ function showStatus() {
       textArea.innerText = 'Welcome to Blackjack!';
       return;
     }
+    for (var i = 0; i,deck.length; i++) {
+        textArea.innerText += '\n' + getCardString(deck[i]);
+    }
 }
 
-function getNextCard() {
-    return deck.shift();
-}
 
-let deck = createDeck();
 
-let playerCards = [getNextCard(), getNextCard()];
+
 
 console.log("Welcome to Blackjack")
 console.log("You are dealt: ");
