@@ -1,15 +1,11 @@
-<%@ include file="/WEB-INF/jsp/site/taglib.jsp"%>
-<%@ attribute name="id" required="true" %>
-<%@ attribute name="dataUrl" required="true" %>
-<%@ attribute name="columnNames" rtexprvalue="true" required="true" type="java.util.Collection" %>
-<%@ attribute name="dataNames" rtexprvalue="true" required="true" type="java.util.Collection" %>
-
-<div class="chart-wrapper fade-in-slow-2" id="${id}-line-chart-container">
-    <svg id="${id}-line-chart" class="fade-in-slow-2"></svg>
+<div class="chart-wrapper fade-in-slow-2" id="d3-line-chart-container">
+    <svg id="d3-line-chart" class="fade-in-slow-2"></svg>
 </div>
 
-<script src="<c:url value="/js/libs/d3v4/d3.v4.min.js"/>"> </script> <script src="<c:url value="/js/libs/d3v4/d3-scale-chromatic.v1.min.js"/>">
-    </script> <script src="<c:url value="/js/libs/d3v4/topojson.v2.min.js"/>"> </script> <script src="https://d3js.org/d3-axis.v1.min.js"></script>
+<script src="<c:url value="/js/libs/d3v4/d3.v4.min.js"/>"></script>
+<script src="<c:url value="/js/libs/d3v4/d3-scale-chromatic.v1.min.js"/>"></script>
+<script src="<c:url value="/js/libs/d3v4/topojson.v2.min.js"/>"></script>
+<script src="https://d3js.org/d3-axis.v1.min.js"></script>
 <script type="text/javascript">
     var orgId = sessionStorage.getItem("currentOrganizationId");
     d3.json('${dataUrl}?orgId=' + orgId, function (error, data) {
@@ -19,7 +15,7 @@
             d['${dataNames[1]}'] = +d['${dataNames[1]}'];
 
         });
-        var chart = makeLineChartFunctions["${id}-line-chart"](data, 'day', {
+            var chart = makeLineChartFunctions["d3-line-chart"](data, 'day', {
             '${columnNames[0]}': {
                 column: '${dataNames[0]}'
             },
@@ -31,7 +27,7 @@
             xAxis: 'Days',
             axisLeft: 'Amount'
         });
-        chart.bind("#${id}-line-chart-container");
+        chart.bind("#d3-line-chart-container");
         chart.render();
     });
 
@@ -50,7 +46,7 @@
                 d['${dataNames[1]}'] = +d['${dataNames[1]}'];
 
             });
-            var chart = makeLineChartFunctions["${id}-line-chart"](data, 'day', {
+var chart = makeLineChartFunctions["d3-line-chart"](data, 'day', {
                 '${columnNames[0]}': {
                     column: '${dataNames[0]}'
                 },
@@ -62,12 +58,12 @@
                 xAxis: 'Days',
                 axisLeft: 'Amount'
             });
-            chart.bind("#${id}-line-chart-container");
+            chart.bind("#d3-line-chart-container");
             chart.render();
         });
     });
 
-    makeLineChartFunctions["${id}-line-chart"] = function (dataset, xName, yObjs, axisLabels) {
+        makeLineChartFunctions["d3-line-chart"] = function (dataset, xName, yObjs, axisLabels) {
         var chartObj = {};
         var color = d3.scaleOrdinal(d3.schemeSet1);
         var parseTime = d3.timeParse("%Y%m%d");
