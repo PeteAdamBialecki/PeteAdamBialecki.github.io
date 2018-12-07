@@ -1,5 +1,15 @@
 # **D3.js**
 
+## **GitHub Stuff**
+
+- [Responsive Line Chart Bl.ock](https://bl.ocks.org/PeteAdamBialecki/f5023f09076af90e7cde1547ef401a03)
+
+- [Responsive Line Chart GitHub Gist](https://gist.github.com/PeteAdamBialecki/f5023f09076af90e7cde1547ef401a03)
+
+- [Indented Stacked Organization Tree Map Bl.ock](https://bl.ocks.org/PeteAdamBialecki/deb3448edd798e6d3b31546bb457e5a3)
+
+- [Indented Stacked Organization Tree Map GitHub Gist](https://gist.github.com/PeteAdamBialecki/deb3448edd798e6d3b31546bb457e5a3)
+
 ## **Data Visualization Tutorials**
 
 - [An Introduction to D3.js](https://github.com/woojink/d3-map-tutorial)
