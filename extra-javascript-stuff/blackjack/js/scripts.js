@@ -195,7 +195,7 @@ function showStatus() {
       else {
         textArea.innerText += "DEALER WINS";
       }
-      newGameButton.style.display = 'inline';
+      newGameButton.style.display = 'block';
       hitButton.style.display = 'none';
       stayButton.style.display = 'none';
     }
