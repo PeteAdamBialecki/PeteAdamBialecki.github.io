@@ -35,3 +35,28 @@
 - Assignment Operators
 
 - Operator Precedence
+
+## **Functions and Scope**
+
+- Function Scope
+
+- Block Scope
+
+- IIFE's
+
+- Closures
+
+- this
+
+- call()
+
+- apply()
+
+- bind()
+
+- Arrow Functions
+
+- Default Parameters
+
+
+
