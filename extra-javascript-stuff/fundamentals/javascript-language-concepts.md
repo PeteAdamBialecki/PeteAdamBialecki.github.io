@@ -19,3 +19,19 @@
 - Common Type Conversions
 
 - Controlling Loops
+
+## **Operators**
+
+- Equality Operators
+
+- Unary Operators
+
+- Logical (Boolean) Operators
+
+- Relational Operators
+
+- Conditional Operators
+
+- Assignment Operators
+
+- Operator Precedence
