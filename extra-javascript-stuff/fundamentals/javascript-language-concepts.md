@@ -58,5 +58,28 @@
 
 - Default Parameters
 
+## **Objects and Arrays**
 
+- Constructor Functions
 
+- Prototypes
+
+- Objects Using Prototypes
+
+- JSON / JavaScript Object Notation
+
+- Array Iteration
+
+## **Classes and Modules**
+
+- Classes
+
+- Constructors and Properties
+
+- Methods
+
+- Inheritance
+
+- Creating Modules
+
+- Importing Modules

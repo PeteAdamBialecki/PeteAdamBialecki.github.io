@@ -27,33 +27,6 @@ var makeLineChartFunctions;
 makeLineChartFunctions = (typeof makeLineChartFunctions !== 'undefined' && makeLineChartFunctions instanceof Array) ?
     makeLineChartFunctions : [];
 
-$.EventBus("currentOrganizationChange").subscribe(function () {
-    $(".chart-wrapper").empty();
-    var orgId = sessionStorage.getItem("currentOrganizationId");
-    d3.json('${dataUrl}?orgId=' + orgId, function (error, data) {
-        data.forEach(function (d) {
-            d.day = +d.day;
-            d['${dataNames[0]}'] = +d['${dataNames[0]}'];
-            d['${dataNames[1]}'] = +d['${dataNames[1]}'];
-
-        });
-var chart = makeLineChartFunctions["d3-line-chart"](data, 'day', {
-            '${columnNames[0]}': {
-                column: '${dataNames[0]}'
-            },
-            '${columnNames[1]}': {
-                column: '${dataNames[1]}'
-            }
-
-        }, {
-            xAxis: 'Days',
-            axisLeft: 'Amount'
-        });
-        chart.bind("#d3-line-chart-container");
-        chart.render();
-    });
-});
-
     makeLineChartFunctions["d3-line-chart"] = function (dataset, xName, yObjs, axisLabels) {
     var chartObj = {};
     var color = d3.scaleOrdinal(d3.schemeSet1);
