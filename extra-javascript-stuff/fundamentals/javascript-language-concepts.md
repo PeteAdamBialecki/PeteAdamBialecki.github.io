@@ -2,9 +2,52 @@
 
 ## **Language Features**
 
-- Constants
+- [Constants](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 
-- let and var for Variable Declarations
+Constants are block-scoped, much like variables defined using the let statement. The value of a constant cannot change through reassignment, and it can't be redeclared.
+
+        const number = 42;
+
+        try {
+        number = 99;
+        } catch(err) {
+        console.log(err);
+        }
+
+        console.log(number);
+        // expected output: 42
+
+- [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+
+The let statement declares a block scope local variable, optionally initializing it to a value.
+
+        let x = 1;
+
+        if (x === 1) {
+        let x = 2;
+
+        console.log(x);
+        // expected output: 2
+        }
+
+        console.log(x);
+        // expected output: 1
+
+- [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
+
+The var statement declares a variable, optionally initializing it to a value.
+
+        var x = 1;
+
+        if (x === 1) {
+        var x = 2;
+
+        console.log(x);
+        // expected output: 2
+        }
+
+        console.log(x);
+        // expected output: 2
 
 - Rest Parameters
 
