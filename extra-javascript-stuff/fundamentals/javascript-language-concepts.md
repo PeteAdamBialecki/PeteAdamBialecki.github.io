@@ -2,7 +2,20 @@
 
 ## **Language Features**
 
-- Constants
+- [Constants](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+
+Constants are block-scoped, much like variables defined using the let statement. The value of a constant cannot change through reassignment, and it can't be redeclared.
+
+        const number = 42;
+
+        try {
+        number = 99;
+        } catch(err) {
+        console.log(err);
+        }
+
+        console.log(number);
+        // expected output: 42
 
 - let and var for Variable Declarations
 
