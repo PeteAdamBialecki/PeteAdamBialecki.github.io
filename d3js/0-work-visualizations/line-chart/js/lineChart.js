@@ -1,30 +1,29 @@
-var orgId = sessionStorage.getItem("currentOrganizationId");
-d3.json('${dataUrl}?orgId=' + orgId, function (error, data) {
+d3.csv('multiline_data_days_small.csv', function(error, data) {
     data.forEach(function (d) {
         d.day = +d.day;
-        d['${dataNames[0]}'] = +d['${dataNames[0]}'];
-        d['${dataNames[1]}'] = +d['${dataNames[1]}'];
-
+        d.cardholdersEnrolled = +d.cardholdersEnrolled;
+        d.cardholdersRegistered = +d.cardholdersRegistered;
+        d.ordersPerDay = +d.ordersPerDay;
+        d.pointsPerDay = +d.pointsPerDay;
+        d.transactionsPerDay = +d.transactionsPerDay;
+        d.pointsEarnedPerDay = +d.pointsEarnedPerDay;
     });
-        var chart = makeLineChartFunctions["d3-line-chart"](data, 'day', {
-        '${columnNames[0]}': {
-            column: '${dataNames[0]}'
-        },
-        '${columnNames[1]}': {
-            column: '${dataNames[1]}'
-        }
-
-    }, {
-        xAxis: 'Days',
-        axisLeft: 'Amount'
-    });
-    chart.bind("#d3-line-chart-container");
+    var chart = makeLineChartFunctions(data, 'day', {
+        'Enrolled': {column: 'cardholdersEnrolled'},
+        'Registered': {column: 'cardholdersRegistered'},
+        'Orders': { column: 'ordersPerDay' },
+        'Points': { column: 'pointsPerDay' },
+        'Transactions': { column: 'transactionsPerDay' },
+        'Points Earned': { column: 'pointsEarnedPerDay' }
+    }, {xAxis: 'Days', yAxis: 'Amount'});
+    chart.bind("#chart-line1");
     chart.render();
 });
 
+// This is where "multiline-new.js" begins:
 
 var makeLineChartFunctions;
-makeLineChartFunctions = (typeof makeLineChartFunctions !== 'undefined' && makeLineChartFunctions instanceof Array) ?
+    makeLineChartFunctions = (typeof makeLineChartFunctions !== 'undefined' && makeLineChartFunctions instanceof Array) ?
     makeLineChartFunctions : [];
 
     makeLineChartFunctions["d3-line-chart"] = function (dataset, xName, yObjs, axisLabels) {
@@ -312,7 +311,8 @@ makeLineChartFunctions = (typeof makeLineChartFunctions !== 'undefined' && makeL
             }
             minY = chartObj.height;
 
-            yObjs["${columnNames[0]}"].tooltip.attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(
+            yObjs["${columnNames[0]}"]
+            .tooltip.attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(
                 d)) + "," + chartObj.yScaleLeft(yObjs["${columnNames[0]}"].yFunct(d)) + ")");
             yObjs["${columnNames[0]}"].tooltip.select("text").text(chartObj.yFormatter(yObjs[
                 "${columnNames[0]}"].yFunct(d)));
