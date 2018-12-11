@@ -8,7 +8,7 @@ d3.csv('multiline_data_days_small.csv', function(error, data) {
         d.transactionsPerDay = +d.transactionsPerDay;
         d.pointsEarnedPerDay = +d.pointsEarnedPerDay;
     });
-    var chart = makeLineChart(data, 'day', {
+    var chart = makeLineChartFunctions(data, 'day', {
         'Enrolled': {column: 'cardholdersEnrolled'},
         'Registered': {column: 'cardholdersRegistered'},
         'Orders': { column: 'ordersPerDay' },
@@ -20,9 +20,10 @@ d3.csv('multiline_data_days_small.csv', function(error, data) {
     chart.render();
 });
 
+// This is where "multiline-new.js" begins:
 
 var makeLineChartFunctions;
-makeLineChartFunctions = (typeof makeLineChartFunctions !== 'undefined' && makeLineChartFunctions instanceof Array) ?
+    makeLineChartFunctions = (typeof makeLineChartFunctions !== 'undefined' && makeLineChartFunctions instanceof Array) ?
     makeLineChartFunctions : [];
 
     makeLineChartFunctions["d3-line-chart"] = function (dataset, xName, yObjs, axisLabels) {
@@ -310,7 +311,8 @@ makeLineChartFunctions = (typeof makeLineChartFunctions !== 'undefined' && makeL
             }
             minY = chartObj.height;
 
-            yObjs["${columnNames[0]}"].tooltip.attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(
+            yObjs["${columnNames[0]}"]
+            .tooltip.attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(
                 d)) + "," + chartObj.yScaleLeft(yObjs["${columnNames[0]}"].yFunct(d)) + ")");
             yObjs["${columnNames[0]}"].tooltip.select("text").text(chartObj.yFormatter(yObjs[
                 "${columnNames[0]}"].yFunct(d)));
