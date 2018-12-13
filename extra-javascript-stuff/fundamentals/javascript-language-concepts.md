@@ -190,8 +190,57 @@ Spread syntax allows an iterable such as an array expression or string to be exp
 
 - Methods
 
+        class Car {
+            constructor(id) {
+                this.id = id;
+            }
+            identify() {
+                return `Car Id: ${this.id}`;
+            }
+        }
+
+        let car = new Car(123);
+        console.log(car.identify()); // Car Id: 123
+
 - Inheritance
 
 - Creating Modules
 
 - Importing Modules
+
+## **Programmin the BOM and DOM**
+
+- Introduction
+
+- The window Object
+
+Listed below is just a small sample on various BOM / DOM ideas and notes..
+
+    Properties
+        document
+        location
+        console
+        innerHeight
+        innerWidth
+        pageXOffset
+        pageYOffest
+
+    Methods
+        alert()
+        back()
+        confirm()
+
+    Events
+        (not common)
+
+- Timers
+
+- The location Object
+
+- The document Object
+
+- Selecting DOM Elements
+
+- Modifying DOM Elements
+
+- Summary
