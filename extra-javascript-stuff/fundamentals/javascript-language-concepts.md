@@ -49,7 +49,7 @@ The var statement declares a variable, optionally initializing it to a value.
         console.log(x);
         // expected output: 2
 
-- Rest Parameters
+- [Rest Parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
 
 The rest parameter syntax allows us to represent an indefinite number of arguments as an array.
 
@@ -65,7 +65,23 @@ The rest parameter syntax allows us to represent an indefinite number of argumen
         console.log(sum(1, 2, 3, 4));
         // expected output: 10
 
-- Destructuring Arrays
+- [Destructuring Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+        var a, b, rest;
+        [a, b] = [10, 20];
+
+        console.log(a);
+        // expected output: 10
+
+        console.log(b);
+        // expected output: 20
+
+        [a, b, ...rest] = [10, 20, 30, 40, 50];
+
+        console.log(rest);
+        // expected output: [30,40,50]
 
 - Destructuring Objects
 
