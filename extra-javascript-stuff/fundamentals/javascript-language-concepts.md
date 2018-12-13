@@ -190,6 +190,18 @@ Spread syntax allows an iterable such as an array expression or string to be exp
 
 - Methods
 
+        class Car {
+            constructor(id) {
+                this.id = id;
+            }
+            identify() {
+                return `Car Id: ${this.id}`;
+            }
+        }
+
+        let car = new Car(123);
+        console.log(car.identify()); // Car Id: 123
+
 - Inheritance
 
 - Creating Modules
