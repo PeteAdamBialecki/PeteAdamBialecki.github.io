@@ -85,6 +85,29 @@ The destructuring assignment syntax is a JavaScript expression that makes it pos
 
 - Destructuring Objects
 
+        const wes = {
+        first: 'Wes',
+        last: 'Bos',
+        links: {
+            social: {
+            twitter: 'https://twitter.com/wesbos',
+            facebook: 'https://facebook.com/wesbos.developer',
+            },
+            web: {
+            blog: 'https://wesbos.com'
+            }
+        }
+        };
+
+        const twitter = wes.links.social.twitter;
+        const facebook = wes.links.social.facebook;
+        // Annoying!
+
+or 
+
+        const { twitter, facebook } = wes.links.social;
+        console.log(twitter, facebook); // logs the 2 variables 
+
 - Spread Syntax
 
 - typeof()
