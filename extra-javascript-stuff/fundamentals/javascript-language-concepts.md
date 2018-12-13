@@ -49,13 +49,82 @@ The var statement declares a variable, optionally initializing it to a value.
         console.log(x);
         // expected output: 2
 
-- Rest Parameters
+- [Rest Parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
 
-- Destructuring Arrays
+The rest parameter syntax allows us to represent an indefinite number of arguments as an array.
 
-- Destructuring Objects
+        function sum(...theArgs) {
+        return theArgs.reduce((previous, current) => {
+            return previous + current;
+        });
+        }
 
-- Spread Syntax
+        console.log(sum(1, 2, 3));
+        // expected output: 6
+
+        console.log(sum(1, 2, 3, 4));
+        // expected output: 10
+
+- [Destructuring Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+        var a, b, rest;
+        [a, b] = [10, 20];
+
+        console.log(a);
+        // expected output: 10
+
+        console.log(b);
+        // expected output: 20
+
+        [a, b, ...rest] = [10, 20, 30, 40, 50];
+
+        console.log(rest);
+        // expected output: [30,40,50]
+
+- [Destructuring Objects](https://wesbos.com/destructuring-objects/)
+
+Extension of destructing arrays.
+
+        const wes = {
+        first: 'Wes',
+        last: 'Bos',
+        links: {
+            social: {
+            twitter: 'https://twitter.com/wesbos',
+            facebook: 'https://facebook.com/wesbos.developer',
+            },
+            web: {
+            blog: 'https://wesbos.com'
+            }
+        }
+        };
+
+        const twitter = wes.links.social.twitter;
+        const facebook = wes.links.social.facebook;
+        // Annoying!
+
+or 
+
+        const { twitter, facebook } = wes.links.social;
+        console.log(twitter, facebook); // logs the 2 variables 
+
+- [Spread Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+Spread syntax allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
+
+        function sum(x, y, z) {
+        return x + y + z;
+        }
+
+        const numbers = [1, 2, 3];
+
+        console.log(sum(...numbers));
+        // expected output: 6
+
+        console.log(sum.apply(null, numbers));
+        // expected output: 6
 
 - typeof()
 
