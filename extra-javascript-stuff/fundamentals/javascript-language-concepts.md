@@ -126,7 +126,21 @@ Spread syntax allows an iterable such as an array expression or string to be exp
         console.log(sum.apply(null, numbers));
         // expected output: 6
 
-- typeof()
+- [typeof()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+
+The typeof operator returns a string indicating the type of the unevaluated operand.
+
+        console.log(typeof 42);
+        // expected output: "number"
+
+        console.log(typeof 'blubber');
+        // expected output: "string"
+
+        console.log(typeof true);
+        // expected output: "boolean"
+
+        console.log(typeof declaredButUndefinedVariable);
+        // expected output: "undefined";
 
 - Common Type Conversions
 
