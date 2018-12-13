@@ -51,6 +51,20 @@ The var statement declares a variable, optionally initializing it to a value.
 
 - Rest Parameters
 
+The rest parameter syntax allows us to represent an indefinite number of arguments as an array.
+
+        function sum(...theArgs) {
+        return theArgs.reduce((previous, current) => {
+            return previous + current;
+        });
+        }
+
+        console.log(sum(1, 2, 3));
+        // expected output: 6
+
+        console.log(sum(1, 2, 3, 4));
+        // expected output: 10
+
 - Destructuring Arrays
 
 - Destructuring Objects
