@@ -126,7 +126,21 @@ Spread syntax allows an iterable such as an array expression or string to be exp
         console.log(sum.apply(null, numbers));
         // expected output: 6
 
-- typeof()
+- [typeof()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+
+The typeof operator returns a string indicating the type of the unevaluated operand.
+
+        console.log(typeof 42);
+        // expected output: "number"
+
+        console.log(typeof 'blubber');
+        // expected output: "string"
+
+        console.log(typeof true);
+        // expected output: "boolean"
+
+        console.log(typeof declaredButUndefinedVariable);
+        // expected output: "undefined";
 
 - Common Type Conversions
 
@@ -243,6 +257,7 @@ Listed below is just a small sample on various BOM / DOM ideas and notes..
 
 - Modifying DOM Elements
 
+<<<<<<< HEAD
 ## **Promises and Error Handling**
 
 - Errors in JavaScript
@@ -256,3 +271,6 @@ Listed below is just a small sample on various BOM / DOM ideas and notes..
 - Creating a Promise
 
 - Setting a Promise
+=======
+- Summary
+>>>>>>> master
