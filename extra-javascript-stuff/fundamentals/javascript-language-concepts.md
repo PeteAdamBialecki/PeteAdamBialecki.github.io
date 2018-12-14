@@ -184,7 +184,7 @@ Spread syntax allows an iterable such as an array expression or string to be exp
 
 ## **Classes and Modules**
 
-- Classes
+- Class Basics
 
 - Constructors and Properties
 
@@ -243,4 +243,16 @@ Listed below is just a small sample on various BOM / DOM ideas and notes..
 
 - Modifying DOM Elements
 
-- Summary
+## **Promises and Error Handling**
+
+- Errors in JavaScript
+
+- Error Handling Using try and catch
+
+- finally
+
+- Developer Defined Errors
+
+- Creating a Promise
+
+- Setting a Promise
