@@ -198,7 +198,7 @@ The typeof operator returns a string indicating the type of the unevaluated oper
 
 ## **Classes and Modules**
 
-- Classes
+- Class Basics
 
 - Constructors and Properties
 
@@ -257,4 +257,20 @@ Listed below is just a small sample on various BOM / DOM ideas and notes..
 
 - Modifying DOM Elements
 
+<<<<<<< HEAD
+## **Promises and Error Handling**
+
+- Errors in JavaScript
+
+- Error Handling Using try and catch
+
+- finally
+
+- Developer Defined Errors
+
+- Creating a Promise
+
+- Setting a Promise
+=======
 - Summary
+>>>>>>> master
