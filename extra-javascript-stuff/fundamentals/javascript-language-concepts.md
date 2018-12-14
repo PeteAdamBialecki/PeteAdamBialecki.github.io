@@ -257,7 +257,6 @@ Listed below is just a small sample on various BOM / DOM ideas and notes..
 
 - Modifying DOM Elements
 
-<<<<<<< HEAD
 ## **Promises and Error Handling**
 
 - Errors in JavaScript
@@ -271,6 +270,3 @@ Listed below is just a small sample on various BOM / DOM ideas and notes..
 - Creating a Promise
 
 - Setting a Promise
-=======
-- Summary
->>>>>>> master
