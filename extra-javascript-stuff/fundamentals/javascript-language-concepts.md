@@ -298,6 +298,21 @@ Ex. #2:
 
 - Methods
 
+In a function definition, this refers to the "owner" of the function. In the example above, this is the person object that "owns" the fullName function. In other words, this.firstName means the firstName property of this object.
+
+Ex. #1:
+
+        var person = {
+        firstName: "John",
+        lastName : "Doe",
+        id       : 5566,
+        fullName : function() {
+            return this.firstName + " " + this.lastName;
+        }
+        };
+
+Ex. #2:
+
         class Car {
             constructor(id) {
                 this.id = id;
