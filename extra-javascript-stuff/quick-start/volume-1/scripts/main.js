@@ -7,23 +7,27 @@
  * 3. Display to insert the result in a comment after the selection. (Ctrl+L)
  */
 
-//still need to add semicolon at the end
-2 + 2;
-2 - 2;
+alert("Hellow World!");
+confirm("I Love JavaScript!");
+prompt("Do you want to learn JavaScript?");
 
-//we can perform harder calculations and let javascript do the hard work
-1308480340580845 + 020834028340820348;
+// //still need to add semicolon at the end
+// 2 + 2;
+// 2 - 2;
 
-//we can multiply
-39993 * 2002;
+// //we can perform harder calculations and let javascript do the hard work
+// 1308480340580845 + 020834028340820348;
 
-//divide
-10000000 / 20;
+// //we can multiply
+// 39993 * 2002;
 
-//also have a funny looking thing called modulo
-//divides one value by the second, and returns the leftover amount, or remainder
-10%3; //returns 1 since 3 can go in 3 times, and 1 is leftover
+// //divide
+// 10000000 / 20;
 
-//order of operations
-30 - 2 * 3;
-(30 - 2) * 3; //use parenthesis to make something happen first
+// //also have a funny looking thing called modulo
+// //divides one value by the second, and returns the leftover amount, or remainder
+// 10%3; //returns 1 since 3 can go in 3 times, and 1 is leftover
+
+// //order of operations
+// 30 - 2 * 3;
+// (30 - 2) * 3; //use parenthesis to make something happen first
