@@ -262,13 +262,39 @@ Class Expressions
         console.log(Rectangle.name);
         // output: "Rectangle2"
 
-Ex. #3
+Ex. #3:
 
         class Car {}
 
         let car = new Car();
 
-- Constructors and Properties
+- [Constructors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+
+The constructor method is a special method for creating and initializing an object created within a class.
+
+Ex. #1:
+
+        class Polygon {
+        constructor() {
+            this.name = "Polygon";
+        }
+        }
+
+        var poly1 = new Polygon();
+
+        console.log(poly1.name);
+        // expected output: "Polygon"
+
+Ex. #2:
+
+        class Car {
+            constructor(id) {
+                this.id = id;
+            }
+        }
+
+        let car = new Car(123);
+        console.log(car.id); // 123
 
 - Methods
 
