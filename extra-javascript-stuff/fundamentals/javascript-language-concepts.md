@@ -6,6 +6,8 @@
 
 Constants are block-scoped, much like variables defined using the let statement. The value of a constant cannot change through reassignment, and it can't be redeclared.
 
+Ex. #1:
+
         const number = 42;
 
         try {
@@ -17,9 +19,18 @@ Constants are block-scoped, much like variables defined using the let statement.
         console.log(number);
         // expected output: 42
 
+Ex #2:
+
+        const carId = 42
+
+        cardId = 100;
+        // error
+
 - [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
 
 The let statement declares a block scope local variable, optionally initializing it to a value.
+
+Ex. #1:
 
         let x = 1;
 
@@ -32,6 +43,24 @@ The let statement declares a block scope local variable, optionally initializing
 
         console.log(x);
         // expected output: 1
+
+Ex #2:
+
+        if (true) {
+            var foo = 9;
+        }
+
+        console.log(foo);
+        // 9
+
+...or...
+
+        if (true) {
+            let foo = 9;
+        }
+
+        console.log(foo);
+        // error
 
 - [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
 
@@ -198,11 +227,91 @@ The typeof operator returns a string indicating the type of the unevaluated oper
 
 ## **Classes and Modules**
 
-- Class Basics
+- [Class Basics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
-- Constructors and Properties
+Classes are in fact "special functions", and just as you can define function expressions and function declarations, the class syntax has two components: class expressions and class declarations.
+
+Class Declarations:
+
+        class Rectangle {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
+        }
+
+Class Expressions
+
+        // unnamed
+        let Rectangle = class {
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+        };
+        console.log(Rectangle.name);
+        // output: "Rectangle"
+
+        // named
+        let Rectangle = class Rectangle2 {
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+        };
+        console.log(Rectangle.name);
+        // output: "Rectangle2"
+
+Ex. #3:
+
+        class Car {}
+
+        let car = new Car();
+
+- [Constructors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+
+The constructor method is a special method for creating and initializing an object created within a class.
+
+Ex. #1:
+
+        class Polygon {
+        constructor() {
+            this.name = "Polygon";
+        }
+        }
+
+        var poly1 = new Polygon();
+
+        console.log(poly1.name);
+        // expected output: "Polygon"
+
+Ex. #2:
+
+        class Car {
+            constructor(id) {
+                this.id = id;
+            }
+        }
+
+        let car = new Car(123);
+        console.log(car.id); // 123
 
 - Methods
+
+In a function definition, this refers to the "owner" of the function. In the example above, this is the person object that "owns" the fullName function. In other words, this.firstName means the firstName property of this object.
+
+Ex. #1:
+
+        var person = {
+        firstName: "John",
+        lastName : "Doe",
+        id       : 5566,
+        fullName : function() {
+            return this.firstName + " " + this.lastName;
+        }
+        };
+
+Ex. #2:
 
         class Car {
             constructor(id) {
