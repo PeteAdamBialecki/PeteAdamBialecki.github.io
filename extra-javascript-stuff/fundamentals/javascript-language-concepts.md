@@ -6,6 +6,8 @@
 
 Constants are block-scoped, much like variables defined using the let statement. The value of a constant cannot change through reassignment, and it can't be redeclared.
 
+Ex. #1:
+
         const number = 42;
 
         try {
@@ -16,6 +18,12 @@ Constants are block-scoped, much like variables defined using the let statement.
 
         console.log(number);
         // expected output: 42
+
+ex #2:
+
+        const carId = 42
+
+        cardId = 100;
 
 - [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
 
