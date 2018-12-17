@@ -19,15 +19,18 @@ Ex. #1:
         console.log(number);
         // expected output: 42
 
-ex #2:
+Ex #2:
 
         const carId = 42
 
         cardId = 100;
+        // error
 
 - [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
 
 The let statement declares a block scope local variable, optionally initializing it to a value.
+
+Ex. #1:
 
         let x = 1;
 
@@ -40,6 +43,24 @@ The let statement declares a block scope local variable, optionally initializing
 
         console.log(x);
         // expected output: 1
+
+Ex #2:
+
+        if (true) {
+            var foo = 9;
+        }
+
+        console.log(foo);
+        // 9
+
+...or...
+
+        if (true) {
+            let foo = 9;
+        }
+
+        console.log(foo);
+        // error
 
 - [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
 
@@ -206,7 +227,46 @@ The typeof operator returns a string indicating the type of the unevaluated oper
 
 ## **Classes and Modules**
 
-- Class Basics
+- [Class Basics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+Classes are in fact "special functions", and just as you can define function expressions and function declarations, the class syntax has two components: class expressions and class declarations.
+
+Class Declarations:
+
+        class Rectangle {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
+        }
+
+Class Expressions
+
+        // unnamed
+        let Rectangle = class {
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+        };
+        console.log(Rectangle.name);
+        // output: "Rectangle"
+
+        // named
+        let Rectangle = class Rectangle2 {
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+        };
+        console.log(Rectangle.name);
+        // output: "Rectangle2"
+
+Ex. #3
+
+        class Car {}
+
+        let car = new Car();
 
 - Constructors and Properties
 
