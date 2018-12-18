@@ -1,3 +1,1 @@
 alert("Hellow World!");
-
-&lt;
