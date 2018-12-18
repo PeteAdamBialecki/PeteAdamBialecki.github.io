@@ -8,7 +8,7 @@ h1 {
     font-size: 1.5em; 
 }
 
-a {
+a , p, li{
     background: #292929;
     color: #eaeaea;
     padding: 0 16px;
