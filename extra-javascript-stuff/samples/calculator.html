@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="one">50</div>
+    <input type="number" id="addRemovePointsInput">
+    <br>
+    <button onclick="addPointsToCardholder()" id="addPoints">Add</button>
+    <button onclick="removePointsFromCardholder()" id="removePoints">Remove</button>
+
+<script>
+    function addPointsToCardholder() {
+        var y = parseInt($('#one').text());
+        var x = parseInt(document.getElementById("addRemovePointsInput").value);
+        document.getElementById("one").innerHTML = x + y;
+        $('#addRemovePointsInput').val('');
+        $("body").trigger("click");
+    };
+
+    function removePointsFromCardholder() {
+        var y = parseInt($('#one').text());
+        var x = parseInt(document.getElementById("addRemovePointsInput").value);
+            if ( y > x) {
+            document.getElementById("one").innerHTML = y - x;
+            } else {
+            document.getElementById("one").innerHTML = (x - y) * -1;
+            } 
+        $('#addRemovePointsInput').val('');
+        $("body").trigger("click");
+    };
+</script>
+
+</body>
+</html>
