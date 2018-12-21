@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="one">50</div>
+    <input type="number" id="addRemovePointsInput">
+    <br>
+    <button onclick="addPointsToCardholder()" id="addPoints">Add</button>
+    <button onclick="removePointsFromCardholder()" id="removePoints">Remove</button>
+
+<script>
+    function addPointsToCardholder() {
+        var y = parseInt($('#one').text());
+        var x = parseInt(document.getElementById("addRemovePointsInput").value);
+        document.getElementById("one").innerHTML = x + y;
+        $('#addRemovePointsInput').val('');
+        $("body").trigger("click");
+    };
+
+    function removePointsFromCardholder() {
+        var y = parseInt($('#one').text());
+        var x = parseInt(document.getElementById("addRemovePointsInput").value);
+            if ( y > x) {
+            document.getElementById("one").innerHTML = y - x;
+            } else {
+            document.getElementById("one").innerHTML = (x - y) * -1;
+            } 
+        $('#addRemovePointsInput').val('');
+        $("body").trigger("click");
+    };
+/*  function addRemoveCardholderPoints() {
+   var y = parseInt($('#one').text());
+   var x = parseInt(document.getElementById("addRemovePointsInput").value);
+   var box = document.getElementById("one");
+   var yes = document.getElementById("addPoints");
+   var no = document.getElementById("removePoints");
+ 
+   yes.onclick = function(){
+       box.style.backgroundColor = "red";
+       document.getElementById("one").innerHTML = x + y;
+   }
+ 
+   no.onclick = function(){
+       box.style.backgroundColor = "green";
+       if ( y > x) {
+         document.getElementById("one").innerHTML = y - x;
+       } else {
+         document.getElementById("one").innerHTML = (x - y) * -1;
+       } 
+   }
+ }; */
+</script>
+
+</body>
+</html>
