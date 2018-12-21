@@ -16,27 +16,27 @@
             var randomNumber = Math.round( Math.random() * 5);
         
             // Version #1:
-            if ( randomNumber%3 === 0 && randomNumber != 0) {
-                alert("fizz");
-            } else if (randomNumber%5 === 0 && randomNumber != 0) {
-                alert("buzz");
-            } else if (randomNumber%3 === 0 && randomNumber%5 === 0) {
-                alert("fizzbuzz");
-            } else {
-                console.log(randomNumber)
-            }
+            // if ( randomNumber%3 === 0 && randomNumber != 0) {
+            //     alert("fizz");
+            // } else if (randomNumber%5 === 0 && randomNumber != 0) {
+            //     alert("buzz");
+            // } else if (randomNumber%3 === 0 && randomNumber%5 === 0) {
+            //     alert("fizzbuzz");
+            // } else {
+            //     alert(randomNumber)
+            // }
 
             // Version #1 Refactored:
             if ( randomNumber%3 === 0 && randomNumber != 0) {
                 if (randomNumber%5 === 0) {
-                    alert("fizzbuzz");
+                    alert("The random number is " + randomNumber + ": "+ "FIZZBUZZ!!!");
                 } else  {
-                    alert("fizz")
+                    alert("The random number is " + randomNumber + ": "+ "FIZZ!!")
                 }
             } else if (randomNumber%5 === 0 && randomNumber != 0) {
-                alert("buzz");
+                alert("The random number is " + randomNumber + ": "+ "BUZZ!");
             } else {
-                console.log(randomNumber)
+                alert("The random number is " + randomNumber + ".")
             }
     </script>
 </body>
