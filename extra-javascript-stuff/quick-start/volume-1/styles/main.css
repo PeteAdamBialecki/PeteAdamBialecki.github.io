@@ -39,6 +39,10 @@ td {
     text-indent: 1.5em;
 }
 
+#zombie {
+  text-align: -webkit-center;  
+}
+
 /*------- Styles for Hint -------*/
 .hover-hint p {
    border: 1px solid #cc527a ;
