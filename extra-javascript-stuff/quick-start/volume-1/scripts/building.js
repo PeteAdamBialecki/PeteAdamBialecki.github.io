@@ -41,3 +41,8 @@ function randomNumber(range) {
 }
 
 alert(beginningScenarios[randomNumber(beginningScenarios.length -1)]);
+
+var weaponList = ["shovel", "crossbow", "baseball bat", "rubber chicken"];
+
+var weapon = weaponList[ randomNumber( weaponList.length - 1) ];
+alert("Being that it is the zombie apocalypse, you decide to search for a weapon first. After surveying your surroundings you notice and grab a " + weapon + ".");
