@@ -17,7 +17,7 @@ p {
 em {
    color: #cc527a;
 }
-a , p, li, code {
+a , li, code {
     background: #292929;
     color: #eaeaea;
     padding: 0 16px;
