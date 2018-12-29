@@ -2,5 +2,5 @@
 Visual Studio Code: For remote theming use the following options:
 
 - For icons, use "Material Theme Icons".
-- For theme, use "One Dark Pro" or...
+- For theme, use "One Dark Pro" or "Resesif".
 - [VSC Themes](http://orta.io/vscode-themes/)
