@@ -39,6 +39,10 @@ td {
     text-indent: 1.5em;
 }
 
+#zombie {
+  text-align: -webkit-center;  
+}
+
 /*------- Styles for Hint -------*/
 .hover-hint p {
    border: 1px solid #cc527a ;
@@ -188,3 +192,31 @@ td {
   .friend p {
     margin-left: -10px; 
   }
+
+  /*------ Building (with some imagination) ------*/
+.building {
+  width: 60px;
+  height: 150px;
+  background: #363636;
+  box-shadow: 7px -7px #222;
+  margin: 0 auto 20px auto;
+}
+
+.windowL {
+  background-color: #88bfc1;
+  width: 10px;
+  height: 15px;
+  margin: 10px 10px 0 13px;
+  position: relative;
+  top: 10px;
+}
+
+.windowR {
+  background: #6a77be;
+  width: 10px;
+  height: 15px;
+  margin: 10px 10px 0 10px;
+  position: relative;
+  top: -115px;
+  right: -27px;
+}
