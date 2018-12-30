@@ -15,7 +15,8 @@ p {
    min-width: 300px;
 }
 em {
-   color: #cc527a;
+  /* color: #cc527a; */
+  color: #52cc66;
 }
 a , li, code {
     background: #292929;
