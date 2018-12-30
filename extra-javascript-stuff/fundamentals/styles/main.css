@@ -220,3 +220,56 @@ td {
   top: -115px;
   right: -27px;
 }
+
+/*----- JavaMug ------*/
+#coffee {
+  background-color: #fff;
+  width: 70px;
+  height: 100px;
+  margin: 20px auto;
+  position: relative;
+}
+.handle {
+  background-color: #fff;
+  position: relative;
+  height: 10px;
+  width: 20px;
+  left: 70px;
+}
+#handle1 {
+  top: 20px;
+}
+
+#handle2 {
+  width: 10px;
+  height: 60px;
+  left: 90px;
+  top: 10px;
+}
+
+#handle3 {
+  top: 0px;
+}
+
+.splash {
+  width: 7px;
+  height: 10px;
+  background: #644949;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+}
+
+#splash2 {
+  left: 10px;
+  height: 29px;
+}
+#splash3 {
+  left: 15px;
+  height: 16px;
+}
+#splash4 {
+  left: 22px;
+  height: 3px;
+  width: 8px;
+}
