@@ -33,7 +33,7 @@ Remember: There are many ways to create things with code! The most important par
 After, look for ways you might improve your code! 
 */
 
-
+// The above comments and guidelines result in the following code:
 
 function myFunction() {
   var beginningScenarios = ["You wake up in a hospital.  It is eerily quiet.  You tiptoe to the door and peek out.", "You are standing in an open field west of a white house with a boarded front door. There is a small mailbox here.", "Desperate times call for desperate measures.  You see a small convenience store up ahead and decide to loot it for goods." ];
