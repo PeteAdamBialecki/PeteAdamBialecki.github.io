@@ -194,6 +194,10 @@ td {
     margin-left: -10px; 
   }
 
+  #object-friends {
+      display: inline-flex;
+  }
+
   /*------ Building (with some imagination) ------*/
 .building {
   width: 60px;
