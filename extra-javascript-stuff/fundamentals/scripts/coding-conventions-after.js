@@ -1,3 +1,5 @@
+// The following JavaScript has been updated and refactored with the help of JSLint.
+
 alert("Hello World!");
 
 function lameJoke(){ 
