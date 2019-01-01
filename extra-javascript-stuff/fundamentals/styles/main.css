@@ -18,6 +18,9 @@ em {
   /* color: #cc527a; */
   color: #52cc66;
 }
+code span {
+    font-weight: lighter;
+}
 a , li, code {
     background: #292929;
     color: #eaeaea;
