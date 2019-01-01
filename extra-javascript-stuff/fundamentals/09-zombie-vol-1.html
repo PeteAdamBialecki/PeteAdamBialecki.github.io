@@ -7,13 +7,12 @@
 </head>
 <body>
     <h1>JavaScript Concepts</h1>
-    <caption>Zombie Apocalypse Adventure Game (version 1)<br><br></caption>
+    <caption>Zombie Adventure Game Vol. 1<br><br></caption>
     <p>Let's create a text adventure game with JavaScript.  Let's set a scenario in which we encounter a zombie, choose a weapon to fight the zombie with, and have a 50/50 chance of either defeating the zombie with our weapon, or getting bitten and losing the game.</p>
-
     <p>To continue building on this game, build on this starter zombie adventure game.  Maybe you want to customize the ending based on the weapon choice, or continue the story.  Choose from the following to build your game:</p>
     <ul>
-        <li>Strings</li>
-        <li>Numbers</li>  
+        <li>Strings</li>s
+        <li>Numbers</li>
         <li>Variables</li>
         <li>If/Else</li>
         <li>Math.round()</li>
@@ -23,17 +22,6 @@
         <li>confirm()</li>
         <li>Operators like ===, !=, &amp;&amp;, &gt;, &lt;, +, -, *, /</li>
     </ul>
-
-    <script>
-        alert("It is the zombie apocalypse.  You are looting a store and suddenly a zombie bursts through the door!");
-            var weapon = prompt("You search around frantically for a weapon.  What do you choose?  A bow and arrow, an axe, or a rubber chicken?");
-            var randomNumber = Math.round(Math.random());
-        alert("You attack the zombie with your" + " " + weapon);
-            if(randomNumber === 0 ){
-                alert("The zombie bites you.  You lose!!!");
-            } else if (randomNumber === 1 ){
-                alert("You kill the zombie with your" + " " + weapon + ". You win!");
-            }
-    </script>
+    <script src="scripts/zombie-vol-1.js" type="text/javascript"></script>
 </body>
 </html>
