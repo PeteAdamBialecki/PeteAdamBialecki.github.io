@@ -49,11 +49,10 @@ function gameStart() {
     alert("One day you wake up and the world as you know has ended.  The dead come to life and prey on the living. There is no hope, no cure, only survival.  Welcome to the zombie apocalypse.");
 
 // Store an array of possible beginning scenarios
-    var beginningScenarios = ["You wake up in a hospital.  It is eerily quiet.  You tiptoe to the door and peek out.", "You are standing in an open field west of a white house with a boarded front door. There is a small mailbox here.", "Desperate times call for desperate measures.  You see a small convenience store up ahead and decide to loot it for goods." ];
+    var beginningScenarios = ["You wake up in a hospital.  It is eerily quiet.  You tiptoe to the door and peek out.", "You are standing in an open field west of a white house with a boarded front door. There is a small mailbox here.", "Desperate times call for desperate measures.  You see a small convenience store up ahead and decide to loot it for goods."];
 
 // Random number function that generates a whole number between 0 and range
     function randomNumber(range) {
-        "use strict";
         if (typeof range === "number") {
             return Math.round(Math.random() * range);
         }
@@ -110,7 +109,7 @@ function gameStart() {
         if (character.strength === 5) {
 
 // If the strength is 5, alert the result
-            alert ("Using only your bare hands, you slay that zombie! Success! You loot the store for goods and find an axe, a pack of batteries, and three cans of Beanie Weenies.");
+            alert("Using only your bare hands, you slay that zombie! Success! You loot the store for goods and find an axe, a pack of batteries, and three cans of Beanie Weenies.");
 
 // Set outcome variable to win
             outcome = "win";
@@ -118,7 +117,7 @@ function gameStart() {
 // Increase stats if success
             character.strength++;
 
-// If the character's strength is less than 5, alert a different scenario
+    // If the character's strength is less than 5, alert a different scenario
         } else if (character.strength <= 5) {
             alert("You fearlessly charge the zombie with all your strength.  Using your mighty powers you crush thy foe as if it were a sheet of paper you needed to shred.");
             alert("Just kidding. You are immediately bitten by the zombie and die. But not all is lost -- if time spent together makes one friends, then you and the zombie become best friends, and live together for eternity. The end.");
@@ -139,7 +138,7 @@ function gameStart() {
             outcome = "win";
         }
 
-// Check to see if the character's stealth is less than 5
+//Check to see if the character's stealth is less than 5
         if (character.stealth < 5) {
 
 // If stealth is less than 5, the zombie is alerted but the player can still win if their strength is high enough
@@ -169,3 +168,7 @@ function gameStart() {
         alert("You win!");
     }
 }
+
+// Using the existing character object build on the complexity of the game, perhaps by using the unused health property to change the outcome based on the doctor character class.
+// Another idea is to use the code you created in Volume 2 and add an object of your own to increase the complexity of the game.
+// Either create your own character object to use, or think of another way objects could be used to enhance the game. //
