@@ -54,12 +54,16 @@ td {
     transition: .3s ease-in-out;
 }
 #zombie-landscape:hover {
-    width: 140%;
-    margin-left: 10%;
     transition: .3s ease-in-out;
+    height: 489px;
 }
 figure {
-	overflow: hidden;
+    overflow: hidden;
+}
+figure:hover {
+    overflow: hidden;
+    background-color: red;
+    height: 489px;
 }
 .hover06 figure img {
 	-webkit-transform: rotate(15deg) scale(1.4);
@@ -69,15 +73,16 @@ figure {
 }
 .hover06 figure:hover img {
 	-webkit-transform: rotate(0) scale(1);
-    transform: rotate(10deg) scale(1.8);
+    transform: rotate(10deg) scale(1.5);
     width:300%;
     opacity: 1;
 	-webkit-animation: flash 1.5s;
-	animation: flash 1.5s;
+    animation: flash 1.5s;
+    cursor: crosshair;
 }
 @-webkit-keyframes flash {
 	0% {
-		opacity: .4;
+        opacity: .4;
 	}
 	100% {
 		opacity: 1;
@@ -85,7 +90,7 @@ figure {
 }
 @keyframes flash {
 	0% {
-		opacity: .4;
+        opacity: .4;
 	}
 	100% {
 		opacity: 1;
