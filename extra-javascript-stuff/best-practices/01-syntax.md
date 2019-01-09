@@ -1,8 +1,7 @@
-# **JavaScript Best Practices**
+# **JavaScript Best Practices: Syntax**
 
-## **Syntax**
+## **Automatic Semicolon Insertion Rules**
 
-Automatic Semicolon Insertion Rules
 "When, as a Script or Module is parsed from left to right, a token (called the offending token) is encountered that is not allowed by any production of the grammar,"
 
 Rule #1a:
@@ -74,12 +73,59 @@ Rule #3:
                 }
             }
 
+#### **Useful Advice**
 
+"Use semicolons in conjunction with JSHint or ESLint to prevent potential issues"
 
-
-
-
+- Consistency with other languages
+- Prevents the "0.01% issues"...
 
 #### **Terminology**
 
 Restricted Production: continue, break, return, or throw...
+
+## **Linting**
+
+A linter scans your code to detect potential problems and errors.
+
+- JSLint: Preconfigured, not very configurable.
+- JSHint: Fork of JSLint, configurable, built in package support, not exstensible.
+- ESLint: Most recent, custom rules and support, lots of configuration.
+- You can run a linter either at jshint.com, as an extension, or in the console.
+
+## **Curly Braces**
+
+- Keep opening curly braces on the same line:
+
+...this...
+
+        function service()
+        {
+            var get = function() 
+            {
+                console.log('get');
+            }
+            var set = function()
+            {
+                console.log('set');
+            }
+            return
+            {
+                get: get,
+                set: set
+            }
+        }
+
+...should be this...
+
+        function service() {
+            var get = function() {
+                console.log('get');
+            }
+            var set = function() {
+                console.log('set');
+            } return {
+                get: get,
+                set: set
+            }
+        }
