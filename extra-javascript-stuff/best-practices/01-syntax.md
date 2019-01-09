@@ -129,3 +129,52 @@ A linter scans your code to detect potential problems and errors.
                 set: set
             }
         }
+
+## **Equality**
+
+"==" Double equals does a conversion.
+
+        var x = 1;
+        var y = '1';
+
+        if (x == y) {
+            console.log('Equals');
+        } else {
+            console.log('Not Equals');
+        } //Equals
+
+...or...
+
+        var x = 1;
+        var y = true;
+
+        if (x == y) {
+            console.log('Equals');
+        } else {
+            console.log('Not Equals');
+        } //Equals
+
+...or...
+
+        var x = 0;
+        var y = false;
+
+        if (x == y) {
+            console.log('Equals');
+        } else {
+            console.log('Not Equals');
+        } //Equals
+
+"===" Stric equals (change the above code to triple equals and all should be false).  This should be used as the default.
+
+#### **Extra Note**
+
+To check if a variable exists, use a sample like this:
+
+        // var x;
+
+        if (typeof x !== 'undefined') {
+            console.log('Exists!');
+        } else {
+            console.log('...does not exist...');
+        }
