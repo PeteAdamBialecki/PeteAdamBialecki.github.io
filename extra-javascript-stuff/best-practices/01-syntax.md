@@ -1,8 +1,7 @@
-# **JavaScript Best Practices**
+# **JavaScript Best Practices: Syntax**
 
-## **Syntax**
+## **Automatic Semicolon Insertion Rules**
 
-Automatic Semicolon Insertion Rules
 "When, as a Script or Module is parsed from left to right, a token (called the offending token) is encountered that is not allowed by any production of the grammar,"
 
 Rule #1a:
@@ -74,12 +73,140 @@ Rule #3:
                 }
             }
 
+#### **Useful Advice**
 
+"Use semicolons in conjunction with JSHint or ESLint to prevent potential issues"
 
-
-
-
+- Consistency with other languages
+- Prevents the "0.01% issues"...
 
 #### **Terminology**
 
 Restricted Production: continue, break, return, or throw...
+
+## **Linting**
+
+A linter scans your code to detect potential problems and errors.
+
+- JSLint: Preconfigured, not very configurable.
+- JSHint: Fork of JSLint, configurable, built in package support, not exstensible.
+- ESLint: Most recent, custom rules and support, lots of configuration.
+- You can run a linter either at jshint.com, as an extension, or in the console.
+
+## **Curly Braces**
+
+- Keep opening curly braces on the same line:
+
+...this...
+
+        function service()
+        {
+            var get = function() 
+            {
+                console.log('get');
+            }
+            var set = function()
+            {
+                console.log('set');
+            }
+            return
+            {
+                get: get,
+                set: set
+            }
+        }
+
+...should be this...
+
+        function service() {
+            var get = function() {
+                console.log('get');
+            }
+            var set = function() {
+                console.log('set');
+            } return {
+                get: get,
+                set: set
+            }
+        }
+
+## **Equality**
+
+"==" Double equals does a conversion.
+
+        var x = 1;
+        var y = '1';
+
+        if (x == y) {
+            console.log('Equals');
+        } else {
+            console.log('Not Equals');
+        } //Equals
+
+...or...
+
+        var x = 1;
+        var y = true;
+
+        if (x == y) {
+            console.log('Equals');
+        } else {
+            console.log('Not Equals');
+        } //Equals
+
+...or...
+
+        var x = 0;
+        var y = false;
+
+        if (x == y) {
+            console.log('Equals');
+        } else {
+            console.log('Not Equals');
+        } //Equals
+
+"===" Stric equals (change the above code to triple equals and all should be false).  This should be used as the default.
+
+#### **Extra Note**
+
+To check if a variable exists, use a sample like this:
+
+        // var x;
+
+        if (typeof x !== 'undefined') {
+            console.log('Exists!');
+        } else {
+            console.log('...does not exist...');
+        }
+
+## **Variables**
+
+Hoisting: Hoisting is JavaScript's default behavior of moving all declarations (variables) to the the top of the current scope.
+
+    - The browser scans the code, line by line, moves variables to the top and sets them as 'undefined'.  As the browser continues and a variable actually has been defined, it sets it from 'undefined' to it's value.
+
+#### **Extra Note**
+
+Declare variables at the top of the scope and have unique names.
+
+## **Functions**
+
+- Hoisting works with functions.
+
+- In order of importance, use this as a sample guide:
+
+        // variables first...
+        var x = 10;
+        // Functions next...
+        function print(input) {
+            // Variables first...
+            var x = 0 // this goes here...
+            // Functions next...
+            function log() {
+                // Log Stuff...
+            }
+            // Run code...
+            console.log(input);
+        }
+        // Run code...
+        print(10);
