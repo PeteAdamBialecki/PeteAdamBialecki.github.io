@@ -178,3 +178,13 @@ To check if a variable exists, use a sample like this:
         } else {
             console.log('...does not exist...');
         }
+
+## **Variables**
+
+Hoisting: Hoisting is JavaScript's default behavior of moving all declarations (variables) to the the top of the current scope.
+
+    - The browser scans the code, line by line, moves variables to the top and sets them as 'undefined'.  As the browser continues and a variable actually has been defined, it sets it from 'undefined' to it's value.
+
+#### **Extra Note**
+
+Declare variables at the top of the scope and have unique names.
