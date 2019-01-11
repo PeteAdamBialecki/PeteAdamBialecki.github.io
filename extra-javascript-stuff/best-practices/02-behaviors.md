@@ -1,4 +1,4 @@
-# **JavaScript Best Practices: Syntax**
+# **JavaScript Best Practices: Behaviors**
 
 ## **Global Variables**
 
@@ -46,3 +46,17 @@ Place this at the top of the document to prevent JavaScript from "fixing" your c
         console.log(myVar)
 
 ...in the above code, even though the JavaScript function 'delete' has been called on everything, the console still outputs 'obj' and 'myVar'.  Again, this is another case where 'use strict'; needs to be at the top to prevent JavaScript from "automatically fixing" our code.
+
+## **this**
+
+        var obj = {
+            val: 'Hi there.',
+            printVal: function() {
+                console.log(this.value);
+            }
+        };
+        var obj2 = {
+            val: 'What's up?'
+        };
+        obj.printVal = obj.printVal;
+        obj.printVal(); // What's up?
