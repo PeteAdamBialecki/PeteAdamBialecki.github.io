@@ -1,4 +1,4 @@
-# **JavaScript Best Practices: Syntax**
+# **JavaScript Best Practices: Behaviors**
 
 ## **Global Variables**
 
