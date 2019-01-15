@@ -93,7 +93,7 @@ Step 3: app.js (version #4)
         asyncMethod('Open DB Connection')
             .then(findUser);
 
-Step 3: app.js (version #4)
+Step 3: app.js (version #5)
 
         function asyncMethod(message) {
             return new Promise(function (fulfill, reject) {
@@ -120,3 +120,21 @@ Step 3: app.js (version #4)
             .then(validateUser)
             .then(doStuff)
             .then(function () {})
+
+## **ES6 and Babel**
+
+Step #1: app.js:
+
+        for(let i = 0; i < 10; i++) {
+            console.log(i);
+        }
+
+        console.log('Doing stuff...' + i);
+
+Step #2 (command line in the directory): npm install -g babel-cli
+
+Step #3 (command line in the directory): touch .babelrc
+
+Step #4 (command line in the directory): npm install --save-dev babel-preset-es2015
+
+Step #5 (command line in the directory): babel app.js -o es6.js
