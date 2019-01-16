@@ -2,7 +2,7 @@
 
 ## **Cool Samples / Examples**
 
-[Main Gallery](https://github.com/d3/d3/wiki/Gallery)
+- [Main Gallery](https://github.com/d3/d3/wiki/Gallery)
 
 - [Introduction to Network Analysis and Representation](http://dhs.stanford.edu/dh/networks/)
 
@@ -66,7 +66,7 @@
 
 - [Mapping US Droughts](https://www.nytimes.com/interactive/2014/upshot/mapping-the-spread-of-drought-across-the-us.html)
 
--[Voronoi](https://www.christophermanning.org/gists/1734663/)
+- [Voronoi](https://www.christophermanning.org/gists/1734663/)
 
 - [Steamgraph](https://beta.observablehq.com/@mbostock/streamgraph-transitions)
 
