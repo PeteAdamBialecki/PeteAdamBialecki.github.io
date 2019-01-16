@@ -20,3 +20,15 @@ Here are a few helpful steps to get started with Node:
 - If you run this, you elimnate the possibilities of using " ^ " in package versions so it is more stable (run this command before installing packages):
 
         npm config set save-exact=true
+
+## **Enviornment Variables**
+
+- Run this first:
+
+        npm install -g foreman
+
+
+
+## **Cross Platform Concerns**
+
+## **Simplify Your World**
