@@ -1,0 +1,11 @@
+{
+  "name": "04-production-code",
+  "version": "1.0.0",
+  "description": "A sample project for notes on production code.",
+  "main": "app.js",
+  "scripts": {
+    "test": "prod"
+  },
+  "author": "Pete Adam Bialecki",
+  "license": "ISC"
+}

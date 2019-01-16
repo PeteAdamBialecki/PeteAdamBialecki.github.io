@@ -138,3 +138,80 @@ Step #3 (command line in the directory): touch .babelrc
 Step #4 (command line in the directory): npm install --save-dev babel-preset-es2015
 
 Step #5 (command line in the directory): babel app.js -o es6.js
+
+## **Async - Await**
+
+From the code above:
+
+Step #1: app.js (version #5)
+
+        function asyncMethod(message) {
+            return new Promise(function (fulfill, reject) {
+                setTimeout(function () {
+                    console.log(message);
+                    fulfill();
+                }, 500)
+            });
+        }
+
+        function findUser() {
+            return asyncMethod('Find User')
+        }
+
+        function validateUser() {
+            return asyncMethod('validate User')
+        }
+
+        function doStuff() {
+            return asyncMethod('do stuff')
+        }
+        asyncMethod('Open DB Connection')
+            .then(findUser)
+            .then(validateUser)
+            .then(doStuff)
+            .then(function () {})
+
+
+Step #2: app.js (version #5)
+
+        'use strict';
+        function asyncMethod(message, num) {
+            return new Promise(function (fulfill, reject) {
+                setTimeout(function () {
+                    console.log(message + ' ' + num);
+                    fulfill(num + 1);
+                }, 500)
+            });
+        }
+
+        async function main() {
+            var one = await asyncMethod('Open DB Connection', 0)
+            var two = await asyncMethod('Find User', one)
+            var three = await asyncMethod('Validate User', two)
+            var four = await asyncMethod('Do Stuff', three)
+        }
+
+        main();
+
+Step #3 (command line in the directory): npm install -save babel-preset-stage-3
+
+Step #4 (command line in the directory): babel app.js -o esNext.js
+
+Step #5: .babelrc
+
+        {
+            "presets": [
+                "stage-3"
+            ],
+            "plugins": []
+        }
+
+Step #6: index.html 
+
+        <html>
+        <body>
+            <h1>Lets Talk Promises</h1>
+            <script src="esNext.js"></script>
+            <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+        </body>
+        </html>
