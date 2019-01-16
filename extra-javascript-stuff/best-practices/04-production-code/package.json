@@ -8,7 +8,11 @@
   },
   "author": "Pete Adam Bialecki",
   "license": "ISC",
-    "engines":{
-        "node": "4.2.1"
-    }
+  "engines": {
+    "node": "4.2.1"
+  },
+  "dependencies": {
+    "express": "4.16.4",
+    "passport": "0.4.0"
+  }
 }
