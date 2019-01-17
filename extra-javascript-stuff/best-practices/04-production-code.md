@@ -69,4 +69,6 @@ Here are a few helpful steps to get started with Node:
 
 ## **Cross Platform Concerns**
 
+- When naming files in a directory, do not use camel case because Windows, Linux, and Mac all read files different.  For example, 'myObject.js' is the same as 'myobject.js' on Mac whereas other systems may read them strict.  Get in the habit of naming files like 'my-object.js'.
+
 ## **Simplify Your World**
