@@ -37,11 +37,33 @@ console.log(task4.toString()); // My Fourth Task My Description
 
 // Exmaple #5:
 var task5 = {
-title: 'My Fifth Task',
-description: 'My Description',
+    title: 'My Fifth Task',
+    description: 'My Description'
 };
 task5.toString = function(){
     'use strict';
     return this.title + ' ' + this.description;
 }
 console.log(task5.toString()); // My Fifth Task My Description
+
+
+
+
+// Exmaple #6:
+var task6 = {
+    title: 'My Fifth Task',
+    description: 'My Description'
+};
+
+Object.defineProperty(task6, 'toString', {
+    value: function() {
+        return this.title + ' ' + this.description;
+    },
+    writable: true,
+    enumerable: true,
+    configurable: true
+});
+
+task6.toString = 'hi'; //If the property 'writable' is set to 'true' above, then this line will override this (BE CAREFUL).  Set it to false to prevent it from being overwritten.
+
+console.log(task6.toString()); // My Fifth Task My Description
