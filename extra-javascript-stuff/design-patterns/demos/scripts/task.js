@@ -48,7 +48,7 @@ console.log(task5.toString()); // My Fifth Task My Description
 
 // Exmaple #6:
 var task6 = {
-    title: 'My Fifth Task',
+    title: 'My Sixth Task',
     description: 'My Description'
 };
 
@@ -60,7 +60,5 @@ Object.defineProperty(task6, 'toString', {
     enumerable: false, // Set this to false and it will be ignored when called.
     configurable: false // Set this to false to prevent this object from being altered.
 });
-
 task6.toString = 'hi'; //If the property 'writable' is set to 'true' above, then this line will override this (BE CAREFUL).  Set it to false to prevent it from being overwritten.
-
-console.log(task6.toString()); // My Fifth Task My Description
+console.log(task6.toString()); // My Sixth Task My Description
