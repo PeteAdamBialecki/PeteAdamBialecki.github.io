@@ -37,3 +37,13 @@ Example #2 (use bracket notation to access a variable):
         obj[val] = 'new value';
         console.log(obj[val]); // new value
 
+## **Defining Properties in Objects**
+
+        Object.defineProperty(obj, 'name', {
+            value: 'my name',
+            writable: true,
+            enumerable: true,
+            configurable: true
+        })
+
+## ****
