@@ -63,11 +63,6 @@ Object.defineProperty(task6, 'toString', {
 task6.toString = 'hi'; //If the property 'writable' is set to 'true' above, then this line will override this (BE CAREFUL).  Set it to false to prevent it from being overwritten.
 console.log(task6.toString()); // My Sixth Task My Description
 
-
-
-
-
-
 // Exmaple #7 (inheritance):
 var task7 = {
     title: 'My Seventh Task',
