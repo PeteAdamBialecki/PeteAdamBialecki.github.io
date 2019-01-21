@@ -46,9 +46,6 @@ task5.toString = function(){
 }
 console.log(task5.toString()); // My Fifth Task My Description
 
-
-
-
 // Exmaple #6:
 var task6 = {
     title: 'My Fifth Task',
@@ -59,9 +56,9 @@ Object.defineProperty(task6, 'toString', {
     value: function() {
         return this.title + ' ' + this.description;
     },
-    writable: true,
-    enumerable: true,
-    configurable: true
+    writable: false, // Set this to false to prevent it being written by something global.
+    enumerable: false, // Set this to false and it will be ignored when called.
+    configurable: false // Set this to false to prevent this object from being altered.
 });
 
 task6.toString = 'hi'; //If the property 'writable' is set to 'true' above, then this line will override this (BE CAREFUL).  Set it to false to prevent it from being overwritten.
