@@ -2,6 +2,10 @@
 
 ## **Notes:**
 
+#### **1/24/2019**
+- Make sure you update you NPM packages if you run into an error then rn "node app.js".
+- Can I use this in terminal only?  I need to develop a terminal-only version.
+
 #### **11/11/2018**
 - To view, run "npm app.js".
 - visit "localhost:3000/hello" or any files from the "views" folder.
