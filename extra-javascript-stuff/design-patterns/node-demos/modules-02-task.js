@@ -1,15 +1,18 @@
-var Task = function (name) {
-    this.name = name;
+var Repo = require('./modules-03-taskRepository.js');
+
+var Task = function (data) {
+    this.name = data.name;
     this.completed = false;
 };
 
-Task.prototype.comple = function() {
+Task.prototype.complete = function() {
     console.log('Completing Task: ' + this.name);
     this.completed = true;
 };
 
 Task.prototype.save = function() {
     console.log('Saving Task: ' + this.name);
-}
+    Repo.save(this);
+};
 
 module.exports = Task;
