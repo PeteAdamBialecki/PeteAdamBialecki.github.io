@@ -1,6 +1,18 @@
 'use strict';
 
-var Task = require('./03-task');
+class Task {
+    constructor(name) {
+        this.name = name;
+        this.completed = false;
+    };
+    complete () {
+        console.log('Completing Task: ' + this.name);
+        this.completed = true;
+    };
+    save () {
+        console.log('Saving Task: ' + this.name);
+    };
+};
 
 var task1 = new Task('Create a demo for constructors.');
 var task2 = new Task('Create a demo for modules.');
