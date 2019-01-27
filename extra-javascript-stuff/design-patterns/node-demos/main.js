@@ -1,6 +1,6 @@
 'use strict';
 
-var Task = require('./03-task');
+var Task = require('./task');
 
 var task1 = new Task('Create a demo for constructors.');
 var task2 = new Task('Create a demo for modules.');
