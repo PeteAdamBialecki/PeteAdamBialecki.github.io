@@ -1,5 +1,6 @@
 'use strict';
 
+// This is basically the same as 'task.js' but using a class.
 class Task {
     constructor(name) {
         this.name = name;
