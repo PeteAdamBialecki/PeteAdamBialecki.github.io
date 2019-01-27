@@ -1,7 +1,8 @@
 'use strict';
 
-var main = require('./main');
+const main = require('./main');
 
+// The bare minimum for for a sample node project below:
 const express = require('express');
 const app = express();
 
