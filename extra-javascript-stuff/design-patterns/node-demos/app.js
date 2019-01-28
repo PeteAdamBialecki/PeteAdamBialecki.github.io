@@ -1,6 +1,6 @@
 'use strict';
 
-const main = require('./modules-01-main');
+const main = require('./03-factory/main');
 
 // The bare minimum for for a sample node project below:
 const express = require('express');

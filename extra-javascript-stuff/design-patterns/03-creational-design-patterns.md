@@ -46,3 +46,11 @@ Module Pattern Object Literal Ex #2:
                 nextMethod: function () {...}
             }
         }
+
+## **Factory Pattern**
+
+- Simplifies object creation.
+
+- Creating different objects based on need.
+
+- Repository creation

@@ -1,4 +1,4 @@
-var Repo = require('./modules-03-taskRepository.js');
+var Repo = require('./taskRepository.js');
 
 var Task = function (data) {
     this.name = data.name;
