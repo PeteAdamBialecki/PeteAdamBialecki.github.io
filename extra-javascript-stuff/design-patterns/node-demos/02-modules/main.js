@@ -1,5 +1,5 @@
-var Task = require('./modules-02-task.js');
-var Repo = require('./modules-03-taskRepository.js');
+var Task = require('./task.js');
+var Repo = require('./taskRepository.js');
 
 var task1 = new Task(Repo.get(1));
 
