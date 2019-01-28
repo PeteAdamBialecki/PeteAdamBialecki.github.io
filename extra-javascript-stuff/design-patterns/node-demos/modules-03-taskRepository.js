@@ -12,8 +12,7 @@ var repo = function () {
     var save = function (task) {
         console.log('Saving ' + task.name + ' to the db');
     }
-    
-    
+
     return {
         get: get,
         save: save
