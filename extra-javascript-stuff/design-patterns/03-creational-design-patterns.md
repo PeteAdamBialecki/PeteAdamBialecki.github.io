@@ -62,3 +62,5 @@ Module Pattern Object Literal Ex #2:
 - Hands the same instance back
 
 - Node.js uses CommonJS
+
+-  Used a lot with Node packages when using 'module.exports = new repo' at the end of a JavaScript file (See '04-singleton-node' directory in 'Repo.js').
