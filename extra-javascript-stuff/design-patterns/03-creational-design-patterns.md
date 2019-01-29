@@ -54,3 +54,11 @@ Module Pattern Object Literal Ex #2:
 - Creating different objects based on need.
 
 - Repository creation
+
+## **Singleton**
+
+- Remembers the last time you used it
+
+- Hands the same instance back
+
+- Node.js uses CommonJS
