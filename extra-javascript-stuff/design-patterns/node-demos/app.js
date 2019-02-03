@@ -1,6 +1,9 @@
 'use strict';
 
-const main = require('./02-structural-design-patterns/01-decorator/task-2');
+console.log(' ');
+console.log(' ');
+
+const main = require('./03-behavioral-design-patterns/01-observer-pattern/main');
 
 // The bare minimum for for a sample node project below:
 const express = require('express');
@@ -11,5 +14,8 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+    console.log(' ');
+    console.log(' ');
+    console.log('...listening on port 3000...');
+    console.log(' ');
 });
