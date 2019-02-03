@@ -1,6 +1,6 @@
 'use strict';
 
-const main = require('./02-structural-design-patterns/01-decorator/task-2');
+const main = require('./02-structural-design-patterns/03-flyweight-pattern/task');
 
 // The bare minimum for for a sample node project below:
 const express = require('express');

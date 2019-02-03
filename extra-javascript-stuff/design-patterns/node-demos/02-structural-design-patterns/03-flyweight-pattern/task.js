@@ -36,16 +36,16 @@ var completed = [true, false];
 var initialMemory = process.memoryUsage().heapUsed;
 
 for (var i = 0; i < 10000; i++) {
-    task.add({
+    tasks.add({
         name: 'task' + i,
         priority: priorities[Math.floor((Math.random() * 5))],
-        project: projets[Math.floor((Math.random() * 4))],
+        project: projects[Math.floor((Math.random() * 4))],
         user: users[Math.floor((Math.random() * 4))],
-        completed: cmpleted[Math.floor((Math.random() * 2))]
+        completed: completed[Math.floor((Math.random() * 2))]
     });
 };
 
 var afterMemory = process.memoryUsage().heapUsed;
 console.log('Used memory: ' + (afterMemory - initialMemory) / 1000000);
 
-console.log("Tasks generated: " + task.getCount());
+console.log("Tasks generated: " + tasks.getCount());
