@@ -1,21 +1,21 @@
-# **JavaScript Design Patterns: Structural Design Patters**
+# **JavaScript Design Patterns: Behavioral Design Patters**
 
-Concerned with how ovjects are made up and simplify relationships between objects.
+Concerned with the assignment of responsibilities between objects and how they communicate.
 
-- Deal with the relationship of objects.
+- Help objects cooperate.
 
-- Extend functionality.
+- Assigns clear hierarchy.
 
-- Simplify functionlity.
+- Can encapsulate requests.
 
-## **Decorator Patterns**
+## **Observer Pattern**
 
-Used to add new functionlity to an existing object, without being obtrusive.
+Allows a collection of objects to watch an object and be notified of changes.
 
-- More complete inheritance
+- Allows for loosely coupled system.
 
-- Wraps an object
+- One object is the focal point.
 
-- Protects existing objects
+- Group of objects watch for changes.
 
-- Allows extended functionlity
+- Observers, Subject, Notifiers
