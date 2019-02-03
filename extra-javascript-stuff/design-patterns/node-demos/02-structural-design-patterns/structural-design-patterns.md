@@ -19,3 +19,7 @@ Used to add new functionlity to an existing object, without being obtrusive.
 - Protects existing objects
 
 - Allows extended functionlity
+
+## ***Facade Patterns**
+
+Used to provide a simplified interface to a complicated system.
