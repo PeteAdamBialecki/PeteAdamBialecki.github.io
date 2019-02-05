@@ -3,7 +3,7 @@
 console.log(' ');
 console.log(' ');
 
-const main = require('./03-behavioral-design-patterns/01-observer-pattern/main');
+const main = require('./03-behavioral-design-patterns/03-command-pattern/taskRepo');
 
 // The bare minimum for for a sample node project below:
 const express = require('express');
