@@ -3,7 +3,7 @@
 console.log(' ');
 console.log(' ');
 
-const main = require('./03-behavioral-design-patterns/01-observer-pattern/main');
+const main = require('./03-behavioral-design-patterns/02-mediator-pattern/main');
 
 // The bare minimum for for a sample node project below:
 const express = require('express');
