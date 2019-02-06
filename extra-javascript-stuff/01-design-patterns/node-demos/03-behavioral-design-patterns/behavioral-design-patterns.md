@@ -1,4 +1,4 @@
-# **JavaScript Design Patterns: Behavioral Design Patters**
+# **JavaScript Design Patterns: Behavioral Design Patterns**
 
 Concerned with the assignment of responsibilities between objects and how they communicate.
 
