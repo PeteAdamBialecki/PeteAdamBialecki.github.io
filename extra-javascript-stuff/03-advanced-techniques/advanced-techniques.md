@@ -53,3 +53,13 @@ Changing to an Object Parameter
     - Object parameters simplify future expansion
 
     - Function logic gets more coplicated when honoring previous contracts
+
+    - Default values as an object
+
+    - Accessible to calling code
+
+    - Can be set to simplify repetitive function calls
+
+    - Different results from legacy code - without changes
+
+    - Defualt values are permanently changed
