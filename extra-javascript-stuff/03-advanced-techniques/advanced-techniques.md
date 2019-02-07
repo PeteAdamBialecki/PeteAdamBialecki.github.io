@@ -17,3 +17,15 @@ Tradition JavaScript Functions:
 
         myObject = {myFunction: function(text){...}}
         // Namespace (???) Pick meaningful names for functions.
+
+Function Stubs:
+
+        - Rename original function
+
+        - Create new function stub
+
+        - Legacy code calls stub
+
+        - New code calls new function name
+
+        - Confusing interface for new team members
