@@ -49,3 +49,7 @@ Changing to an Object Parameter
     - The order of object properties does not matter
 
     - Object parameters are passed by reference.
+
+    - Object parameters simplify future expansion
+
+    - Function logic gets more coplicated when honoring previous contracts
