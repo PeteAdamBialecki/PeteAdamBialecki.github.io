@@ -37,3 +37,15 @@ Default Parameters / Values:
     - Useful when one or two parameters are optional 
 
     - If more than one parameter is optional, certain assumptions must be made if only one is supplied.
+
+Changing to an Object Parameter
+
+    - Use one object parameter instead of multiple native types
+
+    - Objects are just named value pairs
+
+    - Properties of an object are optional by nature
+
+    - The order of object properties does not matter
+
+    - Object parameters are passed by reference.
