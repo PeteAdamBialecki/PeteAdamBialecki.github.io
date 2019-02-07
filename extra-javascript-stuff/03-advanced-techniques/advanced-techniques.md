@@ -20,12 +20,20 @@ Tradition JavaScript Functions:
 
 Function Stubs:
 
-        - Rename original function
+    - Rename original function
 
-        - Create new function stub
+    - Create new function stub
 
-        - Legacy code calls stub
+    - Legacy code calls stub
 
-        - New code calls new function name
+    - New code calls new function name
 
-        - Confusing interface for new team members
+    - Confusing interface for new team members
+
+Default Parameters / Values:
+
+    - Provide defaults within the functon when parameters are missing
+
+    - Useful when one or two parameters are optional 
+
+    - If more than one parameter is optional, certain assumptions must be made if only one is supplied.
