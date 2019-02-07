@@ -18,19 +18,22 @@
 </body>
 <script>
 _KSM = 
-{	draw: function(left, top)
+{	draw: function(left, top, width, height)
     {	//	Draw something on the canvas
         var canvas = document.getElementById('theCanvas');
         if (canvas.getContext)
         {	var context = canvas.getContext('2d');
             context.strokeStyle = 'black';
             context.fillStyle = 'silver';
-            context.fillRect(left, top, 100, 100);
-            context.strokeRect(left, top, 100, 100);
+            context.fillRect(left, top, width, height);
+            context.strokeRect(left, top, width, height);
         }
     }
 }
+// Legacy Code
 _KSM.draw();
+// Second Code
 _KSM.draw(530, 370);
+_KSM.draw(100, 100, 440, 280)
 </script>
 </html>
