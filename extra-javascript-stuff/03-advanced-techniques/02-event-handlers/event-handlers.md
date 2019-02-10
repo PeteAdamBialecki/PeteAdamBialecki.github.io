@@ -19,3 +19,11 @@ Shorthand Methods
         .keydown(), .keypress(), .keyup()
         .load()
         .mousedown(), .mouseenter(), .mouseleave(), .mousemove(), .mouseout(), .mouseover(), .mouseup()
+
+## **Message Function**
+
+- Centralize message handling
+
+- Use an object parameter
+
+- Explicitly set what "this" references

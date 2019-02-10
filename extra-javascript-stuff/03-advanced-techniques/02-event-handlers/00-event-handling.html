@@ -2,12 +2,12 @@
 <html language="en">
 	<head>
 		<title>Events 1</title>
-		<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js""></script>
 		<link type="text/css" rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
 		<div id="WorkArea">
-			<h5>Work Area</h5>
+			<h5 class="clickable">Work Area</h5>
 			<hr />
 			<input type="button" class="clickable" value="Click Me" />
 		</div>
@@ -18,9 +18,21 @@
 	</body>
 	<script>
 	$(function()
-	{	$('.clickable').click(function()
-		{	$('#Messages').append('click occurred<br/>');
-		});
+	{	var showEventMessage = function(options)
+			{	options = $.extend( 
+				{	eventType: 'Clicked: ',
+					eventTarget: this,
+					suffix: '<br/>'
+				}, options);
+				var message = options.eventType + ': ' +
+							  (options.eventTarget.nodeName || 'unknown') +
+							  options.suffix;
+				$('#Messages').append(message);
+			};
+			$('.clickable').click(function()
+		{	//showEventMessage.call(this, {suffix: '!<br/>'});
+			showEventMessage({ eventTarget: this });
+		});		
 	});
 	</script>
 </html>
