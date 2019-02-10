@@ -36,8 +36,16 @@ Shorthand Methods
 
     - Return false from event handler
 
-    - Call preventDefualt() on the event
+    - Call preventDefault() on the event
 
     - Call stopPropagation() on the event
 
     - Call stopImmediatePropagation() on the event
+
+- Multiple handlers can be attached for the same event
+
+- jQuery provides methods to determine if the state of the event has been changed
+
+        .isPropagationStopped()
+        .isImmediatePropagationStopped()
+        .isDefaultPrevented()
