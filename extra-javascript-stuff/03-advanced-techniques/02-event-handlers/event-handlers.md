@@ -49,3 +49,23 @@ Shorthand Methods
         .isPropagationStopped()
         .isImmediatePropagationStopped()
         .isDefaultPrevented()
+
+- jQuery event handling methods without shorthand
+
+        .bind()
+        .unbind()
+        .live()
+        .die()
+        .delegate()
+        .undelegate()
+        .on()
+        .off()
+        .one()
+
+- Shorthand methods ultimately reference the .on() method
+
+- Events bubble up the DOM from the inner most elements
+
+- .bind(), .live(), and .on() are other ways to attach events
+
+- .on() is the preferred attachement method
