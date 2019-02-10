@@ -6,7 +6,7 @@
 		<link type="text/css" rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<div id="WorkArea">
+		<div id="WorkArea" class="clickable">
 			<h5 class="clickable">Work Area</h5>
 			<hr />
 			<input type="button" class="clickable" value="Click Me" />
@@ -23,28 +23,52 @@
 		</div>
 	</body>
 	<script>
-	$(function() {	var showEventMessage = function(options)
-			{	options = $.extend( 
-				{	eventType: 'Clicked: ',
-					eventTarget: this,
-					suffix: '<br/>'
-				}, options);
-				var message = options.eventType + ' ' +
-							  (options.eventTarget.nodeName || 'unknown') +
-							  options.suffix;
-				$('#Messages').append(message);
-			};
+		$(function()
+		{	var showEventMessage = function(options)
+				{	options = $.extend( 
+					{	eventType: 'CLICK',
+						eventTarget: this,
+						suffix: '<br/>'
+					}, options);
+					var message = options.eventType + ': ' +
+								  (options.eventTarget.nodeName || 'unknown') +
+								  options.suffix;
+					$('#Messages').append(message);
+				};
+			
 			$('.clickable')
-				.click(function() {	//showEventMessage.call(this, {suffix: '!<br/>'});
-					showEventMessage({ eventTarget: this });
+				.click(function(event)
+				{	if (!event.isPropagationStopped() &&
+						!event.isImmediatePropagationStopped() &&
+						!event.isDefaultPrevented())
+					{	showEventMessage.call(this, { eventType: event.type });
+						event.stopPropagation();
+					}
 				})
-				.dblclick(function() {
-					showEventMessage.call(this, {eventType: 'Double Click: '});
+				.dblclick(function(event)
+				{	if (!event.isPropagationStopped() &&
+						!event.isImmediatePropagationStopped() &&
+						!event.isDefaultPrevented())
+					{	showEventMessage.call(this, { eventType: event.type });
+					}
 				})
-				.mousedown(function() {
-					showEventMessage.call(this, {eventType: 'Mouse Down: '});
-					return false;
+				.mousedown(function(event)
+				{	if (!event.isPropagationStopped() &&
+						!event.isImmediatePropagationStopped() &&
+						!event.isDefaultPrevented())
+					{	showEventMessage.call(this, { eventType: event.type });
+						event.stopPropagation();
+						event.preventDefault();
+					}
+				})
+				.mousedown(function(event)
+				{	if (!event.isPropagationStopped() &&
+						!event.isImmediatePropagationStopped() &&
+						!event.isDefaultPrevented())
+					{	showEventMessage.call(this, { eventType: event.type, 
+													  suffix: '#2<br/>' });
+					}
 				});
-	});
-	</script>
-</html>
+		});
+		</script>
+	</html>
