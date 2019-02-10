@@ -23,22 +23,28 @@
 		</div>
 	</body>
 	<script>
-	$(function()
-	{	var showEventMessage = function(options)
+	$(function() {	var showEventMessage = function(options)
 			{	options = $.extend( 
 				{	eventType: 'Clicked: ',
 					eventTarget: this,
 					suffix: '<br/>'
 				}, options);
-				var message = options.eventType + ': ' +
+				var message = options.eventType + ' ' +
 							  (options.eventTarget.nodeName || 'unknown') +
 							  options.suffix;
 				$('#Messages').append(message);
 			};
-			$('.clickable').click(function()
-		{	//showEventMessage.call(this, {suffix: '!<br/>'});
-			showEventMessage({ eventTarget: this });
-		});		
+			$('.clickable')
+				.click(function() {	//showEventMessage.call(this, {suffix: '!<br/>'});
+					showEventMessage({ eventTarget: this });
+				})
+				.dblclick(function() {
+					showEventMessage.call(this, {eventType: 'Double Click: '});
+				})
+				.mousedown(function() {
+					showEventMessage.call(this, {eventType: 'Mouse Down: '});
+					return false;
+				});
 	});
 	</script>
 </html>
