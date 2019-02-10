@@ -27,3 +27,17 @@ Shorthand Methods
 - Use an object parameter
 
 - Explicitly set what "this" references
+
+## **Propagation**
+
+- Events bubble up the DOM until handled
+
+- Ways to cancel even processing
+
+    - Return false from event handler
+
+    - Call preventDefualt() on the event
+
+    - Call stopPropagation() on the event
+
+    - Call stopImmediatePropagation() on the event
