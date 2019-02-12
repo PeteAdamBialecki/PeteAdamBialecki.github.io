@@ -37,6 +37,7 @@
 				};
 			
 			$('.clickable')
+                .off('click')
 				.on('click dblclick mousedown', function(event)
 				{	if (!event.isPropagationStopped() &&
 						!event.isImmediatePropagationStopped() &&
@@ -47,6 +48,7 @@
                                 event.preventDefault();
 					}
 				})
+                .off('click mousedown')
 				.on('mousedown', function(event)
 				{	if (!event.isPropagationStopped() &&
 						!event.isImmediatePropagationStopped() &&
@@ -57,7 +59,8 @@
 				})
                 .on('selectstart', function(event) {
                     return false;
-                });
+                })
+                ;
 		});
 		</script>
 	</html>
