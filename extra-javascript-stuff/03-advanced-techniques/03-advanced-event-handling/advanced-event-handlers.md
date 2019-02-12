@@ -2,4 +2,14 @@
 
 ## **Advanced Event Handlers**
 
-Stuff...
+Named Functions
+
+    - Easy to remove
+
+    - Can be centralized in a library
+
+    - Updating one handler function has global impact
+
+    - Be aware of the order hadler functions are added and removed
+
+    - Be careful of process order assumptions

@@ -23,21 +23,29 @@
 		</div>
 	</body>
 	<script>
-		$(function()
-		{	var showEventMessage = function(options)
-				{	options = $.extend( 
-					{	eventType: 'CLICK',
-						eventTarget: this,
-						suffix: '<br/>'
-					}, options);
-					var message = options.eventType + ': ' +
-								  (options.eventTarget.nodeName || 'unknown') +
-								  options.suffix;
-					$('#Messages').append(message);
-				};
-			
+		$(function() {	var showEventMessage = function(options)
+			{	options = $.extend( 
+				{	eventType: 'click',
+					eventTarget: this,
+					suffix: '<br/>'
+				}, options);
+				var message = options.eventType + ': ' +
+							  (options.eventTarget.nodeName || 'unknown') +
+							  options.suffix;
+				$('#Messages').append(message);
+			},
+			namedHandler = function(event)
+			{	if (!event.isPropagationStopped() &&
+					!event.isImmediatePropagationStopped() &&
+					!event.isDefaultPrevented())
+				{	showEventMessage.call(this,
+						{ eventType: 'namedHandler ' + event.type });
+					event.stopPropagation();
+				}
+			};
 			$('.clickable')
                 .off('click')
+                .on('click dblclick', namedHandler) 
 				.on('click dblclick mousedown', function(event)
 				{	if (!event.isPropagationStopped() &&
 						!event.isImmediatePropagationStopped() &&
@@ -48,8 +56,7 @@
                                 event.preventDefault();
 					}
 				})
-                .off('click mousedown')
-				.on('mousedown', function(event)
+				.on('mousedown click', function(event)
 				{	if (!event.isPropagationStopped() &&
 						!event.isImmediatePropagationStopped() &&
 						!event.isDefaultPrevented())
@@ -60,7 +67,7 @@
                 .on('selectstart', function(event) {
                     return false;
                 })
-                ;
+                .off('click', nameHandler);
 		});
 		</script>
 	</html>
