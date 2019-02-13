@@ -13,3 +13,19 @@ Named Functions
     - Be aware of the order hadler functions are added and removed
 
     - Be careful of process order assumptions
+
+Namespace
+
+    - Allows grouping of events
+
+    - Provides ability to narrowly target removal of event handlers
+
+    - Multiple namespaces can be included
+
+    - Namespaces are not hierarchial
+
+Delegation
+
+    - Bind event handlers higher in the DOM
+
+    - Centralized processing
