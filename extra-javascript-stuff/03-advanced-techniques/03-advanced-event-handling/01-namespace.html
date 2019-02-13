@@ -23,49 +23,47 @@
 		</div>
 	</body>
 	<script>
-		$(function() {	var showEventMessage = function(options)
-			{	options = $.extend( 
-				{	eventType: 'click',
-					eventTarget: this,
-					suffix: '<br/>'
-				}, options);
-				var message = options.eventType + ': ' +
-							  (options.eventTarget.nodeName || 'unknown') +
-							  options.suffix;
-				$('#Messages').append(message);
-			},
-			namedHandler = function(event)
-			{	if (!event.isPropagationStopped() &&
-					!event.isImmediatePropagationStopped() &&
-					!event.isDefaultPrevented())
-				{	showEventMessage.call(this,
-						{ eventType: 'namedHandler ' + event.type });
-					event.stopPropagation();
-				}
-			};
-			$('.clickable')
-                // .demo is the namespace.
-				.on('click.demo dblclick.demo mousedown.demo', function(event)
-				{	if (!event.isPropagationStopped() &&
-						!event.isImmediatePropagationStopped() &&
-						!event.isDefaultPrevented())
-					{	showEventMessage.call(this, { eventType: event.type });
-						event.stopPropagation();
-                            if (event.type === 'mousedown')
-                                event.preventDefault();
-					}
-				})
-				.on('mousedown.demo click.demo', function(event)
-				{	if (!event.isPropagationStopped() &&
-						!event.isImmediatePropagationStopped() &&
-						!event.isDefaultPrevented())
-					{	showEventMessage.call(this, { eventType: event.type, 
-													  suffix: '#2<br/>' });
-					}
-				})
-                .on('selectstart.demo', function(event) {
-                    return false;
-                });
-		});
-		</script>
+        $(function()
+        {	var showEventMessage = function(options)
+                {	options = $.extend( 
+                    {	eventType: 'click',
+                        eventTarget: this,
+                        suffix: '<br/>'
+                    }, options);
+                    var message = options.eventType + ': ' +
+                                  (options.eventTarget.nodeName || 'unknown') +
+                                  options.suffix;
+                    $('#Messages').append(message);
+                };
+            
+            $('.clickable')
+                .on('click.test', function(event)
+                {	showEventMessage.call(this, 
+                            { eventType: 'test ' + event.type });
+                })
+                .on('click.demo dblclick.demo mousedown.demo', function(event)
+                {	if (!event.isPropagationStopped() &&
+                        !event.isImmediatePropagationStopped() &&
+                        !event.isDefaultPrevented())
+                    {	showEventMessage.call(this, { eventType: event.type});
+                        event.stopPropagation();
+    
+                        if (event.type === 'mousedown')
+                            event.preventDefault();
+                    }
+                })
+                .on('mousedown.demo click.demo', function(event)
+                {	if (!event.isPropagationStopped() &&
+                        !event.isImmediatePropagationStopped() &&
+                        !event.isDefaultPrevented())
+                    {	showEventMessage.call(this, 
+                            { eventType: event.type, suffix: '#2<br/>'});
+                    }
+                })
+                .on('selectstart', function(event)
+                {	return false;			
+                })
+                .off('.demo');
+        });
+        </script>
 	</html>
