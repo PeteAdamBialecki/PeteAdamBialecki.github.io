@@ -35,10 +35,9 @@
                                   options.suffix;
                     $('#Messages').append(message);
                 };
-            
             $('.clickable')
                 .on('click.test', function(event)
-                {	showEventMessage.call(this, 
+                {	showEventMessage.call(this,
                             { eventType: 'test ' + event.type });
                 })
                 .on('click.demo dblclick.demo mousedown.demo', function(event)
@@ -47,7 +46,6 @@
                         !event.isDefaultPrevented())
                     {	showEventMessage.call(this, { eventType: event.type});
                         event.stopPropagation();
-    
                         if (event.type === 'mousedown')
                             event.preventDefault();
                     }
@@ -56,12 +54,12 @@
                 {	if (!event.isPropagationStopped() &&
                         !event.isImmediatePropagationStopped() &&
                         !event.isDefaultPrevented())
-                    {	showEventMessage.call(this, 
+                    {	showEventMessage.call(this,
                             { eventType: event.type, suffix: '#2<br/>'});
                     }
                 })
                 .on('selectstart', function(event)
-                {	return false;			
+                {	return false;
                 })
                 .off('.demo');
         });

@@ -23,3 +23,9 @@ Namespace
     - Multiple namespaces can be included
 
     - Namespaces are not hierarchial
+
+Delegation
+
+    - Bind event handlers higher in the DOM
+
+    - Centralized processing
