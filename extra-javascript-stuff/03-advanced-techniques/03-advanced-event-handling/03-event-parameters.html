@@ -25,53 +25,60 @@
 	<script>
         $(function()
         {	var showEventMessage = function(options)
-                {	options = $.extend( 
-                    {	eventType: 'click',
-                        eventTarget: this,
-                        suffix: '<br/>'
-                    }, options);
-                    var message = options.eventType + ': ' +
-                                  (options.eventTarget.nodeName || 'unknown') +
-                                  options.suffix;
-                    $('#Messages').append(message);
-                },
-                internalObject = { recrds: [], maxCount: 5 },
-                loadRecord = function() {
-                var id = internalObject.records.length;
-                    if (id < internalObject.maxCount) {
-                        internalObject.records.push({
-                            'description': 'Record id ' + id,
-                                value: Math.floor(Math.random() * 5000)
-                        });
-                        setTimeout(loadRecord, Math.floor(Math.random() * 1000));
-                    }
-                    else
-                        $(internalObject).trigger('recordsloaded');
-			    };;
-
+			{	options = $.extend( 
+				{	eventType: 'click',
+					eventTarget: this,
+					suffix: '<br/>'
+				}, options);
+				var message = options.eventType + ': ' +
+							  (options.eventTarget.nodeName || 'unknown') +
+							  options.suffix;
+				$('#Messages').append(message);
+			},
+			notifyObject = $({ nodeName: 'INTERNAL' }),
+			internalObject = { records: [], maxCount: 5 },
+			loadRecord = function()
+			{	var id = internalObject.records.length;
+				if (id < internalObject.maxCount)
+				{	internalObject.records.push(
+					{	'description': 'Record id ' + id,
+						value: Math.floor(Math.random() * 5000)
+					});
+					setTimeout(loadRecord, Math.floor(Math.random() * 1000));
+				}
+				else
+					$(notifyObject).trigger('recordsloaded', internalObject);
+			};
+		
             $('.clickable')
-                .on('click', function(event)
-                {	var $this = $(this),
-                        clickCount = ($this.data('clickcount') || 0) + 1;
-                    $this.data('clickcount', clickCount);
-                    showEventMessage.call(this, 
+			.on('click', internalObject, function(event)
+			{	var $this = $(this),
+					clickCount = ($this.data('clickcount') || 0) +1;
+			
+				$this.data('clickcount', clickCount);
+				showEventMessage.call(this, 
 						{ eventType: '' + clickCount + ') ' + event.type });
-                    if (clickCount === 3)
-                        $this.trigger('click3');
-                    if($this.attr('type') === 'button')
-                        loadRecord();
-                })
-                .on('click3', function(event) {
-                    event.stopPropagation();
-                    showEventMessage.call(this, {eventType: event.type});
-                    $(this).addClass('highlight');
-                });
-            $(internalObject)
-			    .on('recordsloaded', function(event) {
-                    showEventMessage.call(this, {eventType: event.type
-                });
-				$.each(internalObject.records, function() {
-                        $('#Messages').append(' -- ' + 
+				
+				if (clickCount === 3)
+					$this.trigger('click3');
+				if ($this.attr('type') === 'button')
+				{	var theObject = event.data || { records: [] };
+					$('#Messages')
+						.append('Record count: ' + theObject.records.length + '<br/>');
+
+					loadRecord();
+				}
+			})
+			.on('click3', function(event)
+			{	event.stopPropagation();
+				showEventMessage.call(this, {eventType: event.type});
+				$(this).addClass('highlight');
+			});
+		$(notifyObject)
+			.on('recordsloaded', function(event, theObject)
+			{	showEventMessage.call(this, {eventType: event.type});
+				$.each(theObject.records, function()
+				{	$('#Messages').append(' -- ' + 
 						this.description + ': ' + this.value + '<br/>');
 				});
 			});
