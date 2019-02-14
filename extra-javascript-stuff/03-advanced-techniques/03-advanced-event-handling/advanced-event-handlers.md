@@ -37,3 +37,13 @@ Custom Events
     - Create events for regular objects
 
     - Initiate a custom event with .trigger()
+
+Event Parameters
+
+    - Additional data can be passed to event handler functions
+
+    - Include data in jQuery .trigger() method
+
+    - Include data in jQuery .on() method
+
+    - Parameter type should be array orobject
