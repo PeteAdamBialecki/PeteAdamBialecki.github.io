@@ -35,11 +35,21 @@
                                   options.suffix;
                     $('#Messages').append(message);
                 };
-            
+
             $('.clickable')
                 .on('click', function(event)
-                {	showEventMessage.call(this, 
+                {	var $this = $(this),
+                        clickCount = ($this.data('clickcount') || 0) + 1;
+                    $this.data('clickcount', clickCount);
+                    showEventMessage.call(this,
                             { eventType: event.type });
+                    if (clickCount === 3)
+                        $this.trigger('click3');
+                })
+                .on('click3', function(event) {
+                    event.stopPropagation();
+                    showEventMessage.call(this, {eventType: event.type});
+                    $(this).addClass('highlight');
                 });
         });
         </script>
