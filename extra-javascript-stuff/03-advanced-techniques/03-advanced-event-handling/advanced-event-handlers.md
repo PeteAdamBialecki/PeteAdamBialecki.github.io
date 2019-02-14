@@ -29,3 +29,11 @@ Delegation
     - Bind event handlers higher in the DOM
 
     - Centralized processing
+
+Custom Events
+
+    - Create new events for DOM elements
+
+    - Create events for regular objects
+
+    - Initiate a custom event with .trigger()
