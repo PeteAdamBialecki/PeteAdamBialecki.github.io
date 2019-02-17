@@ -61,3 +61,17 @@ Loading Dynamic Content
         - Content loads.
 
         - "Proceed" button is enabled with a callback function.
+
+Load other content pages
+
+    - using "load" should work for multiple contents.
+
+    - We must decide which load method uses the callback.
+
+    - Asynchronous methods can't be counted on to finish in a specific order.
+
+- Problems with current "load" logic
+
+    - Only one call back for three loads.
+
+    - Must guess which content will take the longest to load.

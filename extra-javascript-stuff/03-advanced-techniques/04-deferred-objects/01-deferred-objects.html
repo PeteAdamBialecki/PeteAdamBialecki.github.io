@@ -17,7 +17,11 @@
 		$(function() {
             $('#Load').click(function() {
                 $('#Section1').load('Content1.html', function() {
+                $('#Section2').load('Content2.html', function() {
+                $('#Section3').load('Content3.html', function() {
                     $('#Proceed').removeAttr('disabled');
+                });
+                });
                 });
             });
 		});
