@@ -13,3 +13,45 @@
     - Postpone logic flow until all asynchronous processes complete - in any order
 
     - Integration of AJAX and custom functions into asynchronous processing.
+
+Making an AJAX call with jQuery:
+
+    - Implements the JavaScript promise.
+
+    - AJAX calls:
+
+        - Open a connecton to an external resource.
+
+        - Begin transfer of the resource.
+
+        - Upon completion, execute success or failure callbacks.
+
+        - Resolve or reject a promise.
+
+    - Many developers just pass success or failure callback functions.
+
+    - The returned promise is mostly ignored.
+
+Traditional AJAX Processing Sample:
+
+        $.get('SomeFile.html', function(result) {
+            // This is the callback function
+            // Process the result - and set some
+            // flag to indicate completion.
+        });
+
+    - Few developers capture the result of the $.getfunction call.
+
+    - The callback is used to trigger further processing upon completion.
+
+    - Gets problematic if multiple processes need to execute.
+
+Loading Dynamic Content
+
+    - Requirements
+
+        - Load content into three <DIV> elements asynchronously.
+
+        - When all content is loaded, enable another element.
+
+        - Only load content when user clicks the "Load" button.
