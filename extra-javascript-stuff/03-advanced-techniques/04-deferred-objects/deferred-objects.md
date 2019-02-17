@@ -62,16 +62,50 @@ Loading Dynamic Content
 
         - "Proceed" button is enabled with a callback function.
 
-Load other content pages
+    - Load other content pages
 
-    - using "load" should work for multiple contents.
+        - using "load" should work for multiple contents.
 
-    - We must decide which load method uses the callback.
+        - We must decide which load method uses the callback.
 
-    - Asynchronous methods can't be counted on to finish in a specific order.
+        - Asynchronous methods can't be counted on to finish in a specific order.
 
-- Problems with current "load" logic
+    - Problems with current "load" logic
 
-    - Only one call back for three loads.
+        - Only one call back for three loads.
 
-    - Must guess which content will take the longest to load.
+        - Must guess which content will take the longest to load.
+
+    - Common pattern that is often used
+
+        - Settled on because it works.
+
+    - Problems with this approach ("christmas tree effect")
+
+        - Not truly an asynchronous process.
+
+        - Not scalable.
+
+        - Hard to maintain.
+
+    - jQuer Deferred Method
+
+        - Use "get" method instead of "load".
+
+        - "get" uses Deferred, "load" does not.
+
+        - When / Then pattern
+
+            - Can include as many gets as desired.
+
+            - Then processing only occurs once all When methods complete.
+
+            - Extensible, but readability coould be improved.
+
+    - Create a function to load content
+
+        - Load specified URL into specified element.
+
+        - Return the results of a "get" method.
+
+        - Needs two parameters - for now.
