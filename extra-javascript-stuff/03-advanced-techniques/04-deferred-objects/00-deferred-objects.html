@@ -14,8 +14,12 @@
 		<div id="Messages" ></div>
 	</body>
 	<script>
-		$(function()
-		{	
+		$(function() {
+            $('#Load').click(function() {
+                $('#Section1').load('content1.html', function() {
+                    $('#Proceed').removeAttr('disabled');
+                });
+            });
 		});
 	</script>
 </html>

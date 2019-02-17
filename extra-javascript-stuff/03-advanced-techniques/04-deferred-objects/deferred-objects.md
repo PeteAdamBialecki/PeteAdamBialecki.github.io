@@ -55,3 +55,9 @@ Loading Dynamic Content
         - When all content is loaded, enable another element.
 
         - Only load content when user clicks the "Load" button.
+
+    - Using jQuery "load" method appears to work
+
+        - Content loads.
+
+        - "Proceed" button is enabled with a callback function.
