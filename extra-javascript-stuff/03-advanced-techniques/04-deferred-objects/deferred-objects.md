@@ -78,18 +78,34 @@ Loading Dynamic Content
 
     - Common pattern that is often used
 
-        - Settled on because it works
+        - Settled on because it works.
 
     - Problems with this approach ("christmas tree effect")
 
-        - Not truly an asynchronous process
+        - Not truly an asynchronous process.
 
-        - Not scalable
+        - Not scalable.
 
-        - Hard to maintain
+        - Hard to maintain.
 
-jQuer Deferred Method
+    - jQuer Deferred Method
 
-    - Use "get" method instead of "load".
+        - Use "get" method instead of "load".
 
-    - "get" uses Deferred, "load" does not.
+        - "get" uses Deferred, "load" does not.
+
+        - When / Then pattern
+
+            - Can include as many gets as desired.
+
+            - Then processing only occurs once all When methods complete.
+
+            - Extensible, but readability coould be improved.
+
+    - Create a function to load content
+
+        - Load specified URL into specified element.
+
+        - Return the results of a "get" method.
+
+        - Needs two parameters - for now.
