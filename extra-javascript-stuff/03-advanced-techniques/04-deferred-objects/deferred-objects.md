@@ -48,64 +48,98 @@ Traditional AJAX Processing Sample:
 
 Loading Dynamic Content
 
-    - Requirements
+- Requirements
 
-        - Load content into three <DIV> elements asynchronously.
+    - Load content into three <DIV> elements asynchronously.
 
-        - When all content is loaded, enable another element.
+    - When all content is loaded, enable another element.
 
-        - Only load content when user clicks the "Load" button.
+    - Only load content when user clicks the "Load" button.
 
-    - Using jQuery "load" method appears to work
+- Using jQuery "load" method appears to work
 
-        - Content loads.
+    - Content loads.
 
-        - "Proceed" button is enabled with a callback function.
+    - "Proceed" button is enabled with a callback function.
 
-    - Load other content pages
+- Load other content pages
 
-        - using "load" should work for multiple contents.
+    - using "load" should work for multiple contents.
 
-        - We must decide which load method uses the callback.
+    - We must decide which load method uses the callback.
 
-        - Asynchronous methods can't be counted on to finish in a specific order.
+    - Asynchronous methods can't be counted on to finish in a specific order.
 
-    - Problems with current "load" logic
+- Problems with current "load" logic
 
-        - Only one call back for three loads.
+    - Only one call back for three loads.
 
-        - Must guess which content will take the longest to load.
+    - Must guess which content will take the longest to load.
 
-    - Common pattern that is often used
+- Common pattern that is often used
 
-        - Settled on because it works.
+    - Settled on because it works.
 
-    - Problems with this approach ("christmas tree effect")
+- Problems with this approach ("christmas tree effect")
 
-        - Not truly an asynchronous process.
+    - Not truly an asynchronous process.
 
-        - Not scalable.
+    - Not scalable.
 
-        - Hard to maintain.
+    - Hard to maintain.
 
-    - jQuer Deferred Method
+- jQuery Deferred Method
 
-        - Use "get" method instead of "load".
+    - Use "get" method instead of "load".
 
-        - "get" uses Deferred, "load" does not.
+    - "get" uses Deferred, "load" does not.
 
-        - When / Then pattern
+    - When / Then pattern
 
-            - Can include as many gets as desired.
+        - Can include as many gets as desired.
 
-            - Then processing only occurs once all When methods complete.
+        - Then processing only occurs once all When methods complete.
 
-            - Extensible, but readability coould be improved.
+        - Extensible, but readability coould be improved.
 
-    - Create a function to load content
+- Create a function to load content
 
-        - Load specified URL into specified element.
+    - Load specified URL into specified element.
 
-        - Return the results of a "get" method.
+    - Return the results of a "get" method.
 
-        - Needs two parameters - for now.
+    - Needs two parameters - for now.
+
+- Negative testing
+
+    - Check bad URL
+
+    - Check bad section element
+
+    - Alternate syntax for WHEN / THEN
+
+Some methods available on deferred objects
+
+    - Return deferred object for a process flow
+
+        - when
+
+        - promise
+
+    - Attach handler functions to deferred object
+
+        - then
+
+        - done
+
+        - fail
+
+        - progress
+
+        - always
+
+    - Change state of deferred object
+
+        - Resolve
+
+        - Reject
