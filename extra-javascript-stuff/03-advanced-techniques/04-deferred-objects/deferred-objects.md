@@ -143,3 +143,11 @@ Some methods available on deferred objects
         - Resolve
 
         - Reject
+
+Dynamic pages vs static pages
+
+    - Scripts execute on loaded page
+
+    - Loaded page also loads embedded elements
+
+    - Loaded page may wait for user interaction
