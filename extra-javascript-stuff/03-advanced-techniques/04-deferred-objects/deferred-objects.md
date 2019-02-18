@@ -151,3 +151,13 @@ Dynamic pages vs static pages
     - Loaded page also loads embedded elements
 
     - Loaded page may wait for user interaction
+
+Creating A Deferred Object
+
+- A self-managed deferred object is userful when:
+
+    - Writing long-running processes
+
+    - Loading content that contains embedded content
+
+    - Wrapping a process flow into a single process
