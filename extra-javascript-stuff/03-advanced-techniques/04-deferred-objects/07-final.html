@@ -32,7 +32,7 @@
 					if (typeof options !== 'object')
 					{	msg = 'Expecting parameter object';
 						showMessage({ message: msg, error: true });
-						return defer.reject({ statusText: msg });
+						return defer.resolve({ statusText: msg });
 					}
 
 					options.selector = options.selector || '';
@@ -42,7 +42,7 @@
 					if (options.url === '')
 					{	msg = 'Missing URL';
 						showMEssage({ message: msg, error: true });
-						return defer.reject({ statusText: msg });
+						return defer.resolve({ statusText: msg });
 					}
 
 					$div = $(options.selector)
@@ -57,7 +57,7 @@
 							.fail(function(result)
 							{	msg = 'Could not load URL: ' + options.url;
 								showMessage({ message: msg, error: true });
-								defer.reject(result);
+								defer.resolve(result);
 							});
 						if (options.dynamic)
 							$div.off('complete,failure')
@@ -67,13 +67,13 @@
 								.on('failure', function(event, result)
 								{	msg = 'Dynamic content: ' + result.statusText;
 									showMessage({ message: msg, error: true });
-									defer.reject(result);
+									defer.resolve(result);
 								});
 					}
 					else
 					{	msg = 'Error in selector';
 						showMessage({ message: msg, error: true });
-						defer.reject({ statusText: msg });
+						defer.resolve({ statusText: msg });
 					}
 
 					return defer.promise();
