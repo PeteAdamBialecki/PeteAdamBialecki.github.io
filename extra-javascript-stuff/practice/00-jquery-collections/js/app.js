@@ -3,9 +3,7 @@
   //  Add a class of "featured" to the new span element.
 //2. Add a class of "new" to the last item in the list. You can traverse to the last item or find a jQuery method that helps you select the last item in the list. 
 //3. Add an attribute to each link so that all anchor tags open in a new tab.
-
 //4. Select and print the index and text of each anchor tag to the console
-
 //5. Refactor question #4 using the 'this' keyword.
 
 // 1:
@@ -19,3 +17,7 @@ $('a').attr( "target", "_blank" );
 $('a').each(function(index, item){
     console.log(index, $(item).text());
   });
+// 5:
+$('a').each(function(index){
+  console.log(index, $(this).text());
+});
