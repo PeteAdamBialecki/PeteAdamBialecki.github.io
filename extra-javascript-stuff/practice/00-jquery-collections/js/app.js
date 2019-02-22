@@ -11,3 +11,10 @@
 //4. Select and print the index and text of each anchor tag to the console
 
 //5. Refactor question #4 using the 'this' keyword. 
+
+
+
+
+
+$( "#restaurantList li:nth-child(2)" ).append( "<span>Featured</span>" );
+$("#restaurantList span").addClass('featured');
