@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #fff;
+  background-color: #333;
   margin: 30px;
 }
 
@@ -15,6 +15,10 @@ h1, h2 {
 
 h3, h1 {
   color: #537d7b;
+}
+
+a {
+    color: #888;
 }
 
 ul {
