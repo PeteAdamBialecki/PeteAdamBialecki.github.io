@@ -27,11 +27,11 @@
 //    -- Area of a circle that with a radius of 7.2: 162.8601631620949
 //    -- Volume of a spehere with a radius of 7.2: 1563.4575663561109
 
+// 1:
+console.log("attached...");
 
-
-
-
-
-
-
-
+// 2:
+function areaOfRect(width, height) {
+    return width * height;
+};
+console.log(areaOfRect(10,11));
