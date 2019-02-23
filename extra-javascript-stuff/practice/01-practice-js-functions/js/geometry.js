@@ -3,7 +3,6 @@
 //    The function should accept the width and height as arguments
 //    and return the area of that rectangle.
 //    The area of a rectangle is the width * height
-
 // 3. Create a function that calculates the volume of a rectangular prism.
 //    The function should accept the width, height and length as arguments
 //    and return the volume of that rectangular prism.
@@ -40,3 +39,9 @@ function volumeOfPrism(width, height, length) {
     return width * height * height;
 };
 console.log(volumeOfPrism(10,11,12));
+
+// 4:
+function areaOfCircle(radius) {
+    return radius * radius * Math.PI;
+};
+console.log(areaOfCircle(10));
