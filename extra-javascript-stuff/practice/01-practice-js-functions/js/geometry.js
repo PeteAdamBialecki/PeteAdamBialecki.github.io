@@ -1,5 +1,4 @@
 // 1. Attach this file geometry.js to the index.html file
-
 // 2. Create a function that calculates the area of a rectangle.
 //    The function should accept the width and height as arguments
 //    and return the area of that rectangle.
@@ -35,3 +34,9 @@ function areaOfRect(width, height) {
     return width * height;
 };
 console.log(areaOfRect(10,11));
+
+// 3:
+function volumeOfPrism(width, height, length) {
+    return width * height * height;
+};
+console.log(volumeOfPrism(10,11,12));
