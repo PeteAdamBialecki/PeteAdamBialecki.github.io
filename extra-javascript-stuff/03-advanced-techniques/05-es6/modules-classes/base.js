@@ -1,2 +1,10 @@
-import {projectId, projectName} from 'module1.js';
-console.log(`${projectName} has id: ${projectId}`);
+class Project {
+    constructor() {
+        console.log('constructing Project');
+    }
+}
+
+class SoftwareProject extends Project {
+
+}
+ let p = new SoftwareProject();
