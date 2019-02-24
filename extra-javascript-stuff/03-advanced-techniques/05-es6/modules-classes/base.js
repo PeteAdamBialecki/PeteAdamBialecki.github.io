@@ -1,1 +1,2 @@
-console.log('Hey there, from a module.')
+import {projectId} from 'module1.js';
+console.log(projectId);
