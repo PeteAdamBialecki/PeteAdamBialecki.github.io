@@ -40,7 +40,43 @@
 
 
 
-// EXERCISE AFTER:
+// EXERCISE AFTER (Version #1):
+
+// var num1;
+// var num2;
+// var message;
+
+// alert("Let's do some math!");
+
+// var num1 = prompt("Please type a number");
+// num1 = parseFloat(num1);
+// var num2 = prompt("Please type another number");
+// num2 = parseFloat(num2);
+
+// if (isNaN(num1)) {
+//     alert("The first number you entered was not a number. Please reload the page try again.");
+// } else if (isNaN(num2)) {
+//     alert("The second number you entered was not a number. Please reload the page try again.");
+// } else if (num1 || num2 == '0') {
+//     alert("You entered a zero.  You can't divide by zero.");
+// } else {
+//     var message = "<h1>Math with the numbers " + num1 + " and " + num2 + "</h1>";
+//     message += num1 + " + " + num2 + " = " + (num1 + num2);
+//     message += "<br>";
+//     message += num1 + " * " + num2 + " = " + (num1 * num2);
+//     message += "<br>";
+//     message += num1 + " / " + num2 + " = " + (num1 / num2);
+//     message += "<br>";
+//     message += num1 + " - " + num2 + " = " + (num1 - num2);
+
+//         // write message to web page
+//         document.write(message);
+// };
+
+
+
+
+// EXERCISE AFTER (Version #2):
 
 var num1;
 var num2;
@@ -48,17 +84,15 @@ var message;
 
 alert("Let's do some math!");
 
-var num1 = prompt("Please type a number");
+num1 = prompt("Please type a number");
 num1 = parseFloat(num1);
-var num2 = prompt("Please type another number");
+num2 = prompt("Please type another number");
 num2 = parseFloat(num2);
 
-if (isNaN(num1)) {
-    alert("The first number you entered was not a number. Please reload the page try again.");
-} else if (isNaN(num2)) {
-    alert("The second number you entered was not a number. Please reload the page try again.");
-} else if (num1 || num2 == '0') {
+if (num2 === 0) {
     alert("You entered a zero.  You can't divide by zero.");
+} else if (isNaN(num1) || isNaN(num2)) {
+    alert("One of the numbers you entered was not a number. Please reload the page try again.");
 } else {
     var message = "<h1>Math with the numbers " + num1 + " and " + num2 + "</h1>";
     message += num1 + " + " + num2 + " = " + (num1 + num2);
