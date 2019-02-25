@@ -13,6 +13,8 @@ var num2 = prompt("Please type another number");
 num2 = parseFloat(num2);
 
 if (isNaN(num1)) {
+    alert("ou did not enter a number. Please reload the page.");
+} else if (isNaN(num2)) {
     alert("You did not enter a number. Please reload the page.");
 } else {
 // build an HTML message
@@ -28,6 +30,8 @@ if (isNaN(num1)) {
     // write message to web page
     document.write(message);
 };
+
+
 
 
 
