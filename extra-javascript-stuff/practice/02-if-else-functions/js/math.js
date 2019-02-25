@@ -13,9 +13,11 @@ var num2 = prompt("Please type another number");
 num2 = parseFloat(num2);
 
 if (isNaN(num1)) {
-    alert("ou did not enter a number. Please reload the page.");
+    alert("The first number you entered was not a number. Please reload the page try again.");
 } else if (isNaN(num2)) {
-    alert("You did not enter a number. Please reload the page.");
+    alert("The second number you entered was not a number. Please reload the page try again.");
+} else if (num1 || num2 == '0') {
+    alert("You entered a zero.  You can't divide by zero.");
 } else {
 // build an HTML message
     var message = "<h1>Math with the numbers " + num1 + " and " + num2 + "</h1>";
