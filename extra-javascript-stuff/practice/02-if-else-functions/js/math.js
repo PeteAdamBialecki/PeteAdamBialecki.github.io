@@ -12,24 +12,27 @@ num1 = parseFloat(num1);
 var num2 = prompt("Please type another number");
 num2 = parseFloat(num2);
 
+if (isNaN(num1)) {
+    alert("You did not enter a number. Please reload the page.");
+} else {
 // build an HTML message
-var message = "<h1>Math with the numbers " + num1 + " and " + num2 + "</h1>";
-message += num1 + " + " + num2 + " = " + (num1 + num2);
-message += "<br>";
-message += num1 + " * " + num2 + " = " + (num1 * num2);
-message += "<br>";
-message += num1 + " / " + num2 + " = " + (num1 / num2);
-message += "<br>";
-message += num1 + " - " + num2 + " = " + (num1 - num2);
+    var message = "<h1>Math with the numbers " + num1 + " and " + num2 + "</h1>";
+    message += num1 + " + " + num2 + " = " + (num1 + num2);
+    message += "<br>";
+    message += num1 + " * " + num2 + " = " + (num1 * num2);
+    message += "<br>";
+    message += num1 + " / " + num2 + " = " + (num1 / num2);
+    message += "<br>";
+    message += num1 + " - " + num2 + " = " + (num1 - num2);
 
-// write message to web page
-document.write(message);
+    // write message to web page
+    document.write(message);
+};
 
 
 
 
 // Edit the math.js file to accomplish these 4 goals:
-
 // 1. Move all of your variable declarations to the top of the script.
 
 // 2. Add an if statement to test that the 2nd input is not zero. You can't divide by 0,
