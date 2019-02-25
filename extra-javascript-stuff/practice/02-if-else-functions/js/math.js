@@ -1,4 +1,7 @@
 // declare program variables
+var num1;
+var num2;
+var message;
 
 // announce the program
 alert("Let's do some math!");
