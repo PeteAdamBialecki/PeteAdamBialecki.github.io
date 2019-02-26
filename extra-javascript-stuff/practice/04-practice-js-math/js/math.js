@@ -1,6 +1,5 @@
 // 1. Attach this file -- math.js -- to the index.html file using a <script> tag
 // 2. Add an alert to announce the program with a message like "Let's do some math!"
-
 // 3. Create a variable and use the prompt() method to collect a number from a visitor
 
 // 4. Convert that value from a string to a floating point number
@@ -36,3 +35,5 @@
 console.log('Connected.');
 alert("Let's do some math!");
 let visitor = prompt('Give me a number: ');
+let converted = parseInt(visitor);
+console.log(converted);
