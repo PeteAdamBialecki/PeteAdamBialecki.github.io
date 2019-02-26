@@ -1,5 +1,4 @@
 // 1. Attach this file -- practice.js -- to the index.html file using a <script> tag
-
 // 2. In this JavaScript file, add a prompt dialog to capture input from the user and store it in a variable
 
 // 3. Add a second a prompt dialog to capture input from the user and store it in a second variable
@@ -13,9 +12,6 @@
 
 
 
+alert('JavaScript connected.');
 
-
-
-
-
-
+let userInput = prompt('How are you feeling?');
