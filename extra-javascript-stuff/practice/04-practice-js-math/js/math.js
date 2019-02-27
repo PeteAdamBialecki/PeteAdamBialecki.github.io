@@ -2,7 +2,6 @@
 // 2. Add an alert to announce the program with a message like "Let's do some math!"
 // 3. Create a variable and use the prompt() method to collect a number from a visitor
 // 4. Convert that value from a string to a floating point number
-
 // 5. Repeat steps 3 and 4 to create a second variable and collect a second number
 
 // 6. Create a new variable -- message -- which you'll use to build
@@ -37,5 +36,15 @@ let firstChoice = prompt('Give me a number: ');
 let firstConverted = parseInt(firstChoice);
 let secondChoice = prompt('Give me a number: ');
 let secondConverted = parseInt(secondChoice);
+let message = document.write("<h1>Math  with the numbers " + firstChoice + " and " + secondChoice + " is:<br><h1>" +
+    "<p>" + 
+    firstChoice + " + " + secondChoice + " = "+ (firstConverted + secondConverted)
+    + "<br>" + 
+     firstChoice + " - " + secondChoice + " = "+ (firstConverted - secondConverted)
+    + "<br>" + 
+     firstChoice + " * " + secondChoice + " = "+ (firstConverted * secondConverted)
+    + "<br>" + 
+     firstChoice + " / " + secondChoice + " = "+ (firstConverted / secondConverted)
+    + "<br></p>");
 console.log(firstConverted);
 console.log(secondConverted);
