@@ -1,3 +1,7 @@
+html {
+    background: #666;
+}
+
 body {
     font-size: 1.15rem;
     background: #edeff0;
@@ -5,6 +9,7 @@ body {
     margin: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     height: 100vh;
+    background: #666;
   }
   
   h1 {

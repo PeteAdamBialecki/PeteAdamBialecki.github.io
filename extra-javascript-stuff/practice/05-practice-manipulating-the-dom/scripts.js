@@ -1,6 +1,8 @@
 // 1: Set the text of the <h1> element
-
-
+var title = "My Activities List",
+	titleText = document.querySelector('h1');
+        titleText.innerHTML = title;
+        titleText.style.color = "teal";
 // 2: Set the color of the <h1> to a different color
 
 
