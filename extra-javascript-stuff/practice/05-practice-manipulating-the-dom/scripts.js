@@ -30,3 +30,8 @@ document.getElementsByClassName("desc")[0].innerHTML = "<p>A list of fun things 
 
 var element = document.querySelector('ul');
 element.classList.add('list');
+
+var node = document.createElement("li");
+var textnode = document.createTextNode("Biking");
+node.appendChild(textnode);
+document.querySelector('ul').appendChild(node); 
