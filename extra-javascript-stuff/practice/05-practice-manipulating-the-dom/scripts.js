@@ -3,10 +3,7 @@
 // 3: Set the content of the '.desc' paragraph
 // The content should include at least one HTML tag
 
-
 // 4: Set the class of the <ul> to 'list'
-
-
 // 5: Create a new list item and add it to the <ul>
 
 
@@ -31,7 +28,9 @@ document.getElementsByClassName("desc")[0].innerHTML = "<p>A list of fun things 
 var element = document.querySelector('ul');
 element.classList.add('list');
 
-var node = document.createElement("li");
-var textnode = document.createTextNode("Biking");
-node.appendChild(textnode);
-document.querySelector('ul').appendChild(node); 
+var lastText = document.createElement("li");
+var lastLi = document.createElement("input");
+lastText.innerHTML = '<input> Biking </input>';
+
+document.querySelector('ul').appendChild(lastText);
+
