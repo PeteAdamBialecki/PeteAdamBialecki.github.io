@@ -23,15 +23,15 @@ const list = document.getElementsByTagName('input');
     for (let i=0; i<list.length; i++)
         list[i].setAttribute('type', 'checkbox');
 
-// 7: Create a <button> element, and set its text to 'Delete'
+// 7: Create a <button> element, and set its text to 'Delete'. Add the <button> inside the '.extra' <div>.
+
 const deleteContainer = document.getElementsByClassName('extra');
 const deleteButton = document.createElement('button');
     deleteButton.innerHTML = 'Delete';
         document.getElementsByClassName('extra')[0].appendChild(deleteButton);
 
+document.querySelector('button').setAttribute('id', 'deleteThis');
 
-
-// Add the <button> inside the '.extra' <div>
 
 
 // 8: Remove the '.extra' <div> element from the DOM when a user clicks the 'Delete' button
