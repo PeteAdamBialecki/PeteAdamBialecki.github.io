@@ -31,7 +31,9 @@ const deleteButton = document.createElement('button');
         document.getElementsByClassName('extra')[0].appendChild(deleteButton);
 
 document.querySelector('button').setAttribute('id', 'deleteThis');
-
-
+document.querySelector('button').setAttribute('onclick', 'deleteThis()');
 
 // 8: Remove the '.extra' <div> element from the DOM when a user clicks the 'Delete' button
+function deleteThis() {
+    document.getElementsByClassName('extra')[0].remove();
+}
