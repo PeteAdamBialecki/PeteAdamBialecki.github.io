@@ -1,4 +1,4 @@
-// 1) 	Write the code for function addNewTeachers() found on line 35. This function should receive parameter newTeachers, defined on line 52, and add the new teachers to the treehouseTeachers variable. 
+// 1) 	Write the code for function addNewTeachers() found on line 25. This function should receive parameter newTeachers, defined on line 52, and add the new teachers to the treehouseTeachers variable. 
  
 // 2)	Find function printTreehouseSummary(). There is something you need to fix in this function so the console.log() on the final line of the function outputs the correct number of JavaScript courses and teachers.
  
@@ -22,7 +22,8 @@ const courses = ['Introducing JavaScript',
 var i = courses.length;
 
 function addNewTeachers(newTeachers) {
-	// TODO: write a function that adds new teachers to the teachers array 
+    // TODO: write a function that adds new teachers to the teachers array
+    teachers.push.apply(newTeachers);
 
 }
 
@@ -36,8 +37,6 @@ function printTreehouseSummary() {
   console.log(`Treehouse has ${i} JavaScript courses, and ${teachers.length} Javascript teachers`);
 }
 
-addNewTeachers(newTeachers);
-printTreehouseSummary();
 
 let newTeachers = [
 	{
@@ -50,3 +49,5 @@ let newTeachers = [
 	}
 ];
 
+addNewTeachers(newTeachers);
+printTreehouseSummary();
