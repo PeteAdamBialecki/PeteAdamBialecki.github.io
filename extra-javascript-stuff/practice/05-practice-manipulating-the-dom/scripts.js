@@ -2,7 +2,6 @@
 // 2: Set the color of the <h1> to a different color
 // 3: Set the content of the '.desc' paragraph
 // The content should include at least one HTML tag
-
 // 4: Set the class of the <ul> to 'list'
 // 5: Create a new list item and add it to the <ul>
 
@@ -34,3 +33,11 @@ lastText.innerHTML = '<input> Biking </input>';
 
 document.querySelector('ul').appendChild(lastText);
 
+document.querySelector('input');
+
+var checkbox = document.querySelector('input');
+
+
+for ( ; index < length; index++) {
+    checkbox[index].type = "checkbox";
+}
