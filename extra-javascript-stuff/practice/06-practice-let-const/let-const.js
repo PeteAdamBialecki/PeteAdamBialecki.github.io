@@ -33,16 +33,15 @@ let courses = ['Introducing JavaScript',
 var i = courses.length;
 
 function addNewTeachers(newTeachers) {
-    // TODO: write a function that adds new teachers to the teachers array
         teachers.push(...newTeachers);
 }
 
 function printTreehouseSummary() {
-	// TODO: fix this function so that it prints the correct number of courses and   teachers 
     for (let i = 0; i < teachers.length; i += 1) {
         console.log(`${teachers[i].name} teaches ${teachers[i].topicArea}`);
 	}
     console.log(`Treehouse has ${courses.length} JavaScript courses, and ${teachers.length} Javascript teachers`);
 }
+
 addNewTeachers(newTeachers);
 printTreehouseSummary();
