@@ -1,0 +1,1 @@
+This is a sample bar chart visualization that was built at a Meetup workshop with the Chicago Data Viz Community and Civis Analytics.
