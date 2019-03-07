@@ -1,51 +1,52 @@
-var p = d3.select('body').append(p).text('My Bar Graph')
-  
-// step 2
-var div = d3.select('body').append('div')
+d3.csv("ChiCrime.csv", ready)
 
-// step 3
-var svg = div.append('svg')
-  .attr('width', 300)
-  .attr('height', 300)
+// Ready Function
+function ready(error, data) {
 
-// step 4
-var rect1 = svg.append('rect')
-  .attr('x', 0)
-  .attr('y', 10)
-  .attr('width', 100)
-  .attr('height', 20)
+    if (error) return console.warn(error);
 
-var rect2 = svg.append('rect')
-  .attr('x', 0)
-  .attr('y', 40)
-  .attr('width', 200)
-  .attr('height', 20)
+    data.forEach(function (d) {
+        d.count = +d.count; //making sure count reads as a number
+        d.year = +d.year; //making sure year reads in as a number
+        d.violation = d['Primary Type']; //changing to an easier to use variable name
+    });
 
-var rect3 = svg.append('rect')
-  .attr('x', 0)
-  .attr('y', 70)
-  .attr('width', 300)
-  .attr('height', 20)
+    // filtering for 2018 data
+    var data2018 = data.filter(function (d) { return d.year == 2018 })
 
-var data  = [
-    {
-        y: 10,
-        width: 1000
-    },
-    {
-        y: 40,
-        width: 200
-    },
-    {
-        y: 70,
-        width: 300
-    },
-];
+    //Define Margins and svg here:
+    var width = 720;
+    var height = 400;
 
-var rects  = svg. selectAll ('rect')
-    .data(data)
-    .enter().append('rect')
-    .attr('x', 0)
-    .attr('height', 20)
-    .attr('y', function(d) { return d.y })
-    .attr('width', function(d) {return d.width})
+    var svg = d3.select("body").append("svg") //grabs body and appends an svg
+        .attr("width", width)
+        .attr("height", height);
+
+    //Define xScale and yScale here:
+    var yScale = d3.scaleLinear()
+        .domain([0, d3.max(data2018, function (d) { return d.count; })])
+        .range([height, 0]);
+
+    var xScale = d3.scaleBand()
+        .domain(data2018.map(function (d) { return d.violation; }))
+        .rangeRound([0, width]);
+        
+    // Define xAxis and yAxis generators here:  
+    var xAxis = d3.axisBottom(xScale);
+
+    var xAxisGroup = svg.append("g")
+        .attr("class", "x axis") //assigning classes `x` and `axis`
+        .call(xAxis);
+
+    var yAxis = d3.axisLeft(yScale);
+
+    var yAxisGroup = svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+    // Append axes here: 
+
+
+    // Create bars here:
+
+}
