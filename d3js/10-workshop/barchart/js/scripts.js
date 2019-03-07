@@ -1,4 +1,7 @@
-d3.csv("ChiCrime.csv", ready)
+
+// This is the final version of the Chicago crimes D3 visualization.
+
+d3.csv("chicago-crimes.csv", ready)
 
 // Ready Function
 function ready(error, data) {
@@ -98,14 +101,6 @@ function ready(error, data) {
                 .transition()
                 .duration(100)
                 .attr('fill', '#336b87')
-                d3.select("#countLabel").remove();
+            d3.select("#countLabel").remove();
         })
-
-
-
-
-
-
-
-
 }
