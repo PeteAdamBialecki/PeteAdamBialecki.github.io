@@ -1,18 +1,14 @@
 html, body {
-    background: #777;
+    background: #763626;
 }
 
 svg {
     width: 400;
     height: 300;
-    background: #444;
+    background: #2a3132;
     border: 1px solid rgb(0, 0, 0);
 }
 
-p {
+h1, p {
     font-family: sans-serif;
-}
-
-rect {
-    fill: dodgerblue;
 }
