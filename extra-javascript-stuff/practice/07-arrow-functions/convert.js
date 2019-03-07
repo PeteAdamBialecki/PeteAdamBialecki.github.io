@@ -1,6 +1,8 @@
 
 console.log('Conneted...');
 
+// My version:
+
 // // #1
 // // Function before arrow converting:
 //     // function addToTen(num) {
@@ -29,19 +31,6 @@ console.log('Conneted...');
 // console.log(addToTen(5));
 // console.log(divideUs(5,5));
 // printMyName();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // The following is a second version.
