@@ -7,7 +7,7 @@ $('.review p').html('There is a lot of <b>STUFF</b> here.');
 // 4. Change the name of the app. Change *only* the text inside the span element within the h1. 
 $('h1 span').text('AWESOME');
 // 5. Create an animation for the paragraph with the id of "flashMessage." Chain an animation that 
-
+$('#flashMessage').slideDown('slow').delay(2000).slideUp('slow');
   // slides the message down for 1 second
   // delays the message for 2 seconds 
   // slides the message up for 1 second 
