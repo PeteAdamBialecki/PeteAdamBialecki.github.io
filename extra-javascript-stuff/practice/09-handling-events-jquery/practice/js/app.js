@@ -15,8 +15,10 @@ $('#addNew').click(function () {
 });
 // 3. Add the class "strike" to the restaurant name each time it's double clicked. Use event delegation on the ul element to listen for a click event on the ul's list items
 $('li').on("dblclick", function () {
-    $(this).addClass('strike').disableTextSelect();
+    $(this).toggleClass('strike');
 });
+
+
 
 //BONUS: Refactor challenge 3 using the "this" keyword.
 //BONUS: Look up a jQuery method that will let you toggle the .strike class on and off.
