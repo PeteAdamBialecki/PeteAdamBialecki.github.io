@@ -1,3 +1,5 @@
+
+// First Version:
 // 1. Hide/show the text inside the #helpText span element when the user's mouse passes over the text "How are these ranked?" (Hint: use the jQuery toggle() method)
 $(function () {
     $('#helpText').hover(function () {
@@ -17,8 +19,26 @@ $('#addNew').click(function () {
 $('li').on("dblclick", function () {
     $(this).toggleClass('strike');
 });
-
-
-
 //BONUS: Refactor challenge 3 using the "this" keyword.
 //BONUS: Look up a jQuery method that will let you toggle the .strike class on and off.
+
+
+
+
+
+
+
+
+// Second Version:
+// $('#helpText').on('mouseover', function () {
+//     $('#helpText span').toggle();
+// });
+
+// $('#addNew').on('click', function () {
+//     const newRestaurant = $('#newRestaurantInput').val();
+//     $('ul').append(newRestaurant);
+// });
+
+// $('ul').on('dblclick', 'li', function (event) {
+//     $(event.target).addClass('strike');
+// });
