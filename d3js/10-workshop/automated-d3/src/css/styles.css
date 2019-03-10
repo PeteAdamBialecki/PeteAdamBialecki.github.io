@@ -1,0 +1,18 @@
+html, body {
+    background: #777;
+}
+
+svg {
+    width: 400;
+    height: 300;
+    background: #444;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+p {
+    font-family: sans-serif;
+}
+
+rect {
+    fill: dodgerblue;
+}
