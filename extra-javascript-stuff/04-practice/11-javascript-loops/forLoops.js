@@ -1,8 +1,3 @@
-/* * * INSTRUCTIONS
-- Before you can run this file, you'll need to have Node.js installed on your computer.
-- From the project directory, type `node forLoops`.
-- If your program is stuck in an infinite loop, and need to break out of the program,
-you can do that by typing ctrl + C. * * */
 
 let text;
 // 1. Write a for loop to build a string of numbers from 0 to 4, 

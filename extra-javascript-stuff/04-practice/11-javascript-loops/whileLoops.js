@@ -1,14 +1,3 @@
-/* * * INSTRUCTIONS
-
-Before you can run this file, you'll need to have 
-Node.js installed on your computer. 
-
-From the project directory, type `node whileLoops`.
-
-If your program is stuck in an infinite loop, and need to break out of the program,
-you can do that by typing ctrl + C.
-
-* * */
 
 let i;
 let text;
@@ -19,8 +8,10 @@ print('1st Loop:');
 text = '';
 
 // Write 1st loop here:
-
-
+while (i < 10) {
+    text += "The number is " + i;
+    i++;
+  }
 print(text); // Should print `0 1 2 3 4 `.
 
 // 2. Write a while loop to build a string of numbers from 1 to 5, 
