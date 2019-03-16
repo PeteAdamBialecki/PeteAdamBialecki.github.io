@@ -56,7 +56,7 @@ function ready(error, data) {
         .attr('text-anchor', 'start')
 
     var yAxis = d3.axisLeft(yScale)
-        .tickFormat(d3.format(`.2s`));;
+        .tickFormat(d3.format(`.2s`));
 
     var yAxisGroup = svg.append("g")
         .attr("class", "y axis")
@@ -73,7 +73,7 @@ function ready(error, data) {
         .attr('y', function (d) { return yScale(d.count) })
         .attr('width', xScale.bandwidth())
         .attr('height', function (d) { return height - yScale(d.count) })
-        .attr('fill', '#336b87')
+        .attr('fill', '#45a29e')
         .on('mouseenter', function (d) {
             console.log(d3.select(this))
 
