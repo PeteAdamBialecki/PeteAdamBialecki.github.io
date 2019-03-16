@@ -1,18 +1,18 @@
 html, body {
-    background: #777;
+    background: #252525;
 }
 
 svg {
     width: 400;
     height: 300;
-    background: #444;
+    background: #1f2833;
     border: 1px solid rgb(0, 0, 0);
 }
 
-p {
+h1, p {
     font-family: sans-serif;
 }
 
-rect {
-    fill: dodgerblue;
+#countLabel {
+    fill: #66fcf1;
 }
