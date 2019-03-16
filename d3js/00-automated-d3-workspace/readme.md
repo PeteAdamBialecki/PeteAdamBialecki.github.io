@@ -1,1 +1,3 @@
-This is a sample bar chart visualization that was built at a Meetup workshop with the Chicago Data Viz Community and Civis Analytics.
+This directory will be used to just work with inidividual D3 projects in an automated workflow to save time.
+
+- To run, use the command, "npm start".
