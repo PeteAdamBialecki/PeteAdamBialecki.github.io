@@ -11,8 +11,13 @@ svg {
 
 h1, p {
     font-family: sans-serif;
+    color: #c5c6c7;
 }
 
 #countLabel {
     fill: #66fcf1;
+}
+
+path, line {
+    stroke: #999;
 }
