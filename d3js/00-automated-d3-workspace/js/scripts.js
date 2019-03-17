@@ -77,11 +77,9 @@ function ready(error, data) {
         .attr('height', function (d) { return height - yScale(d.count) })
         .attr('fill', '#45a29e')
         .on('mouseenter', function (d) {
-            console.log(d3.select(this))
-
             d3.select(this)
                 .transition()
-                .duration(100)
+                .duration(200)
                 .attr('fill', '#66fcf1')
 
             var xPosition = parseFloat(d3.select(this).attr('x')) + xScale.bandwidth() / 2;
@@ -91,7 +89,8 @@ function ready(error, data) {
             svg.append("text") //add text
                 .attr("id", "countLabel") //give it the id 'countLabel'
                 .attr("x", xPosition) //assign x position - calculated above
-                .attr("y", yPosition) //assign y position - calculated above
+                .attr("y", yPosition)
+                 //assign y position - calculated above
                 .attr("text-anchor", "middle") //set text anchor to the middle, so that the text shows up in center of bar
                 .attr("font-family", "sans-serif") //add some styling (this can also be done in css section)
                 .attr("font-size", "11px")
@@ -101,7 +100,7 @@ function ready(error, data) {
         .on('mouseleave', function (d) {
             d3.select(this)
                 .transition()
-                .duration(100)
+                .duration(200)
                 .attr('fill', '#45a29e')
             d3.select("#countLabel").remove();
         })
