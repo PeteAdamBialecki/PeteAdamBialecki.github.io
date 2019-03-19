@@ -33,5 +33,8 @@ maze.prototype.setEnd = function (x, y) {
 }
 
 maze.prototype.setWall = function (x, y, direction) {
-    this.spaces[x][y].setWall(direction);
+    if (x > 0 && x <= this.width && y > 0 && y <= this.height && ["north", "east", "south", "west"].indexOf(direction) !== -1) {
+        this.spaces[x][y].setWall(direction);
+            return true;
+    } return false;
 }
