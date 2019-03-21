@@ -9,6 +9,7 @@ function maze(width, height) {
     this.startOrientation = null;
     this.endX = null;
     this.endY = null;
+    this.directions = ["north", "east", "south", "west"];
     this.spaces = [];
 
     let x;
@@ -16,15 +17,17 @@ function maze(width, height) {
     for (x = 1; x <= width; x += 1) {
         this.spaces[x] = [];
         for (y = 1; y <= height; y += 1) { 
-            this.spaces[x][y] = new mazeSpace();
+            this.spaces[x][y] = new mazeSpace(this.directions);
         }
     }
 }
 
 maze.prototype.setStart = function(x, y, orientation) {
-    this.startX = x;
-    this.startY = y;
-    this.startOrientation = orientation;
+    if (this.isValidDirection(orientation)) {
+        this.startX = x;
+        this.startY = y;
+        this.startOrientation = orientation;
+    }
 }
 
 maze.prototype.setEnd = function (x, y) {
@@ -33,8 +36,12 @@ maze.prototype.setEnd = function (x, y) {
 }
 
 maze.prototype.setWall = function (x, y, direction) {
-    if (x > 0 && x <= this.width && y > 0 && y <= this.height && ["north", "east", "south", "west"].indexOf(direction) !== -1) {
+    if (x > 0 && x <= this.width && y > 0 && y <= this.height && this.isValidDirection(direction)) {
         this.spaces[x][y].setWall(direction);
             return true;
     } return false;
+}
+
+maze.prototype.isValidDirection = function(direction) {
+    return this.directions.indexOf(direction) !== -1
 }
