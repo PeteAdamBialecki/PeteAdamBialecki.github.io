@@ -1,3 +1,7 @@
+html, body {
+    background: #777;
+}
+
 .maze {
     border: 5px solid #292929;
     display: inline-block;
@@ -5,7 +9,7 @@
 }
 .maze .mazeRow .mazeSpace {
     display: inline-block;
-    border: 5px solid #F8F8F8;
+    border: 5px solid rgb(126, 125, 125);
     width: 2em;
     height: 2em;
     overflow: hidden;
