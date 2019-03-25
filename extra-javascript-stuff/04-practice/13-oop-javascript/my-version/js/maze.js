@@ -55,3 +55,38 @@ maze.prototype.isValidDirection = function(direction) {
 maze.prototype.isInBounds = function (x,y) {
     return x > 0 && x <= this.width && y > 0 && y <= this.height;
 }
+
+let forwardX, forwardY;
+maze.prototype.canMove = function (x, y, direction) {
+    if (!this.isValidDirection(direction)) {
+        return false;
+    }
+     if (!this.isInBounds(x, y)) {
+         return false;
+     }
+     switch (direction) {
+         case "north":
+            forwardX = x;
+            forwardY = y + 1;
+            break;
+        case "east":
+            forwardX = x + 1;
+            forwardY = y;
+            break;
+        case "south":
+            forwardX = x;
+            forwardY = y - 1;
+            break;
+        case "west":
+            forwardX = x - 1;
+            forwardY = y;
+            break;
+     }
+     if (!this.isInBounds(forwardX, forwardY)) {
+         return false;
+     }
+     if (this.spaces[x][y][direction]) {
+         return false;
+     }
+    return true;
+}
