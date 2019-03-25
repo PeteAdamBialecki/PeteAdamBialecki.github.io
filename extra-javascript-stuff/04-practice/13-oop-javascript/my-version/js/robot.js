@@ -12,7 +12,7 @@ Robot.prototype.setMaze = function(maze) {
     this.x = maze.startX;
     this.y = maze.startY;
     this.orientation = maze.startOrientation;
-}
+};
 
 Robot.prototype.turnRight = function() {
     if (!this.maze || !this.maze.isValidDirection(this.orientation)) {
