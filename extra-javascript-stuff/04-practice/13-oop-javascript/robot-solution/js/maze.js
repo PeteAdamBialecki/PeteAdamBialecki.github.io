@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-function maze(width, height) {
+function Maze(width,height) {
     this.width = width;
     this.height = height;
 
@@ -9,20 +9,20 @@ function maze(width, height) {
     this.startOrientation = null;
     this.endX = null;
     this.endY = null;
-    this.directions = ["north", "east", "south", "west"];
+
+    this.directions = ["north","east","south","west"];
     this.spaces = [];
 
-    let x;
-    let y;
-    for (x = 1; x <= width; x += 1) {
+    var x, y;
+    for (x=1; x <= width; x += 1) {
         this.spaces[x] = [];
-        for (y = 1; y <= height; y += 1) { 
-            this.spaces[x][y] = new mazeSpace(this.directions);
+        for (y=1; y <= height; y += 1) {
+            this.spaces[x][y] = new MazeSpace(this.directions);
         }
     }
 }
 
-maze.prototype.setStart = function(x, y, orientation) {
+Maze.prototype.setStart = function(x, y, orientation) {
     if (this.isInBounds(x, y) && this.isValidDirection(orientation)) {
         this.startX = x;
         this.startY = y;
@@ -32,7 +32,7 @@ maze.prototype.setStart = function(x, y, orientation) {
     return false;
 }
 
-maze.prototype.setEnd = function (x, y) {
+Maze.prototype.setEnd = function (x, y) {
     if (!this.isInBounds(x, y)) {
         return false;
     }
@@ -41,17 +41,18 @@ maze.prototype.setEnd = function (x, y) {
     return true;
 }
 
-maze.prototype.setWall = function (x, y, direction) {
+Maze.prototype.setWall = function (x, y, direction) {
     if (this.isInBounds(x, y) && this.isValidDirection(direction)) {
         this.spaces[x][y].setWall(direction);
-            return true;
-    } return false;
+        return true;
+    }
+    return false;
 }
 
-maze.prototype.isValidDirection = function(direction) {
-    return this.directions.indexOf(direction) !== -1
+Maze.prototype.isValidDirection = function(direction) {
+    return this.directions.indexOf(direction) !== -1;
 }
 
-maze.prototype.isInBounds = function (x,y) {
+Maze.prototype.isInBounds = function (x, y) {
     return x > 0 && x <= this.width && y > 0 && y <= this.height;
 }
