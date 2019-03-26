@@ -1,6 +1,6 @@
 'use strict';
 
-function maze(width,height) {
+function maze(width, height) {
     this.width = width;
     this.height = height;
 
@@ -12,7 +12,8 @@ function maze(width,height) {
     this.directions = ["north", "east", "south", "west"];
     this.spaces = [];
 
-    let x, y;
+    let x;
+    let y;
     for (x = 1; x <= width; x += 1) {
         this.spaces[x] = [];
         for (y = 1; y <= height; y += 1) { 
