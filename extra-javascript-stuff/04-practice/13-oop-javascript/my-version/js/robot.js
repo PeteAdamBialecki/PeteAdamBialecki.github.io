@@ -54,10 +54,10 @@ Robot.prototype.moveForward = function() {
             this.x += 1;
             break;
         case "south":
-            this.y += 1;
+            this.y -= 1;
             break;
         case "west":
-            this.x += 1;
+            this.x -= 1;
             break;
     }
     return true;
@@ -88,10 +88,3 @@ Robot.prototype.exitMaze = function(steps) {
     }
 
 }
-
-
-
-
-
-
-
