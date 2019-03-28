@@ -1,4 +1,4 @@
-## **Visual Studio Code User Settings**
+# **Visual Studio Code User Settings**
 
 - For icons, use "Material Theme Icons" or ""Material Theme Icons Darker".
 
@@ -6,7 +6,7 @@
 
 - [VSC Themes](http://orta.io/vscode-themes/)
 
-- User Settings: "setting.json"
+## **User Settings: "setting.json"**
 
         {
             "workbench.iconTheme": "eq-material-theme-icons-darker",
@@ -26,3 +26,13 @@
                 "statusBar.debuggingBackground": "#727272"
             }
         }
+
+# **Notes for future Github Website**
+
+## **What are some samples that I can display?**
+
+D3.js
+
+    - Barcharts
+
+    - Choropleth Maps
