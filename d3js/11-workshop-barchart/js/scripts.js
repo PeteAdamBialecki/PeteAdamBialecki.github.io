@@ -21,7 +21,7 @@ function ready(error, data) {
     var margin = { top: 20, right: 50, bottom: 160, left: 45 };
 
     var width = 720 - margin.left - margin.right,
-        height = 800 - margin.top - margin.bottom;
+        height = 600 - margin.top - margin.bottom;
 
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
