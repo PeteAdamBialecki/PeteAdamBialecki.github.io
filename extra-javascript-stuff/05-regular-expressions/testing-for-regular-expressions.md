@@ -24,3 +24,7 @@ With this entered, paste the variations in the bottom field:
         hazy slug
 
 After doing so, all the words are highlight which means that all of the variations would be found, let's say for example if you were searching for those words in a wikipedia article.
+
+## **Rules**
+
+?
