@@ -1,16 +1,28 @@
-ladybug
-ladybugs
-lady bugs
+## **Matching Specific Characters**
 
-ladybug
-lady bugs
-lazy bug
-lazy lug
+The following are the RgEx expression that would match the listed words.
 
-ladybug
-lazy lug
-lazy slug
-hazy slug
+lady ?bugs?
 
-ladybug
-fading rug!
+        ladybug
+        ladybugs
+        lady bugs
+
+la[dz]y[ ]?[bl]ugs?
+
+        ladybug
+        lady bugs
+        lazy bug
+        lazy lug
+
+[hl]a[dz]y[ ]?[s]?[bl]ug
+
+        ladybug
+        lazy lug
+        lazy slug
+        hazy slug
+
+[fl]ad[yi][n]?[g]?[ ]?[br]?ug[!]?
+
+        ladybug
+        fading rug!
