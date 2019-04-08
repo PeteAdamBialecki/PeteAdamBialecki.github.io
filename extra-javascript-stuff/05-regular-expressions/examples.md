@@ -94,3 +94,17 @@ Repitions:
 \D = not digit
 \W = not word
 \S = Not white space
+
+## **Alternation**
+
+| = Alternation (or)
+
+## **Groups**
+
+(sub){2} = Matches "subsub"
+(sub)?pat = Matches "pat" and "subpat"
+
+## **Beginnign and Ending of Strings**
+
+^ = Beginning of a string
+$ = End of a string
