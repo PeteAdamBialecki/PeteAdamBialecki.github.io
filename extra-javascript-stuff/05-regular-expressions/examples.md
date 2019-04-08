@@ -64,3 +64,33 @@ la[dz]y[ ]?[bl]ugs?
         40502
         43470
         40496
+
+## **Using Wildcard Characters**
+
+[0-9] = \d
+[A-Za-z0-9] = \w
+[ \t\r\n\f] = \s
+Any character = .
+* = zero or more
++ = one or more
+
+Repitions:
+{3} = three
+{3,} = three or more
+{3,5} = between three and five
+
+        Social Security Numbers:
+        \d{3}-\d{2}-\d{4}
+
+## **Excluding Characters**
+
+[^] = Exlude characters
+[^@] = Sample: Exclude any character except @
+[^@.] = match any character except @ and .
+
+\d = digit
+\w = word
+\s = whitespace
+\D = not digit
+\W = not word
+\S = Not white space
