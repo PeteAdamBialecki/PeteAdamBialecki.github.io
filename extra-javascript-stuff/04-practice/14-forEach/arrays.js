@@ -110,3 +110,16 @@ console.log(" ");
     // ...refactored version from above:
     months.forEach(month => capitalizedMonths.push(month.toUpperCase()));
     console.log(capitalizedMonths);
+
+console.log("--------------------------------------------------------");
+console.log("`for` vs forEach() Example #8:");
+console.log(" ");
+
+    const names = ['Selma', 'Ted', 'Mike', 'Sam', 'Sharon', 'Marvin'];
+    let sNames = [];
+        names.forEach(name => {
+            if (name.charAt(0) === 'S') {
+                sNames.push(name);
+            }
+        });
+    console.log(sNames);
