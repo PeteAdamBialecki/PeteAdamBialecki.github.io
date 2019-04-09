@@ -55,16 +55,6 @@ For example:
     let x;
     alert(typeof x); // returns "undefined"
 
-
-
-
-
-
-
-
-
-
-
 ## **let and const**
 
 ES2015 introduced two new keywords for declaring variables: const and let. Both work similarly to var. You use the keyword -- const or let -- and a value you want to put into the variable:
