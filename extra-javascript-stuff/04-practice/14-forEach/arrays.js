@@ -29,9 +29,9 @@ console.log("`for` vs forEach() Example #3:");
 console.log(" ");
 
     const prices = [6.75, 3.10, 4.00, 8.12];
-    let addedPrices = 0;
-        prices.forEach(price => addedPrices += price);
-        console.log(addedPrices);
+    let totalPrices = 0;
+        prices.forEach(price => totalPrices += price);
+        console.log(totalPrices);
 
 console.log("--------------------------------------------------------");
 console.log("`for` vs forEach() Example #4:");
@@ -92,3 +92,21 @@ console.log(" ");
         }
     });
     console.log(filteredColors);
+
+console.log("--------------------------------------------------------");
+console.log("`for` vs forEach() Example #7:");
+console.log(" ");
+
+    // Using forEach, capitalize all the strings in the months array and store them in the array capitalizedMonths.
+    const months = ['january', 'february', 'march', 'april', 'may'];
+    let capitalizedMonths = [];
+
+    // filteredColors should be: ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY']
+    // months.forEach(month => {
+    //     const capitalizedMonth = month.toUpperCase();
+    //     capitilizedMonths.push(capitilizedMonth);
+    // });
+
+    // ...refactored version from above:
+    months.forEach(month => capitalizedMonths.push(month.toUpperCase()));
+    console.log(capitalizedMonths);
