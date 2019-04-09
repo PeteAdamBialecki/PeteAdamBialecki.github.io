@@ -1,6 +1,5 @@
 console.log(" ");
-console.log("Connected...");
-console.log("----------------------------");
+console.log("--------------------------------------------------------");
 
 
 // `for` vs forEach() Example #1
@@ -19,7 +18,7 @@ const fruits = ['apple', 'pear', 'cherry'];
 
         // Bad: you can't break out of a loop early. Use for or while loops instead.
 
-console.log("----------------------------");
+console.log("--------------------------------------------------------");
 
 // `for` vs forEach() Example #2
 let capitilizedFruits = [];
@@ -30,9 +29,9 @@ let capitilizedFruits = [];
 
 console.log(capitilizedFruits);
 
-console.log("----------------------------");
+console.log("--------------------------------------------------------");
 
-// `for` vs forEach() Example #3
+// `for` vs forEach() Example #3: Adding numbers in array with forEach
 const prices = [6.75, 3.10, 4.00, 8.12];
 let addedPrices = 0;
     prices.forEach(price => addedPrices += price);
