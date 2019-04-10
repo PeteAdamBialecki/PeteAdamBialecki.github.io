@@ -1,3 +1,6 @@
+
+// Array Iteration
+
 console.log("--------------------------------------------------------");
 console.log("`for` vs forEach() Example #3:");
 console.log(" ");
@@ -123,3 +126,42 @@ console.log(" ");
             }
         });
     console.log(sNames);
+
+// Array Manipulation
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #1:");
+console.log(" ");
+
+    const names2 = ['Selma', 'Ted', 'Mike', 'Sam', 'Sharon', 'Marvin'];
+
+    // const sNames = names.filter(name => {
+    // if(name.charAt(0) === 'S') {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
+    // });
+
+    // Same code as above but since it really is a single statement, it can be reduced to a single line.
+    const sNames2 = names2.filter(name => name.charAt(0) === 'S');
+
+    console.log(sNames2);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #2:");
+console.log(" ");
+
+
+    const numbersSampleThrees = [1,2,3,4,5,6,7,8,9,10];
+    const no3 = numbersSampleThrees.filter(number => number !== 3);
+
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #2:");
+console.log(" ");
+
+
+    const numbersSampleEvens = [1,2,3,4,5,6,7,8,9,10];
+    const noEvens = numbersSampleEvens.filter(number => number % 2 === 0);
+    console.log(noEvens);
