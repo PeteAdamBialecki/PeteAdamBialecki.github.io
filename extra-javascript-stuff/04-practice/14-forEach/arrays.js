@@ -207,3 +207,19 @@ console.log(" ");
     const capitalizedFruits = fruitsAgain.map(fruit => fruit.toUpperCase());
 
     console.log(capitalizedFruits);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #6:");
+console.log(" ");
+
+    // Version #1:
+    // const dollarPrices = [5, 4.23, 6.4, 8.09, 3.20];
+    // let pricesConverted = dollarPrices.map(convert => '$' + convert.toFixed(2));
+
+    // Version #2 with template literal
+    const dollarPrices = [5, 4.23, 6.4, 8.09, 3.20];
+    const priceToDollars = convert => `$${convert.toFixed(2)}`;
+    const pricesConverted = dollarPrices.map(priceToDollars);
+
+    // Result: [ '$5.00', '$4.23', '$6.40', '$8.09', '$3.20' ]
+    console.log(pricesConverted);
