@@ -166,9 +166,9 @@ console.log(" ");
     const noEvens = numbersSampleEvens.filter(number => number % 2 === 0);
     console.log(noEvens);
 
-    console.log("--------------------------------------------------------");
-    console.log("Array Manipulation Example #4:");
-    console.log(" ");
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #4:");
+console.log(" ");
     
 
     // Using the filter method on the years array, return an array of only the years in the twentieth century (remember: the twentieth century includes the year "2000"). See the comments for the correct result. Store the new array in the variable century20.
@@ -179,3 +179,47 @@ console.log(" ");
     // Write your code below
     
     century20 = years.filter(number => number < 2001);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #5:");
+console.log(" ");
+
+    const strings = ['1','2','3','4','5'];
+    const numbers = strings.map(string => parseInt(string, 10));
+    console.log(numbers);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #6:");
+console.log(" ");
+
+    const fruitsAgain = ['apple', 'pear', 'cherry'];
+    // let capitalizedFruits = [];
+    // Before refactoring:
+    // fruitsAgain.forEach(fruit => {
+    // let capitalizedFruit = fruit.toUpperCase();
+    // capitalizedFruits.push(capitalizedFruit);
+    // });
+
+    // With map() version #1:
+    // const capitalizedFruits = fruitsAgain.map(function(x) { return x.toUpperCase()});
+
+    // With map() version #2:
+    const capitalizedFruits = fruitsAgain.map(fruit => fruit.toUpperCase());
+
+    console.log(capitalizedFruits);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #6:");
+console.log(" ");
+
+    // Version #1:
+    // const dollarPrices = [5, 4.23, 6.4, 8.09, 3.20];
+    // let pricesConverted = dollarPrices.map(convert => '$' + convert.toFixed(2));
+
+    // Version #2 with template literal
+    const dollarPrices = [5, 4.23, 6.4, 8.09, 3.20];
+    const priceToDollars = convert => `$${convert.toFixed(2)}`;
+    const pricesConverted = dollarPrices.map(priceToDollars);
+
+    // Result: [ '$5.00', '$4.23', '$6.40', '$8.09', '$3.20' ]
+    console.log(pricesConverted);
