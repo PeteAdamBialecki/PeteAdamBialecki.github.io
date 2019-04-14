@@ -238,3 +238,35 @@ console.log(" ");
 
     let temp = convert => convert.slice(0,3);
     abbreviatedDays = daysOfWeek.map(temp);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #9:");
+console.log(" ");
+
+    let total = [0, 1, 2, 3].reduce((acc, cur) => acc + cur, 0);
+    console.log(total);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #10:");
+console.log(" ");
+
+    const reducedPrices = [6.75, 3.10, 4.00, 8.12]; // Total: 21.97
+
+    let reducedTotal = reducedPrices.reduce((sum, price) => sum + price, 0);
+
+    console.log(reducedTotal);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #11:");
+console.log(" ");
+
+    const reducedNames = ['Gary', 'Pasan', 'Gabe', 'Treasure', 'Gengis', 'Gladys', 'Tony'];
+    let gNameCount = reducedNames.reduce((count, name) => {
+        if (name[0] === 'G') {
+        return count + 1;
+        }
+        return count;
+        }, 0);
+
+    console.log(gNameCount);
+    // Result: 4
