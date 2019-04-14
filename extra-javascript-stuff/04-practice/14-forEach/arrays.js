@@ -2,7 +2,7 @@
 // Array Iteration
 
 console.log("--------------------------------------------------------");
-console.log("`for` vs forEach() Example #3:");
+console.log("`for` vs forEach() Example #1:");
 console.log(" ");
 
     const fruits = ['apple', 'pear', 'cherry'];
@@ -97,7 +97,7 @@ console.log(" ");
     console.log(filteredColors);
 
 console.log("--------------------------------------------------------");
-console.log("`for` vs forEach() Example #7:");
+console.log("`for` vs forEach() Example #8:");
 console.log(" ");
 
     // Using forEach, capitalize all the strings in the months array and store them in the array capitalizedMonths.
@@ -115,7 +115,7 @@ console.log(" ");
     console.log(capitalizedMonths);
 
 console.log("--------------------------------------------------------");
-console.log("`for` vs forEach() Example #8:");
+console.log("`for` vs forEach() Example #9:");
 console.log(" ");
 
     const names = ['Selma', 'Ted', 'Mike', 'Sam', 'Sharon', 'Marvin'];
@@ -209,7 +209,7 @@ console.log(" ");
     console.log(capitalizedFruits);
 
 console.log("--------------------------------------------------------");
-console.log("Array Manipulation Example #6:");
+console.log("Array Manipulation Example #7:");
 console.log(" ");
 
     // Version #1:
@@ -223,3 +223,18 @@ console.log(" ");
 
     // Result: [ '$5.00', '$4.23', '$6.40', '$8.09', '$3.20' ]
     console.log(pricesConverted);
+
+console.log("--------------------------------------------------------");
+console.log("Array Manipulation Example #8:");
+console.log(" ");
+
+    // Use the map method on the daysOfWeek array, creating a new array of abbreviated week days. Each abbreviated string should be the first three letters of the long version in daysOfWeek. Store the new array in the variable abbreviatedDays.
+
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let abbreviatedDays;
+
+    // abbreviatedDays should be: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    // Write your code below
+
+    let temp = convert => convert.slice(0,3);
+    abbreviatedDays = daysOfWeek.map(temp);
