@@ -366,3 +366,38 @@ unfinishedTasks = todos
   .filter(tasks => tasks.done === false)
     .map(tasks => tasks.todo);
     console.log(unfinishedTasks);
+
+
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #5:");
+console.log(" ");
+
+    const products = [
+        { name: 'hard drive', price: 59.99 },
+        { name: 'lighbulbs', price: 2.59 },
+        { name: 'paper towels', price: 6.99 },
+        { name: 'flatscreen monitor', price: 159.99 },
+        { name: 'cable ties', price: 19.99 },
+        { name: 'ballpoint pens', price: 4.49 }
+    ];
+
+    const product = products
+        .filter(product => product.price < 10)
+        .reduce((highest, product) => {
+            if (highest.price > product.price) {
+                return highest;
+            }
+            return product;
+        });
+
+    console.log(product);
+
+    const productsOverTen = products
+        .filter(product => product.price > 10)
+        .reduce((sum, product) => sum + product.price, 0)
+        .toFixed(2);
+
+    console.log(productsOverTen);
+
+
+
