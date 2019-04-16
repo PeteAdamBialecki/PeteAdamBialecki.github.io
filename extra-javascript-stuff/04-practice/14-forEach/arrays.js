@@ -399,5 +399,75 @@ console.log(" ");
 
     console.log(productsOverTen);
 
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #6:");
+console.log(" ");
+
+    const purchaseItems = [
+        {
+            name: 'apples',
+            dept: 'groceries',
+            price: 2.49
+        },
+        {
+            name: 'bread',
+            dept: 'groceries',
+            price: 2.99
+        },
+        {
+            name: 'batteries',
+            dept: 'electronics',
+            price: 5.80
+        },
+        {
+            name: 'eggs',
+            dept: 'groceries',
+            price: 3.99
+        },
+        {
+            name: 't-shirts',
+            dept: 'apparel',
+            price: 9.99
+        }
+    ];
+    let groceryTotal;
+    
+    // groceryTotal should be: 9.47
+    // Write your code below
+    
+    groceryTotal = purchaseItems
+            .filter(product => product.dept === 'groceries')
+            .reduce((sum, product) => sum + product.price, 0);
 
 
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #7:");
+console.log(" ");
+
+
+    const movies = [
+        ['The Day the Earth Stood Still', 'Superman', 'Ghostbusters'],
+        ['Finding Dory'],
+        ['Jaws', 'On the Waterfront']
+        ]
+    const flatMovies = movies.reduce((arr, innerMovies) => [...arr, ...innerMovies], []);
+    console.log(flatMovies);
+            // Result: ['The Day the Earth Stood Still', 'Superman', 'Ghostbusters', 'Finding Dory', 'Jaws', 'On the Waterfront']
+
+
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #8:");
+console.log(" ");
+
+    const customerNames = [
+        [ "John", "Sandy", "Tyrone", "Elizabeth", "Penny" ],
+        [ "Barry", "Wanda", "Jamal", "Hayden" ],
+        [ "Portia", "Pam", "Philip" ]
+    ];
+    let flattenedCustomerNames;
+    
+    // flattenedCustomerNames should be: ["John", "Sandy", "Tyrone", "Elizabeth", "Penny", "Barry", "Wanda", "Jamal", "Hayden", "Portia", "Pam", "Philip"]
+    // Write your code below
+    
+    flattenedCustomerNames = customerNames.reduce((arr, innerNames) => [...arr, ...innerNames], []);
+            
