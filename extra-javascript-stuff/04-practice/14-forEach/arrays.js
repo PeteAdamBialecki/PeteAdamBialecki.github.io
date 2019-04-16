@@ -366,3 +366,145 @@ unfinishedTasks = todos
   .filter(tasks => tasks.done === false)
     .map(tasks => tasks.todo);
     console.log(unfinishedTasks);
+
+
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #5:");
+console.log(" ");
+
+    const products = [
+        { name: 'hard drive', price: 59.99 },
+        { name: 'lighbulbs', price: 2.59 },
+        { name: 'paper towels', price: 6.99 },
+        { name: 'flatscreen monitor', price: 159.99 },
+        { name: 'cable ties', price: 19.99 },
+        { name: 'ballpoint pens', price: 4.49 }
+    ];
+
+    const product = products
+        .filter(product => product.price < 10)
+        .reduce((highest, product) => {
+            if (highest.price > product.price) {
+                return highest;
+            }
+            return product;
+        });
+
+    console.log(product);
+
+    const productsOverTen = products
+        .filter(product => product.price > 10)
+        .reduce((sum, product) => sum + product.price, 0)
+        .toFixed(2);
+
+    console.log(productsOverTen);
+
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #6:");
+console.log(" ");
+
+    const purchaseItems = [
+        {
+            name: 'apples',
+            dept: 'groceries',
+            price: 2.49
+        },
+        {
+            name: 'bread',
+            dept: 'groceries',
+            price: 2.99
+        },
+        {
+            name: 'batteries',
+            dept: 'electronics',
+            price: 5.80
+        },
+        {
+            name: 'eggs',
+            dept: 'groceries',
+            price: 3.99
+        },
+        {
+            name: 't-shirts',
+            dept: 'apparel',
+            price: 9.99
+        }
+    ];
+    let groceryTotal;
+    
+    // groceryTotal should be: 9.47
+    // Write your code below
+    
+    groceryTotal = purchaseItems
+            .filter(product => product.dept === 'groceries')
+            .reduce((sum, product) => sum + product.price, 0);
+
+
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #7:");
+console.log(" ");
+
+
+    const movies = [
+        ['The Day the Earth Stood Still', 'Superman', 'Ghostbusters'],
+        ['Finding Dory'],
+        ['Jaws', 'On the Waterfront']
+        ]
+    const flatMovies = movies.reduce((arr, innerMovies) => [...arr, ...innerMovies], []);
+    console.log(flatMovies);
+            // Result: ['The Day the Earth Stood Still', 'Superman', 'Ghostbusters', 'Finding Dory', 'Jaws', 'On the Waterfront']
+
+
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #8:");
+console.log(" ");
+
+    const customerNames = [
+        [ "John", "Sandy", "Tyrone", "Elizabeth", "Penny" ],
+        [ "Barry", "Wanda", "Jamal", "Hayden" ],
+        [ "Portia", "Pam", "Philip" ]
+    ];
+    let flattenedCustomerNames;
+
+    // flattenedCustomerNames should be: ["John", "Sandy", "Tyrone", "Elizabeth", "Penny", "Barry", "Wanda", "Jamal", "Hayden", "Portia", "Pam", "Philip"]
+    // Write your code below
+
+    flattenedCustomerNames = customerNames.reduce((arr, innerNames) => [...arr, ...innerNames], []);
+
+console.log("--------------------------------------------------------");
+console.log("Filter and Map Example #9:");
+console.log(" ");
+
+const users = [
+    {
+      name: 'Samir',
+      age: 27,
+      favoriteBooks:[
+        {title: 'The Iliad'},
+        {title: 'The Brothers Karamazov'}
+      ]
+    },
+    {
+      name: 'Angela',
+      age: 33,
+      favoriteBooks:[
+        {title: 'Tenth of December'},
+        {title: 'Cloud Atlas'},
+        {title: 'One Hundred Years of Solitude'}
+      ]
+    },
+    {
+      name: 'Beatrice',
+      age: 42,
+      favoriteBooks:[
+        {title: 'Candide'}
+      ]
+    }
+  ];
+  
+      // Result: ['The Iliad', 'The Brothers Karamazov', 'Tenth of December', 'Cloud Atlas', 'One Hundred Years of Solitude', 'Candide'];
+    const books = users
+        .map(user => user.favoriteBooks.map(book => book.title))
+        .reduce((arr, titles) => [...arr, ...titles], []);
+
+    console.log(books);
