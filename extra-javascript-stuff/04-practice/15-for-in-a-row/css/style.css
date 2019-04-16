@@ -2,8 +2,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #303853;
-	font-family: 'Wendy One', sans-serif;
+    background-color: #283655;
+	font-family: 'Arial', sans-serif;
 	font-size: 1.5em;
 	color: white;
 	text-align: center;
@@ -21,7 +21,7 @@ body {
 }
 
 .table {
-    background-color: #645a7e;
+    background-color: #1e1f26;
     z-index: 10;
     width: 100%;
     position: fixed;
@@ -30,7 +30,7 @@ body {
 
 #begin-game {
 	width: 200px;
-	background-color: #645a7e;
+	background-color: #4d648d;
 	border-radius: 8px;
     color: #fff;
 	padding: 25px;
@@ -42,7 +42,7 @@ body {
 	z-index: 200;
 	cursor: pointer;
 	border: none;
-    font-family: 'Wendy One', sans-serif;
+    font-family: 'Arial', sans-serif;
     font-size: 25px;
 }
 
@@ -51,7 +51,7 @@ body {
 	position: relative;
 	width: 548px;
 	margin: 0 auto;
-	border: 8px solid #5FCF80;
+	border: 8px solid #d0e1f9;
 	height: 472px;
 	border-radius: 7px;
 	float: left;
@@ -112,14 +112,14 @@ circle {
     width: 20px;
     height: 350px;
     margin: 0 auto;
-    background-color: #e59a13;
+    background-color: #ffffff;
     border-radius: 5px 5px 0px 0px;
 }
 
 .stand-attachment {
     width: 15px;
     height: 20px;
-    background-color: #e59a13;
+    background-color: #ffffff;
     position: absolute;
     top: 15px;
 }
@@ -134,7 +134,7 @@ circle {
 
 .stand-foot {
     width: 100%;
-    background-color: #e59a13;
+    background-color: #ffffff;
     height: 20px;
     border-radius: 8px 8px 0px 0px;
     top: 350px;
