@@ -3,5 +3,11 @@ class Token {
         this.owner = owner;
         this.id = `token-${index}-${owner.id}`;
         this.dropped = false;
-    }
+    };
+    drawHTMLToken() {
+        let newDiv = document.createElement("div");
+    };
+    htmlToken() {
+
+    };
 }
