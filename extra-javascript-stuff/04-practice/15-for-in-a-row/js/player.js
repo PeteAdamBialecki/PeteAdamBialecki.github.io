@@ -5,7 +5,7 @@ class Player {
         this.color = color;
         this.active = active;
         this.token = this.createTokens(21);
-    }
+    };
     /**
      * Creates token objects for player
      * @param     {number}    num - Number of token objects to be created
@@ -19,5 +19,11 @@ class Player {
             tokens.push(token);
         }
         return tokens;
-    }
+    };
+    unusedTokens() {
+        // array.filter(element => <condition>);
+    };
+    activeToken() {
+        return unusedToken;
+    };
 };
