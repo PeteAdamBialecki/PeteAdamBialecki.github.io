@@ -9,14 +9,12 @@ class Space {
     };
     drawSVGSpace() {
         const svgSpace = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    };
-    setAttributeNS() {
         svgSpace.setAttributeNS(null, "id", this.id);
         svgSpace.setAttributeNS(null, "cx", (this.x * this.diameter) + this.radius);
         svgSpace.setAttributeNS(null, "cy", (this.y * this.diameter) + this.radius);
         svgSpace.setAttributeNS(null, "r", this.radius - 8);
         svgSpace.setAttributeNS(null, "fill", "black");
         svgSpace.setAttributeNS(null, "stroke", "none");
-    };
-    document.getElementById("mask").appendChild(svgSpace);
+        document.getElementById("mask").appendChild(svgSpace);
+    }
 };
