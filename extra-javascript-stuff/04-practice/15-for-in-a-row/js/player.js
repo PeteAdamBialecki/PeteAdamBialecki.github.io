@@ -20,10 +20,10 @@ class Player {
         }
         return tokens;
     };
-    unusedTokens() {
-        // array.filter(element => <condition>);
+    get unusedTokens() {
+        return this.token.filter(token => !token.dropped);
     };
-    activeToken() {
-        return unusedToken;
+    get activeToken() {
+        return this.unusedTokens[0];
     };
 };
