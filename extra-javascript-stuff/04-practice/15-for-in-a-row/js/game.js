@@ -21,6 +21,5 @@ class Game {
     };
     // Gets game ready for playing.
     startGame() {
-        asdf;
     };
 };
