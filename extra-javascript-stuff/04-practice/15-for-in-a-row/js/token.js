@@ -1,9 +1,10 @@
 class Token {
-    constructor(index, owner){
+    constructor(index, owner) {
         this.owner = owner;
         this.id = `token-${index}-${owner.id}`;
         this.dropped = false;
         this.columnLocation = 0;
+        this.dropped = true;
     };
     get htmlToken() {
         return document.getElementById(this.id);
@@ -29,5 +30,10 @@ class Token {
             this.htmlToken.style.left = this.offsetLeft + 76;
             this.columnLocation += 1;
         }
+    };
+    drop(target, reset) {
+        $(this.htmlToken).animate({
+            top: (target.y * target.diameter)
+        }, 750, 'easOutBounce', reset);
     };
 };
