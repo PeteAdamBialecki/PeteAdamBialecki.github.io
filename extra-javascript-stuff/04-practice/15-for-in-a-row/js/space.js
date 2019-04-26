@@ -18,4 +18,16 @@ class Space {
 
         document.getElementById("mask").appendChild(svgSpace);
     };
+    mark(token) {
+        /**
+         * Updates space to reflect a token has been dropped into it.
+         * @param {Object} token - The dropped token
+         */
+    };
+    checkForWin() {
+        /**
+         * Checks if space has an associated token to find its owner
+         * @return  {(null|Object)} Returns null or the owner object of the space's associated token.
+         */
+    };
 };
