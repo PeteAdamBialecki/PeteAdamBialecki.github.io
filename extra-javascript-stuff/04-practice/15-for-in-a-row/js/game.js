@@ -25,15 +25,22 @@ class Game {
             } else if (e.key === "ArrowRight") {
                 this.activePlayer.activeToken.moveRight(this.board.columns);
             } else if (e.key === "ArrowDown") {
-                this.activePlayer.activeToken.playToken();
+                this.playToken();
             }
         }
-    };
+    }
     playToken() {
-        for (i = 0; i < 5; i++) {
-            // Iterate through space objects in the target column and identify the target space. The token property on the Space objects will tell you if the Space is occupied by a Token object or not.
-                // Is the column full?
-                    // If the column is not full, before dropping the token, set the game's ready state to false. This is so the game can't be played, and tokens can't be moved until after the htmlToken is dropped and the game is reset.
-        } drop(target, reset);
+        let spaces = this.board.spaces;
+        let activeToken = this.activePlayer.activeToken;
+        let targetColumn = spaces[activeToken.columnLocation];
+        let targetSpace = null;
+        for (let space of targetColumn) {
+            if (space.token === null) {
+                targetSpace = space;
+            }
+        } if (targetSpace !== null) {
+            game.ready = false;
+            activeToken.drop(targetSpace);
+        }
     };
 };
