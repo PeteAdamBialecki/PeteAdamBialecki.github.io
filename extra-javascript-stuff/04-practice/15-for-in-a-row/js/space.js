@@ -6,8 +6,12 @@ class Space {
         this.token = null;
         this.diameter = 76;
         this.radius = this.diameter/2;
-    };
-    drawSVGSpace() {
+    }
+    
+    /**
+     * Draws SVG space
+     */
+	drawSVGSpace() {    
         const svgSpace = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         svgSpace.setAttributeNS(null, "id", this.id);
         svgSpace.setAttributeNS(null, "cx", (this.x * this.diameter) + this.radius);
@@ -15,6 +19,7 @@ class Space {
         svgSpace.setAttributeNS(null, "r", this.radius - 8);
         svgSpace.setAttributeNS(null, "fill", "black");
         svgSpace.setAttributeNS(null, "stroke", "none");
-        document.getElementById("mask").appendChild(svgSpace);
-    }
-};
+
+        document.getElementById("mask").appendChild(svgSpace);     
+	}	
+}

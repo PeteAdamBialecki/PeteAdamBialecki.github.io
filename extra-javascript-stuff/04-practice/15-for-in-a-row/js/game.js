@@ -18,17 +18,17 @@ class Game {
         this.activePlayer.activeToken.drawHTMLToken();
         this.ready = true;
     };
-    handleKeydown(e) {
+	handleKeydown(e) {
         if (this.ready) {
             if (e.key === "ArrowLeft") {
                 this.activePlayer.activeToken.moveLeft();
             } else if (e.key === "ArrowRight") {
                 this.activePlayer.activeToken.moveRight(this.board.columns);
             } else if (e.key === "ArrowDown") {
-                this.activePlayer.activeToken.playToken();
-            } this.playToken();
+                this.playToken();
+            }
         }
-    };
+    }
     playToken() {
         let spaces = this.board.spaces;
         let activeToken = this.activePlayer.activeToken;

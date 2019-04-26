@@ -4,7 +4,6 @@ class Token {
         this.id = `token-${index}-${owner.id}`;
         this.dropped = false;
         this.columnLocation = 0;
-        this.dropped = true;
     };
     get htmlToken() {
         return document.getElementById(this.id);
@@ -24,17 +23,17 @@ class Token {
             this.htmlToken.style.left = this.offsetLeft - 76;
             this.columnLocation -= 1;
         }
-    };
+    }
     moveRight() {
         if (this.columnLocation < columns - 1) {
             this.htmlToken.style.left = this.offsetLeft + 76;
             this.columnLocation += 1;
         }
-    };
+    }
     drop(target, reset) {
         this.dropped = true;
         $(this.htmlToken).animate({
             top: (target.y * target.diameter)
         }, 750, 'easOutBounce', reset);
-    };
+    }
 };
