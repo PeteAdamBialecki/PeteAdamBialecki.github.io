@@ -18,7 +18,7 @@ class Game {
         this.activePlayer.activeToken.drawHTMLToken();
         this.ready = true;
     };
-	handleKeydown(e) {
+    handleKeydown(e) {
         if (this.ready) {
             if (e.key === "ArrowLeft") {
                 this.activePlayer.activeToken.moveLeft();
@@ -34,13 +34,13 @@ class Game {
         let activeToken = this.activePlayer.activeToken;
         let targetColumn = spaces[activeToken.columnLocation];
         let targetSpace = null;
-            for (let space of targetColumn) {
-                if (space.token === null) {
-                    targetSpace = space;
-                }
-            } if (targetSpace !== null) {
-                game.ready = false;
-                activeToken.drop(targetSpace);
+        for (let space of targetColumn) {
+            if (space.token === null) {
+                targetSpace = space;
             }
+        } if (targetSpace !== null) {
+            game.ready = false;
+            activeToken.drop(targetSpace);
+        }
     };
-}; 
+};
