@@ -6,6 +6,7 @@ class Space {
         this.token = null;
         this.diameter = 76;
         this.radius = this.diameter / 2;
+        console.log(this.token);
     };
     drawSVGSpace() {
         const svgSpace = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -73,7 +74,11 @@ class Space {
             }
         return win;
     };
-    getOwner() {
-
+    get owner() {
+        if (this.token === null) {
+            return null;
+        } else {
+            return this.token.owner;
+        }
     };
 };
