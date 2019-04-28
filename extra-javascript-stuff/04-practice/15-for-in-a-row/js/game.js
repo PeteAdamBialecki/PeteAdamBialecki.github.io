@@ -43,4 +43,11 @@ class Game {
             activeToken.drop(targetSpace);
         }
     };
+    switchPlayers() {
+        if (this.player.active === true) {
+            this.player.active === flase;
+        } else {
+            this.player.active === true;
+        }
+    };
 };
