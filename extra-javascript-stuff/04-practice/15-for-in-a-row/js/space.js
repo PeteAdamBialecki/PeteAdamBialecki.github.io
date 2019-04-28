@@ -20,10 +20,7 @@ class Space {
         document.getElementById("mask").appendChild(svgSpace);
     };
     mark(token) {
-        /**
-         * Updates space to reflect a token has been dropped into it.
-         * @param {Object} token - The dropped token
-         */
+        this.token = token;
     };
     checkForWin(target) {
         const owner = target.token.owner;

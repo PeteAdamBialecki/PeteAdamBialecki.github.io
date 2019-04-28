@@ -44,10 +44,12 @@ class Game {
         }
     };
     switchPlayers() {
-        if (this.player.active === true) {
-            this.player.active === flase;
-        } else {
-            this.player.active === true;
+        for (let player of this.players) {
+            player.active = player.active === true ? false : true;
         }
     };
+    gameOver (message) {
+        document.getrElementById('game-over').style.display = 'block';
+        document.getElementById('game-over').textContent = message;
+    }
 };
