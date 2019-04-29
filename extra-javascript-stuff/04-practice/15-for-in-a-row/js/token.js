@@ -37,3 +37,21 @@ class Token {
         }, 750, 'easeOutBounce', reset);
     };
 };
+
+// document.onkeydown = checkKey;
+//     function checkKey(e) {
+//         e = e || window.event;
+//         // Down button for mobile
+//         if () {
+//             drop();
+//         }
+//         // Left button for mobile
+//         else if () {
+//             moveLeft();
+//         }
+//         // Right button for mobile
+//         else if () {
+//             moveRight();
+//         }
+
+//     };
