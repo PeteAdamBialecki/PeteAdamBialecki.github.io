@@ -11,8 +11,12 @@ document.addEventListener('keydown', function (event) {
 });
 
 document.addEventListener('click', function (event) {
-
-	// Log the clicked element in the console
-	console.log(event.target);
-
-}, false);
+    var right = document.getElementById("right-button");
+    if (right.addEventListener) {
+        right.addEventListener("click", function() {
+            Token;
+        }, false);
+    } else {
+        console.log("stuff");
+    };
+});
