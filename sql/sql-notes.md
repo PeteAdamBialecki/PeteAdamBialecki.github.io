@@ -41,3 +41,41 @@ To filter rows of information, use the 'WHERE' keyword:
 or 
 
         SELECT title, first_published FROM books WHERE author = "J.K. Rowling";
+
+## **Eqaulit Operators**
+
+=
+
+    equality
+
+        "Andrew" = "Andrew"
+
+!=
+
+    inequality
+
+        "Andrew" != "Lauren"
+
+<
+
+    less than
+
+        1 < 40, 39 < 40
+
+<=
+
+    less than or equal to
+
+        1 <= 40, 40 <= 40
+
+>
+
+    greater than
+
+        100 > 40, 100 > 99
+
+>=
+
+    greater than or equal to
+
+        100 >= 99, 100 >= 100
