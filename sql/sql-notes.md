@@ -42,7 +42,7 @@ or
 
         SELECT title, first_published FROM books WHERE author = "J.K. Rowling";
 
-## **Eqaulit Operators**
+## **Eqaulity Operators**
 
 =
 
@@ -79,3 +79,17 @@ or
     greater than or equal to
 
         100 >= 99, 100 >= 100
+
+## **Filtering on More than One Condition**
+
+To filter out something using more than one condition (sorting through multiple columns), use the 'AND' keyword:
+
+        SELECT title FROM books WHERE author = "J.K. Rowling" AND first_published < 2000
+
+        SELECT * FROM results WHERE away_team = "Hessle" AND away_score > 18
+
+You can also use the 'OR' keyword instead of the 'AND' to get different results:
+
+        SELECT title, author FROM books WHERE author = "J.K. Rowling" OR author = "Stephen King"
+
+        SELECT * FROM users WHERE last_name = "Hinkley" OR last_name = "Pettit"
