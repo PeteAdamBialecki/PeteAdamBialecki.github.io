@@ -93,3 +93,20 @@ You can also use the 'OR' keyword instead of the 'AND' to get different results:
         SELECT title, author FROM books WHERE author = "J.K. Rowling" OR author = "Stephen King"
 
         SELECT * FROM users WHERE last_name = "Hinkley" OR last_name = "Pettit"
+
+## **Filtering by Dates**
+
+Filtering results by date can be handy for finding entries before or after a specific date. These are primarily used to compare numeric and date/time types:
+
+        SELECT <columns> FROM <table> WHERE <column name> < <value>;
+        SELECT <columns> FROM <table> WHERE <column name> <= <value>;
+        SELECT <columns> FROM <table> WHERE <column name> > <value>;
+        SELECT <columns> FROM <table> WHERE <column name> >= <value>;
+
+Examples:
+
+        SELECT first_name, last_name FROM users WHERE date_of_birth < '1998-12-01';
+        SELECT title AS "Book Title", author AS Author FROM books WHERE year_released <= 2015;
+        SELECT name, description FROM products WHERE price > 9.99;
+        SELECT title FROM movies WHERE release_year >= 2000;
+        SELECT * FROM results WHERE away_team = "Hessle" AND played_on >= "2015-10-01"
