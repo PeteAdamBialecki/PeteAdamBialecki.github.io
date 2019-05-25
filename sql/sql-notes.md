@@ -145,3 +145,48 @@ Example:
         SELECT * FROM movies WHERE release_year BETWEEN 2000 AND 2010;
         SELECT name, description FROM products WHERE price BETWEEN 9.99 AND 19.99;
         SELECT name, appointment_date FROM appointments WHERE appointment_date BETWEEN "2015-01-01" AND "2015-01-07";
+
+## **Finding Data that Matches a Pattern**
+
+Placing the percent symbol (%) any where in a string in conjunction with the LIKE keyword will operate as a wildcard. Meaning it can be substituted by any number of characters, including zero!
+
+        SELECT <columns> FROM <table> WHERE <column> LIKE <pattern>;
+
+Examples:
+
+        SELECT title FROM books WHERE title LIKE "Harry Potter%Fire";
+        SELECT title FROM movies WHERE title LIKE "Alien%";
+        SELECT * FROM contacts WHERE first_name LIKE "%drew";
+        SELECT * FROM books WHERE title LIKE "%Brief History%";
+
+PostgreSQL Specific Keywords: LIKE in PostgreSQL is case-sensitive. To case-insensitive searches do ILIKE.
+
+        SELECT * FROM contacts WHERE first_name ILIKE "%drew";
+
+## **Filtering Out or Finding Missing Information**
+
+Sometimes you don't have all the information filled out in a row. Whether that's by the design of your database or because someone failed to enter anything, it can be handy to retrieve rows with or without information missing. To filter data that is empty use:
+
+        SELECT <columns> FROM <table> WHERE <column> IS NULL;
+
+Example:
+
+        SELECT * FROM phone_book WHERE phone IS NULL;
+
+To filter out all excepty empty, use the following:
+
+        SELECT <columns> FROM <table> WHERE <column> IS NOT NULL;
+
+Example:
+
+        SELECT last_name FROM phone_book WHERE last_name IS NOT NULL;
+
+## **Searching Through Multiple Tables**
+
+Statement structure:
+
+        SELECT * FROM <table 1>, <table 2> WHERE <table 1>.<table 1 column> = <table 2>.<table 2 column>;
+
+Another example:
+
+        SELECT * FROM loans, books WHERE loans.book_id = books.id;
