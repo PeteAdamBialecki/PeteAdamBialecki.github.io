@@ -1,4 +1,4 @@
-# **SQL**
+# **SQL Commands and Syntax**
 
 Here are a few helpful notes on using and working with SQL.
 
