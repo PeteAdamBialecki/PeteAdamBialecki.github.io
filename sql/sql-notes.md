@@ -110,3 +110,38 @@ Examples:
         SELECT name, description FROM products WHERE price > 9.99;
         SELECT title FROM movies WHERE release_year >= 2000;
         SELECT * FROM results WHERE away_team = "Hessle" AND played_on >= "2015-10-01"
+
+## **IN**
+
+To search multiple values of one condition, use the 'IN' keyword and then list the values that need to be found.  Basic statement structure:
+
+        SELECT <columns> FROM <table> WHERE <column> IN (<value 1>, <value 2>, ...);
+
+Examples:
+
+        SELECT name FROM islands WHERE id IN (4, 8, 15, 16, 23, 42);
+        SELECT * FROM products WHERE category IN ("eBooks", "Books", "Comics");
+        SELECT title FROM courses WHERE topic IN ("JavaScript", "Databases", "CSS");
+        SELECT * FROM campaigns WHERE medium IN ("email", "blog", "ppc");
+
+To find all rows that are not in the set of values you can use NOT IN.
+
+        SELECT <columns> FROM <table> WHERE <column>  NOT IN (<value 1>, <value 2>, ...);
+
+Examples:
+
+        SELECT answer FROM answers WHERE id IN (7, 42);
+        SELECT * FROM products WHERE category NOT IN ("Electronics");
+        SELECT title FROM courses WHERE topic NOT IN ("SQL", "NoSQL");
+
+## **BETWEEN**
+
+To search for values between a certain range, use the 'BETWEEN' keyword (NOTE: the lower value needs to go first). Basic statement structure:
+
+        SELECT <columns> FROM <table> WHERE <column> BETWEEN <lesser value> AND <greater value>;
+
+Example:
+
+        SELECT * FROM movies WHERE release_year BETWEEN 2000 AND 2010;
+        SELECT name, description FROM products WHERE price BETWEEN 9.99 AND 19.99;
+        SELECT name, appointment_date FROM appointments WHERE appointment_date BETWEEN "2015-01-01" AND "2015-01-07";
