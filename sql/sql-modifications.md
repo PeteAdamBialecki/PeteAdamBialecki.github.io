@@ -58,3 +58,25 @@ Example:
             VALUES
                 ("Starman", "Science Fiction", 1984),
                 ("Moulin Rouge!", "Musical", 2001);
+
+## **Updating All Rows in a Table**
+
+An update statement for all rows:
+
+        UPDATE <table> SET <column> = <value>;
+
+The = sign is different from an equality operator from a WHERE condition. It's an assignment operator because you're assigning a new value to something.
+
+Examples:
+
+        UPDATE users SET password = "thisisabadidea";
+        UPDATE products SET price = 2.99;
+
+Update multiple columns in all rows:
+
+        UDPATE <table> SET <column 1> = <value 1>, <column 2> = <value 2>;
+
+Examples:
+
+        UPDATE users SET first_name = "Anony", last_name = "Moose";
+        UPDATE products SET stock_count = 0, price = 0;
