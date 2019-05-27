@@ -125,3 +125,34 @@ Examples:
         DELETE FROM movies WHERE genre = "Musical";
         DELETE FROM products WHERE stock_count = 0;
         DELETE FROM products WHERE price >= "11.00";
+
+## **Transactions**
+
+Switch autocommit off and begin a transaction:
+
+        BEGIN TRANSACTION;
+
+Or simply:
+
+        BEGIN;
+
+To save all results of the statements after the start of the transaction to disk:
+
+        COMMIT;
+
+To reset the state of the database to before the begining of the transaction:
+
+        ROLLBACK;
+
+## **NOTES:**
+
+ORM - Object-Relational Mapping – used to perform CRUD operations with a language other than SQL.
+DML - Data Manipulation Language - the subset of the SQL programming language that deals with CRUD operations. Examples of ORMs:
+
+Hibernate for Java
+
+CoreData for Objective-C or Swift
+
+Django ORM for Python
+
+ActiveRecord for Ruby
