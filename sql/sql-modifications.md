@@ -100,3 +100,28 @@ Examples:
 
         UPDATE users SET entry_url = "/home", last_login = "2016-01-05" WHERE id = 329;
         UPDATE products SET status = "SOLD OUT", availability = "In 1 Week" WHERE stock_count = 0;
+
+## **Removing Data from all Rows in a Table**
+
+To delete all rows from a table:
+
+        DELETE FROM <table>;
+
+Examples:
+
+        DELETE FROM logs;
+        DELETE FROM users;
+        DELETE FROM products;
+
+## **Removing Specific Rows**
+
+To delete specific rows from a table:
+
+        DELETE FROM <table> WHERE <condition>;
+
+Examples:
+
+        DELETE FROM users WHERE email = "andrew@teamtreehouse.com";
+        DELETE FROM movies WHERE genre = "Musical";
+        DELETE FROM products WHERE stock_count = 0;
+        DELETE FROM products WHERE price >= "11.00";
