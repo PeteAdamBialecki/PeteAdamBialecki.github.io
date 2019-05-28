@@ -36,6 +36,8 @@ Ordering by multiple column criteria:
                                             ...,
                                             <column n> [ASC|DESC];
 
+        SELECT * FROM customs ORDER BY first_name ASC, last_name ASC
+
 Ordering is prioritized left to right.
 
 Examples:
@@ -48,3 +50,32 @@ Examples:
 
         SELECT * FROM users ORDER BY    last_name ASC,
                                         first_name ASC;
+
+## **Limiting**
+
+Databases can store massive amounts of data, and often you don't want to bring back all of the results. It's slow and it affects the performance for other users. In most cases you only want a certain subset of the rows.
+
+SQLite, PostgreSQL and MySQL: To limit the number of results returned, use the LIMIT keyword.
+
+        SELECT <columns> FROM <table> LIMIT <# of rows>;
+
+MS SQL: To limit the number of results returned, use the TOP keyword.
+
+        SELECT TOP <# of rows> <columns> FROM <table>;
+
+Oracle: To limit the number of results returned, use the ROWNUM keyword in a WHERE clause.
+
+        SELECT <columns> FROM <table> WHERE ROWNUM <= <# of rows>;
+
+Limiting just by the top set of results is a fine thing, but let's say you wanted to generate a multi page report. Having a blog archive or listing search results in batches of 50 is where you want paging.
+
+SQLite, PostgreSQL and MySQL: To page through results you can either use the OFFSET keyword in conjunction with the LIMIT keyword or just with LIMIT alone.
+
+        SELECT <columns> FROM <table> LIMIT <# of rows> OFFSET <skipped rows>;
+        SELECT <columns> FROM <table> LIMIT <skipped rows>, <# of rows>; 
+
+MS SQL and Oracle: To page through results you can either use the OFFSET keyword in conjunction with the FETCH keyword. Cannot be used with TOP.
+
+        SELECT <columns> FROM <table> OFFSET <skipped rows> ROWS FETCH NEXT <# of rows> ROWS ONLY;
+
+        SELECT * FROM phone_book ORDER BY last_name ASC, first_name ASC LIMIT 20 OFFSET 60;
