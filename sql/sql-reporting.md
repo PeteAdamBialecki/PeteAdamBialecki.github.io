@@ -146,3 +146,19 @@ Example with space:
 NOTE: In SQL there's a difference between using single quotes (') and double quotes ("). Single quotes should be used for String literals (e.g. 'lbs'), and double quotes should be used for identifiers like column aliases (e.g. "Max Weight"):
 
 SELECT maximum_weight || 'lbs' AS "Max Weight" FROM ELEVATOR_DATA;
+
+## **Finding the Length of Text**
+
+To obtain the length of a value or column use the LENGTH() function.
+
+        SELECT LENGTH(<value or column>) FROM <tables>;
+
+        SELECT LENGTH(<column>) AS <alias> FROM <table>;
+
+        SELECT <columns> FROM <table> WHERE LENGTH(<column>) <operator> <value>;
+
+Example:
+
+        SELECT username, LENGTH(username) AS length FROM customers;
+
+        SELECT username, LENGTH(username) AS length FROM customers ORDER BY length DESC LIMIT 1;
