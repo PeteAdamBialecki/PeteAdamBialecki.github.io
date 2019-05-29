@@ -79,3 +79,70 @@ MS SQL and Oracle: To page through results you can either use the OFFSET keyword
         SELECT <columns> FROM <table> OFFSET <skipped rows> ROWS FETCH NEXT <# of rows> ROWS ONLY;
 
         SELECT * FROM phone_book ORDER BY last_name ASC, first_name ASC LIMIT 20 OFFSET 60;
+
+Example #1:
+
+- Obtain the actor records between the 701st and 720th records using only LIMIT and OFFSET
+- N.B Due to actors being removed from the database the 701st row has the id of 702
+
+        SELECT * FROM actors ORDER BY id LIMIT 20 OFFSET 699;
+
+Example #2:
+
+- Obtain the actor records between the 701st and 720th records using only LIMIT and OFFSET
+- N.B Due to actors being removed from the database the 701st row has the id of 702
+
+        SELECT * FROM actors ORDER BY id LIMIT 20 OFFSET 699;
+
+Example #3:
+
+- Sort all reviews by username
+
+        SELECT * FROM reviews ORDER BY username ASC;
+
+Example #4:
+
+- Order movies with the most recent movies appearing at the top
+
+        SELECT * FROM movies ORDER BY year_released DESC;
+
+## **Functions**
+
+Keywords: Commands issued to a database. The data presented in queries is unaltered.
+
+Operators: Performs comparisons and simple manipulation
+
+Functions: Presents data differently through more complex manipulation
+
+A function looks like:
+
+        <function name>(<value or column>)
+
+Example:
+
+        UPPER("Andrew Chalkley") 
+
+## **Adding Text Columns Together**
+
+SQLite, PostgreSQL and Oracle
+Use the concatenation operator ||.
+
+        SELECT <value or column> || <value or column> || <value or column>  FROM <table>;  
+
+MS SQL
+Use the concatenation operator +.
+
+        SELECT <value or column> + <value or column> + <value or column>  FROM <table>;  
+
+MySQL, Postgres and MS SQL
+Use the CONCAT() function.
+
+        SELECT CONCAT(<value or column>, <value or column>, <value or column>) FROM <table>;
+
+Example with space:
+
+        SELECT first_name || " " || last_name AS "Full Name", email AS "Email", phone AS "Phone" FROM customers ORDER BY last_name
+
+NOTE: In SQL there's a difference between using single quotes (') and double quotes ("). Single quotes should be used for String literals (e.g. 'lbs'), and double quotes should be used for identifiers like column aliases (e.g. "Max Weight"):
+
+SELECT maximum_weight || 'lbs' AS "Max Weight" FROM ELEVATOR_DATA;
