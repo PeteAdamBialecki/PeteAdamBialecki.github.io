@@ -162,3 +162,16 @@ Example:
         SELECT username, LENGTH(username) AS length FROM customers;
 
         SELECT username, LENGTH(username) AS length FROM customers ORDER BY length DESC LIMIT 1;
+
+## **Changing the Case of Text Columns
+
+Use the UPPER() function to uppercase text.
+
+        SELECT UPPER(<value or column>) FROM <table>;
+
+Use the LOWER() function to lowercase text.
+
+        SELECT LOWER(<value or column>) FROM <table>;
+
+SELECT LOWER(title) AS lower_case_title, UPPER(author) AS upper_case_author FROM books;
+SELECT LOWERCASE(title) AS lowercase_title UPPERCASE(author) AS uppercase_author FROM books;
