@@ -173,5 +173,26 @@ Use the LOWER() function to lowercase text.
 
         SELECT LOWER(<value or column>) FROM <table>;
 
-SELECT LOWER(title) AS lower_case_title, UPPER(author) AS upper_case_author FROM books;
-SELECT LOWERCASE(title) AS lowercase_title UPPERCASE(author) AS uppercase_author FROM books;
+Example:
+
+        SELECT LOWER(title) AS lower_case_title, UPPER(author) AS upper_case_author FROM books;
+
+## **Creating Excerpts From Text**
+
+To create smaller strings from larger piece of text you can use the SUBSTR() funciton or the substring function.
+
+        SELECT SUBSTR(<value or column>, <start>, <length>) FROM <table>;
+
+Example:
+
+        SELECT name, SUBSTR(description, 1 50) || "..." AS short_description, price FROM products;
+
+## **Replacing Portions of Text**
+
+To replace piece of strings of text in a larger body of text you can use the REPLACE() function.
+
+        SELECT REPLACE(<original value or column>, <target string>, <replacement string>) FROM <table>;
+
+        SELECT street, city, FROM addresses WHERE REPLACE(state, "California", "CA") = "CA";
+
+        SELECT street, city, REPLACE(state, "California", "CA") zip FROM addresses WHERE REPLACE(state, "California", "CA") = "CA";
