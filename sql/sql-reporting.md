@@ -236,7 +236,7 @@ Examples:
 Basic SQL syntax:
 
         SELECT SUM(<column>) FROM <table> GROUP BY <another column>;
-        
+
         SELECT SUM(<numeric column) FROM <table>;
 
         SELECT SUM(<numeric column) AS <alias> FROM <table>
@@ -247,10 +247,32 @@ Examples:
 
         SELECT SUM(cost) AS total_spend, user_id FROM orders GROUP BY user_id ORDER BY total_spend DESC LIMIT 1;
 
+## **Averages**
 
+To get the average value of a numeric column use the AVG() function.
 
+        SELECT AVG(<numeric column>) FROM <table>;
+        SELECT AVG(<numeric column>) FROM <table> GROUP BY <other column>;
 
+Examples:
 
+        SELECT AVG(rating) AS average_rating FROM reviews WHERE movie_id = "6";
+
+## **Min / Max**
+
+To get the maximum value of a numeric column use the MAX() function.
+
+        SELECT MAX(<numeric column>) FROM <table>;
+        SELECT MAX(<numeric column>) FROM <table> GROUP BY <other column>;
+
+To get the minimum value of a numeric column use the MIN() function.
+
+        SELECT MIN(<numeric column>) FROM <table>;
+        SELECT MIN(<numeric column>) FROM <table> GROUP BY <other 
+
+Examples:
+
+        SELECT AVG(cost) AS average, MAX(cost) AS Maximum, MIN(cost) AS Minimum, user_id FROM orders GROUP BY user_id;
 
 
 
