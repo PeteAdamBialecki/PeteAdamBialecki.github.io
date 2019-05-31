@@ -274,8 +274,21 @@ Examples:
 
         SELECT AVG(cost) AS average, MAX(cost) AS Maximum, MIN(cost) AS Minimum, user_id FROM orders GROUP BY user_id;
 
+## **Mathematical Numeric Types**
 
+Mathematical Operators
+* Multiply
+/ Divide
++ Add
+- Subtract
 
+        SELECT <numeric column> <mathematical operator> <numeric value> FROM <table>;
+
+Examples:
+
+        SELECT name, ROUND(price * 1.06, 2) AS "Price in Florida" FROM products;
+
+        SELECT name, ROUND(price / 1.4, 2) AS price_gbp FROM products;
 
 
 
