@@ -197,15 +197,98 @@ To replace piece of strings of text in a larger body of text you can use the REP
 
         SELECT street, city, REPLACE(state, "California", "CA") zip FROM addresses WHERE REPLACE(state, "California", "CA") = "CA";
 
+## **Counting Results**
 
+To count rows you can use the COUNT() function.
 
+        SELECT COUNT(*) FROM <table>;
 
+To count unique entries use the DISTINCT keyword too:
 
+        SELECT COUNT(DISTINCT <column>) FROM <table>;
 
+Example:
 
+        SELECT COUNT(*) FROM customers ORDER BY id DESC LIMIT 1;
 
+        SELECT COUNT(*) FROM customers WHERE first_name = "Andrew";
 
+        SELECT COUNT(DISTINCT category) FROM products;
 
+        SELECT COUNT(*) AS scifi_book_count FROM books WHERE genre = "Science Fiction";
+
+## **Counting Groups of Rows**
+
+Basic SQL syntax:
+
+        SELECT <column> FROM <table> GROUP BY <column>;
+
+To count aggregated rows with common values use the GROUP BY keywords:
+
+        SELECT COUNT(<column>) FROM <table> GROUP BY <column 
+
+Examples:
+
+        SELECT genre, count(*) as genre_count FROM books GROUP BY genre;
+
+## **Grand Total**
+
+Basic SQL syntax:
+
+        SELECT SUM(<column>) FROM <table> GROUP BY <another column>;
+
+        SELECT SUM(<numeric column) FROM <table>;
+
+        SELECT SUM(<numeric column) AS <alias> FROM <table>
+                                            GROUP BY <another column>
+                                            HAVING <alias> <operator> <value>;
+
+Examples:
+
+        SELECT SUM(cost) AS total_spend, user_id FROM orders GROUP BY user_id ORDER BY total_spend DESC LIMIT 1;
+
+## **Averages**
+
+To get the average value of a numeric column use the AVG() function.
+
+        SELECT AVG(<numeric column>) FROM <table>;
+        SELECT AVG(<numeric column>) FROM <table> GROUP BY <other column>;
+
+Examples:
+
+        SELECT AVG(rating) AS average_rating FROM reviews WHERE movie_id = "6";
+
+## **Min / Max**
+
+To get the maximum value of a numeric column use the MAX() function.
+
+        SELECT MAX(<numeric column>) FROM <table>;
+        SELECT MAX(<numeric column>) FROM <table> GROUP BY <other column>;
+
+To get the minimum value of a numeric column use the MIN() function.
+
+        SELECT MIN(<numeric column>) FROM <table>;
+        SELECT MIN(<numeric column>) FROM <table> GROUP BY <other 
+
+Examples:
+
+        SELECT AVG(cost) AS average, MAX(cost) AS Maximum, MIN(cost) AS Minimum, user_id FROM orders GROUP BY user_id;
+
+## **Mathematical Numeric Types**
+
+Mathematical Operators
+* Multiply
+/ Divide
++ Add
+- Subtract
+
+        SELECT <numeric column> <mathematical operator> <numeric value> FROM <table>;
+
+Examples:
+
+        SELECT name, ROUND(price * 1.06, 2) AS "Price in Florida" FROM products;
+
+        SELECT name, ROUND(price / 1.4, 2) AS price_gbp FROM products;
 
 ## **Other Random Examples**
 
@@ -228,3 +311,15 @@ To replace piece of strings of text in a larger body of text you can use the REP
 - From the actors, truncate names greater than 10 charactor with ... e.g. William Wo...
 
         SELECT name, SUBSTR(name, 1, 10) || "..." AS short_description FROM actors;
+
+- Count number in a specific genre:
+
+        SELECT COUNT(genre) FROM movies WHERE genre = "Musical";
+
+- Average rating:
+
+        SELECT AVG(rating) FROM reviews WHERE username = "chalkers";
+
+- Sorting movie IDs by average rating:
+
+        SELECT movie_id, AVG(rating) FROM reviews GROUP BY movie_id;
