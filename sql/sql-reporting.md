@@ -290,17 +290,6 @@ Examples:
 
         SELECT name, ROUND(price / 1.4, 2) AS price_gbp FROM products;
 
-
-
-
-
-
-
-
-
-
-
-
 ## **Other Random Examples**
 
 - Find the actor with the longest name
@@ -322,3 +311,15 @@ Examples:
 - From the actors, truncate names greater than 10 charactor with ... e.g. William Wo...
 
         SELECT name, SUBSTR(name, 1, 10) || "..." AS short_description FROM actors;
+
+- Count number in a specific genre:
+
+        SELECT COUNT(genre) FROM movies WHERE genre = "Musical";
+
+- Average rating:
+
+        SELECT AVG(rating) FROM reviews WHERE username = "chalkers";
+
+- Sorting movie IDs by average rating:
+
+        SELECT movie_id, AVG(rating) FROM reviews GROUP BY movie_id;
