@@ -197,6 +197,65 @@ To replace piece of strings of text in a larger body of text you can use the REP
 
         SELECT street, city, REPLACE(state, "California", "CA") zip FROM addresses WHERE REPLACE(state, "California", "CA") = "CA";
 
+## **Counting Results**
+
+To count rows you can use the COUNT() function.
+
+        SELECT COUNT(*) FROM <table>;
+
+To count unique entries use the DISTINCT keyword too:
+
+        SELECT COUNT(DISTINCT <column>) FROM <table>;
+
+Example:
+
+        SELECT COUNT(*) FROM customers ORDER BY id DESC LIMIT 1;
+
+        SELECT COUNT(*) FROM customers WHERE first_name = "Andrew";
+
+        SELECT COUNT(DISTINCT category) FROM products;
+
+        SELECT COUNT(*) AS scifi_book_count FROM books WHERE genre = "Science Fiction";
+
+## **Counting Groups of Rows**
+
+Basic SQL syntax:
+
+        SELECT <column> FROM <table> GROUP BY <column>;
+
+To count aggregated rows with common values use the GROUP BY keywords:
+
+        SELECT COUNT(<column>) FROM <table> GROUP BY <column 
+
+Examples:
+
+        SELECT genre, count(*) as genre_count FROM books GROUP BY genre;
+
+## **Grand Total**
+
+Basic SQL syntax:
+
+        SELECT SUM(<column>) FROM <table> GROUP BY <another column>;
+        
+        SELECT SUM(<numeric column) FROM <table>;
+
+        SELECT SUM(<numeric column) AS <alias> FROM <table>
+                                            GROUP BY <another column>
+                                            HAVING <alias> <operator> <value>;
+
+Examples:
+
+        SELECT SUM(cost) AS total_spend, user_id FROM orders GROUP BY user_id ORDER BY total_spend DESC LIMIT 1;
+
+
+
+
+
+
+
+
+
+
 
 
 
