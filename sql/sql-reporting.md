@@ -357,3 +357,15 @@ Example:
     SELECT * FROM orders WHERE status = "placed" AND ordered_on = DATE("now");
 
     SELECT COUNT(*) AS "shipped_today" FROM orders WHERE status = "shipped" AND ordered_on = DATE("now");
+
+## **Calculating Dates**
+
+Calculating dates are great for generating reports and dashboards that are dynamic in nature.
+
+Examples:
+
+    SELECT COUNT(*) FROM orders WHERE ordered_on BETWEEN DATE("now", "-7 days") AND DATE("now, "-1 day");
+
+    SELECT COUNT(*) FROM orders WHERE ordered_on BETWEEN DATE("now", "-7 days", "-7 days") AND DATE("now, "-1 day", "-7 days");
+
+    SELECT COUNT(status) AS ordered_yesterday_and_shipped FROM orders WHERE status = "shipped" AND ordered_on = DATE("now", "-1 day");
