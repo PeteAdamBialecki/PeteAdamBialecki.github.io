@@ -377,3 +377,11 @@ Examples:
         SELECT *, STRFTIME("%d/%m/%Y", ordered_on) AS UK_date FROM orders;
 
         SELECT title, STRFTIME("%m/%Y", date_released) AS month_year_released FROM movies;
+
+        STRFTIME("%d-%m", "now")
+
+        STRFTIME("%m-%Y", "2016-12-19 09:10:55")
+
+        STRFTIME("%Y", "2016-12-19 09:10:55", "+1 year")
+
+        SELECT * FROM loans WHERE return_by = DATE("now", "-1 day");
