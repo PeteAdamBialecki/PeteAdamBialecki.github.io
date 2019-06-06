@@ -79,3 +79,28 @@ Examples:
 To isolate a single data type:
 
         SELECT mk.MakeName, md.ModelName FROM make AS mk INNER JOIN model AS md ON mk.MakeID = md.MakeID WHERE mk.MakeName = "Chevy";
+
+OUTER JOIN (LEFT, RIGHT, FULL): A few database engines, like SQLite, only support the Left Outer Join. Most other database systems support all three types.
+
+Right Outer Joins are essentially the same thing as Left Outer Joins, but just specified in the opposite direction.
+
+Full Outer Joins are functionally different in that you are guaranteed to get all rows from both tables. Full Outer Joins aren’t used as much in application or report coding as Inner and Left/Right Outer Joins, but can come in very handy when doing things like comparing data between two tables that are structurally similar.  Basic syntax structure:
+
+        SELECT <columns>
+            FROM <table1>
+            LEFT OUTER JOIN <table2> ON <equality criteria>
+            INNER JOIN <table3> ON <equlaity criteria>
+            WHERE <search criteria>...
+
+Examples:
+
+        SELECT mk.MakeName, md.ModelName FROM make AS mk LEFT OUTER JOIN model AS md ON mk.MakeID = md.MakeID;
+
+...to force NULL values to be counted:
+
+
+        SELECT mk.MakeName, COUNT(md.ModelName) AS NumberOfModels FROM make AS mk LEFT OUTER JOIN model AS md ON mk.MakeID = md.MakeID GROUP BY mk.MakeName;
+
+Example:
+
+        SELECT DISTINCT first_name, email FROM patrons INNER JOIN loans ON patrons.id = loans.patron_id WHERE loans.returned_on IS NULL;
