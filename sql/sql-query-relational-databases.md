@@ -104,3 +104,16 @@ Examples:
 Example:
 
         SELECT DISTINCT first_name, email FROM patrons INNER JOIN loans ON patrons.id = loans.patron_id WHERE loans.returned_on IS NULL;
+
+        SELECT MakeName, ModelName, VIN, StickerPrice
+            FROM Make
+            INNER JOIN Model ON Make.MakeID = Model.MakeID
+            INNER JOIN Car ON Car.ModelID = Model.ModelID;
+
+Sample: In a car database there is a Sale table with columns, SaleID, CarID, CustomerID, LocationID, SalesRepID, SaleAmount and SaleDate. The database also has a SalesRep table with columns, SalesRepID, FirstName, LastName, SSN, PhoneNumber, StreetAddress, City, State and ZipCode.Show the First and Last Name of each sales rep along with SaleAmount from both the SalesRep and Sale tables in one result set.
+
+        SELECT FirstName, LastName, SaleAmount
+            FROM Sale
+            INNER JOIN SalesRep ON Sale.SalesRepID = SalesRep.SalesRepID;
+
+        SELECT ModelName, VIN FROM Model LEFT OUTER JOIN Car ON Car.ModelID = Model.ModelID;
