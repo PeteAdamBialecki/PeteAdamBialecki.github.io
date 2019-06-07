@@ -117,3 +117,30 @@ Sample: In a car database there is a Sale table with columns, SaleID, CarID, Cus
             INNER JOIN SalesRep ON Sale.SalesRepID = SalesRep.SalesRepID;
 
         SELECT ModelName, VIN FROM Model LEFT OUTER JOIN Car ON Car.ModelID = Model.ModelID;
+
+## **Set Operations**
+
+Combine or limit results using two or more datasets.  There are four types: UNION, UNION ALL, INTERSECT, and EXCEPT.
+
+UNION Operations
+
+        SELECT * FROM make UNION SELECT * FROM foreignMake;
+
+        SELECT MakeName FROM Make UNION SELECT MakeName FROM ForeignMake;
+
+        SELECT MakeID, MakeName FROM Make UNION SELECT ForeignMakeID, MakeName FROM ForeignMake;
+
+        SELECT MakeID, MakeName FROM Make
+            WHERE MakeName < "D"
+        UNION 
+        SELECT ForeignMakeID, MakeName FROM ForeignMake
+            WHERE MakeName < "D";
+            ORDER BY MakeName;
+
+UNION ALL Operations
+
+        SELECT MakeName FROM Make UNION ALL SELECT MakeName FROM ForeignMake ORDER BY MakeName;
+
+INTERSECT Operations
+
+As with a UNION, they must have the same columns in both the left and right side of the SQL operation.
