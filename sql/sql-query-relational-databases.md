@@ -144,3 +144,48 @@ UNION ALL Operations
 INTERSECT Operations
 
 As with a UNION, they must have the same columns in both the left and right side of the SQL operation.
+
+        SELECT MakeName FROM Make
+            INTERSECT
+        SELECT MakeName FROM ForeignMake ORDER BY MakeName DESC;
+
+EXCEPT Operations
+
+This uses the same format as INTERSECT, but outputs only the records that are not in the latter table.
+
+        SELECT ForeignMakeID, MakeName FROM ForeignMake EXCEPT SELECT MakeID, MakeName FROM Make;
+
+Other Examples:
+
+    Create a list of all books in both north and south locations
+
+        SELECT * FROM loans_north
+        UNION
+        SELECT * FROM loans_south;
+
+    Create a list of unique books. 
+    Books that are in the north or south location, but not in both locations.
+
+        SELECT title FROM books_north
+        INTERSECT
+        SELECT title FROM books_south
+        ORDER BY title DESC;
+
+    Create a list of duplicate books. 
+    Book titles that exist in BOTH north AND south locations
+
+        SELECT title FROM books_north
+        UNION
+        SELECT title FROM books_south
+        ORDER BY title DESC;
+
+    There are two tables Fruit and Vegetable table. The Fruit table has a FruitID and a Name column and the Vegetable table has a VegetableID and Name column.Create a list of all fruits and vegetables starting with the letters A through K . In other words all fruit and vegetables that don't start with the letter L to Z.
+
+        SELECT Name FROM Fruit WHERE Name < "L" UNION SELECT Name FROM Vegetable WHERE Name < "L" ORDER BY Name ASC;
+
+    There are two tables Fruit and Vegetable table. The Fruit table has a FruitID and a Name column and the Vegetable table has a VegetableID and Name column. Create an alphabetical list of vegetables that are NOT considered a fruit.
+
+        SELECT Name FROM Vegetable
+        EXCEPT
+        SELECT Name FROM Fruit
+        ORDER BY Name;
