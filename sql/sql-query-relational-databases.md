@@ -189,3 +189,131 @@ Other Examples:
         EXCEPT
         SELECT Name FROM Fruit
         ORDER BY Name;
+
+## **SUBQUERIES**
+
+For lots of extra notes on sub queries, click [here](https://sqlschool.modeanalytics.com/advanced/subqueries/).  Possible use case scenarios include searching for criteria where a clause is not specifically known or you need a temporary dataset to join with other tables in your database.  Example structure for SQL subquery syntax:
+
+        SELECT <columns>
+        FROM <table 1>
+        WHERE COlumn1 IN (
+            SELECT column1
+            FROM <table 2>
+            WHERE <search criteria>
+        );
+
+## **IN**
+
+        SELECT * FROM Sale WHERE CarID IN (1, 3, 5);
+        SELECT CarID FROM Car WHERE ModelYear = 2015;
+
+Changes to:
+
+        SELECT * FROM Sale WHERE CarID IN (SELECT CarID FROM Car WHERE ModelYear = 2015);
+
+For the opposite:
+
+        SELECT * FROM Sale WHERE CarID NOT IN (SELECT CarID FROM Car WHERE ModelYear = 2015);
+
+## **TEMPORARY TABLE**
+
+Basic temporary SQL table structure:
+
+        SELECT <columns>
+        FROM <table>
+        <INNER | OUTER> JOIN
+        (SELECT <columns> FROM <table> WHERE <search criteria>) AS <alias>
+        ON <join criteria>;
+
+Sample code example:
+
+        SELECT * FROM Sale AS s
+            INNER JOIN (SELECT CarID, ModelYear FROM Car WHERE ModelYear = 2015) AS t
+            ON s.CarID = t.CarID;
+
+Another more complex example of a derived table:
+
+        SELECT sr.LastName, Loc1.StLouisAmount, Loc2.ColumbiaAmount FROM SalesRep AS sr LEFT OUTER JOIN (
+            SELECT SalesRepID, SUM(SaleAmount) AS StLouisAmount
+            FROM Sale AS s WHERE s.LocationID = 1
+            GROUP BY SalesRepID
+        ) AS Loc1 ON sr.SalesREpID = Loc1.SalesRepID
+        LEFT OUTER JOIN (
+            SELECT SalesRepID, SUM(SaleAmount) AS ColumbiaAmount
+            FROM Sale AS s WHERE s.LocationID = 2
+            GROUP BY SalesRepID
+        ) AS Loc2 ON sr.SalesRepID = Loc2.SalesRepID;
+
+Additional examples:
+
+Generate a report that lists the book titles from both locations and count the total number of books with the same title.
+
+Sample #1:
+
+        SELECT title, COUNT(*) AS Number FROM (
+            SELECT title FROM books_north
+            UNION ALL
+            SELECT title FROM books_south
+        ) GROUP BY title
+            UNION
+        SELECT "Total number of books with the same title", COUNT(*)
+            FROM (SELECT title, COUNT(*) AS numBooks FROM (
+                SELECT title FROM books_north
+                UNION ALL
+                SELECT title FROM books_south
+            ) GROUP BY title) AS t
+        WHERE t.numBooks >= 2;
+
+Sample #2 (of above):
+
+        SELECT * FROM 
+            (SELECT title, COUNT(*) AS Number FROM (
+            SELECT title FROM books_north
+            UNION ALL
+            SELECT title FROM books_south
+            ) GROUP BY title
+            )
+        LEFT OUTER JOIN
+            (SELECT * FROM
+            (SELECT COUNT(*) AS "Total number of books with the same title"
+            FROM (SELECT title, COUNT(*) AS numBooks FROM (
+            SELECT title FROM books_north
+            UNION ALL
+            SELECT title FROM books_south
+            ) GROUP BY title) AS t
+            WHERE t.numBooks >= 2))
+
+Sample question #3: Generate a report that lists a patron's first name, email and loan count for loans that haven't been returned.
+
+        SELECT first_name, email, COUNT(*) AS "Loan Count" FROM patrons
+        INNER JOIN 
+            (SELECT patron_id FROM loans_south WHERE returned_on IS NULL
+            UNION ALL
+            SELECT patron_id FROM loans_north WHERE returned_on IS NULL) AS loans
+        ON patrons.id = loans.patron_id
+        GROUP BY patron_id;
+
+Sample Question #4: In a car database there is a Model table with columns, ModelID, MakeID and ModelName and a Car table with columns, CarID, ModelID, VIN, ModelYear and StickerPrice. Use a subquery along with IN to list all the Model Names with a Sticker Price greater than $30000.
+
+        SELECT ModelName FROM Model
+        WHERE ModelID IN (
+        SELECT ModelID FROM Car
+        WHERE StickerPrice > 30000
+        );
+
+Sample Question #5: In a car database there is a Sale table with columns, SaleID, CarID, CustomerID, LocationID, SalesRepID, SaleAmount and SaleDate and a Car table with columns, CarID, ModelID, VIN, ModelYear and StickerPrice.Use a subquery along with IN to list all sales of cars with Sticker Price greater than $30000. Include all columns.
+
+    SELECT * FROM Sale
+    WHERE CustomerID IN (
+        SELECT CustomerID FROM Customer
+        WHERE Gender = "F"
+        );
+
+Sample Question #6: In a car database there is a Sale table with columns, SaleID, CarID, CustomerID, LocationID, SalesRepID, SaleAmount and SaleDate and a Customer table with columns, CustomerID, FirstName, LastName, Gender and SSN. Use a subquery as a derived table to show all sales to female ('F') customers. Select all columns from the Sale table only.
+
+SELECT * FROM Sale AS s
+    INNER JOIN (
+    SELECT CustomerID FROM Customer
+    WHERE Gender = 'F'
+    ) AS c
+ON s.CustomerID = c.CustomerID;
