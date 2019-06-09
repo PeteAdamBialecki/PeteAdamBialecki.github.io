@@ -189,3 +189,28 @@ Other Examples:
         EXCEPT
         SELECT Name FROM Fruit
         ORDER BY Name;
+
+## **SUBQUERIES**
+
+For lots of extra notes on sub queries, click [here](https://sqlschool.modeanalytics.com/advanced/subqueries/).  Example structure for SQL subquery syntax:
+
+        SELECT <columns>
+        FROM <table 1>
+        WHERE COlumn1 IN (
+            SELECT column1
+            FROM <table 2>
+            WHERE <search criteria>
+        );
+
+IN
+
+        SELECT * FROM Sale WHERE CarID IN (1, 3, 5);
+        SELECT CarID FROM Car WHERE ModelYear = 2015;
+
+Changes to:
+
+        SELECT * FROM Sale WHERE CarID IN (SELECT CarID FROM Car WHERE ModelYear = 2015);
+
+For the opposite:
+
+        SELECT * FROM Sale WHERE CarID NOT IN (SELECT CarID FROM Car WHERE ModelYear = 2015);
