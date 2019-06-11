@@ -51,3 +51,35 @@ Which teachers teach elective subjects (subjects without grade levels)?
         JOIN classes ON teachers.id = classes.teacher_id
         JOIN subjects ON subjects.id = classes.subject_id
         WHERE grade IS NULL;
+
+## **Advanced Selecting**
+
+Generate a schedule for Rex Rios.
+
+        SELECT period_id, name, subjects.grade, class_id, teacher_id, room_id FROM students
+        JOIN schedule ON schedule.student_id = students.id
+        JOIN classes ON classes.id = schedule.class_id
+        JOIN subjects ON subjects.id = classes.subject_id
+        WHERE first_name = "Rex" AND last_name = "Rios"
+        ORDER BY period_id ASC;
+
+How many students have Physical Education during first period?
+
+        SELECT first_name, last_name, student_id, period_id, name FROM students
+        JOIN schedule ON schedule.student_id = students.id
+        JOIN classes on classes.id = schedule.class_id
+        JOIN subjects ON subjects.id= classes.subject_id
+        WHERE period_id = 1 AND name = "Physical Education";
+
+Generate a list of students with last names from A to M.
+
+        SELECT * FROM students
+        WHERE last_name >= "A" AND last_name < "N"
+        ORDER BY last_name DESC;
+
+Do they have room for that many 6th graders?
+
+        SELECT MIN(capacity) FROM classes
+        JOIN subjects ON subjects.id = classes.subject_id
+        JOIN rooms ON rooms.id = classes.room_id
+        WHERE grade = 6;
