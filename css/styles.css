@@ -31,7 +31,8 @@ a , li, code {
     font-weight: lighter;
 }
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #61af12;
 }
 td {
     background: #292929;
