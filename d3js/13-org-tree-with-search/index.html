@@ -111,7 +111,9 @@
         //===============================================
         function collapseAllNotFound(d) {
             if (d.children) {
+
                 if (d.class !== "found") {
+                    console.log(d.children);
                     d._children = d.children;
                     d._children.forEach(collapseAllNotFound);
                     d.children = null;
@@ -131,35 +133,14 @@
         }
 
         //===============================================
-        // Toggle children on click.
+        //Toggle children on click.
         function toggle(d) {
             if (d.children) {
-                console.log("1");
                 d._children = d.children;
                 d.children = null;
-                if (d._children) {
-                    d._children.forEach(function (n) { n.hidden = true; });
-
-                    if (d.parent) {
-                        d.parent.children = d.parent.all_children;
-                        d.parent.children.forEach(function (n) {
-                            n.hidden = false;
-                        });
-                    }
-                }
             } else {
                 d.children = d._children;
                 d._children = null;
-                if (d.children) {
-                    d.children.forEach(function (n) { n.hidden = false; });
-
-                    if (d.parent) {
-                        d.parent.children = [d,];
-                        d.parent.children.filter(function (n) { return n !== d; }).forEach(function (n) {
-                            n.hidden = true;
-                        });
-                    }
-                }
             }
             clearAll(root);
             update(d);
