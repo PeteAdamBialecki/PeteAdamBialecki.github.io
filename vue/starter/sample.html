@@ -6,15 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <title>Hello Vue!</title>
+    <title>What A Beautiful Vue.js!</title>
 </head>
 <body>
     <div id="helloVue">
         <h1>{{ title }}</h1>
         <p>{{ message }}</p>
+        <p>{{ summary }}</p>
+    </div>
+    <div id="book">
+        <h1 v-on:click="toggleDetails">{{ title }}</h1>
+        <div id="bookDetail" v-show="showDetail">
+            <p>{{ author }}</p>
+            <p>{{ summary }}</p>
+        </div>
+    </div>
+    <div id="colors">
+        <ul>
+            <li v-bind:style="{color:item}" v-for="(item, index) in rainbow">{{index}} - {{item}}</li>
+        </ul>
     </div>
     <div id="example">
-        <h1 >{{ title + ', ' + name.toUpperCase() + '.'}}</h1>
+        <h1 >{{ title + ', ' + name.toUpperCase() + ','}}</h1>
         <img v-bind:src="img.src" v-bind:alt="img.alt">
         <p>{{ message }}</p>
     </div>
