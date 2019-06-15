@@ -16,11 +16,11 @@
         <option>Select a type of media...</option>
       </select>
        <ul>
-        <li>
-          <h3>Media Title</h3> 
-          <div>
-            <p>Media Description</p>
-            <p class="byline">By: Media Contributor</p>
+        <li v-for="media in mediaList" v-on:click="toggleDetails(media)">
+          <h3>{{ media.title }}</h3>
+          <div v-show:click="media.showDetail">
+            <p>{{ media.description }}</p>
+            <p class="byline">By {{ media.contributor }}</p>
           </div>
         </li>
       </ul>
