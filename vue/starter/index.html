@@ -15,9 +15,11 @@
         <p>{{ summary }}</p>
     </div>
     <div id="book">
-        <h1 v-on:click="sayHello">{{ title }}</h1>
-        <p>{{ author }}</p>
-        <p>{{ summary }}</p>
+        <h1 v-on:click="toggleDetails">{{ title }}</h1>
+        <div id="bookDetail" v-show="showDetail">
+            <p>{{ author }}</p>
+            <p>{{ summary }}</p>
+        </div>
     </div>
     <div id="example">
         <h1 >{{ title + ', ' + name.toUpperCase() + '.'}}</h1>
