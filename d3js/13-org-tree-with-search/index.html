@@ -57,7 +57,6 @@
         <div id="searchName"></div>
     </div>
 
-    <!-- Main -->
     <script>
 
         //===============================================
@@ -109,7 +108,9 @@
         }
 
         //===============================================
+        var childrenToRemove = [];
         function collapseAllNotFound(d) {
+            console.log("collapseAllNotFound: " + d.name);
             if (d.children) {
 
                 if (d.class !== "found") {
@@ -117,8 +118,32 @@
                     d._children = d.children;
                     d._children.forEach(collapseAllNotFound);
                     d.children = null;
-                } else
+
+                    childrenToRemove.push(d);
+                } else {
                     d.children.forEach(collapseAllNotFound);
+                }
+            }
+            else {
+                if (d.class !== "found" && d.parent.class === "found") {
+                    childrenToRemove.push(d);
+                }
+            }
+        }
+
+        function resetTree(d) {
+            if (d.children) {
+                if (d._children) {
+                    d._children = d._children.concat(d.children);
+                }
+                else {
+                    d._children = d.children
+                }
+                d.children = undefined;
+                d._children.forEach(resetTree);
+            }
+            else if (d._children) {
+                d._children.forEach(resetTree);
             }
         }
 
@@ -157,7 +182,22 @@
             searchText = e.object.text;
             searchTree(root);
             root.children.forEach(collapseAllNotFound);
+
+            for (var index in childrenToRemove) {
+                var d = childrenToRemove[index];
+                if (d.parent.children) {
+                    d.parent.children.splice(d.parent.children.indexOf(d), 1);
+                }
+                if (d.parent._children) {
+                    d.parent._children.push(d);
+                }
+                else {
+                    d.parent._children = [d];
+                }
+            }
+            childrenToRemove = [];
             update(root);
+            resetTree(root);
         })
 
         //===============================================
@@ -181,7 +221,7 @@
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        d3.json("https://gist.githubusercontent.com/PeteAdamBialecki/ad89a52469f7d0fb7f0ecd3fee58d5c2/raw/af7f0f77e4bcb1eaeeaf6fc68cadfa6b38d670a8/flare.json", function (error, flare) {
+        d3.json("https://gist.githubusercontent.com/PeteAdamBialecki/ad89a52469f7d0fb7f0ecd3fee58d5c2/raw/a82d0bd1abcf3b93e02cbce4488f06c4811b3568/flare.json", function (error, flare) {
             root = flare;
             root.x0 = height / 2;
             root.y0 = 0;
@@ -216,7 +256,6 @@
                 }
             }
 
-            root.all_children = root.children;
             root.children.forEach(collapse);
             root.children.forEach(function (d) { d.hidden = false; });
             root.hidden = false;
