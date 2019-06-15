@@ -13,8 +13,22 @@ const example = new Vue ({
         message: "Just sending out a signal, from one human to another",
         name: "friend",
         img: {
-            src: 'https://tau0.files.wordpress.com/2014/03/west_texas_cloudy_sun_bw.jpg',
+            src: 'http://66.media.tumblr.com/tumblr_me01k2IJkF1r3wk1zo2_1280.jpg',
             alt: 'Gloomy Landscape'
         }
     }
 })
+
+const book = new Vue({
+    el: '#book',
+    data: {
+        title: 'The Sirens of Titan',
+        author: 'Kurt Vonnegut',
+        summary: 'This is a summary of the Sirens of TItan',
+    },
+    methods: {
+        sayHello: function(){
+            alert(this.title);
+        }
+    }
+});

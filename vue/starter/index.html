@@ -6,12 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <title>Hello Vue!</title>
+    <title>What A Beautiful Vue.js!</title>
 </head>
 <body>
     <div id="helloVue">
         <h1>{{ title }}</h1>
         <p>{{ message }}</p>
+        <p>{{ summary }}</p>
+    </div>
+    <div id="book">
+        <h1 v-on:click="sayHello">{{ title }}</h1>
+        <p>{{ author }}</p>
+        <p>{{ summary }}</p>
     </div>
     <div id="example">
         <h1 >{{ title + ', ' + name.toUpperCase() + '.'}}</h1>
