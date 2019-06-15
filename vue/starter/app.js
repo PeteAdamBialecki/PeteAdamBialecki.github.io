@@ -1,7 +1,7 @@
 const helloWorld = new Vue ({
     el: '#helloVue',
     data: {
-        title: "HEY THERE!!!",
+        title: "HEY THERE!!!!",
         message: "This is my first Vue project."
     }
 })
@@ -33,3 +33,13 @@ const book = new Vue({
         }
     }
 });
+
+const colorsOfTheRainbow = [
+    "red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+
+new Vue({
+    el: '#colors',
+    data: {
+        rainbow: colorsOfTheRainbow
+    }
+})

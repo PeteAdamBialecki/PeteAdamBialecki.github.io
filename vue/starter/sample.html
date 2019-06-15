@@ -21,8 +21,13 @@
             <p>{{ summary }}</p>
         </div>
     </div>
+    <div id="colors">
+        <ul>
+            <li v-bind:style="{color:item}" v-for="(item, index) in rainbow">{{index}} - {{item}}</li>
+        </ul>
+    </div>
     <div id="example">
-        <h1 >{{ title + ', ' + name.toUpperCase() + '.'}}</h1>
+        <h1 >{{ title + ', ' + name.toUpperCase() + ','}}</h1>
         <img v-bind:src="img.src" v-bind:alt="img.alt">
         <p>{{ message }}</p>
     </div>
