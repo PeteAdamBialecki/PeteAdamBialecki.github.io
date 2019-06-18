@@ -1,6 +1,6 @@
-html, body {
+body {
     font-family: 'Open Sans', sans-serif;
-    background: #555;
+    background: #f4f4f4;
 }
   
 .container {
@@ -63,12 +63,16 @@ li {
     box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
-li.book {
+li.Book {
     border-left: #eb727e solid 5px;
 }
 
-li.streaming {
+li.Streaming {
     border-left: #a0f2d0 solid 5px;
+}
+
+li.Boardgame {
+    border-left: #a0a1f2 solid 5px;
 }
 
 .byline {
@@ -77,6 +81,7 @@ li.streaming {
 }
 
 select {
+    position: absolute;
     right: 0;
     top: 5px;
     -webkit-appearance: button;

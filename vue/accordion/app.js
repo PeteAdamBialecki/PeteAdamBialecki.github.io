@@ -23,7 +23,7 @@ const media = [
     {
         title: 'Planet Earth II',
         description: "Hours of beautiful but heart attack-inducing nature footage",
-        type: 'Streaming Video',
+        type: 'Streaming',
         contributor: 'David Attenborough',
         showDetail: false,
     },
@@ -32,6 +32,13 @@ const media = [
         description: "The boat sinks.",
         type: 'DVD',
         contributor: 'James Cameron',
+        showDetail: false,
+    },
+    {
+        title: 'Catan',
+        description: "A board game about farming and land building.",
+        type: 'Boardgame',
+        contributor: '',
         showDetail: false,
     },
     {
@@ -44,7 +51,7 @@ const media = [
     {
         title: 'Better Call Saul',
         description: "A slow-burning Breaking Bad prequel.",
-        type: 'Streaming Video',
+        type: 'Streaming',
         contributor: '',
         showDetail: false,
     }
@@ -66,6 +73,17 @@ const app = new Vue({
         filterList: function () {
             console.log(event.target.value);
             this.type = event.target.value;
+        }
+    },
+    computed: {
+        uniqueItemsList: function () {
+            const types = [];
+            this.mediaList.forEach((item) => {
+                if (!types.includes(item.type)) {
+                    types.push(item.type);
+                }
+            });
+            return types;
         }
     }
 });
