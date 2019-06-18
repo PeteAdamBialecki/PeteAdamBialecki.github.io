@@ -35,6 +35,13 @@ const media = [
         showDetail: false,
     },
     {
+        title: 'Catan',
+        description: "A board game about farming and land building.",
+        type: 'Board Game',
+        contributor: '',
+        showDetail: false,
+    },
+    {
         title: 'The Sirens of Titan',
         description: "Mankind flung its advance agents ever outward, ever outward... it flung them like stones.",
         type: 'Book',
@@ -66,6 +73,17 @@ const app = new Vue({
         filterList: function () {
             console.log(event.target.value);
             this.type = event.target.value;
+        }
+    },
+    computed: {
+        uniqueItemsList: function () {
+            const types = [];
+            this.mediaList.forEach((item) => {
+                if (!types.includes(item.type)) {
+                    types.push(item.type);
+                }
+            });
+            return types;
         }
     }
 });
