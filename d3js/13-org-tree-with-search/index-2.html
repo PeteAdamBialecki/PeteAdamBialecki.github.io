@@ -4,6 +4,27 @@
 <!-- Version #2 (Search - Straight Line - Vanish) -->
 
 <style>
+    html,
+    body {
+        background: #555;
+    }
+
+    #expandDownButton {
+        display: flex;
+    }
+
+    #expandUpButton {
+        display: flex;
+    }
+
+    #buttonContainer {
+        display: inline-flex;
+    }
+
+    #block_container {
+        display: grid;
+    }
+
     h1 {
         font-family: arial;
     }
@@ -61,8 +82,12 @@
     <h1>Version #2 (Search - Straight Line - Vanish)</h1>
     <div id="block_container">
         <div id="searchName"></div>
+        <br>
+        <div id="buttonContainer">
+            <button id="expandUpButton" onclick="expandUp()">Expand All</button>
+            <button id="expandDownButton" onclick="collapseDown()">Collapse All</button>
+        </div>
     </div>
-
     <!-- Main -->
     <script>
 
@@ -131,6 +156,35 @@
             }
         }
 
+
+
+
+        function expandEverything(d){   
+            var children = (d.children)?d.children:d._children;
+            if (d._children) {        
+                d.children = d._children;
+                d._children = null;       
+            }
+            if(children)
+            children.forEach(expandEverything);
+        }
+
+        function expandUp(){
+            expandEverything(root); 
+            update(root);
+        }
+
+        function collapseDown(){
+            root.children.forEach(collapse);
+            collapse(root);
+            update(root);
+        }
+
+
+
+
+
+
         //===============================================
         var childrenToRemove = [];
         function collapseAllNotFound(d) {
@@ -185,38 +239,54 @@
         // I need to continue here.  Maybe there needs to be some kind of if else statement that checks if any nodes/circles/text elements have a class of found.  If it does reset the tree to a certain level.  Another solution could be, when the user clicks on a node that has the class of found, get the name of that node and reset the tree to that branch level.
         //=============================================================================================================================================
 
-            // if ( any nodes have a class of found) {
-            // get value of node
-            // reset the tree to node name
-            // https://stackoverflow.com/questions/37025838/d3-js-expand-tree-till-node-n
-            // http://plnkr.co/edit/Ce5Ub8PWXblSMcrYlkHa?p=preview
-            // open to node level of the value that was recieved.
-            // } else {
-            // Original code
+        // if ( any nodes have a class of found) {
+        // get value of node
+        // reset the tree to node name
+        // https://stackoverflow.com/questions/37025838/d3-js-expand-tree-till-node-n
+        // http://plnkr.co/edit/Ce5Ub8PWXblSMcrYlkHa?p=preview
+        // open to node level of the value that was recieved.
+        // } else {
+        // Original code
+
+        function reload(){
+            var container = document.getElementById("test-id");
+            var content = container.innerHTML;
+            container.innerHTML= content; 
+            
+        //this line is to watch the result in console , you can remove it later	
+            console.log("Refreshed"); 
+            d3.select("svg").remove();
+        }
 
         //Toggle children on click.
         function toggle(d) {
-            if (d.children) {
-                d._children = d.children;
-                d.children = null;
+            var circleTest = $("circle").hasClass("found");
+            if (circleTest === true) {
+
+                collapseDown();
+
             } else {
-                d.children = d._children;
-                d._children = null;
+                if (d.children) {
+                    d._children = d.children;
+                    d.children = null;
+                } else {
+                    d.children = d._children;
+                    d._children = null;
+                }
+                $("#searchName").select2("val", "");
+                update(d);
             }
-            $("#searchName").select2("val", "");
-            update(d);
         }
 
-// Focus on the section above
+        // Focus on the section above
 
-//=============================================================================================================================================
+        //=============================================================================================================================================
 
         //===============================================
         $("#searchName").on("select2-selecting", function (e) {
             clearAll(root);
             expandAll(root);
             update(root);
-
             searchField = "d.name";
             searchText = e.object.text;
             searchTree(root);
@@ -235,9 +305,10 @@
                 }
             }
             childrenToRemove = [];
+
             update(root);
             resetTree(root);
-        })
+        });
 
         //===============================================
         var margin = { top: 20, right: 120, bottom: 20, left: 120 },
@@ -255,6 +326,7 @@
             .projection(function (d) { return [d.y, d.x]; });
 
         var svg = d3.select("body").append("svg")
+            .attr("id", "test-id")
             .attr("width", width + margin.right + margin.left)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
