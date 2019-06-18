@@ -23,7 +23,7 @@ const media = [
     {
         title: 'Planet Earth II',
         description: "Hours of beautiful but heart attack-inducing nature footage",
-        type: 'Streaming Video',
+        type: 'Streaming',
         contributor: 'David Attenborough',
         showDetail: false,
     },
@@ -37,7 +37,7 @@ const media = [
     {
         title: 'Catan',
         description: "A board game about farming and land building.",
-        type: 'Board Game',
+        type: 'Boardgame',
         contributor: '',
         showDetail: false,
     },
@@ -51,7 +51,7 @@ const media = [
     {
         title: 'Better Call Saul',
         description: "A slow-burning Breaking Bad prequel.",
-        type: 'Streaming Video',
+        type: 'Streaming',
         contributor: '',
         showDetail: false,
     }
