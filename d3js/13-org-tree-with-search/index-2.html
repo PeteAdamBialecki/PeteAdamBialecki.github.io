@@ -66,6 +66,23 @@
     <!-- Main -->
     <script>
 
+        // More Notes:
+
+        // https://stackoverflow.com/questions/32334900/hide-nodes-and-children-in-d3-js-using-javascript-or-jquery
+        // https://stackoverflow.com/questions/29873947/hide-unrelated-parent-nodes-but-child-node-in-d3-js/29885852
+        // https://stackoverflow.com/questions/19956602/a-d3-select-equivalent-to-jquery-children
+        // https://stackoverflow.com/questions/41711423/select-sibling-of-a-shape-in-d3
+        // https://stackoverflow.com/questions/6154549/jquery-show-hide-siblings
+
+        // REsizing heihgt between nodes:
+        // https://codepen.io/marxtseng/pen/oBVjvB?editors=0010
+
+        // Expand All / Collapse All Functionality:
+        // http://jsfiddle.net/z9tmgpwd/
+        // http://jsfiddle.net/z9tmgpwd/
+
+        //=============================================================================================================================================
+
         //===============================================
         function select2DataCollectName(d) {
             if (d.children)
@@ -164,78 +181,35 @@
                 d.children.forEach(expandAll);
         }
 
-
-
-
-
-
-
-
-// Focus on the section below:
-
-// I need to continue here.  Maybe there needs to be some kind of if else statement that checks if any nodes/circles/text elements have a class of found.  If it does reset the tree to a certain level.  Another solution could be, when the user clicks on a node that has the class of found, get the name of that node and reset the tree to that branch level.
-//=============================================================================================================================================
-        //Toggle children on click.
-        function toggle(d) {
+        // Focus on the section below:
+        // I need to continue here.  Maybe there needs to be some kind of if else statement that checks if any nodes/circles/text elements have a class of found.  If it does reset the tree to a certain level.  Another solution could be, when the user clicks on a node that has the class of found, get the name of that node and reset the tree to that branch level.
+        //=============================================================================================================================================
 
             // if ( any nodes have a class of found) {
-                    // get value of node
-                    // reset the tree to node name
-                        // https://stackoverflow.com/questions/37025838/d3-js-expand-tree-till-node-n
-                        // http://plnkr.co/edit/Ce5Ub8PWXblSMcrYlkHa?p=preview
-                    // open to node level of the value that was recieved.
-                // } else {
-                    // Original code
-                        if (d.children) {
-                            d._children = d.children;
-                            d.children = null;
-                        } else {
-                            d.children = d._children;
-                            d._children = null;
-                        }
-                        clearAll(root);
-                        update(root);
-                        $("#searchName").select2("val", "");
-                // }
+            // get value of node
+            // reset the tree to node name
+            // https://stackoverflow.com/questions/37025838/d3-js-expand-tree-till-node-n
+            // http://plnkr.co/edit/Ce5Ub8PWXblSMcrYlkHa?p=preview
+            // open to node level of the value that was recieved.
+            // } else {
+            // Original code
+
+        //Toggle children on click.
+        function toggle(d) {
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            $("#searchName").select2("val", "");
+            update(d);
         }
 
 // Focus on the section above
-//=============================================================================================================================================
-
-
-
-
-
-
-
-
-// Additonal stuff: Expand All / Collapse All Functionality
-//=============================================================================================================================================
-// http://jsfiddle.net/z9tmgpwd/
-// http://jsfiddle.net/z9tmgpwd/
-//=============================================================================================================================================
-
-
-
-
-
-// More Notes: 
-//=============================================================================================================================================
-
-// https://stackoverflow.com/questions/32334900/hide-nodes-and-children-in-d3-js-using-javascript-or-jquery
-// https://stackoverflow.com/questions/29873947/hide-unrelated-parent-nodes-but-child-node-in-d3-js/29885852
-// https://stackoverflow.com/questions/19956602/a-d3-select-equivalent-to-jquery-children
-// https://stackoverflow.com/questions/41711423/select-sibling-of-a-shape-in-d3
-// https://stackoverflow.com/questions/6154549/jquery-show-hide-siblings
 
 //=============================================================================================================================================
-
-
-
-
-
-
-
 
         //===============================================
         $("#searchName").on("select2-selecting", function (e) {
