@@ -1,6 +1,6 @@
-body {
+html, body {
     font-family: 'Open Sans', sans-serif;
-    background: #f4f4f4;
+    background: #555;
 }
   
 .container {
@@ -77,7 +77,6 @@ li.streaming {
 }
 
 select {
-    position: absolute;
     right: 0;
     top: 5px;
     -webkit-appearance: button;
