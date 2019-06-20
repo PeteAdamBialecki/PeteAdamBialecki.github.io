@@ -29,10 +29,10 @@
         <ul class="flashcard-list">
             <li v-on:click="toggleCard(card)" v-for="card in cards">
                 <p v-show="!card.flipped" class="card">{{ card.front }}
-                    <span class="delete-card">X</span>
+                    <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
                 </p>
                 <p v-show="card.flipped" class="card">{{ card.back }}
-                    <span class="delete-card">X</span>
+                    <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
                 </p>
             </li>
         </ul>
