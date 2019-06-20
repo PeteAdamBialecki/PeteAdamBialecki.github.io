@@ -38,6 +38,13 @@ new Vue({
     methods: {
         toggleCard: function(card) {
             card.flipped = !card.flipped;
+        },
+        addNew: function() {
+            this.cards.push({
+                front: this.newFront,
+                back: this.newBack,
+                flipped: false
+            })
         }
     }
 });
