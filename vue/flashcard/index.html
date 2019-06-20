@@ -17,27 +17,25 @@
 
         <div class="flashcard-form">
             <label for="front">Front
-                <input type="text" id="front">
+                <input v-model="newFront" type="text" id="front">
             </label>
             <label for="back">Back
-                <input type="text" id="back">
+                <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
             </label>
-            <button>Add a New Card</button>
-            <span class="error">Oops! Flashcards need a front and a back.</span>
+            <button v-on:click="addNew">Add a New Card</button>
+            <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
         </div>
-
         <ul class="flashcard-list">
-            <li v-on:click="toggleCard(card)" v-for="card in cards">
-                <p v-show="!card.flipped" class="card">{{ card.front }}
-                    <span class="delete-card">X</span>
-                </p>
-                <p v-show="card.flipped" class="card">{{ card.back }}
-                    <span class="delete-card">X</span>
-                </p>
+            <li v-on:click="toggleCard(card)" v-for="(card, index) in cards">
+                <transition name="flip">
+                    <p v-bind:key="card.flipped" key="front" class="card">
+                        {{ card.flipped ? card.back : card.front }}
+                        <span v-on:click="cards.splice(index, 1)" class="delete-card">x</span>
+                    </p>
+                </transition>
             </li>
         </ul>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="app.js"></script>
 </body>
