@@ -32,6 +32,8 @@ new Vue({
     el: '#flashcard-app',
     data: {
         cards: cards,
+        newFront: '',
+        newBack: ''
     },
     methods: {
         toggleCard: function(card) {
