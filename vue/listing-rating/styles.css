@@ -37,3 +37,7 @@ span {
 .votes {
   font-size: .75em;
 }
+
+#imageContainer {
+    width: 400px;
+}
