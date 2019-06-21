@@ -8,18 +8,11 @@ const app = new Vue({
         votes: '0'
     },
     methods: {
-        increment: function () {},
-        decrement: function () {}
+        increment: function () {
+            this.votes++;
+        },
+        decrement: function () {
+            this.votes--;
+        }
     }
 });
-
-
-// 5. On the Vue instance, create a method called "increment" that adds 1 vote to the "votes" property 
-
-// 6. On the Vue instance, create a method called "decrement" that substracts 1 vote from the "votes" property 
-
-// 7. On the #voteCounter span elements, use v-on directive to call the increment or decrement methods
-// so that the vote count goes up and down each time the + or - symbols are clicked. 
-
-
-
