@@ -13,3 +13,13 @@
 - Open Chrome Dev Tools
 
 - Click on "Vue" in the Dev Tool tabs (e.g. Elements, Sources, Network, etc.)
+
+## **Helpful Links**
+
+[Component Basics](https://vuejs.org/v2/guide/components.html)
+
+[Vue Style Guide](https://vuejs.org/v2/style-guide/)
+
+[Awesome Vue](https://github.com/vuejs/awesome-vue)
+
+[Examples](https://vuejs.org/v2/examples/)
