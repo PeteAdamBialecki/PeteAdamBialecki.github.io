@@ -1,17 +1,3 @@
-// 2. Add new posts
-//   a. In the Vue instance, create two new data properties to save the info from the form. In the Vue 
-//      template, use v-model on each form input field to capture data entered into the fields.
-//   b. Create a new method called createNew. Inside createNew(), use the properties you've just created 
-//      to make new post object and push it into the posts array.
-//   c. Call createNew in your template whenever the "Create New" button is clicked.
-
-//  3. Sort the list of posts by number of votes (most votes at the top)
-//   a. Create a computed property called orderedList that returns a sorted list. Use the following code to sort the list: 
-// return this.posts.sort((currentPost,nextPost) =>{
-//   return nextPost.votes - currentPost.votes;
-// });
-//   b. In your Vue template, iterate through the sorted list.
-//   c. *Bonus* When a new post is created, clear out the input fields
 
 const posts = [
     {
@@ -55,7 +41,21 @@ new Vue({
                 votes: 0,
                 thumbnail: 'https://i.imgur.com/1t466Om.jpg'
             });
+            this.title = '';
+            this.summary = '';
+        }
+    },
+    computed: {
+        orderedList: function () {
+            return this.posts.sort((currentPost, nextPost) => {
+                return nextPost.votes - currentPost.votes;
+            })
         }
     }
 });
 
+// Addititional Funcitonality:
+    // Prevent users from entering empty posts.
+    // Reveal an entire article.
+    // Display a larger photo when the user clicks on a picture.
+    // Display the date and time of when the user posted.
