@@ -2,6 +2,10 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+#imagePlaceHolder {
+    width: 75px;
+}
+
 .container {
   max-width: 80%; 
   margin: 0 auto;
