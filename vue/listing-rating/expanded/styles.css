@@ -1,9 +1,9 @@
-html {
-    background: rgb(145, 125, 101);
-}
-
 body {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+#imagePlaceHolder {
+    width: 75px;
 }
 
 .container {
@@ -40,8 +40,4 @@ span {
 
 .votes {
   font-size: .75em;
-}
-
-#imageContainer {
-    width: 400px;
 }
