@@ -27,3 +27,10 @@ The acronyms URL and URI are often used interchangeably. Although they can be re
 - Accept-Language
 
 - Cache-Control
+
+## **Cache**
+
+A cache is a service that holds onto data that you need to be able to retrieve quickly. This is very useful when your data takes awhile to retrieve or calculate. Some common caches you might use are memcached, TimesTen if you use Oracle products, or HazelCast for the Java world. For caching compiled pages, Varnish is a very common and powerful choice.
+
+
+## **Rate Limiting**
