@@ -4,6 +4,55 @@
 <!-- Version #2 (Search - Straight Line - Vanish) -->
 
 <style>
+    html,
+    body {
+        background-color: #fff;
+    }
+
+    span,
+    .select2-results .select2-result-label {
+        font-family: sans-serif;
+    }
+
+    #expandUpButton {
+        background-color: #5897fb
+    }
+
+    #expandDownButton {
+        background-color: #5cb85c
+    }
+
+    button {
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        border-color: transparent;
+        font-family: Arial;
+        font-size: 12px;
+        padding: 8px;
+        margin: 0 10px 0 0;
+        text-decoration: none;
+        transition-duration: 0.4s;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        transition-timing-function: cubic-bezier(.17, .67, .83, .67);
+        border-radius: 4px;
+        border: 1px solid transparent;
+    }
+
+    button:active {
+        position: relative;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
     #main-container {
         padding: 10px;
     }
@@ -25,7 +74,7 @@
     }
 
     h1 {
-        font-family: arial;
+        font-family: sans-serif;
     }
 
     .selectedText {
@@ -81,7 +130,7 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
 
     <div id="main-container">
-        <h1>Version #2 (Search - Straight Line - Vanish)</h1>
+        <h1>D3.js Node Tree Search With Straight Line Isolation</h1>
         <div id="block_container">
             <div id="searchName"></div>
             <br>
@@ -94,6 +143,22 @@
 
     <!-- Main -->
     <script>
+        var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+            width = 960 - margin.right - margin.left,
+            height = 800 - margin.top - margin.bottom;
+        var i = 0,
+            duration = 750,
+            root;
+        var tree = d3.layout.tree()
+            .size([height, width]);
+        var diagonal = d3.svg.diagonal()
+            .projection(function (d) { return [d.y, d.x]; });
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.right + margin.left)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        var childrenToHide = [];
 
         //===============================================
         function select2DataCollectName(d) {
@@ -106,22 +171,23 @@
 
         //===============================================
         function searchTree(d) {
-            if (d.children)
+            if (d.children) {
                 d.children.forEach(searchTree);
-            else if (d._children)
+            } else if (d._children) {
                 d._children.forEach(searchTree);
+            }
             var searchFieldValue = eval(searchField);
             if (searchFieldValue && searchFieldValue.match(searchText)) {
                 // Walk parent chain
                 var ancestors = [];
                 var parent = d;
+                // debugger;
                 while (typeof (parent) !== "undefined") {
                     ancestors.push(parent);
-                    //console.log(parent);
                     parent.class = "found";
                     parent = parent.parent;
                 }
-                //console.log(ancestors);
+                d3.selectAll("text").attr("dy", "-1.35em");
             }
         }
 
@@ -143,6 +209,7 @@
             }
         }
 
+        //===============================================
         function expandEverything(d) {
             var children = (d.children) ? d.children : d._children;
             if (d._children) {
@@ -153,11 +220,13 @@
                 children.forEach(expandEverything);
         }
 
+        //===============================================
         function expandUp() {
             expandEverything(root);
             update(root);
         }
 
+        //===============================================
         function collapseDown() {
             root.children.forEach(collapse);
             collapse(root);
@@ -177,7 +246,6 @@
         }
 
         //===============================================
-        var childrenToHide = [];
         function collapseAllNotFound(d) {
             if (d.children) {
 
@@ -198,6 +266,7 @@
             }
         }
 
+        //===============================================
         function resetTree(d) {
             if (d.children) {
                 if (d._children) {
@@ -218,13 +287,13 @@
                 d._children.sort(sortChildren);
         }
 
+        //===============================================
         function sortChildren(a, b) {
             // TODO: This function needs to sort upper and lower case.
             if (a.name < b.name) { return -1; }
             if (a.name > b.name) { return 1; }
             return 0;
         }
-
 
         //===============================================
         function expandAll(d) {
@@ -236,13 +305,11 @@
                 d.children.forEach(expandAll);
         }
 
-
-        //Toggle children on click.
+        //===============================================
         function toggle(d) {
             var circleTest = $(childrenToHide).hasClass("found");
             childrenToHide = [];
             if (d.class === "found") {
-                console.log("That node was red.");
                 clearAll(root);
                 expandAll(root);
                 update(root);
@@ -258,9 +325,8 @@
                 parent.parent.class = "";
                 d.children.class = "";
                 d3.selectAll("circle").attr("class", "");
+                d3.selectAll("text").attr("dy", "0.35em");
             } else if (d.class !== "found") {
-                console.log(d);
-                console.log(d._children);
                 if (d.children) {
                     d._children = d.children;
                     d.children = null;
@@ -274,10 +340,9 @@
             }
         }
 
-        // Focus on the section above
-        //=============================================================================================================================================
         //===============================================
         $("#searchName").on("select2-selecting", function (e) {
+            childrenToHide = [];
             clearAll(root);
             expandAll(root);
             update(root);
@@ -286,7 +351,9 @@
             searchTree(root);
             root.children.forEach(collapseAllNotFound);
             for (var index in childrenToHide) {
+                d3.selectAll("circle").attr("class", "");
                 var d = childrenToHide[index];
+                children = childrenToHide;
                 if (d.parent.children) {
                     d.parent.children.splice(d.parent.children.indexOf(d), 1);
                 }
@@ -301,28 +368,6 @@
             update(root);
             resetTree(root);
         });
-
-        //===============================================
-        var margin = { top: 20, right: 120, bottom: 20, left: 120 },
-            width = 960 - margin.right - margin.left,
-            height = 800 - margin.top - margin.bottom;
-
-        var i = 0,
-            duration = 750,
-            root;
-
-        var tree = d3.layout.tree()
-            .size([height, width]);
-
-        var diagonal = d3.svg.diagonal()
-            .projection(function (d) { return [d.y, d.x]; });
-
-        var svg = d3.select("body").append("svg")
-            .attr("id", "test-id")
-            .attr("width", width + margin.right + margin.left)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         d3.json("flare-long.json", function (error, flare) {
             root = flare;
@@ -348,7 +393,8 @@
                 });
             $("#searchName").select2({
                 data: select2DataObject,
-                containerCssClass: "search"
+                containerCssClass: "search",
+                placeholder: "Search for a term..."
             });
 
             function collapse(d) {
@@ -358,7 +404,6 @@
                     d.children = null;
                 }
             }
-
             root.children.forEach(collapse);
             root.children.forEach(function (d) { d.hidden = false; });
             root.hidden = false;
@@ -367,6 +412,7 @@
 
         d3.select(self.frameElement).style("height", "800px");
 
+        //=============================================================================================================================================
         function update(source) {
 
             // Compute the new tree layout.
@@ -376,7 +422,7 @@
             // Normalize for fixed-depth.
             nodes.forEach(function (d) { d.y = d.depth * 180; });
 
-            // Update the nodes…
+            // Update the nodes
             var node = svg.selectAll("g.node")
                 .data(nodes, function (d) { return d.id || (d.id = ++i); });
 
@@ -404,7 +450,6 @@
             //     .style("opacity", 0.2)
             //     .style("border-radius", "5px");
 
-
             nodeEnter.append("text")
                 .attr("x", function (d) { return d.children || d._children ? -10 : 10; })
                 .attr("dy", ".35em")
@@ -415,17 +460,12 @@
                 .style("font-size", "12px")
                 .style("fill", "#000");
 
-
-
-
-
             // Transition nodes to their new position.
             var nodeUpdate = node.transition()
                 .duration(duration)
                 .attr("transform", function (d) {
                     return "translate(" + d.y + "," + d.x + ")";
                 });
-
 
             nodeUpdate.select("circle")
                 .attr("r", 4.5)
@@ -442,7 +482,8 @@
                     if (d.class === "found") {
                         return "#ff4136"; //red
                     }
-                });
+                })
+                .style("stroke-width", "1.5px");
 
             nodeUpdate.select("text")
                 .style("fill-opacity", 1);
@@ -457,13 +498,15 @@
                 .remove();
 
             nodeExit.select("circle")
-                .attr("r", 1e-6);
+                .attr("r", 1e-6)
+                .style("stroke", "steelblue")
+                .style("stroke-width", "1.5px");
             // TODO: Styling is not good when nodes collapse.
 
             nodeExit.select("text")
                 .style("fill-opacity", 1e-6);
 
-            // Update the links…
+            // Update the links
             var link = svg.selectAll("path.link")
                 .data(links, function (d) { return d.target.id; });
 
@@ -498,7 +541,6 @@
             nodes.forEach(function (d) {
                 d.x0 = d.x;
                 d.y0 = d.y;
-                console.log(d.y0);
             });
         }
 
