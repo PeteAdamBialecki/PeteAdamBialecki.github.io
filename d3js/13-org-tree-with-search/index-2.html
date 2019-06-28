@@ -4,9 +4,8 @@
 <!-- Version #2 (Search - Straight Line - Vanish) -->
 
 <style>
-    html,
-    body {
-        background: #555;
+    #main-container {
+        padding: 10px;
     }
 
     #expandDownButton {
@@ -50,7 +49,8 @@
     }
 
     .node text {
-        font: 12px sans-serif;
+        font-family: Helvetica, Sans-Serif;
+        font-size: 12px;
         fill: #000;
     }
 
@@ -79,34 +79,21 @@
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css">
     </link>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
-    <h1>Version #2 (Search - Straight Line - Vanish)</h1>
-    <div id="block_container">
-        <div id="searchName"></div>
-        <br>
-        <div id="buttonContainer">
-            <button id="expandUpButton" onclick="expandUp()">Expand All</button>
-            <button id="expandDownButton" onclick="collapseDown()">Collapse All</button>
+
+    <div id="main-container">
+        <h1>Version #2 (Search - Straight Line - Vanish)</h1>
+        <div id="block_container">
+            <div id="searchName"></div>
+            <br>
+            <div id="buttonContainer">
+                <button id="expandUpButton" onclick="expandUp()">Expand All</button>
+                <button id="expandDownButton" onclick="collapseDown()">Collapse All</button>
+            </div>
         </div>
     </div>
+
     <!-- Main -->
     <script>
-
-        // More Notes:
-
-        // https://stackoverflow.com/questions/32334900/hide-nodes-and-children-in-d3-js-using-javascript-or-jquery
-        // https://stackoverflow.com/questions/29873947/hide-unrelated-parent-nodes-but-child-node-in-d3-js/29885852
-        // https://stackoverflow.com/questions/19956602/a-d3-select-equivalent-to-jquery-children
-        // https://stackoverflow.com/questions/41711423/select-sibling-of-a-shape-in-d3
-        // https://stackoverflow.com/questions/6154549/jquery-show-hide-siblings
-
-        // REsizing heihgt between nodes:
-        // https://codepen.io/marxtseng/pen/oBVjvB?editors=0010
-
-        // Expand All / Collapse All Functionality:
-        // http://jsfiddle.net/z9tmgpwd/
-        // http://jsfiddle.net/z9tmgpwd/
-
-        //=============================================================================================================================================
 
         //===============================================
         function select2DataCollectName(d) {
@@ -156,55 +143,57 @@
             }
         }
 
-
-
-
-        function expandEverything(d){   
-            var children = (d.children)?d.children:d._children;
-            if (d._children) {        
+        function expandEverything(d) {
+            var children = (d.children) ? d.children : d._children;
+            if (d._children) {
                 d.children = d._children;
-                d._children = null;       
+                d._children = null;
             }
-            if(children)
-            children.forEach(expandEverything);
+            if (children)
+                children.forEach(expandEverything);
         }
 
-        function expandUp(){
-            expandEverything(root); 
+        function expandUp() {
+            expandEverything(root);
             update(root);
         }
 
-        function collapseDown(){
+        function collapseDown() {
             root.children.forEach(collapse);
             collapse(root);
             update(root);
         }
 
-
-
-
-
+        //===============================================
+        function simpleSearch(d) {
+            if (d.children) {
+                if (d.class !== "found") {
+                    d._children = d.children;
+                    d._children.forEach(collapseAllNotFound);
+                    d.children = null;
+                } else
+                    d.children.forEach(collapseAllNotFound);
+            }
+        }
 
         //===============================================
-        var childrenToRemove = [];
+        var childrenToHide = [];
         function collapseAllNotFound(d) {
-            console.log("collapseAllNotFound: " + d.name);
             if (d.children) {
 
                 if (d.class !== "found") {
-                    console.log(d.children);
                     d._children = d.children;
                     d._children.forEach(collapseAllNotFound);
                     d.children = null;
 
-                    childrenToRemove.push(d);
+                    childrenToHide.push(d);
                 } else {
                     d.children.forEach(collapseAllNotFound);
                 }
             }
             else {
                 if (d.class !== "found" && d.parent.class === "found") {
-                    childrenToRemove.push(d);
+                    childrenToHide.push(d);
                 }
             }
         }
@@ -223,7 +212,19 @@
             else if (d._children) {
                 d._children.forEach(resetTree);
             }
+            if (d.children)
+                d.children.sort(sortChildren);
+            if (d._children)
+                d._children.sort(sortChildren);
         }
+
+        function sortChildren(a, b) {
+            // TODO: This function needs to sort upper and lower case.
+            if (a.name < b.name) { return -1; }
+            if (a.name > b.name) { return 1; }
+            return 0;
+        }
+
 
         //===============================================
         function expandAll(d) {
@@ -235,37 +236,31 @@
                 d.children.forEach(expandAll);
         }
 
-        // Focus on the section below:
-        // I need to continue here.  Maybe there needs to be some kind of if else statement that checks if any nodes/circles/text elements have a class of found.  If it does reset the tree to a certain level.  Another solution could be, when the user clicks on a node that has the class of found, get the name of that node and reset the tree to that branch level.
-        //=============================================================================================================================================
-
-        // if ( any nodes have a class of found) {
-        // get value of node
-        // reset the tree to node name
-        // https://stackoverflow.com/questions/37025838/d3-js-expand-tree-till-node-n
-        // http://plnkr.co/edit/Ce5Ub8PWXblSMcrYlkHa?p=preview
-        // open to node level of the value that was recieved.
-        // } else {
-        // Original code
-
-        function reload(){
-            var container = document.getElementById("test-id");
-            var content = container.innerHTML;
-            container.innerHTML= content; 
-            
-        //this line is to watch the result in console , you can remove it later	
-            console.log("Refreshed"); 
-            d3.select("svg").remove();
-        }
 
         //Toggle children on click.
         function toggle(d) {
-            var circleTest = $("circle").hasClass("found");
-            if (circleTest === true) {
-
-                collapseDown();
-
-            } else {
+            var circleTest = $(childrenToHide).hasClass("found");
+            childrenToHide = [];
+            if (d.class === "found") {
+                console.log("That node was red.");
+                clearAll(root);
+                expandAll(root);
+                update(root);
+                searchField = "d.name";
+                searchText = $(".select2-chosen").text();
+                searchTree(root);
+                root.children.forEach(simpleSearch);
+                update(root);
+                childrenToHide.class = "";
+                d.class = "";
+                parent.class = "";
+                d.parent.class = "";
+                parent.parent.class = "";
+                d.children.class = "";
+                d3.selectAll("circle").attr("class", "");
+            } else if (d.class !== "found") {
+                console.log(d);
+                console.log(d._children);
                 if (d.children) {
                     d._children = d.children;
                     d.children = null;
@@ -273,15 +268,14 @@
                     d.children = d._children;
                     d._children = null;
                 }
-                $("#searchName").select2("val", "");
+                clearAll(root);
                 update(d);
+                $("#searchName").select2("val", "");
             }
         }
 
         // Focus on the section above
-
         //=============================================================================================================================================
-
         //===============================================
         $("#searchName").on("select2-selecting", function (e) {
             clearAll(root);
@@ -291,21 +285,19 @@
             searchText = e.object.text;
             searchTree(root);
             root.children.forEach(collapseAllNotFound);
-
-            for (var index in childrenToRemove) {
-                var d = childrenToRemove[index];
+            for (var index in childrenToHide) {
+                var d = childrenToHide[index];
                 if (d.parent.children) {
                     d.parent.children.splice(d.parent.children.indexOf(d), 1);
                 }
-                if (d.parent._children) {
+                if (d.parent._children && !d.parent._children.includes(d)) {
                     d.parent._children.push(d);
                 }
-                else {
+                else if (!d.parent._children) {
                     d.parent._children = [d];
                 }
             }
-            childrenToRemove = [];
-
+            childrenToHide = [];
             update(root);
             resetTree(root);
         });
@@ -332,7 +324,7 @@
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        d3.json("flare-short.json", function (error, flare) {
+        d3.json("flare-long.json", function (error, flare) {
             root = flare;
             root.x0 = height / 2;
             root.y0 = 0;
@@ -378,7 +370,7 @@
         function update(source) {
 
             // Compute the new tree layout.
-            var nodes = tree.nodes(root).filter(function (d) { return !d.hidden; }).reverse(),
+            var nodes = tree.nodes(root).reverse(),
                 links = tree.links(nodes);
 
             // Normalize for fixed-depth.
@@ -390,25 +382,50 @@
 
             // Enter any new nodes at the parent's previous position.
             var nodeEnter = node.enter().append("g")
-                .attr("class", "node")
-                .attr("transform", function (d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+                .attr("class", "node test1")
+                .attr("transform", function (d) {
+                    return "translate(" + source.y0 + "," + source.x0 + ")";
+                })
                 .on("click", toggle);
 
             nodeEnter.append("circle")
                 .attr("r", 1e-6)
                 .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
 
+            // Possible use in the future.  Needs adjustable width based on text.
+            // nodeEnter.append("rect")
+            //     .attr("rx", 6)
+            //     .attr("ry", 6)
+            //     .attr("x", function (d) { return d.children || d._children ? -140 : -10; })
+            //     .attr('y', -10)
+            //     .attr("width", 150)
+            //     .attr("height", 20)
+            //     .style("fill", "#fff")
+            //     .style("opacity", 0.2)
+            //     .style("border-radius", "5px");
+
+
             nodeEnter.append("text")
                 .attr("x", function (d) { return d.children || d._children ? -10 : 10; })
                 .attr("dy", ".35em")
                 .attr("text-anchor", function (d) { return d.children || d._children ? "end" : "start"; })
                 .text(function (d) { return d.name; })
-                .style("fill-opacity", 1e-6);
+                .style("fill-opacity", 1e-6)
+                .style("font-family", "Helvetica, Sans-Serif")
+                .style("font-size", "12px")
+                .style("fill", "#000");
+
+
+
+
 
             // Transition nodes to their new position.
             var nodeUpdate = node.transition()
                 .duration(duration)
-                .attr("transform", function (d) { return "translate(" + d.y + "," + d.x + ")"; });
+                .attr("transform", function (d) {
+                    return "translate(" + d.y + "," + d.x + ")";
+                });
+
 
             nodeUpdate.select("circle")
                 .attr("r", 4.5)
@@ -433,11 +450,15 @@
             // Transition exiting nodes to the parent's new position.
             var nodeExit = node.exit().transition()
                 .duration(duration)
-                .attr("transform", function (d) { return "translate(" + source.y + "," + source.x + ")"; })
+                .attr("class", "test3")
+                .attr("transform", function (d) {
+                    return "translate(" + source.y + "," + source.x + ")";
+                })
                 .remove();
 
             nodeExit.select("circle")
                 .attr("r", 1e-6);
+            // TODO: Styling is not good when nodes collapse.
 
             nodeExit.select("text")
                 .style("fill-opacity", 1e-6);
@@ -477,6 +498,7 @@
             nodes.forEach(function (d) {
                 d.x0 = d.x;
                 d.y0 = d.y;
+                console.log(d.y0);
             });
         }
 

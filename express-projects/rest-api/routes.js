@@ -78,19 +78,3 @@ router.post("/:qID/answers/:aID/vote-:dir", function(req, res, next){
 });
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
