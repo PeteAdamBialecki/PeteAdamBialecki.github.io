@@ -1,29 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-<!-- Version #2 (Search - Straight Line - Vanish) -->
+<!-- Version #3 (Minimizing) -->
 
 <style>
-    #main-container {
-        padding: 10px;
-    }
-
-    #expandDownButton {
-        display: flex;
-    }
-
-    #expandUpButton {
-        display: flex;
-    }
-
-    #buttonContainer {
-        display: inline-flex;
-    }
-
-    #block_container {
-        display: grid;
-    }
-
     h1 {
         font-family: arial;
     }
@@ -49,8 +29,7 @@
     }
 
     .node text {
-        font-family: Helvetica, Sans-Serif;
-        font-size: 12px;
+        font: 12px sans-serif;
         fill: #000;
     }
 
@@ -79,17 +58,9 @@
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css">
     </link>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
-
-    <div id="main-container">
-        <h1>Version #2 (Search - Straight Line - Vanish)</h1>
-        <div id="block_container">
-            <div id="searchName"></div>
-            <br>
-            <div id="buttonContainer">
-                <button id="expandUpButton" onclick="expandUp()">Expand All</button>
-                <button id="expandDownButton" onclick="collapseDown()">Collapse All</button>
-            </div>
-        </div>
+    <h1>Version #3 (Minimizing)</h1>
+    <div id="block_container">
+        <div id="searchName"></div>
     </div>
 
     <!-- Main -->
@@ -143,29 +114,8 @@
             }
         }
 
-        function expandEverything(d) {
-            var children = (d.children) ? d.children : d._children;
-            if (d._children) {
-                d.children = d._children;
-                d._children = null;
-            }
-            if (children)
-                children.forEach(expandEverything);
-        }
-
-        function expandUp() {
-            expandEverything(root);
-            update(root);
-        }
-
-        function collapseDown() {
-            root.children.forEach(collapse);
-            collapse(root);
-            update(root);
-        }
-
         //===============================================
-        function simpleSearch(d) {
+        function collapseAllNotFound(d) {
             if (d.children) {
                 if (d.class !== "found") {
                     d._children = d.children;
@@ -177,56 +127,6 @@
         }
 
         //===============================================
-        var childrenToHide = [];
-        function collapseAllNotFound(d) {
-            if (d.children) {
-
-                if (d.class !== "found") {
-                    d._children = d.children;
-                    d._children.forEach(collapseAllNotFound);
-                    d.children = null;
-
-                    childrenToHide.push(d);
-                } else {
-                    d.children.forEach(collapseAllNotFound);
-                }
-            }
-            else {
-                if (d.class !== "found" && d.parent.class === "found") {
-                    childrenToHide.push(d);
-                }
-            }
-        }
-
-        function resetTree(d) {
-            if (d.children) {
-                if (d._children) {
-                    d._children = d._children.concat(d.children);
-                }
-                else {
-                    d._children = d.children
-                }
-                d.children = undefined;
-                d._children.forEach(resetTree);
-            }
-            else if (d._children) {
-                d._children.forEach(resetTree);
-            }
-            if (d.children)
-                d.children.sort(sortChildren);
-            if (d._children)
-                d._children.sort(sortChildren);
-        }
-
-        function sortChildren(a, b) {
-            // TODO: This function needs to sort upper and lower case.
-            if (a.name < b.name) { return -1; }
-            if (a.name > b.name) { return 1; }
-            return 0;
-        }
-
-
-        //===============================================
         function expandAll(d) {
             if (d._children) {
                 d.children = d._children;
@@ -236,71 +136,53 @@
                 d.children.forEach(expandAll);
         }
 
-
-        //Toggle children on click.
+        //===============================================
+        // Toggle children on click.
         function toggle(d) {
-            var circleTest = $(childrenToHide).hasClass("found");
-            childrenToHide = [];
-            if (d.class === "found") {
-                console.log("That node was red.");
-                clearAll(root);
-                expandAll(root);
-                update(root);
-                searchField = "d.name";
-                searchText = $(".select2-chosen").text();
-                searchTree(root);
-                root.children.forEach(simpleSearch);
-                update(root);
-                childrenToHide.class = "";
-                d.class = "";
-                parent.class = "";
-                d.parent.class = "";
-                parent.parent.class = "";
-                d.children.class = "";
-                d3.selectAll("circle").attr("class", "");
-            } else if (d.class !== "found") {
-                console.log(d);
-                console.log(d._children);
-                if (d.children) {
-                    d._children = d.children;
-                    d.children = null;
-                } else {
-                    d.children = d._children;
-                    d._children = null;
-                }
-                clearAll(root);
-                update(d);
-                $("#searchName").select2("val", "");
+            if (d.children) {
+        d._children = d.children;
+        d.children = null;
+        if (d._children) {
+            d._children.forEach(function(n) { n.hidden = true; });
+
+            if (d.parent) {
+                d.parent.children = d.parent.all_children;
+                d.parent.children.forEach(function(n) {
+                    n.hidden = false;
+                });
             }
         }
+    } else {
+        d.children = d._children;
+        d._children = null;
+        if (d.children) {
+            d.children.forEach(function(n) { n.hidden = false; });
 
-        // Focus on the section above
-        //=============================================================================================================================================
+            if (d.parent) {
+                d.parent.children = [d,];
+                d.parent.children.filter(function(n) { return n !== d; }).forEach(function(n) {
+                    n.hidden = true;
+                });
+            }
+        }
+    }
+            clearAll(root);
+            update(d);
+            $("#searchName").select2("val", "");
+        }
+
         //===============================================
         $("#searchName").on("select2-selecting", function (e) {
             clearAll(root);
             expandAll(root);
             update(root);
+
             searchField = "d.name";
             searchText = e.object.text;
             searchTree(root);
             root.children.forEach(collapseAllNotFound);
-            for (var index in childrenToHide) {
-                var d = childrenToHide[index];
-                if (d.parent.children) {
-                    d.parent.children.splice(d.parent.children.indexOf(d), 1);
-                }
-                if (d.parent._children && !d.parent._children.includes(d)) {
-                    d.parent._children.push(d);
-                }
-                else if (!d.parent._children) {
-                    d.parent._children = [d];
-                }
-            }
-            childrenToHide = [];
             update(root);
-            resetTree(root);
-        });
+        })
 
         //===============================================
         var margin = { top: 20, right: 120, bottom: 20, left: 120 },
@@ -318,13 +200,12 @@
             .projection(function (d) { return [d.y, d.x]; });
 
         var svg = d3.select("body").append("svg")
-            .attr("id", "test-id")
             .attr("width", width + margin.right + margin.left)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        d3.json("flare-long.json", function (error, flare) {
+        d3.json("flare-short.json", function (error, flare) {
             root = flare;
             root.x0 = height / 2;
             root.y0 = 0;
@@ -352,17 +233,20 @@
             });
 
             function collapse(d) {
-                if (d.children) {
-                    d._children = d.children;
-                    d._children.forEach(collapse);
-                    d.children = null;
-                }
-            }
+        if (d.children) {
+            d.all_children = d.children;
+            d._children = d.children;
+            d._children.forEach(collapse);
+            d.children = null;
+            d.hidden = true;
+        }
+    }
 
-            root.children.forEach(collapse);
-            root.children.forEach(function (d) { d.hidden = false; });
-            root.hidden = false;
-            update(root);
+    root.all_children = root.children;
+    root.children.forEach(collapse);
+    root.children.forEach(function(d) { d.hidden = false; });
+    root.hidden = false;
+    update(root);
         });
 
         d3.select(self.frameElement).style("height", "800px");
@@ -370,8 +254,8 @@
         function update(source) {
 
             // Compute the new tree layout.
-            var nodes = tree.nodes(root).reverse(),
-                links = tree.links(nodes);
+            var nodes = tree.nodes(root).filter(function(d) { return !d.hidden; }).reverse(),
+    links = tree.links(nodes);
 
             // Normalize for fixed-depth.
             nodes.forEach(function (d) { d.y = d.depth * 180; });
@@ -382,50 +266,25 @@
 
             // Enter any new nodes at the parent's previous position.
             var nodeEnter = node.enter().append("g")
-                .attr("class", "node test1")
-                .attr("transform", function (d) {
-                    return "translate(" + source.y0 + "," + source.x0 + ")";
-                })
+                .attr("class", "node")
+                .attr("transform", function (d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
                 .on("click", toggle);
 
             nodeEnter.append("circle")
                 .attr("r", 1e-6)
                 .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
 
-            // Possible use in the future.  Needs adjustable width based on text.
-            // nodeEnter.append("rect")
-            //     .attr("rx", 6)
-            //     .attr("ry", 6)
-            //     .attr("x", function (d) { return d.children || d._children ? -140 : -10; })
-            //     .attr('y', -10)
-            //     .attr("width", 150)
-            //     .attr("height", 20)
-            //     .style("fill", "#fff")
-            //     .style("opacity", 0.2)
-            //     .style("border-radius", "5px");
-
-
             nodeEnter.append("text")
                 .attr("x", function (d) { return d.children || d._children ? -10 : 10; })
                 .attr("dy", ".35em")
                 .attr("text-anchor", function (d) { return d.children || d._children ? "end" : "start"; })
                 .text(function (d) { return d.name; })
-                .style("fill-opacity", 1e-6)
-                .style("font-family", "Helvetica, Sans-Serif")
-                .style("font-size", "12px")
-                .style("fill", "#000");
-
-
-
-
+                .style("fill-opacity", 1e-6);
 
             // Transition nodes to their new position.
             var nodeUpdate = node.transition()
                 .duration(duration)
-                .attr("transform", function (d) {
-                    return "translate(" + d.y + "," + d.x + ")";
-                });
-
+                .attr("transform", function (d) { return "translate(" + d.y + "," + d.x + ")"; });
 
             nodeUpdate.select("circle")
                 .attr("r", 4.5)
@@ -450,15 +309,11 @@
             // Transition exiting nodes to the parent's new position.
             var nodeExit = node.exit().transition()
                 .duration(duration)
-                .attr("class", "test3")
-                .attr("transform", function (d) {
-                    return "translate(" + source.y + "," + source.x + ")";
-                })
+                .attr("transform", function (d) { return "translate(" + source.y + "," + source.x + ")"; })
                 .remove();
 
             nodeExit.select("circle")
                 .attr("r", 1e-6);
-            // TODO: Styling is not good when nodes collapse.
 
             nodeExit.select("text")
                 .style("fill-opacity", 1e-6);
@@ -498,7 +353,6 @@
             nodes.forEach(function (d) {
                 d.x0 = d.x;
                 d.y0 = d.y;
-                console.log(d.y0);
             });
         }
 
