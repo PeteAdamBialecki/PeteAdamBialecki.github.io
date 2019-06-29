@@ -38,14 +38,45 @@ To stop the Mongo daemon hit ctrl-c
 
 ## **To Run The REST API**
 
-npm Install Mongoose
+- Navigate to this directory and run the command
 
-        $ npm install --save mongoose@~4.4
+        node mongoose-sandbox.js
 
-Starting MongoDB
+If it works, you should get:
 
-        $ mongod
+        DB connection successful
+        Saved.
+        DB connection closed.
 
-Or to specify a config file:
+Next, run the command:
 
-        $ mongod --config /usr/local/etc/mongod.conf
+        mongo
+
+Type the command
+
+        use sandbox
+
+You should see the message
+
+        switched to sandbox
+
+Sample with the command
+
+        db.getCollectionNames()
+
+You should get
+
+        ["animals"]
+
+Sample with the command
+
+        db.animals.find()
+
+Results:
+
+        { "_id" : ObjectId("5d178b548eb868a6516ce40b"), "size" : "small", "name" : "Marvin", "mass" : 0.035, "color" : "gray", "type" : "mouse", "__v" : 0 }
+        { "_id" : ObjectId("5d178b548eb868a6516ce40c"), "size" : "medium", "name" : "Gretchen", "mass" : 6.35, "color" : "brown", "type" : "nutria", "__v" : 0 }
+        { "_id" : ObjectId("5d178b548eb868a6516ce40d"), "size" : "medium", "name" : "Iris", "mass" : 45, "color" : "gray", "type" : "wolf", "__v" : 0 }
+        { "_id" : ObjectId("5d178b548eb868a6516ce408"), "size" : "big", "name" : "Lawrence", "mass" : 6000, "color" : "gray", "type" : "elephant", "__v" : 0 }
+        { "_id" : ObjectId("5d178b548eb868a6516ce409"), "size" : "small", "name" : "Angela", "mass" : 0.007, "color" : "golden", "type" : "goldfish", "__v" : 0 }
+        { "_id" : ObjectId("5d178b548eb868a6516ce40a"), "size" : "big", "name" : "Fig", "mass" : 190500, "color" : "golden", "type" : "whale", "__v" : 0 }
