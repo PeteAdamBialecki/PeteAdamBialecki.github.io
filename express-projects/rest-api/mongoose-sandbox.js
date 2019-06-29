@@ -3,12 +3,13 @@
 var mongoose = require("mongoose");
 var db = mongoose.connection;
 
-mongoose.connect("mongodb://localhost:27017/sandbox");
-db.on("error", function(err) {
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:27017/sandbox", { useMongoClient: true });
+db.on("error", function (err) {
     console.error("Connection error:", err);
 });
 
-db.once("open", function() {
+db.once("open", function () {
     console.log("DB connection successful");
     // All database communication goes here.
     var Schema = mongoose.Schema;
@@ -29,10 +30,10 @@ db.once("open", function() {
         name: "Lawrence"
     });
 
-    elephant.save(function(err) {
+    elephant.save(function (err) {
         if (err) console.error("Save failed:", err);
         else console.log("Saved.")
-        db.close(function() {
+        db.close(function () {
             console.log("DB connection closed.")
         });
     });
