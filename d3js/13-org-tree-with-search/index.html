@@ -73,8 +73,14 @@
     }
 
     .selectedText {
-        fill: #666 ! important;
-        stroke: #000 ! important;
+        fill: #666;
+        stroke: #000;
+    }
+
+    .selectedNode {
+        stroke: black ! important;
+    fill: #5cb85c ! important;
+    fill-opacity: .5 ! important;
     }
 
     circle:hover {
@@ -88,7 +94,7 @@
 
     .node circle {
         fill: #fff;
-        stroke: #a6cee3;
+        stroke: #5897fb;
         stroke-width: 1.5px;
     }
 
@@ -98,7 +104,6 @@
     }
 
     .node rect {
-        fill: #fff;
         stroke: #555;
         stroke-width: 1px;
     }
@@ -314,6 +319,7 @@
             var circleTest = $(childrenToHide).hasClass("found");
             childrenToHide = [];
             if (d.class === "found") {
+                d3.selectAll("rect").style("stroke-width", 0).style("fill", "transparent");
                 clearAll(root);
                 expandAll(root);
                 update(root);
@@ -330,6 +336,7 @@
                 d.children.class = "";
                 d3.selectAll("circle").attr("class", "");
                 d3.selectAll("text").attr("dy", "0.35em");
+                d3.selectAll("rect").style("stroke-width", 0).style("fill", "transparent");
             } else if (d.class !== "found") {
                 if (d.children) {
                     d._children = d.children;
@@ -346,6 +353,7 @@
 
         //===============================================
         $("#searchName").on("select2-selecting", function (e) {
+            d3.selectAll("rect").style("stroke-width", 0);
             childrenToHide = [];
             clearAll(root);
             expandAll(root);
@@ -371,6 +379,7 @@
             childrenToHide = [];
             update(root);
             resetTree(root);
+            d3.selectAll("rect").style("stroke-width", 0).style("fill", "transparent");
         });
 
         d3.json("flare-long.json", function (error, flare) {
@@ -418,7 +427,6 @@
 
         //=============================================================================================================================================
         function update(source) {
-
             // Compute the new tree layout.
             var nodes = tree.nodes(root).reverse(),
                 links = tree.links(nodes);
@@ -455,14 +463,14 @@
                 .attr('y', -10)
                 .attr("width", 1e-6)
                 .attr("height", 20)
+                .attr("class", "colorNode")
                 .style("fill", "#fff")
                 .style("z-index", 100)
                 .style("margin", "10px")
-                .style("fill", function (d) { return d._children ? "#" : "#fff"; })
+                .style("fill", function (d) { return d._children ? "transparent" : "#fff"; })
                 .style("fill-opacity", function (d) { return d._children ? "0.2" : "0.2"; })
                 .style("border-radius", "4px")
-                .attr("transform", function (d) {
-                    return "translate(" + d.y - 200 + "," + d.x + 60 + ")";
+                .on("click", function(d, i) {
                 });
 
             nodeEnter.append("text")
@@ -485,29 +493,29 @@
                 .attr('y', -10)
                 .attr("width", 1e-6)
                 .attr("height", 20)
+                .attr("class", "overlayNode")
                 .style("z-index", 100)
                 .style("margin", "10px")
                 .style("fill-opacity", 0)
-                .style("fill", "#b2df8a")
-                .on('mouseover', function(d,i) {
+                .on('mouseover', function (d, i) {
                     d3.select(this).transition()
-                    .ease('cubic-out')
-                    .duration('200')
-                    .attr('font-size', 32)
-                    .attr('fill', '#b2df8a')
-                    .style("fill-opacity", 0.5)
-                    .style("stroke", "#555")
-                    .style("stroke-width", "2px");
+                        .ease('cubic-out')
+                        .duration('200')
+                        .attr('font-size', 32)
+                        .style("fill", "#2077b4")
+                        .style("fill-opacity", 0.4);
                 })
-                .on('mouseout', function(d,i) {
+                .on('mouseout', function (d, i) {
                     d3.select(this).transition()
-                    .ease('cubic-out')
-                    .duration('200')
-                    .attr('font-size', 20)
-                    .attr('fill', '#b2df8a')
-                    .style("fill-opacity", 0)
-                    .style("stroke", "#555")
-                    .style("stroke-width", "0px");
+                        .ease('cubic-out')
+                        .duration('200')
+                        .attr('font-size', 20)
+                        .style("fill", "#2077b4")
+                        .style("fill-opacity", 0);
+                })
+                .on("click", function(d, i) {
+                    d3.selectAll("rect").classed("selectedNode", false);
+                    d3.select(this).classed("selectedNode", d3.select(this).classed("selectedNode") ? false : true);
                 });
 
             d3.selectAll("rect").style("padding", "100px").attr("width", function (d) {
@@ -546,7 +554,7 @@
                 .style("fill-opacity", 1)
                 .style("fill", function (d) {
                     if (d.class === "found") {
-                        return "#fff"; //red
+                        return "#fff";
                     } else if (d._children) {
                         return "#a6cee3";
                     } else {
@@ -555,7 +563,7 @@
                 })
                 .style("stroke", function (d) {
                     if (d.class === "found") {
-                        return "rgb(99, 99, 99)"; //red
+                        return "#636363";
                     }
                 })
                 .style("stroke-width", "1px");
@@ -566,7 +574,6 @@
             // Transition exiting nodes to the parent's new position.
             var nodeExit = node.exit().transition()
                 .duration(duration)
-                .attr("class", "test3")
                 .attr("transform", function (d) {
                     return "translate(" + source.y + "," + source.x + ")";
                 })
@@ -579,9 +586,9 @@
             // TODO: Styling is not good when nodes collapse.
 
             nodeExit.select("rect")
-                .style("fill-opacity", 1e-6)
                 .style("stroke", "transparent")
-                .style("stroke-width", "1");
+                .style("stroke-width", "0")
+                .style("fill", "transparent");
 
             nodeExit.select("text")
                 .style("fill-opacity", 1e-6)
