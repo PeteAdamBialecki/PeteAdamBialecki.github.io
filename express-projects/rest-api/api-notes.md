@@ -80,3 +80,4 @@ Results:
         { "_id" : ObjectId("5d178b548eb868a6516ce408"), "size" : "big", "name" : "Lawrence", "mass" : 6000, "color" : "gray", "type" : "elephant", "__v" : 0 }
         { "_id" : ObjectId("5d178b548eb868a6516ce409"), "size" : "small", "name" : "Angela", "mass" : 0.007, "color" : "golden", "type" : "goldfish", "__v" : 0 }
         { "_id" : ObjectId("5d178b548eb868a6516ce40a"), "size" : "big", "name" : "Fig", "mass" : 190500, "color" : "golden", "type" : "whale", "__v" : 0 }
+
