@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-<!-- Version #2 (Search - Straight Line - Vanish) -->
+<!-- Version #2 (Search - Straight Line - Vanish With Boxes) -->
 
 <style>
-    html,
-    body {
-        background-color: #fff;
-    }
-
     span,
     .select2-results .select2-result-label {
         font-family: sans-serif;
@@ -93,14 +88,23 @@
 
     .node circle {
         fill: #fff;
-        stroke: steelblue;
+        stroke: #a6cee3;
         stroke-width: 1.5px;
     }
 
     .node text {
         font-family: Helvetica, Sans-Serif;
         font-size: 12px;
-        fill: #000;
+    }
+
+    .node rect {
+        fill: #fff;
+        stroke: #555;
+        stroke-width: 1px;
+    }
+
+    .node:hover {
+        filter: invert(50%);
     }
 
     .link {
@@ -187,7 +191,7 @@
                     parent.class = "found";
                     parent = parent.parent;
                 }
-                d3.selectAll("text").attr("dy", "-1.35em");
+                // d3.selectAll("text").attr("dy", "-1.35em");
             }
         }
 
@@ -420,7 +424,7 @@
                 links = tree.links(nodes);
 
             // Normalize for fixed-depth.
-            nodes.forEach(function (d) { d.y = d.depth * 180; });
+            nodes.forEach(function (d) { d.y = d.depth * 100; });
 
             // Update the nodes
             var node = svg.selectAll("g.node")
@@ -428,37 +432,90 @@
 
             // Enter any new nodes at the parent's previous position.
             var nodeEnter = node.enter().append("g")
-                .attr("class", "node test1")
+                .attr("class", "node")
                 .attr("transform", function (d) {
                     return "translate(" + source.y0 + "," + source.x0 + ")";
                 })
                 .on("click", toggle);
 
-            nodeEnter.append("circle")
-                .attr("r", 1e-6)
-                .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
+            function mkBox(g, text) {
+                var dim = text.node().getBBox();
+                g.insert("rect", "text")
+                    .attr("x", dim.x)
+                    .attr("y", dim.y)
+                    .attr("width", dim.width + 100)
+                    .attr("height", dim.height);
+            }
 
             // Possible use in the future.  Needs adjustable width based on text.
-            // nodeEnter.append("rect")
-            //     .attr("rx", 6)
-            //     .attr("ry", 6)
-            //     .attr("x", function (d) { return d.children || d._children ? -140 : -10; })
-            //     .attr('y', -10)
-            //     .attr("width", 150)
-            //     .attr("height", 20)
-            //     .style("fill", "#fff")
-            //     .style("opacity", 0.2)
-            //     .style("border-radius", "5px");
+            nodeEnter.append("rect")
+                .attr("rx", 6)
+                .attr("ry", 6)
+                .attr("x", -15)
+                .attr('y', -10)
+                .attr("width", 1e-6)
+                .attr("height", 20)
+                .style("fill", "#fff")
+                .style("z-index", 100)
+                .style("margin", "10px")
+                .style("fill", function (d) { return d._children ? "#" : "#fff"; })
+                .style("fill-opacity", function (d) { return d._children ? "0.2" : "0.2"; })
+                .style("border-radius", "4px")
+                .attr("transform", function (d) {
+                    return "translate(" + d.y - 200 + "," + d.x + 60 + ")";
+                });
 
             nodeEnter.append("text")
-                .attr("x", function (d) { return d.children || d._children ? -10 : 10; })
+                .attr("x", -10)
                 .attr("dy", ".35em")
-                .attr("text-anchor", function (d) { return d.children || d._children ? "end" : "start"; })
+                .attr("text-anchor", 10)
                 .text(function (d) { return d.name; })
                 .style("fill-opacity", 1e-6)
                 .style("font-family", "Helvetica, Sans-Serif")
                 .style("font-size", "12px")
-                .style("fill", "#000");
+                .style("fill", "#000")
+                .style("z-index", 200)
+                .style("padding", "100px");
+
+            // Possible use in the future.  Needs adjustable width based on text.
+            nodeEnter.append("rect")
+                .attr("rx", 6)
+                .attr("ry", 6)
+                .attr("x", -15)
+                .attr('y', -10)
+                .attr("width", 1e-6)
+                .attr("height", 20)
+                .style("z-index", 100)
+                .style("margin", "10px")
+                .style("fill-opacity", 0)
+                .style("fill", "#b2df8a")
+                .on('mouseover', function(d,i) {
+                    d3.select(this).transition()
+                    .ease('cubic-out')
+                    .duration('200')
+                    .attr('font-size', 32)
+                    .attr('fill', '#b2df8a')
+                    .style("fill-opacity", 0.5)
+                    .style("stroke", "#555")
+                    .style("stroke-width", "2px");
+                })
+                .on('mouseout', function(d,i) {
+                    d3.select(this).transition()
+                    .ease('cubic-out')
+                    .duration('200')
+                    .attr('font-size', 20)
+                    .attr('fill', '#b2df8a')
+                    .style("fill-opacity", 0)
+                    .style("stroke", "#555")
+                    .style("stroke-width", "0px");
+                });
+
+            d3.selectAll("rect").style("padding", "100px").attr("width", function (d) {
+                var textElement = d3.select(this.parentNode).select("text").node();
+                var bbox = textElement.getBBox();
+                var width = bbox.width;
+                return width + 10;
+            });
 
             // Transition nodes to their new position.
             var nodeUpdate = node.transition()
@@ -473,7 +530,7 @@
                     if (d.class === "found") {
                         return "#ff4136"; //red
                     } else if (d._children) {
-                        return "lightsteelblue";
+                        return "#a6cee3";
                     } else {
                         return "#fff";
                     }
@@ -484,6 +541,24 @@
                     }
                 })
                 .style("stroke-width", "1.5px");
+
+            nodeUpdate.select("rect")
+                .style("fill-opacity", 1)
+                .style("fill", function (d) {
+                    if (d.class === "found") {
+                        return "#fff"; //red
+                    } else if (d._children) {
+                        return "#a6cee3";
+                    } else {
+                        return "#fff";
+                    }
+                })
+                .style("stroke", function (d) {
+                    if (d.class === "found") {
+                        return "rgb(99, 99, 99)"; //red
+                    }
+                })
+                .style("stroke-width", "1px");
 
             nodeUpdate.select("text")
                 .style("fill-opacity", 1);
@@ -503,8 +578,15 @@
                 .style("stroke-width", "1.5px");
             // TODO: Styling is not good when nodes collapse.
 
+            nodeExit.select("rect")
+                .style("fill-opacity", 1e-6)
+                .style("stroke", "transparent")
+                .style("stroke-width", "1");
+
             nodeExit.select("text")
-                .style("fill-opacity", 1e-6);
+                .style("fill-opacity", 1e-6)
+                .transition()
+                .style("fill", "transparent");
 
             // Update the links
             var link = svg.selectAll("path.link")
