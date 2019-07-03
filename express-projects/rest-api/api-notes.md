@@ -36,7 +36,29 @@ To exit the Mongo shell run quit()
 
 To stop the Mongo daemon hit ctrl-c
 
-## **To Run The REST API**
+Install nodemon
+
+        npm install -g nodemon
+
+## **Running**
+
+Terminal #1:
+
+        mongod
+
+Terminal #2:
+
+        mongo
+
+Terminal #3:
+
+        nodemon app.js
+
+Browser:
+
+        localhost:3001/questions
+
+## **Previous Notes**
 
 - Navigate to this directory and run the command
 
