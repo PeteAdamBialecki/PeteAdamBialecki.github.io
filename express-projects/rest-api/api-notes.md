@@ -1,12 +1,14 @@
-# **REST API Instructions**
+# **Express.js REST API Instructions**
 
-## **Set Up Mongo DB On YOur Machine**
+This REST API still needs something for the front-end.  I think that this should be served using React. 
+
+## **Setting Up The Application**
 
 For the complete instructions, click [here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html).  For Mac, install and run MongoDB with Homebrew: 
 
 Open the Terminal app and type
 
-        brew update.
+        brew update
 
 After updating Homebrew, enter
 
@@ -20,7 +22,7 @@ Make sure that the /data/db directory has the right permissions by running
 
         sudo chown -R `id -un` /data/db
 
-Then
+You might have to enter your password:
 
         # Enter your password
 
@@ -32,15 +34,33 @@ Run the Mongo shell while the Mongo daemon is running in the first terminal. Typ
 
         mongo
 
-To exit the Mongo shell run quit()
+Install nodemon
 
-To stop the Mongo daemon hit ctrl-c
+        npm install -g nodemon
 
-## **To Run The REST API**
+## **Running**
 
-- Navigate to this directory and run the command
+Terminal #1:
 
-        node mongoose-sandbox.js
+        mongod
+
+Terminal #2:
+
+        mongo
+
+Terminal #3:
+
+        nodemon app.js
+
+Browser:
+
+        localhost:3001/questions
+
+## **Previous Notes**
+
+Navigate to this directory and run the command
+
+        node app.js
 
 If it works, you should get:
 
@@ -48,11 +68,13 @@ If it works, you should get:
         Saved.
         DB connection closed.
 
-Next, run the command:
+## **Sample Mongo Stuff**
+
+After you run this command:
 
         mongo
 
-Type the command
+You can try to use thiscommand
 
         use sandbox
 
@@ -81,3 +103,12 @@ Results:
         { "_id" : ObjectId("5d178b548eb868a6516ce409"), "size" : "small", "name" : "Angela", "mass" : 0.007, "color" : "golden", "type" : "goldfish", "__v" : 0 }
         { "_id" : ObjectId("5d178b548eb868a6516ce40a"), "size" : "big", "name" : "Fig", "mass" : 190500, "color" : "golden", "type" : "whale", "__v" : 0 }
 
+
+
+
+
+## **Additional Notes**
+
+- To exit the Mongo shell run quit()
+
+- To stop the Mongo daemon hit ctrl-c

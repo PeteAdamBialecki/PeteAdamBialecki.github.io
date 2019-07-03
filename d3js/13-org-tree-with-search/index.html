@@ -79,8 +79,8 @@
 
     .selectedNode {
         stroke: black ! important;
-    fill: #5cb85c ! important;
-    fill-opacity: .5 ! important;
+        fill: #5cb85c ! important;
+        fill-opacity: .5 ! important;
     }
 
     circle:hover {
@@ -152,7 +152,7 @@
 
     <!-- Main -->
     <script>
-        var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+        var margin = { top: 20, right: 120, bottom: 20, left: 40 },
             width = 960 - margin.right - margin.left,
             height = 800 - margin.top - margin.bottom;
         var i = 0,
@@ -427,12 +427,30 @@
 
         //=============================================================================================================================================
         function update(source) {
+            var duration = d3.event && d3.event.altKey ? 1000 : 1000;
+
+            // compute the new height
+            var levelWidth = [1];
+            var childCount = function (level, n) {
+
+                if (n.children && n.children.length > 0) {
+                    if (levelWidth.length <= level + 1) levelWidth.push(0);
+
+                    levelWidth[level + 1] += n.children.length;
+                    n.children.forEach(function (d) {
+                        childCount(level + 1, d);
+                    });
+                }
+            };
+            childCount(0, root);
+            var newHeight = d3.max(levelWidth) * 35; // 20 pixels per line  
+            tree = tree.size([newHeight, width]);
             // Compute the new tree layout.
             var nodes = tree.nodes(root).reverse(),
                 links = tree.links(nodes);
 
             // Normalize for fixed-depth.
-            nodes.forEach(function (d) { d.y = d.depth * 100; });
+            nodes.forEach(function (d) { d.y = d.depth * 120; });
 
             // Update the nodes
             var node = svg.selectAll("g.node")
@@ -470,7 +488,7 @@
                 .style("fill", function (d) { return d._children ? "transparent" : "#fff"; })
                 .style("fill-opacity", function (d) { return d._children ? "0.2" : "0.2"; })
                 .style("border-radius", "4px")
-                .on("click", function(d, i) {
+                .on("click", function (d, i) {
                 });
 
             nodeEnter.append("text")
@@ -502,18 +520,24 @@
                         .ease('cubic-out')
                         .duration('200')
                         .attr('font-size', 32)
-                        .style("fill", "#2077b4")
-                        .style("fill-opacity", 0.4);
+                        .style("fill", "#555")
+                        .style("fill-opacity", 0.4)
+                        //.style("stroke", "#000")
+                        //.style("stroke-width", "2px")
+                        ;
                 })
                 .on('mouseout', function (d, i) {
                     d3.select(this).transition()
                         .ease('cubic-out')
                         .duration('200')
                         .attr('font-size', 20)
-                        .style("fill", "#2077b4")
-                        .style("fill-opacity", 0);
+                        .style("fill", "#555")
+                        .style("fill-opacity", 0)
+                        //.style("stroke", "#000")
+                        //.style("stroke-width", "0px")
+                        ;
                 })
-                .on("click", function(d, i) {
+                .on("click", function (d, i) {
                     d3.selectAll("rect").classed("selectedNode", false);
                     d3.select(this).classed("selectedNode", d3.select(this).classed("selectedNode") ? false : true);
                 });
