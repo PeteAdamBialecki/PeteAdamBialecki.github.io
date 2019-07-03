@@ -40,7 +40,7 @@ To stop the Mongo daemon hit ctrl-c
 
 - Navigate to this directory and run the command
 
-        node mongoose-sandbox.js
+        node app.js
 
 If it works, you should get:
 
