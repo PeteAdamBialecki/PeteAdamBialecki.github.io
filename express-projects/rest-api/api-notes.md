@@ -1,12 +1,12 @@
-# **REST API Instructions**
+# **Express.js REST API Instructions**
 
-## **Set Up Mongo DB On YOur Machine**
+## **Setting Up The Application**
 
 For the complete instructions, click [here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html).  For Mac, install and run MongoDB with Homebrew: 
 
 Open the Terminal app and type
 
-        brew update.
+        brew update
 
 After updating Homebrew, enter
 
@@ -20,7 +20,7 @@ Make sure that the /data/db directory has the right permissions by running
 
         sudo chown -R `id -un` /data/db
 
-Then
+You might have to enter your password:
 
         # Enter your password
 
@@ -31,10 +31,6 @@ Run the Mongo daemon in one of your terminal windows to start the server. Enteri
 Run the Mongo shell while the Mongo daemon is running in the first terminal. Type the following command in another terminal window. This will run the Mongo shell which is an application to access data in MongoDB.
 
         mongo
-
-To exit the Mongo shell run quit()
-
-To stop the Mongo daemon hit ctrl-c
 
 Install nodemon
 
@@ -60,7 +56,7 @@ Browser:
 
 ## **Previous Notes**
 
-- Navigate to this directory and run the command
+Navigate to this directory and run the command
 
         node app.js
 
@@ -70,11 +66,13 @@ If it works, you should get:
         Saved.
         DB connection closed.
 
-Next, run the command:
+## **Sample Mongo Stuff**
+
+After you run this command:
 
         mongo
 
-Type the command
+You can try to use thiscommand
 
         use sandbox
 
@@ -103,3 +101,12 @@ Results:
         { "_id" : ObjectId("5d178b548eb868a6516ce409"), "size" : "small", "name" : "Angela", "mass" : 0.007, "color" : "golden", "type" : "goldfish", "__v" : 0 }
         { "_id" : ObjectId("5d178b548eb868a6516ce40a"), "size" : "big", "name" : "Fig", "mass" : 190500, "color" : "golden", "type" : "whale", "__v" : 0 }
 
+
+
+
+
+## **Additional Notes**
+
+- To exit the Mongo shell run quit()
+
+- To stop the Mongo daemon hit ctrl-c
