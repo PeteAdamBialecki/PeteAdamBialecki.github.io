@@ -1,5 +1,7 @@
 # **Express.js REST API Instructions**
 
+This REST API still needs something for the front-end.  I think that this should be served using React. 
+
 ## **Setting Up The Application**
 
 For the complete instructions, click [here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html).  For Mac, install and run MongoDB with Homebrew: 
