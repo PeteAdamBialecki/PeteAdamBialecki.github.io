@@ -1,7 +1,7 @@
 /* ELEMENT STYLES -------------------- */
 
 body {
-  background: #e8e7e7; 
+  background: #9d9d9d; 
   font-family: arial;
   text-transform: uppercase;
 }
@@ -12,8 +12,8 @@ header {
   text-align: center;
   display: flex;
   align-items: center;
-  background-color: #8063FA;
-  border-bottom: solid 2px #D4CAFF;
+  background-color: #26495e;
+  border-bottom: solid 2px #000;
 }
 
 header h1 {
@@ -27,7 +27,7 @@ header h1 {
 
 form {
   display: flex;
-  background-color: #8063FA;
+  background-color: #26495e;
 }
 
 input[type=text] {
@@ -115,7 +115,7 @@ svg {
 }
 
   .player:last-of-type {
-    border-bottom-color: #D4CAFF;
+    border-bottom-color: #000;
   }
 
   .player-name:hover .remove-player {
