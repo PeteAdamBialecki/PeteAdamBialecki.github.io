@@ -1,15 +1,28 @@
-const title = 'My First React Element';
-const desc = 'I just learned how to use React nodes.';
-const myTitleID = 'main-title';
-const name = 'Pete';
-const header = (
-    <header>
-        <h1 id="{ myTitleID }">{ name }'s First React.js Element</h1>
-        <p className="main-desc">{ desc }</p>
-    </header>
-);
+function Header() {
+    return (
+        <header>
+            <h1>Scoreboard</h1>
+            <span className="stats">Players: 1</span>
+        </header>
+    );
+}
+
+const Player = () => {
+    return (
+        <div className="player">
+            <span className="player-name">
+                Pete
+            </span>
+            <div className="counter">
+                <button className="counter-action decrement"> - </button>
+                <span className="counter-score">35</span>
+                <button className="counter-action increment"> + </button>
+            </div>
+        </div>
+    );
+}
 
 ReactDOM.render(
-    header,
+    <Player />,
     document.getElementById('root')
 );
