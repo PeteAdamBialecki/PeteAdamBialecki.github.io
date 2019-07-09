@@ -102,7 +102,7 @@ svg {
   background: #fff;
   width: 700px;
   margin: 70px auto;
-  box-shadow: 0 2px 0 rgb(133, 104, 250);
+  box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -110,12 +110,12 @@ svg {
 .player {
   display: flex;
   font-size: 1.2em;
-  border-bottom: solid 2px #EEEEEE;
+  border-bottom: solid 1px #EEEEEE;
   letter-spacing: 2px;
 }
 
   .player:last-of-type {
-    border-bottom-color: #000;
+    border-bottom-color: #dcdcdc;
   }
 
   .player-name:hover .remove-player {
