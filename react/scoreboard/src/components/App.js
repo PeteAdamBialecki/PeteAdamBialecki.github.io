@@ -7,22 +7,27 @@ class App extends Component {
         players: [
             {
                 name: "Kye",
+                score: 0,
                 id: 1
             },
             {
                 name: "Phil",
+                score: 0,
                 id: 2
             },
             {
                 name: "Eva",
+                score: 0,
                 id: 3
             },
             {
                 name: "Ara",
+                score: 0,
                 id: 4
             },
             {
                 name: "Pete",
+                score: 0,
                 id: 5
             }
         ]
@@ -48,6 +53,7 @@ class App extends Component {
                 {this.state.players.map(player =>
                     <Player
                         name={player.name}
+                        score={player.score}
                         id={player.id}
                         key={player.id.toString()}
                         removePlayer={this.handleRemovePlayer}
