@@ -1,0 +1,19 @@
+{
+  "name": "peteadambialecki.github.io",
+  "version": "1.0.0",
+  "description": "This is the main place where I practice, experiment, and build things with code.",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeteAdamBialecki/PeteAdamBialecki.github.io.git"
+  },
+  "author": "Pete Adam Bialecki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PeteAdamBialecki/PeteAdamBialecki.github.io/issues"
+  },
+  "homepage": "https://github.com/PeteAdamBialecki/PeteAdamBialecki.github.io#readme"
+}
