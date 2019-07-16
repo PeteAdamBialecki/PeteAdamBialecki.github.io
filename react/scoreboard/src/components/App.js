@@ -38,6 +38,15 @@ class App extends Component {
     // Player ID Counter
     prevPlayerId = 4;
 
+    getHighScore = () => {
+        const scores = this.state.players.map( p => p.score );
+        const highScore = Math.max(...scores);
+        if (highScore) {
+          return highScore;
+        } 
+        return null;
+      }
+
     handleScoreChange = (index, numberChange) => {
         this.setState(prevState => ({
             score: prevState.players[index].score += numberChange
@@ -66,6 +75,8 @@ class App extends Component {
     }
 
     render() {
+        const highScore = this.getHighScore();
+
         return (
             <div className="scoreboard">
                 <Header
@@ -82,6 +93,7 @@ class App extends Component {
                         index={index}
                         changeScore={this.handleScoreChange}
                         removePlayer={this.handleRemovePlayer}
+                        isHighScore={highScore === player.score}         
                     />
                 )}
                 <AddPlayerForm addPlayer={this.handleAddPlayer} />
