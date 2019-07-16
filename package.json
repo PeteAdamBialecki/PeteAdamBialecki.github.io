@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/PeteAdamBialecki/PeteAdamBialecki.github.io/issues"
   },
-  "homepage": "https://github.com/PeteAdamBialecki/PeteAdamBialecki.github.io#readme"
+  "homepage": "https://github.com/PeteAdamBialecki/PeteAdamBialecki.github.io#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  }
 }

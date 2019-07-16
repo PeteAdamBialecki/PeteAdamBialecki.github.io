@@ -11,3 +11,9 @@ To get started, install Create React App and create a new app, at all once, with
         npx create-react-app scoreboard
         cd scoreboard
         npm start
+
+# **React Tools**
+
+[Flow: Static Type Checker For JavaScript](https://flow.org/)
+
+[TypeScript](https://www.typescriptlang.org/)
