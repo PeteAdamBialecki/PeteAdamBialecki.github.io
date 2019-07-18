@@ -6,11 +6,32 @@ The CDN-based approach is not useful in a production environment as soon as you 
 
 Developers use compiling as part of a build process to avoid the overhead of downloading Babel and multiple JavaScript files to the client. Create React App sets up a modern build system for your React apps in little time, no need to install or configure tools like Webpack or Babel. The tools are already pre-configured in each new project, that way you can focus on building your app.
 
-To get started, install Create React App and create a new app, at all once, with npx. For example:
+To get started, install Create React App:
+
+        npm install -g create-react-app
+
+ and create a new app, at all once, with npx. For example:
 
         npx create-react-app scoreboard
         cd scoreboard
+
+Helpful commands:
+Start development server:
+
         npm start
+
+Bundles the app into static files for production:
+
+        npm run build
+
+Starts the test runner
+
+        npm test
+
+Removes this tool and copies build dependencies, config files and scripts in the app directory.  If you do this, YOU CAN"T GO BACK!!!
+
+
+
 
 # **React Tools**
 
