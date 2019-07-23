@@ -21,7 +21,7 @@ class App extends Component {
             {
                 name: 'Eva',
                 isConfirmed: false,
-                isEditing: true
+                isEditing: false
             }
         ]
     };
@@ -33,41 +33,49 @@ class App extends Component {
                     return {
                         ...guest,
                         [property]: !guest[property]
-                    }
+                    };
                 }
                 return guest;
             })
-    });
+        });
 
     toggleConfirmationAt = index =>
         this.toggleGuestPropertyAt("isConfirmed", index);
+
+    removeGuestAt = index =>
+        this.setState({
+            guests: [
+                ...this.state.guests.slice(0, index),
+                ...this.state.guests.slice(index + 1)
+            ]
+        });
 
     toggleEditingAt = index =>
         this.toggleGuestPropertyAt("isEditing", index);
 
     setNameAt = (name, indexToChange) =>
-    this.setState({
-        guests: this.state.guests.map((guest, index) => {
-            if (index === indexToChange) {
-                return {
-                    ...guest,
-                    name
+        this.setState({
+            guests: this.state.guests.map((guest, index) => {
+                if (index === indexToChange) {
+                    return {
+                        ...guest,
+                        name
+                    };
                 }
-            }
-            return guest;
-        })
-    });
+                return guest;
+            })
+        });
 
-    toggleFilter = () => 
+    toggleFilter = () =>
         this.setState({ isFiltered: !this.state.isFiltered });
 
-    handleNameInput = e => 
+    handleNameInput = e =>
         this.setState({ pendingGuest: e.target.value });
 
     newGuestSubmitHandler = e => {
         e.preventDefault();
-        this.setState({ 
-            guest: [
+        this.setState({
+            guests: [
                 {
                     name: this.state.pendingGuest,
                     isConfirmed: false,
@@ -76,8 +84,9 @@ class App extends Component {
                 ...this.state.guests
             ],
             pendingGuest: ''
-        })
-    }
+        });
+
+    };
 
     getTotalInvited = () => this.state.guests.length;
     // getAttendingGuests = () =>
@@ -90,18 +99,12 @@ class App extends Component {
                     <h1>RSVP</h1>
                     <p>A Treehouse App</p>
                     <form onSubmit={this.newGuestSubmitHandler}>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             onChange={this.handleNameInput}
-                            value={this.state.pendingGuest} 
-                            placeholder="Invite Someone" 
-                        />
-                        <button 
-                            type="submit" 
-                            name="submit" 
-                            value="submit"
-                        >Submit
-                        </button>
+                            value={this.state.pendingGuest}
+                            placeholder="Invite Someone" />
+                        <button type="submit" name="submit" value="submit">Submit</button>
                     </form>
                 </header>
                 <div className="main">
@@ -109,9 +112,9 @@ class App extends Component {
                         <h2>Invitees</h2>
                         <label>
                             <input
-                            type="checkbox" 
-                            onChange={this.toggleFilter}
-                            checked={this.state.siFiltered} /> Hide those who haven't responded
+                                type="checkbox"
+                                onChange={this.toggleFilter}
+                                checked={this.state.isFiltered} /> Hide those who haven't responded
                         </label>
                     </div>
                     <table className="counter">
@@ -136,6 +139,7 @@ class App extends Component {
                         toggleEditingAt={this.toggleEditingAt}
                         setNameAt={this.setNameAt}
                         isFiltered={this.state.isFiltered}
+                        removeGuestAt={this.removeGuestAt}
                     />
                 </div>
             </div>
