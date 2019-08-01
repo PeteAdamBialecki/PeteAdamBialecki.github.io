@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Consumer } from './Contexct';
+import { Consumer } from './Context';
 
 const Counter = ({ index, score }) => {
     return (
