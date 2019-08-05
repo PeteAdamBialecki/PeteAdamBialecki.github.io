@@ -9,6 +9,9 @@ h1 {
     font-size: 1.5em;
     text-transform: uppercase;
 }
+h6 {
+    margin: 0;
+}
 p {
    font-size: 1em;
    line-height: 1.6;
@@ -163,6 +166,7 @@ figure:hover {
 /*---- Syntax Colors -----*/
 .hot-pink {
    color: #e8175d;
+   font-size: 20px;
 }
 .blue {
    color: #227cbe;
