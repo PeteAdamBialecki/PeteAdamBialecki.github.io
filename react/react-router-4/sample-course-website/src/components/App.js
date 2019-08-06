@@ -4,10 +4,22 @@ import {
     Route
 } from 'react-router-dom';
 
-const App = () => (
-  <div className="container">
+// App Components
+import Header from './Header';
+import Home from './Home';
+import About from './About';
 
-  </div>
+// "/teachers"
+// "/courses"
+
+const App = () => (
+    <BrowserRouter>
+        <div className="container">
+            <Header />
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+        </div>
+    </BrowserRouter>
 );
 
 export default App;
