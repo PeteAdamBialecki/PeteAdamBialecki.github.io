@@ -123,7 +123,7 @@ header {
 }
 .main-nav a:hover,
 .main-nav .active {
-  color: #fff;
+  color: #222;
   background: #d4c8be;
 }
 
@@ -145,7 +145,7 @@ header {
 }
 .course-nav a:hover,
 .course-nav a.active {
-  color: #fff;
+  color: #7d7d7d;
   background: #d4c8be;
 }
 
