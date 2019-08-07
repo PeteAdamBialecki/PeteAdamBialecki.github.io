@@ -2,6 +2,9 @@
   WEB FONTS
 ==================================== */
 
+/* Neutral Color Palletes */
+/* https://jordan-prindle.squarespace.com/blog/15-more-color-palettes */
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
 
 /* ================================= 
@@ -12,8 +15,8 @@
   box-sizing: border-box;
 }
 body {
-  color: #576366;
-  background: #5fcf80;
+  color: #7f867b;
+  background: #c7c7bb;
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
@@ -33,7 +36,7 @@ ul {
 }
 a {
   text-decoration: none;
-  color: #3b80d1;
+  color: #d4c8be;
 }
 hr {
   border: 0;
@@ -57,7 +60,7 @@ button {
 }
 button {
   color: white;
-  background: #4188dc;
+  background: #d4c8be;
   padding-left: 1em;
   padding-right: 1em;
   cursor: pointer;
@@ -79,7 +82,7 @@ button {
   overflow: hidden;
 }
 header {
-  background: #edeff0;
+  background: #e3e4e0;
   margin-bottom: 2em;
 }
 .main-content {
@@ -120,8 +123,8 @@ header {
 }
 .main-nav a:hover,
 .main-nav .active {
-  color: #fff;
-  background: #3b80d1;
+  color: #222;
+  background: #d4c8be;
 }
 
 /* COURSE NAV -------- */
@@ -142,8 +145,8 @@ header {
 }
 .course-nav a:hover,
 .course-nav a.active {
-  color: #fff;
-  background: #39add1;
+  color: #7d7d7d;
+  background: #d4c8be;
 }
 
 /* ICONS -------- */
@@ -206,7 +209,7 @@ header {
     padding-top: 3em;
   }
   .home a {
-    border-color: #3b80d1;
+    border-color: #d4c8be;
   }
   .media img,
   .media > div,
@@ -239,8 +242,6 @@ header {
     flex-wrap: wrap;
   }
   .main-nav a {
-    border-left: 3px solid transparent;
-    border-right: 3px solid transparent;
     padding: 1.25em 1.5em;
   }
   .main-nav a:hover {
