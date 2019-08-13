@@ -9,7 +9,7 @@
 body {
   font: 1em/1.5 'Roboto', sans-serif;
   color: #4c4c4c;
-  background: #f6f7f7;
+  background: #a4a3a1;
   padding-top: 145px;
   padding-bottom: 3em;
   margin: 0;
@@ -34,7 +34,7 @@ input {
   background: none;
   border: none;
   outline: 0;
-  border-bottom: 4px solid #e4e4e4;
+  border-bottom: 4px solid #4c4c4c;
   transition: border-color .4s;
 }
 
