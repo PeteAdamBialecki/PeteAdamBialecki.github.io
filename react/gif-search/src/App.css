@@ -83,12 +83,12 @@ button {
 .icon-gif {
   font-size: 6em;
   margin-bottom: 0;
-  color: #7bcbc4;
+  color: #4c4c4c;
   display: block;
 }
 
 .no-gifs  {
-  color: #7bcbc4;
+  color: #4c4c4c;
   height: 140px;
   padding-top: 62px;
   text-align: center;
