@@ -30,11 +30,17 @@ Starts the test runner
 
 Removes this tool and copies build dependencies, config files and scripts in the app directory.  If you do this, YOU CAN"T GO BACK!!!
 
-
-
-
 # **React Tools**
 
 [Flow: Static Type Checker For JavaScript](https://flow.org/)
 
 [TypeScript](https://www.typescriptlang.org/)
+
+## **Extra Notes and Resources**
+
+[Giphy API documentation](https://github.com/Giphy/GiphyAPI)
+[Fetch API – MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+[Introduction to fetch()](https://developers.google.com/web/updates/2015/03/introduction-to-fetch)
+[Browser support for fetch()](http://caniuse.com/#feat=fetch)
+[fetch() polyfill](https://github.com/github/fetch)
+[Browser support for JavaScript promises](http://caniuse.com/#feat=promises)
