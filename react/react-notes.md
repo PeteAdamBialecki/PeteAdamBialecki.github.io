@@ -44,3 +44,48 @@ Removes this tool and copies build dependencies, config files and scripts in the
 [Browser support for fetch()](http://caniuse.com/#feat=fetch)
 [fetch() polyfill](https://github.com/github/fetch)
 [Browser support for JavaScript promises](http://caniuse.com/#feat=promises)
+
+## **Create Production Build**
+
+If using Create React App, run 
+
+        npm run build
+
+Use "serve"
+
+        npm install -g serve
+
+Then, in the directory, run
+
+        serve -s build
+
+Then view the production build in the given URLs.  If you want to make changes, you need to go through the entire build process again.
+
+## **GitHub Pages Deploy**
+
+For GitHub pages, create a repo in Github with the whole project.  In the 'package.json', Add, under "name", 
+
+        "homepage": "https://username.github.io/reponame",
+
+Run the command 
+
+        npm install --save gh-pages
+
+Setup deploy scripts in package.json
+
+        "scripts": {
+            "predeploy": "npm run build",
+            "deploy": "gh-pages -d build",
+            ...
+        }
+
+Run the command 
+
+        npm run deploy
+
+Once that's commplete, in your browser, go to your Github repo, go to settings, scroll down, and navigate to where your site is published.
+
+Set a Base URL
+When using React Router, if your app is served from a sub-directory, pass the 'basename' prop to the router to set the base URL for all locations. For example:
+
+        <BrowserRouter basename="/course-directory">
