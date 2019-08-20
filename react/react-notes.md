@@ -138,3 +138,13 @@ In the package.json, include a snippet for Now:
 Then run the command
 
         now
+
+This should start the build process and link to your ZEIT account.  Once it's done buildling, you will be given a custom URL for your app.
+
+## **Deploying with Netlify**
+
+[Netlify](https://www.netlify.com/)
+[Netlify CLI](https://www.netlify.com/docs/cli/)
+[Redirects](https://www.netlify.com/docs/redirects/)
+[Custom Domains](https://www.netlify.com/docs/custom-domains)
+[Continuous Deployment](https://www.netlify.com/docs/continuous-deployment)
