@@ -89,3 +89,62 @@ Set a Base URL
 When using React Router, if your app is served from a sub-directory, pass the 'basename' prop to the router to set the base URL for all locations. For example:
 
         <BrowserRouter basename="/course-directory">
+
+## **Deploying with Now**
+
+Helpful Links:
+
+[Now – Global Serverless Deployments](https://zeit.co/now)
+[zeit.co](https://zeit.co/)
+[now.json configuration](https://zeit.co/examples/create-react-app/)
+[Deploy a Create React App project with Now](https://zeit.co/examples/create-react-app)
+[Domains and Aliases](https://zeit.co/docs/v2/domains-and-aliases/adding-a-domain)
+[Now for GitHub](https://zeit.co/blog/now-for-github)
+
+        npm install -g now
+
+Steps when using Create React Native:
+
+Create a file called 
+
+        now.json
+
+This is where you include the version of now as well as routers and all of that other stuff. A running sample is located in './react/deploying/now/now.json.  Use this code.
+
+        {
+            "version": 2,
+            "name": "create-react-app",
+            "builds": [
+                { "src": "package.json", "use": "@now/static-build" }
+            ],
+            "routes": [
+                {"src": "^/static/(.*)", "dest": "/static/$1"},
+                {"src": "^/favicon.ico", "dest": "/favicon.ico"},
+                {"src": "^/asset-manifest.json", "dest": "/asset-manifest.json"},
+                {"src": "^/manifest.json", "dest": "/manifest.json"},
+                {"src": "^/service-worker.js", "headers": {"cache-control": "s-maxage=0"}, "dest": "/service-worker.js"},
+                {"src": "^/precache-manifest.(.*)", "dest": "/precache-manifest.$1"},
+                {"src": "^/(.*)", "dest": "/index.html"}
+            ]
+        }
+
+In the package.json, include a snippet for Now:
+
+        "scripts": {
+        ...
+        "now-build": "react-scripts build && mv build dist"
+        }
+
+Then run the command
+
+        now
+
+This should start the build process and link to your ZEIT account.  Once it's done buildling, you will be given a custom URL for your app.
+
+## **Deploying with Netlify**
+
+[Netlify](https://www.netlify.com/)
+[Netlify CLI](https://www.netlify.com/docs/cli/)
+[Redirects](https://www.netlify.com/docs/redirects/)
+[Custom Domains](https://www.netlify.com/docs/custom-domains)
+[Continuous Deployment](https://www.netlify.com/docs/continuous-deployment)
