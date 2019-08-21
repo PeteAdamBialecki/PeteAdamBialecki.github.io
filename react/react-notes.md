@@ -148,3 +148,29 @@ This should start the build process and link to your ZEIT account.  Once it's do
 [Redirects](https://www.netlify.com/docs/redirects/)
 [Custom Domains](https://www.netlify.com/docs/custom-domains)
 [Continuous Deployment](https://www.netlify.com/docs/continuous-deployment)
+
+The easiest way to deploy to Netlify is to run this command in your React directory first
+
+        npm run build
+
+Once this is done, login to Netlify and then drag and drop the build folder into the online GUI.
+
+To do it with the command line, first install Netlify
+
+        npm install netlify-cli -g
+
+Navigate to your directory and run the command 
+
+        netlify deploy
+
+Follow the directions within the terminal to set it up.  Afterwards, you will be given a sample URL to test it out.  To deploy as prod, run the command 
+
+        netlify deploy --prod
+
+Afterwards, you will be given two URLs, one for a specific deployment stage and one for an ongoing live version with every deploy.
+
+TO enable Netlify when the user reloads the page, create a file called "_redirects" in the build folder.  In this file, include this
+
+        /*    /index.html   200
+
+Then, redeploy the app.  
