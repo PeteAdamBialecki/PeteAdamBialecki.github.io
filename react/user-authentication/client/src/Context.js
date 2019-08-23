@@ -1,29 +1,34 @@
 import React, { Component } from 'react';
+import Data from './Data';
 
-const Context = React.createContext(); 
+const Context = React.createContext();
 
 export class Provider extends Component {
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+        this.data = new Data();
+    }
 
-  render() {
-    return (
-      <Context.Provider>
-        {this.props.children}
-      </Context.Provider>  
-    );
-  }
+    render() {
+        const value = {
+            data: this.data,
+        };
+        return (
+            <Context.Provider value={value}>
+                {this.props.children}
+            </Context.Provider>
+        );
+    }
 
-  
-  signIn = async () => {
 
-  }
+    signIn = async () => {
 
-  signOut = () => {
+    }
 
-  }
+    signOut = () => {
+
+    }
 }
 
 export const Consumer = Context.Consumer;
@@ -35,12 +40,12 @@ export const Consumer = Context.Consumer;
  */
 
 export default function withContext(Component) {
-  return function ContextComponent(props) {
-    return (
-      <Context.Consumer>
-        {context => <Component {...props} context={context} />}
-      </Context.Consumer>
-    );
-  }
+    return function ContextComponent(props) {
+        return (
+            <Context.Consumer>
+                {context => <Component {...props} context={context} />}
+            </Context.Consumer>
+        );
+    }
 }
 

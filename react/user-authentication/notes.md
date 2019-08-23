@@ -74,3 +74,7 @@ You can view the code that enable CORS support in the api/app.js file, on lines 
 
         // Enable all CORS Requests
         app.use(cors());
+
+## **IMPORTANT**
+
+Do npm start on the client directory and then npm start on the api directory in that order.
