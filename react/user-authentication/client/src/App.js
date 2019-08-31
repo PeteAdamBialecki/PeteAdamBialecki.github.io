@@ -37,3 +37,9 @@ export default () => (
         </div>
     </Router>
 );
+
+// Suggestions For Additional Functionality
+// Add more private routes that require user authentication like a profile page.
+//Configure new REST API routes that render specific content to the user lets say to the profile page or something.
+// Connect to a third party external API
+// Connect the app to a database (Sequelize ORM, Mongo DB, etc.)
