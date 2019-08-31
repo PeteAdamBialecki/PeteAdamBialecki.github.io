@@ -5,8 +5,8 @@ export default ({ context }) => {
     return (
         <div className="bounds">
             <div className="grid-100">
-                <h1>{authUser.name} authenticated!</h1>
-                <p>Your username is {authUser.username}</p>
+                <h1>{authUser.name} has been authenticated!</h1>
+                <p>Hello {authUser.username}, thanks for stopping by..</p>
             </div>
         </div>
     );

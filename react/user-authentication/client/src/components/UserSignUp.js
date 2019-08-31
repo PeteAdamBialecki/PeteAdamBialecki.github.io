@@ -87,12 +87,15 @@ export default class UserSignUp extends Component {
             password,
         };
 
-        context.data.createUser(user) 
+        context.data.createUser(user)
             .then(errors => {
                 if (errors.length) {
                     this.setState({ errors });
                 } else {
-                    console.log(`${username} is successfully signed up and authenticated!`);
+                    context.actions.signIn(username, password)
+                        .then(() => {
+                            this.props.history.push('/authenticated');
+                        });
                 }
             })
             .catch(err => { // handle rejected promises
