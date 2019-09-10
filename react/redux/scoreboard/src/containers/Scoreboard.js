@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as PlayerActionCreators from '../actions/player';
-import Player from '../components/Player';
 import Header from '../components/Header';
+import Player from '../components/Player';
 import AddPlayerForm from '../components/AddPlayerForm';
+import PlayerDetail from '../components/PlayerDetail';
 
 class Scoreboard extends Component {
-
     static propTypes = {
         players: PropTypes.array.isRequired
     };
@@ -28,7 +28,6 @@ class Scoreboard extends Component {
                 removePlayer={removePlayer}
             />
         ));
-
         return (
             <div className="scoreboard">
                 <Header players={players} />
@@ -36,6 +35,10 @@ class Scoreboard extends Component {
                     {playerComponents}
                 </div>
                 <AddPlayerForm addPlayer={addPlayer} />
+
+                <div className="player-detail">
+                    <PlayerDetail />
+                </div>
             </div>
         );
     }
@@ -48,12 +51,3 @@ const mapStateToProps = state => (
 );
 
 export default connect(mapStateToProps)(Scoreboard);
-
-
-
-
-
-
-
-
-
