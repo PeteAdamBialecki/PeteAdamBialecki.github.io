@@ -11,6 +11,7 @@ body {
     margin: 70px auto;
     box-shadow: 0 4px 0px #333;
     border-radius: 15px;
+    padding: 0 0 5px 0;
 }
 
 .header {
@@ -116,6 +117,10 @@ body {
 .player-score {
     width: 190px;
     background: blue;
+}
+
+.player-detail {
+    padding: 0 10px 0 15px;
 }
 
 .counter {

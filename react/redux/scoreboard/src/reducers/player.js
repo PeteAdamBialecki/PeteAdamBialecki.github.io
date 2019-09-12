@@ -30,7 +30,7 @@ export default function Player(state = initialState, action) {
     let year = date.getFullYear();
     switch (action.type) {
         case PlayerActionTypes.ADD_PLAYER:
-            const addPlayerLilst = [...state.players, {
+            const addPlayerList = [...state.players, {
                 name: action.name,
                 score: 0,
                 created: `${month}/${day}/${year}`

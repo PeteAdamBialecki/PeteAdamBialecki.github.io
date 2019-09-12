@@ -27,4 +27,4 @@ export const selectPlayer = index => {
         type: PlayerActionTypes.SELECT_PLAYER,
         index
     };
-};
+}; 

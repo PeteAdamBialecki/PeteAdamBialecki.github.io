@@ -29,6 +29,6 @@ const PlayerDetail = ({ selectedPlayer }) => {
 
 PlayerDetail.propTypes = {
     selectedPlayer: PropTypes.object
-};
+}; 
 
 export default PlayerDetail;
