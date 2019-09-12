@@ -5,7 +5,7 @@ import * as PlayerActionCreators from '../actions/player';
 import Header from '../components/Header';
 import Player from '../components/Player';
 import AddPlayerForm from '../components/AddPlayerForm';
-import PlayerDetail from '../components/PlayerDetail';
+import PlayerDetail from '../components/PlayerDetails';
 
 class Scoreboard extends Component {
     static propTypes = {
@@ -18,10 +18,12 @@ class Scoreboard extends Component {
         const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
         const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
         const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
+
         let selectedPlayer;
-            if(selectedPlayerIndex != -1) {
-                selectedPlayer = players[selectedPlayerIndex];
-            }
+        if (selectedPlayerIndex !== -1) {
+            selectedPlayer = players[selectedPlayerIndex];
+        }
+
         const playerComponents = players.map((player, index) => (
             <Player
                 index={index}
@@ -41,7 +43,7 @@ class Scoreboard extends Component {
                 </div>
                 <AddPlayerForm addPlayer={addPlayer} />
                 <div className="player-detail">
-                    <PlayerDetail selectedPlayer={selectedPlayer}/>
+                    <PlayerDetail selectedPlayer={selectedPlayer} />
                 </div>
             </div>
         );
