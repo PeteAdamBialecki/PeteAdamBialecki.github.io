@@ -10,9 +10,9 @@ To get started, install Create React App:
 
         npm install -g create-react-app
 
- and create a new app, at all once, with npx. For example:
+ and create a new app, at all once, with npm. For example:
 
-        npx create-react-app scoreboard
+        npm create-react-app scoreboard
         cd scoreboard
 
 Helpful commands:
@@ -174,3 +174,42 @@ TO enable Netlify when the user reloads the page, create a file called "_redirec
         /*    /index.html   200
 
 Then, redeploy the app.  
+
+# **Create React Native App**
+
+Install Create React Native App
+
+        npm install -g create-react-native-app
+
+Create a new project.  cd into the directory and use the command
+
+        create-react-native-app nameOfProject
+
+Stuff is installed and then you are given a success message with all of the details.
+
+ Create an account with Expo
+
+        https://expo.io/
+
+After, cd into the directory where you started the create-react-native-app and type the command
+
+        npm start
+
+You are then given a QR code. To scan this QR code, install the Expo Client App
+
+        https://itunes.apple.com/app/apple-store/id982107779
+
+        https://play.google.com/store/apps/details?id=host.exp.exponent
+
+Instead of using Expo, after running "npm start", you can find commands that can run a iOS or Android simulator on your computer.  For iOS, you need xCode.  To run the iOS simulator, use the command
+
+        npm run ios
+
+After running the simulator, open the project in any kind of text editor and start coding.  On Mac, to run the android simulator, you need to install the Android Simulator
+
+        https://developer.android.com/studio/index.html
+
+Follow the same steps as above to start the android dev server
+
+        npm run android
+
