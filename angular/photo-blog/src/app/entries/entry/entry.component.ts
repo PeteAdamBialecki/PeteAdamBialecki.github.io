@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class EntryComponent {
-
+    title: string = 'My first photo.';
+    photo: string = 'http://placehold.it/800x500?text=Angular Basics';
+    description: string = 'A description and experiment for the future...';
 }
