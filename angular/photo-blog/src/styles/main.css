@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    background-color: #fff;
+    background-color: #777;
     color: #003a3a;
 }
 
@@ -26,6 +26,8 @@ h2 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #fff;
+    text-transform: capitalize;
 }
 
 button {
