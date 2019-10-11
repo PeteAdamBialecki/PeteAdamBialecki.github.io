@@ -21,7 +21,21 @@ const { Movie } = db.models;
         });
         console.log(movie2.toJSON());
 
+        const movie3 = await Movie.create({
+            title: 'Shawshank Redemption',
+            runtime: 142,
+            releaseDate: '1994-09-25',
+            isAvailableOnVHS: true,
+        });
+        console.log(movie3.toJSON());
+
+
     } catch (error) {
-        console.error('Error connecting to the database: ', error);
+        if (error.name === 'SequelizeValidationError') {
+            const errors = error.errors.map(err => err.message);
+            console.error('Validation errors: ', errors);
+        } else {
+            throw error;
+        }
     }
 })();
