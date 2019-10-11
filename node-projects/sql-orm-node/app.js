@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: 'movies.db'
+    storage: 'movies.db',
+    logging: true  // disable logging
 });
 
 // Movie model
@@ -15,11 +16,27 @@ Movie.init({
     // Sync 'Movies' table
     await sequelize.sync({ force: true });
     try {
-        // Instance of the Movie class represents a database row
-        const movie = await Movie.create({
-            title: 'Samsara',
-        });
-        console.log(movie.toJSON());
+        // non-Refactoered
+        // const movie1 = await Movie.create({
+        //     title: 'Samsara',
+        // });
+        // const movie2 = await Movie.create({
+        //     title: '2001: A Space Odyssey',
+        // });
+        // console.log(movie2.toJSON());
+        // Refactored
+        const movieInstances = await Promise.all([
+            Movie.create({
+                title: 'Samsara',
+            }),
+            Movie.create({
+                title: '2001: A Space Odyssey',
+            }),
+        ]);
+        const moviesJSON = movieInstances.map(movie => movie.toJSON());
+        console.log(moviesJSON);
+
+        // ------------------
     } catch (error) {
         console.error('Error connecting to the database: ', error);
     }
