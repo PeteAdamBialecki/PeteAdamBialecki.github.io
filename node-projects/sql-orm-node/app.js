@@ -1,5 +1,5 @@
 const db = require('./db');
-const { Movie } = db.models;
+const { Movie, Person } = db.models;
 
 (async () => {
     await db.sequelize.sync({ force: true });
@@ -29,6 +29,11 @@ const { Movie } = db.models;
         });
         console.log(movie3.toJSON());
 
+        const person = await Person.create({
+            firstName: 'Butch',
+            lastName: 'Cassidy',
+        });
+        console.log(person.toJSON());
 
     } catch (error) {
         if (error.name === 'SequelizeValidationError') {
