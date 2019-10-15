@@ -50,6 +50,39 @@ const { Movie, Person } = db.models;
         });
         await person2.save();
 
+        // Experiments:
+        // Find something that has an id of ... in this case, 2.
+        const movieById = await Movie.findByPk(2);
+        console.log(movieById.toJSON());
+
+        // Find the first matching...in this case, runtime of 164
+        const movieByRuntime = await Movie.findOne({ where: { runtime: 164 } });
+        console.log(movieByRuntime.toJSON());
+
+        // List all movies
+        const movies = await Movie.findAll();
+        console.log(movies.map(movie => movie.toJSON()));
+
+        //Filter Results
+        const people = await Person.findAll({
+            where: {
+                lastName: 'Montana'
+            }
+        });
+        // SELECT * FROM People WHERE lastName = 'Montana';
+        console.log(people.map(person => person.toJSON()));
+
+        const movies5 = await Movie.findAll({
+            where: {
+              runtime: 142,
+              isAvailableOnVHS: true
+            }
+          });
+          // SELECT * FROM Movies WHERE runtime = 92 AND isAvailableOnVHS = true;
+          console.log( movies5.map(movie => movie.toJSON()) );
+          
+
+
     } catch (error) {
         if (error.name === 'SequelizeValidationError') {
             const errors = error.errors.map(err => err.message);
