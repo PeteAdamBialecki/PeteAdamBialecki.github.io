@@ -29,11 +29,26 @@ const { Movie, Person } = db.models;
         });
         console.log(movie3.toJSON());
 
+        const movie4 = await Movie.build({
+            title: 'Blade Runner',
+            runtime: 164,
+            releaseDate: '2017-10-08',
+            isAvailableOnVHS: false,
+        });
+        await movie4.save(); // Save the record
+        console.log(movie4.toJSON());
+
         const person = await Person.create({
             firstName: 'Butch',
             lastName: 'Cassidy',
         });
         console.log(person.toJSON());
+
+        const person2 = await Person.build({
+            firstName: 'Tony',
+            lastName: 'Montana'
+        });
+        await person2.save();
 
     } catch (error) {
         if (error.name === 'SequelizeValidationError') {
