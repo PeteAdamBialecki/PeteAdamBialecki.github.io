@@ -26,7 +26,7 @@ const { Op } = db.Sequelize;
             title: '2001: A Space Odyssey',
             runtime: 142,
             releaseDate: '1968-04-03',
-            isAvailableOnVHS: true,
+            isAvailableOnVHS: false,
         });
         console.log(movie2.toJSON());
 
@@ -34,7 +34,7 @@ const { Op } = db.Sequelize;
             title: 'Shawshank Redemption',
             runtime: 142,
             releaseDate: '1994-09-25',
-            isAvailableOnVHS: true,
+            isAvailableOnVHS: false,
         });
         console.log(movie3.toJSON());
 
@@ -69,37 +69,37 @@ const { Op } = db.Sequelize;
         // console.log(movieByRuntime.toJSON());
 
         // List all movies
-        const movies = await Movie.findAll({
-            attributes: ['id', 'title'],
-            where: {
-                releaseDate: {
-                    [Op.gte]: '1995-01-01'
-                  }
-                },
-                order: [['releaseDate', 'ASC']],
-                
-                // title: {
-                //     [Op.endsWith]: 'runner'
-                //   },        
-                // },
-                // order: [['id', 'DESC']] // IDs in descending order
-                
-                
-                // releaseDate: {
-                //     [Op.gte]: '2004-01-01', // greater than or equal to the date
-                // },
-                // runtime: {
-                //     [Op.gt]: 95, // greater than 95
-                // },
-                // Additional Options
-                // title: {
-                //     [Op.endsWith]: 'story'
-                // },
-                // runtime: {
-                //     [Op.between]: [75, 115]
-                // }
-        });
-        console.log(movies.map(movie => movie.toJSON()));
+        // const movies = await Movie.findAll({
+        //     attributes: ['id', 'title'],
+        //     where: {
+        //         releaseDate: {
+        //             [Op.gte]: '1995-01-01'
+        //         }
+        //     },
+        //     order: [['releaseDate', 'ASC']],
+
+            // title: {
+            //     [Op.endsWith]: 'runner'
+            //   },        
+            // },
+            // order: [['id', 'DESC']] // IDs in descending order
+
+
+            // releaseDate: {
+            //     [Op.gte]: '2004-01-01', // greater than or equal to the date
+            // },
+            // runtime: {
+            //     [Op.gt]: 95, // greater than 95
+            // },
+            // Additional Options
+            // title: {
+            //     [Op.endsWith]: 'story'
+            // },
+            // runtime: {
+            //     [Op.between]: [75, 115]
+            // }
+        // });
+        // console.log(movies.map(movie => movie.toJSON()));
 
         // //Filter Results
         // const people = await Person.findAll({
@@ -118,6 +118,22 @@ const { Op } = db.Sequelize;
         // });
         // // SELECT * FROM Movies WHERE runtime = 92 AND isAvailableOnVHS = true;
         // console.log(movies5.map(movie => movie.toJSON()));
+
+    // const toyStory3 = await Movie.findByPk(3);
+    // await toyStory3.update({
+    //   isAvailableOnVHS: true,
+    // });
+    // console.log( toyStory3.get({ plain: true }) );
+
+    //     // Find a record
+    // const toyStory = await Movie.findByPk(1);
+
+    // // Find and log all movies
+    // const movies = await Movie.findAll();
+    // console.log( movies.map(movie => movie.toJSON()) );
+
+    //     // Delete a record
+    // await toyStory.destroy();
 
 
 
