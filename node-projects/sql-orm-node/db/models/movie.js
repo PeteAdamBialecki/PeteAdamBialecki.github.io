@@ -52,7 +52,10 @@ module.exports = (sequelize) => {
             allowNull: false, // disallow null
             defaultValue: false, // set default value
         },
-    }, { sequelize });
+    }, { 
+        paranoid: true,
+        sequelize
+    });
 
     return Movie;
 };
