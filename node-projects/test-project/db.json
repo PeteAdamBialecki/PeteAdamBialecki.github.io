@@ -1,57 +1,37 @@
-{
-  "people": [
+[
     {
-      "id": 1,
-      "first_name": "Pete",
-      "last_name": "Bialecki",
-      "email": "peter.adam.bialecki@gmail.com"
+        "name": "John",
+        "surname": "Carpenter",
+        "gender": "Male",
+        "favoriteColor": "Black",
+        "dateOfBirth": "1972-10-02"
     },
     {
-      "id": 2,
-      "first_name": "Steve",
-      "last_name": "Palmer",
-      "email": "steve@codingthesmartway.com"
+        "name": "Billie",
+        "surname": "Holliday",
+        "gender": "Female",
+        "favoriteColor": "Red",
+        "dateOfBirth": "1918-05-15"
     },
     {
-      "id": 3,
-      "first_name": "Ann",
-      "last_name": "Smith",
-      "email": "ann@codingthesmartway.com"
+        "name": "Devin",
+        "surname": "Townsend",
+        "gender": "Male",
+        "favoriteColor": "Blue",
+        "dateOfBirth": "1985-07-25"
     },
     {
-      "id": 4,
-      "first_name": "Sebastian",
-      "last_name": "Eschweiler",
-      "email": "sebastian@codingthesmartway.com"
+        "name": "Winona",
+        "surname": "Ryder",
+        "gender": "Female",
+        "favoriteColor": "Green",
+        "dateOfBirth": "1985-08-02"
     },
     {
-      "employees": [
-        {
-          "id": 1,
-          "first_name": "Sebastian",
-          "last_name": "Eschweiler",
-          "email": "sebastian@codingthesmartway.com"
-        },
-        {
-          "id": 2,
-          "first_name": "Steve",
-          "last_name": "Palmer",
-          "email": "steve@codingthesmartway.com"
-        },
-        {
-          "id": 3,
-          "first_name": "Ann",
-          "last_name": "Smith",
-          "email": "ann@codingthesmartway.com"
-        },
-        {
-          "id": 4,
-          "first_name": "Pete",
-          "last_name": "Bialecki",
-          "email": "peter.adam.bialecki@gmail.com"
-        }
-      ],
-      "id": 5
+        "name": "Sam",
+        "surname": "Alice",
+        "gender": "Female",
+        "favoriteColor": "Pink",
+        "dateOfBirth": "1942-10-02"
     }
-  ]
-}
+]
