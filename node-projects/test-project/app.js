@@ -1,7 +1,10 @@
 const csv = require('csv-parser');
 const fs = require('fs');
 
-// *** TODO: Combine the three different delimited files.  The process below works for all three.  Need funtion to combine all three.
+// TODO: Combine the three different delimited CSV files into a single comma delimited CSV file.
+
+// TODO: Convert combined comma delimited CSV file to sinlge JSON file
+
 fs.createReadStream('data-comma.csv')
     .pipe(csv())
     .on('data', (row) => {
@@ -13,7 +16,7 @@ fs.createReadStream('data-comma.csv')
 
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
-    path: 'out.csv',
+    path: 'out.json',
     header: [
         { id: 'name', title: 'Name' },
         { id: 'surname', title: 'Surname' },
@@ -91,44 +94,12 @@ console.log(maleFilter);
 // Sort by birth date, earliest to latest
 console.log(" ");
 console.log("-------------Output 2: Birthdate Sorting-----------------");
-const test = 
-console.log(data.sort(sort_by('dateOfBirth', true, parseInt)).reverse());
+const test =
+    console.log(data.sort(sort_by('dateOfBirth', true, parseInt)).reverse());
 
 console.log(" ");
 console.log("-------------Output 3a: Surname Sorted-----------------");
 console.log(data.sort(sort_by('surname', false, (a) => a.toUpperCase())));
-
-
-
-// console.log("-------------Export Reports As CSV-----------------");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 csvWriter
     .writeRecords(data)
