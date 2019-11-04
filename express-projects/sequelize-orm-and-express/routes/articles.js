@@ -26,33 +26,84 @@ router.get('/new', (req, res) => {
 
 /* POST create article. */
 router.post('/', asyncHandler(async (req, res) => {
-    const article = await Article.create(req.body);
-    res.redirect("/articles/" + article.id);
+    let article;
+    try {
+        const article = await Article.create(req.body);
+        res.redirect("/articles/" + article.id);
+    } catch (error) {
+        if (error.name === "SequelizeValidationError") {
+            article = await Article.build(req.body);
+            res.render("articles/new", { article, errors: error.errors, title: "New Article" })
+        } else {
+            throw error; // error caught in the asyncHandler's catch block
+        }
+    }
 }));
 
 /* Edit article form. */
 router.get("/:id/edit", asyncHandler(async (req, res) => {
-    res.render("articles/edit", { article: {}, title: "Edit Article" });
+    const article = await Article.findByPk(req.params.id);
+    if (article) {
+        res.render("articles/edit", { article, title: "Edit Article" });
+    } else {
+        res.sendStatus(404);
+    }
+    res.render("articles/edit", { article, title: "Edit Article" });
 }));
 
 /* GET individual article. */
 router.get("/:id", asyncHandler(async (req, res) => {
     const article = await Article.findByPk(req.params.id);
+    if (article) {
+        res.render("articles/show", { article, title: article.title });
+    } else {
+        res.sendStatus(404);
+    }
     res.render("articles/show", { article, title: article.title  });
 }));
 
 /* Update an article. */
 router.post('/:id/edit', asyncHandler(async (req, res) => {
-    res.redirect("/articles/");
+    let article;
+    try {
+        article = await Article.findByPk(req.params.id);
+        if (article) {
+            await article.update(req.body);
+            res.render("articles/" + article.id);
+        } else {
+            res.sendStatus(404);
+        }
+    } catch (error) {
+        if (error.name === "SequelizeValidationError") {
+            article = await Article.build(req.body);
+            article.id = req.params.id;
+            res.render("articles/edit", { article, errors: error.errors, title: "Edit Article" })
+        } else {
+            throw error;
+        }
+    }
 }));
 
 /* Delete article form. */
 router.get("/:id/delete", asyncHandler(async (req, res) => {
+    const article = await Article.findByPk(req.params.id);
+    if (article) {
+        res.render("articles/delete", { article, title: "Delete Article" });
+    } else {
+        res.sendStatus(404);
+    }
     res.render("articles/delete", { article: {}, title: "Delete Article" });
 }));
 
 /* Delete individual article. */
 router.post('/:id/delete', asyncHandler(async (req, res) => {
+    const article = await Article.findByPk(req.params.id);
+    if (article) {
+        await article.destroy();
+        res.redirect("/articles");
+    } else {
+        res.sendStatus(404);
+    }
     res.redirect("/articles");
 }));
 
