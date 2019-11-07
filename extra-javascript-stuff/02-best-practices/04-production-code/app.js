@@ -1,1 +1,0 @@
-console.log('Express is listening on port: ' + process.env.PORT);
