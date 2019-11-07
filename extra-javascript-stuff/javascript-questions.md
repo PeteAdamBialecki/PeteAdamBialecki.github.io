@@ -1,3 +1,0 @@
-# **JavaScript Notes**
-
-## **Event Delegation**
