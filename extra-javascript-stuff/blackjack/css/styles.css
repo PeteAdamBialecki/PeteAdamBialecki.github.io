@@ -1,0 +1,50 @@
+html, body, section {
+    background: #666;
+}
+
+h1 {
+    color: #fff;
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+h4 {
+    font-size: 25px;
+}
+
+.btn {
+    border-radius: 0;
+    font-size: 20px;
+}
+
+.btn-container {
+    padding: 30px 0 0 0;
+}
+
+#game-container {
+    margin: 10% 0 0 0;
+}
+
+@media (max-width: 768px) {
+    .btn-container {
+        padding: 20px;
+    }
+    #hit-button {
+        float: right;
+    }
+    #stay-button {
+        float: left;
+    }
+}
+
+@media (min-width: 768px) {
+    #stay-button {
+        float: left;
+    }
+    #hit-button {
+        float: left;
+    }
+    #stay-button {
+        float: right;
+    }
+}
