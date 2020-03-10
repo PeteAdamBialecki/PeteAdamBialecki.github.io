@@ -2,7 +2,6 @@
 body {
     background: #292929;
     color: #eaeaea;
-    padding: 0 16px;
     font: 100% "Open Sans", Helvetica, Arial, sans-serif;
 }
 h1 {
@@ -46,6 +45,10 @@ td {
     display: inline;
     padding: 0 0 0 10px;
     text-indent: 1.5em;
+}
+
+#mainBody {
+    padding: 30px;
 }
 
 #zombie {
