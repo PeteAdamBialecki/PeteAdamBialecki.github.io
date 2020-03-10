@@ -18,9 +18,9 @@ function ready(error, data) {
     var data2018 = data.filter(function (d) { return d.year == 2018 })
 
     //Define Margins and svg here:
-    var margin = { top: 20, right: 50, bottom: 160, left: 45 };
+    var margin = { top: 20, right: 70, bottom: 160, left: 45 };
 
-    var width = 720 - margin.left - margin.right,
+    var width = 820 - margin.left - margin.right,
         height = 900 - margin.top - margin.bottom;
 
     var svg = d3.select("body").append("svg")
