@@ -1,0 +1,6 @@
+/****** PLACE YOUR CUSTOM STYLES HERE ******/
+
+html, body {
+    background:  #292929;
+    scroll-behavior: smooth;
+}
