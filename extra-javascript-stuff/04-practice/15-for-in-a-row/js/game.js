@@ -18,20 +18,6 @@ class Game {
         this.activePlayer.activeToken.drawHTMLToken();
         this.ready = true;
     };
-    // buttonRight() {
-    //     if (this.ready) {
-    //         var right = document.getElementById("right-button");
-    //         if (right.addEventListener) {
-    //             right.addEventListener("click", function() {
-    //                 alert("clicked");
-    //                 this.activePlayer.activeToken.moveRight(this.board.columns);
-    //                 console.log(this.activePlayer.activeToken.moveRight(this.board.columns));
-    //             }, false);
-    //         } else {
-    //             console.log("stuff");
-    //         };
-    //     };
-    // };
     handleKeydown(e) {
         if (this.ready) {
             if (e.key === "ArrowLeft") {
@@ -73,7 +59,7 @@ class Game {
                 this.gameOver('No more tokens');
             }
         } else {
-            this.gameOver(`${target.owner.name} wins!`)
+            this.gameOver(`${target.owner.name} Wins!`)
         };
     };
     checkForWin(target) {
