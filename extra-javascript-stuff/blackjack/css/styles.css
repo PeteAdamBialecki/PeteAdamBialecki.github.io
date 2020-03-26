@@ -48,3 +48,35 @@ h4 {
         float: right;
     }
 }
+
+.example_c {
+    color: #494949 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #494949 !important;
+    display: inline;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+}
+
+.example_c:hover {
+    color: #ffffff !important;
+    background: #000;
+    border-color: #000 !important;
+    transition: all 0.4s ease 0s;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.button_cont {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.button_cont:hover {
+    cursor: pointer;
+}
