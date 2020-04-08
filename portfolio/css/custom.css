@@ -6,7 +6,7 @@ html, body {
 }
 
 .project .image-tile {
-    max-height: 300px;
+    max-height: 270px;
 }
 
 #connect4 {

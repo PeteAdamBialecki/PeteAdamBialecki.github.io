@@ -45,7 +45,7 @@ function generateOptions(data) {
 function generateImage(data) {
     const html = `
     <img src='${data}' alt>
-    <p>Click to view i of ${select.value}s</p>
+    <p>Click to view images of ${select.value}s</p>
   `;
     card.innerHTML = html;
 }
@@ -55,7 +55,7 @@ function fetchBreedImage() {
     const img = card.querySelector('img');
     const p = card.querySelector('p');
 
-    fetchData(`https://dog.ceo/api/breed/${breed}/i/random`)
+    fetchData(`https://dog.ceo/api/breed/${breed}/images/random`)
         .then(data => {
             img.src = data.message;
             img.alt = breed;
