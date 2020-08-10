@@ -1,8 +1,0 @@
-- Visit "chrome://flags".
-- Enable "Developer Tools Experiments".
-- Restart Chrome.
-- Open Chrome Developer Tools.
-- Navigate to "Experiments".
-- Hit 'shift' key six times.
-- Check "Node debugging"
-- Close panels
