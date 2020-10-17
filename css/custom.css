@@ -9,7 +9,7 @@ html, body {
     max-height: 270px;
 }
 
-#connect4 {
+#gifSearch {
     filter: sepia(0.50);
     opacity: .8;
 }
